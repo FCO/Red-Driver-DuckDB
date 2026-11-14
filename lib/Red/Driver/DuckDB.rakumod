@@ -203,7 +203,7 @@ class Statement does Red::Statement {
 }
 
 multi method prepare(Str $query) {
-    CATCH { default { self.map-exception($_).throw } }
+    CATCH { when DB::DuckDB::Error { self.map-exception($_).throw } }
     DB::DuckDB::Error.new(:message('DuckDB connection is closed')).throw if $!session-state.closed;
     self.unsupported('SQL commands cannot contain NUL; bind text values instead') if $query.contains("\0");
     Statement.new(:driver(self), :statement($!connection), :session-state($!session-state), :$query)
@@ -232,7 +232,8 @@ method rollback-to-savepoint(Str:D $name) { self.unsupported('DuckDB does not su
 method release-savepoint(Str:D $name) { self.unsupported('DuckDB does not support savepoints') }
 
 # Identifiers are always quoted; DuckDB permits spaces, dots and reserved words.
-multi method is-valid-table-name(Str:D $name --> Bool) {
+# Override CommonSQL's unquoted-name policy without multi candidate ordering.
+proto method is-valid-table-name(Str:D $name --> Bool) {
     so $name.chars && !$name.contains("\0")
 }
 

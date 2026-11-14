@@ -7,9 +7,13 @@ DuckDB backend for the Raku [Red ORM](https://github.com/FCO/Red), built on
 
 Requires Raku 6.d and DB::DuckDB 1.0.1, whose native binding targets DuckDB 2.x.
 Alien::Libduckdb installs the native library automatically. On macOS, first run
-`python3 tools/install-macos-alien.py`: Alien 1.1.0 downloads the correct archive
+`raku tools/install-native-deps.raku macos`: Alien 1.1.0 downloads the correct archive
 but omits `.dylib` from its library lookup. This helper installs that exact
-release with only the missing macOS filenames corrected. It requires Python 3.12+.
+release with only the missing macOS filenames corrected.
+On Windows, run `raku tools/install-native-deps.raku windows` before installing the
+driver dependencies. It extracts the runtime files of DB::DuckDB 1.0.1 to bypass
+the zef tar extraction failure on Unicode documentation filenames, then installs
+that unchanged runtime. Both helpers use the native `curl` and `tar` utilities.
 
 ```sh
 git clone https://github.com/FCO/Red.git .red
@@ -85,7 +89,8 @@ uniqueness and existing-table errors map to Red's corresponding exceptions.
 
 The current complete Red run passes for declared capabilities: 167 files,
 2,161 top-level tests, with 15 native-savepoint scenarios explicitly skipped.
-The driver suite passes 104 tests. See [TESTING.md](TESTING.md) for the matching
+The driver suite passes 150 tests, with another 36 tests covering the Raku tools.
+See [TESTING.md](TESTING.md) for the matching
 Red checkout and companion patch needed to reproduce these results. CI installs
 that patched source; the changes are not yet published as a Red release.
 

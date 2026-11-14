@@ -1,0 +1,54 @@
+use Test;
+
+my $installer = $?FILE.IO.absolute.IO.parent.parent.add('install-native-deps.raku');
+my $root = $*TMPDIR.add("red-installer-test-{$*PID}-{now.Int}");
+$root.mkdir;
+sub remove-tree($path) {
+    if $path.d { remove-tree($_) for $path.dir; $path.rmdir }
+    else { $path.unlink }
+}
+LEAVE remove-tree($root) if $root.e;
+my $source = $root.add('source');
+$source.mkdir;
+$source.add('lib').mkdir;
+$source.add('resources').mkdir;
+$source.add('docs').mkdir;
+$source.add('META6.json').spurt('{"name":"DB::DuckDB","version":"1.0.1"}');
+$source.add('lib/Runtime.rakumod').spurt('unit module Runtime;');
+$source.add('resources/runtime.c').spurt('/* runtime */');
+$source.add('docs/模块接口.md').spurt('Unicode documentation');
+my $archive = $root.add('release.tar.gz');
+# The published DuckDB archive stores flat paths without a ./ prefix.
+is run('tar', '-czf', $archive.Str, '-C', $source.Str,
+    'META6.json', 'lib', 'resources', 'docs').exitcode, 0, 'flat release archive created';
+sub prepare($platform) {
+    my $proc = Proc::Async.new($*EXECUTABLE.Str, $installer.Str,
+        "--archive=$archive", '--extract-only', $platform);
+    my ($out, $err) = '', '';
+    $proc.stdout.tap(-> $text { $out ~= $text });
+    $proc.stderr.tap(-> $text { $err ~= $text });
+    my $finished = await $proc.start;
+    { code => $finished.exitcode, :$out, :$err }
+}
+my %windows = prepare('windows');
+is %windows<code>, 0, 'Windows extraction succeeds despite Unicode documentation';
+like %windows<out>, /'Prepared DB::DuckDB 1.0.1'/, 'pinned distribution verified';
+
+$source.add('META6.json').spurt('{"name":"Alien::Libduckdb","version":"1.1.0"}');
+$source.add('lib/Spec.rakumod').spurt(q:to/SPEC/);
+spec-is-win() ?? 'duckdb.dll' !! 'libduckdb.so'
+!! ('libduckdb.so', 'libduckdb.so.1')
+SPEC
+is run('tar', '-czf', $archive.Str, '-C', $source.Str, '.').exitcode, 0,
+    'Alien fixture archive created';
+my %macos = prepare('macos');
+is %macos<code>, 0, 'macOS source replacements apply to pinned layout';
+like %macos<out>, /'Prepared Alien::Libduckdb 1.1.0'/, 'Alien release verified';
+
+$source.add('lib/Spec.rakumod').spurt('changed upstream source');
+is run('tar', '-czf', $archive.Str, '-C', $source.Str, '.').exitcode, 0,
+    'changed source fixture created';
+my %changed = prepare('macos');
+ok %changed<code> != 0, 'unexpected Alien source rejected';
+like %changed<err>, /'Alien source changed'/, 'review requirement is explained';
+done-testing;

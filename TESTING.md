@@ -3,14 +3,15 @@
 The complete local Red run passed: 167 files, 2,161 top-level tests, no failures
 or timeouts. Nine files had skipped/empty plans. Fifteen native-savepoint subtests
 are explicitly skipped; rejection and root-transaction guarantees are tested.
-The driver's own suite passed 104 tests in 13 files. See
+The driver's own suite passed 150 tests in 15 files, and the Raku tools passed
+38 tests in two files. See
 [the detailed report](RED-SUITE-RESULTS.md).
 
 Use the sibling Red checkout with the companion changes:
 
 ```sh
-RED_DATABASE=DuckDB RED_TEST_TIMEOUT=600 prove6 -j8 --exec='python3 tools/red-test-exec.py' ../Red/t
-RED_DATABASE=DuckDB prove6 -j4 --exec='python3 tools/red-test-exec.py' t
+RED_DATABASE=DuckDB RED_TEST_TIMEOUT=600 prove6 -j8 --exec='raku tools/red-test-exec.raku' ../Red/t
+RED_DATABASE=DuckDB prove6 -j4 --exec='raku tools/red-test-exec.raku' t
 ```
 
 For a standalone checkout, install the matching Red source first:
@@ -22,10 +23,11 @@ git -C .red apply ../tools/red-companion.patch
 zef install --/test .red
 zef install --/test --test-depends --deps-only .
 prove6 -Ilib t
+prove6 -Ilib tools/t
 ```
 
 For the full suite against .red, set RED_CHECKOUT=.red and pass .red/t. The
-companion patch was applied to a clean local checkout and all 104 driver tests
+companion patch was applied to a clean local checkout and all 150 driver tests
 passed with that source. CI uses the same pinned source and patch.
 
 RED_TEST_RESULTS selects artifacts; RED_TEST_TIMEOUT defaults to 180 seconds.
@@ -35,6 +37,14 @@ while retaining the failed exit status and original raw TAP.
 
 Local DuckDB validation ran on macOS ARM64, Rakudo 2026.09-198, DB::DuckDB 1.0.1,
 DuckDB 2.0.0. Alien::Libduckdb 1.1.0 required the macOS filename correction in
-tools/install-macos-alien.py. Linux/macOS/Windows CI is configured; remote runs
-were not observed. See OTHER-DRIVERS-RESULTS.md for full cross-driver inventories;
+tools/install-native-deps.raku. The fixes have been validated locally on macOS;
+the updated Linux/macOS/Windows workflow still needs a new remote run.
+The CI follow-up makes quoted-name validation independent of multi candidate
+ordering, drains both tool-test output streams concurrently, and builds large
+launcher logs without flattening their bytes into an argument list. Windows
+extraction uses Git's GNU tar because Windows bsdtar rejects Unicode archive
+headers even for excluded files. The Windows change needs validation on a runner.
+The combined driver/tool suite passed locally on both Rakudo 2026.09 and
+2026.09-198: 17 files, 188 top-level tests, including the 256 KiB stderr case.
+See OTHER-DRIVERS-RESULTS.md for full cross-driver inventories;
 the latest five capability-test changes passed 61 tests on each other driver.

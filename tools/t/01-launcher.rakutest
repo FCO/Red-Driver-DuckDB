@@ -1,0 +1,79 @@
+use Test;
+use JSON::Fast;
+
+my $project = $?FILE.IO.absolute.IO.parent.parent.parent;
+my $launcher = $project.add('tools/red-test-exec.raku');
+my $root = $*TMPDIR.add("red-launcher-test-{$*PID}-{now.Int}");
+$root.mkdir;
+sub remove-tree($path) {
+    if $path.d { remove-tree($_) for $path.dir; $path.rmdir }
+    else { $path.unlink }
+}
+LEAVE remove-tree($root) if $root.e;
+my $case = $root.add('case.rakutest');
+my $results = $root.add('results');
+temp %*ENV<RED_TEST_RESULTS> = $results.Str;
+temp %*ENV<RED_CHECKOUT> = %*ENV<RED_CHECKOUT> // $project.parent.add('Red').Str;
+
+sub launch(Str $source, *%environment) {
+    $case.spurt($source);
+    temp %*ENV = %*ENV;
+    %*ENV{.key} = .value.Str for %environment.pairs;
+    my $process = Proc::Async.new($*EXECUTABLE.Str, $launcher.Str, $case.Str);
+    my ($out, $err) = '', '';
+    $process.stdout.tap(-> $text { $out ~= $text });
+    $process.stderr.tap(-> $text { $err ~= $text });
+    my $finished = await $process.start;
+    { code => $finished.exitcode, :$out, :$err }
+}
+sub metadata { from-json($results.add('case.rakutest.json').slurp) }
+
+my %success = launch(q[say "1..1\nok 1 - stub"; note 'diagnostic']);
+is %success<code>, 0, 'successful test exits zero';
+unlike %success<out>, /diagnostic/, 'diagnostics stay out of TAP';
+like %success<err>, /diagnostic/, 'stderr is forwarded';
+ok !metadata()<bailout>, 'normal result has no bailout';
+
+my %verbose = launch(q[note 'x' x 262144; say "1..1\nok 1 - verbose"]);
+diag %verbose<err> if %verbose<code>;
+is %verbose<code>, 0, 'stderr larger than a pipe buffer does not block capture';
+ok %verbose<err>.chars >= 262144, 'large diagnostic is captured in full';
+
+my %failure = launch(q[say "1..1\nnot ok 1 - stub"; exit 7]);
+is %failure<code>, 7, 'child failure status survives';
+is metadata()<child_exit_code>, 7, 'metadata records original status';
+
+my %bailout = launch(q[say "1..1\nBail out! deliberate"]);
+is %bailout<code>, 1, 'zero-exit bailout is a failure';
+unlike %bailout<out>, /^^ 'Bail out!'/, 'forwarded TAP comments out bailout';
+like $results.add('case.rakutest.tap').slurp, /^^ 'Bail out!'/, 'raw TAP retains bailout';
+ok metadata()<bailout>, 'metadata records bailout';
+is metadata()<child_exit_code>, 0, 'original zero exit is retained';
+
+is launch(q[say "1..1\nok 1 - mentions Bail out!"])<code>, 0,
+    'bailout words inside assertion are harmless';
+ok !metadata()<bailout>, 'assertion text is not a bailout';
+
+for <0 -1 NaN Inf bad> -> $timeout {
+    my %invalid = launch(q[die 'must not run'], RED_TEST_TIMEOUT => $timeout);
+    is %invalid<code>, 2, "invalid timeout $timeout rejected";
+    like %invalid<err>, /'finite positive'/, 'timeout validation explains requirement';
+}
+
+my $marker = $root.add('surviving-child');
+my $started = $root.add('child-started');
+my %timeout = launch(q:to/SOURCE/,
+my $child = Proc::Async.new($*EXECUTABLE.Str, '-e',
+    'sleep 12; %*ENV<MARKER>.IO.spurt("survived")');
+my $running = $child.start;
+await $child.ready;
+%*ENV<STARTED>.IO.spurt('started');
+sleep 30;
+SOURCE
+    RED_TEST_TIMEOUT => 8, MARKER => $marker.Str, STARTED => $started.Str);
+is %timeout<code>, 124, 'timeout returns 124';
+ok metadata()<timed_out>, 'timeout is recorded';
+ok $started.e, 'test spawned a grandchild before timeout';
+sleep 6;
+ok !$marker.e, 'timeout killed the grandchild too';
+done-testing;

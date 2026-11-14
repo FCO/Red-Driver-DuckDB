@@ -33,19 +33,21 @@ jobs:
       - uses: Raku/setup-raku@v1
         with:
           raku-version: ${{ matrix.raku-version }}
-      - uses: actions/setup-python@v6
-        with:
-          python-version: '3.12'
       - name: Work around Alien macOS library detection
         if: runner.os == 'macOS'
-        run: python3 tools/install-macos-alien.py
+        run: raku tools/install-native-deps.raku macos
       - name: Install matching Red
         run: zef install --/test .red
+      - name: Work around DB::DuckDB Windows archive extraction
+        if: runner.os == 'Windows'
+        run: raku tools/install-native-deps.raku windows
       - name: Install Dependencies
         run: zef install --/test --test-depends --deps-only .
       - name: Install App::Prove6
         run: zef install --/test App::Prove6
-      - name: Test Python launcher
-        run: python -m unittest discover -s tools/tests -v
+      - name: Test Raku tools
+        env:
+          RED_CHECKOUT: .red
+        run: prove6 -Ilib tools/t
       - name: Run Tests
         run: prove6 -Ilib t

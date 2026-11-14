@@ -1,6 +1,4 @@
 .precomp/
 /Red-Driver-DuckDB-*
 
-__pycache__/
-
 /.red/
