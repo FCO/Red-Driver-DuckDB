@@ -1,0 +1,2407 @@
+{
+  "red_commit": "589fc491a8544b0d9c2f0a086431256a71322689",
+  "red_dirty_files": [
+    "t/026-classify.rakutest",
+    "t/079-group-sort.rakutest"
+  ],
+  "environment": "macOS ARM64; Rakudo 2026.09-198; DB::DuckDB 1.0.1; DuckDB 2.0.0",
+  "RED_DATABASE": "DuckDB",
+  "files": 167,
+  "pass": 110,
+  "fail": 48,
+  "skip_or_empty": 9,
+  "top_level_assertions_observed": 1618,
+  "timeouts": 0,
+  "per_file_timeout_seconds": 180,
+  "files_detail": [
+    {
+      "file": "000-meta.rakutest",
+      "exit_code": 0,
+      "seconds": 0.46,
+      "assertions": 1,
+      "skip": false,
+      "not_ok": 0,
+      "status": "pass",
+      "plan": [
+        "1",
+        "1",
+        ""
+      ],
+      "skip_reason": ""
+    },
+    {
+      "file": "001-tdd.rakutest",
+      "exit_code": 0,
+      "seconds": 1.22,
+      "assertions": 0,
+      "skip": true,
+      "not_ok": 0,
+      "status": "skip",
+      "plan": [
+        "1",
+        "0",
+        " # Skipped: Different driver setted (DuckDB)"
+      ],
+      "skip_reason": "1..0 # Skipped: Different driver setted (DuckDB)"
+    },
+    {
+      "file": "002-sqlite.rakutest",
+      "exit_code": 0,
+      "seconds": 0.61,
+      "assertions": 0,
+      "skip": true,
+      "not_ok": 0,
+      "status": "skip",
+      "plan": [
+        "1",
+        "0",
+        " # Skipped: Different driver setted (DuckDB)"
+      ],
+      "skip_reason": "1..0 # Skipped: Different driver setted (DuckDB)"
+    },
+    {
+      "file": "003-blog.rakutest",
+      "exit_code": 0,
+      "seconds": 1.66,
+      "assertions": 28,
+      "skip": false,
+      "not_ok": 0,
+      "status": "pass",
+      "plan": [
+        "1",
+        "28",
+        ""
+      ],
+      "skip_reason": ""
+    },
+    {
+      "file": "004-ticket.rakutest",
+      "exit_code": 0,
+      "seconds": 1.56,
+      "assertions": 19,
+      "skip": false,
+      "not_ok": 0,
+      "status": "pass",
+      "plan": [
+        "1",
+        "19",
+        ""
+      ],
+      "skip_reason": ""
+    },
+    {
+      "file": "005-better-map.rakutest",
+      "exit_code": 0,
+      "seconds": 0.64,
+      "assertions": 0,
+      "skip": true,
+      "not_ok": 0,
+      "status": "skip",
+      "plan": [
+        "1",
+        "0",
+        " # Skipped: Different driver setted (DuckDB)"
+      ],
+      "skip_reason": "1..0 # Skipped: Different driver setted (DuckDB)"
+    },
+    {
+      "file": "006-optimizer.rakutest",
+      "exit_code": 0,
+      "seconds": 0.88,
+      "assertions": 66,
+      "skip": false,
+      "not_ok": 0,
+      "status": "pass",
+      "plan": [
+        "1",
+        "66",
+        ""
+      ],
+      "skip_reason": ""
+    },
+    {
+      "file": "007-best-tree.rakutest",
+      "exit_code": 0,
+      "seconds": 1.58,
+      "assertions": 17,
+      "skip": false,
+      "not_ok": 0,
+      "status": "pass",
+      "plan": [
+        "1",
+        "17",
+        ""
+      ],
+      "skip_reason": ""
+    },
+    {
+      "file": "008-alternate-relation.rakutest",
+      "exit_code": 0,
+      "seconds": 1.4,
+      "assertions": 15,
+      "skip": false,
+      "not_ok": 0,
+      "status": "pass",
+      "plan": [
+        "1",
+        "15",
+        ""
+      ],
+      "skip_reason": ""
+    },
+    {
+      "file": "009-alternate-relation-modules.rakutest",
+      "exit_code": 0,
+      "seconds": 1.98,
+      "assertions": 9,
+      "skip": false,
+      "not_ok": 0,
+      "status": "pass",
+      "plan": [
+        "1",
+        "9",
+        ""
+      ],
+      "skip_reason": ""
+    },
+    {
+      "file": "010-join.rakutest",
+      "exit_code": 0,
+      "seconds": 1.29,
+      "assertions": 1,
+      "skip": false,
+      "not_ok": 0,
+      "status": "pass",
+      "plan": [
+        "1",
+        "1",
+        ""
+      ],
+      "skip_reason": ""
+    },
+    {
+      "file": "011-types.rakutest",
+      "exit_code": 0,
+      "seconds": 1.3,
+      "assertions": 2,
+      "skip": false,
+      "not_ok": 0,
+      "status": "pass",
+      "plan": [
+        "1",
+        "2",
+        ""
+      ],
+      "skip_reason": ""
+    },
+    {
+      "file": "012-roles.rakutest",
+      "exit_code": 0,
+      "seconds": 0.92,
+      "assertions": 8,
+      "skip": false,
+      "not_ok": 0,
+      "status": "pass",
+      "plan": [
+        "1",
+        "8",
+        ""
+      ],
+      "skip_reason": ""
+    },
+    {
+      "file": "013-result-seq-update.rakutest",
+      "exit_code": 0,
+      "seconds": 1.15,
+      "assertions": 1,
+      "skip": false,
+      "not_ok": 0,
+      "status": "pass",
+      "plan": [
+        "1",
+        "1",
+        ""
+      ],
+      "skip_reason": ""
+    },
+    {
+      "file": "014-union.rakutest",
+      "exit_code": 0,
+      "seconds": 1.29,
+      "assertions": 18,
+      "skip": false,
+      "not_ok": 0,
+      "status": "pass",
+      "plan": [
+        "1",
+        "18",
+        ""
+      ],
+      "skip_reason": ""
+    },
+    {
+      "file": "015-result-seq-bool.rakutest",
+      "exit_code": 0,
+      "seconds": 1.26,
+      "assertions": 2,
+      "skip": false,
+      "not_ok": 0,
+      "status": "pass",
+      "plan": [
+        "1",
+        "2",
+        ""
+      ],
+      "skip_reason": ""
+    },
+    {
+      "file": "016-create-related-pars.rakutest",
+      "exit_code": 0,
+      "seconds": 1.45,
+      "assertions": 14,
+      "skip": false,
+      "not_ok": 0,
+      "status": "pass",
+      "plan": [
+        "1",
+        "14",
+        ""
+      ],
+      "skip_reason": ""
+    },
+    {
+      "file": "017-pp.rakutest",
+      "exit_code": 1,
+      "seconds": 1.37,
+      "assertions": 0,
+      "skip": false,
+      "not_ok": 0,
+      "status": "fail",
+      "plan": null,
+      "skip_reason": "",
+      "diagnostic": "Cyclic foreign keys cannot be created by DuckDB"
+    },
+    {
+      "file": "018-phasers.rakutest",
+      "exit_code": 0,
+      "seconds": 1.49,
+      "assertions": 34,
+      "skip": false,
+      "not_ok": 0,
+      "status": "pass",
+      "plan": [
+        "1",
+        "34",
+        ""
+      ],
+      "skip_reason": ""
+    },
+    {
+      "file": "019-in-sql.rakutest",
+      "exit_code": 0,
+      "seconds": 2.21,
+      "assertions": 26,
+      "skip": false,
+      "not_ok": 0,
+      "status": "pass",
+      "plan": [
+        "1",
+        "26",
+        ""
+      ],
+      "skip_reason": ""
+    },
+    {
+      "file": "020-new-with-id.rakutest",
+      "exit_code": 0,
+      "seconds": 0.58,
+      "assertions": 2,
+      "skip": false,
+      "not_ok": 0,
+      "status": "pass",
+      "plan": [
+        "1",
+        "2",
+        ""
+      ],
+      "skip_reason": ""
+    },
+    {
+      "file": "021-red-do.rakutest",
+      "exit_code": 0,
+      "seconds": 2.11,
+      "assertions": 26,
+      "skip": false,
+      "not_ok": 0,
+      "status": "pass",
+      "plan": [
+        "1",
+        "26",
+        ""
+      ],
+      "skip_reason": ""
+    },
+    {
+      "file": "022-edit-id.rakutest",
+      "exit_code": 0,
+      "seconds": 1.19,
+      "assertions": 7,
+      "skip": false,
+      "not_ok": 0,
+      "status": "pass",
+      "plan": [
+        "1",
+        "7",
+        ""
+      ],
+      "skip_reason": ""
+    },
+    {
+      "file": "023-metamodel-model.rakutest",
+      "exit_code": 0,
+      "seconds": 1.3,
+      "assertions": 66,
+      "skip": false,
+      "not_ok": 0,
+      "status": "pass",
+      "plan": [
+        "1",
+        "66",
+        ""
+      ],
+      "skip_reason": ""
+    },
+    {
+      "file": "024-grep-no-AND-OR.rakutest",
+      "exit_code": 0,
+      "seconds": 1.17,
+      "assertions": 3,
+      "skip": false,
+      "not_ok": 0,
+      "status": "pass",
+      "plan": [
+        "1",
+        "3",
+        ""
+      ],
+      "skip_reason": ""
+    },
+    {
+      "file": "025-is-rw.rakutest",
+      "exit_code": 0,
+      "seconds": 1.17,
+      "assertions": 4,
+      "skip": false,
+      "not_ok": 0,
+      "status": "pass",
+      "plan": [
+        "1",
+        "4",
+        ""
+      ],
+      "skip_reason": ""
+    },
+    {
+      "file": "026-classify.rakutest",
+      "exit_code": 0,
+      "seconds": 2.21,
+      "assertions": 25,
+      "skip": false,
+      "not_ok": 0,
+      "status": "pass",
+      "plan": [
+        "1",
+        "25",
+        ""
+      ],
+      "skip_reason": ""
+    },
+    {
+      "file": "027-LPW-2019.rakutest",
+      "exit_code": 0,
+      "seconds": 1.65,
+      "assertions": 6,
+      "skip": false,
+      "not_ok": 0,
+      "status": "pass",
+      "plan": [
+        "1",
+        "6",
+        ""
+      ],
+      "skip_reason": ""
+    },
+    {
+      "file": "028-events.rakutest",
+      "exit_code": 0,
+      "seconds": 2.38,
+      "assertions": 29,
+      "skip": false,
+      "not_ok": 0,
+      "status": "pass",
+      "plan": [
+        "1",
+        "29",
+        ""
+      ],
+      "skip_reason": ""
+    },
+    {
+      "file": "029-result-seq-pick.rakutest",
+      "exit_code": 0,
+      "seconds": 1.27,
+      "assertions": 3,
+      "skip": false,
+      "not_ok": 0,
+      "status": "pass",
+      "plan": [
+        "1",
+        "3",
+        ""
+      ],
+      "skip_reason": ""
+    },
+    {
+      "file": "030-update.rakutest",
+      "exit_code": 0,
+      "seconds": 1.43,
+      "assertions": 7,
+      "skip": false,
+      "not_ok": 0,
+      "status": "pass",
+      "plan": [
+        "1",
+        "7",
+        ""
+      ],
+      "skip_reason": ""
+    },
+    {
+      "file": "031-join.rakutest",
+      "exit_code": 0,
+      "seconds": 1.24,
+      "assertions": 2,
+      "skip": false,
+      "not_ok": 0,
+      "status": "pass",
+      "plan": [
+        "1",
+        "2",
+        ""
+      ],
+      "skip_reason": ""
+    },
+    {
+      "file": "032-join.rakutest",
+      "exit_code": 0,
+      "seconds": 1.25,
+      "assertions": 3,
+      "skip": false,
+      "not_ok": 0,
+      "status": "pass",
+      "plan": [
+        "1",
+        "3",
+        ""
+      ],
+      "skip_reason": ""
+    },
+    {
+      "file": "033-join.rakutest",
+      "exit_code": 0,
+      "seconds": 1.19,
+      "assertions": 1,
+      "skip": false,
+      "not_ok": 0,
+      "status": "pass",
+      "plan": [
+        "1",
+        "1",
+        ""
+      ],
+      "skip_reason": ""
+    },
+    {
+      "file": "034-ast-generic.rakutest",
+      "exit_code": 0,
+      "seconds": 1.3,
+      "assertions": 16,
+      "skip": false,
+      "not_ok": 0,
+      "status": "pass",
+      "plan": [
+        "1",
+        "16",
+        ""
+      ],
+      "skip_reason": ""
+    },
+    {
+      "file": "035-create.rakutest",
+      "exit_code": 0,
+      "seconds": 1.82,
+      "assertions": 7,
+      "skip": false,
+      "not_ok": 0,
+      "status": "pass",
+      "plan": [
+        "1",
+        "7",
+        ""
+      ],
+      "skip_reason": ""
+    },
+    {
+      "file": "036-default-deflate.rakutest",
+      "exit_code": 0,
+      "seconds": 1.31,
+      "assertions": 5,
+      "skip": false,
+      "not_ok": 0,
+      "status": "pass",
+      "plan": [
+        "1",
+        "5",
+        ""
+      ],
+      "skip_reason": ""
+    },
+    {
+      "file": "037-json.rakutest",
+      "exit_code": 255,
+      "seconds": 1.32,
+      "assertions": 1,
+      "skip": false,
+      "not_ok": 0,
+      "status": "fail",
+      "plan": [
+        "1",
+        "6",
+        ""
+      ],
+      "skip_reason": "",
+      "diagnostic": "DuckDB error (1): Parser Error: syntax error at or near \"json\""
+    },
+    {
+      "file": "038-equal.rakutest",
+      "exit_code": 0,
+      "seconds": 1.27,
+      "assertions": 0,
+      "skip": true,
+      "not_ok": 0,
+      "status": "skip",
+      "plan": [
+        "1",
+        "0",
+        " # Skipped: Different driver selected (DuckDB)"
+      ],
+      "skip_reason": "1..0 # Skipped: Different driver selected (DuckDB)"
+    },
+    {
+      "file": "039-xmas.rakutest",
+      "exit_code": 2,
+      "seconds": 2.46,
+      "assertions": 13,
+      "skip": false,
+      "not_ok": 2,
+      "status": "fail",
+      "plan": [
+        "1",
+        "13",
+        ""
+      ],
+      "skip_reason": "",
+      "diagnostic": "not ok 2 -"
+    },
+    {
+      "file": "040-relationship-multiple-columns.rakutest",
+      "exit_code": 0,
+      "seconds": 0.69,
+      "assertions": 0,
+      "skip": true,
+      "not_ok": 0,
+      "status": "skip",
+      "plan": [
+        "1",
+        "0",
+        " # Skipped: Different driver setted (DuckDB)"
+      ],
+      "skip_reason": "1..0 # Skipped: Different driver setted (DuckDB)"
+    },
+    {
+      "file": "041-fallback.rakutest",
+      "exit_code": 0,
+      "seconds": 1.37,
+      "assertions": 2,
+      "skip": false,
+      "not_ok": 0,
+      "status": "pass",
+      "plan": [
+        "1",
+        "2",
+        ""
+      ],
+      "skip_reason": ""
+    },
+    {
+      "file": "042-create-table.rakutest",
+      "exit_code": 0,
+      "seconds": 0.92,
+      "assertions": 4,
+      "skip": false,
+      "not_ok": 0,
+      "status": "pass",
+      "plan": [
+        "1",
+        "4",
+        ""
+      ],
+      "skip_reason": ""
+    },
+    {
+      "file": "043-prefetch.rakutest",
+      "exit_code": 0,
+      "seconds": 2.37,
+      "assertions": 101,
+      "skip": false,
+      "not_ok": 0,
+      "status": "pass",
+      "plan": [
+        "1",
+        "101",
+        ""
+      ],
+      "skip_reason": ""
+    },
+    {
+      "file": "044-error-without-id.rakutest",
+      "exit_code": 0,
+      "seconds": 1.01,
+      "assertions": 1,
+      "skip": false,
+      "not_ok": 0,
+      "status": "pass",
+      "plan": [
+        "1",
+        "1",
+        ""
+      ],
+      "skip_reason": ""
+    },
+    {
+      "file": "045-is-handling.rakutest",
+      "exit_code": 0,
+      "seconds": 1.35,
+      "assertions": 14,
+      "skip": false,
+      "not_ok": 0,
+      "status": "pass",
+      "plan": [
+        "1",
+        "14",
+        ""
+      ],
+      "skip_reason": ""
+    },
+    {
+      "file": "046-rw.rakutest",
+      "exit_code": 0,
+      "seconds": 1.32,
+      "assertions": 20,
+      "skip": false,
+      "not_ok": 0,
+      "status": "pass",
+      "plan": [
+        "1",
+        "20",
+        ""
+      ],
+      "skip_reason": ""
+    },
+    {
+      "file": "047-rypervenche.rakutest",
+      "exit_code": 0,
+      "seconds": 2.24,
+      "assertions": 5,
+      "skip": false,
+      "not_ok": 0,
+      "status": "pass",
+      "plan": [
+        "1",
+        "5",
+        ""
+      ],
+      "skip_reason": ""
+    },
+    {
+      "file": "048-source-source-id.rakutest",
+      "exit_code": 1,
+      "seconds": 1.44,
+      "assertions": 0,
+      "skip": false,
+      "not_ok": 0,
+      "status": "fail",
+      "plan": null,
+      "skip_reason": "",
+      "diagnostic": "DuckDB error (1): Conversion Error: Could not convert string 'Instant:1794345673.368108744' to FLOAT"
+    },
+    {
+      "file": "049-experimental-formater.rakutest",
+      "exit_code": 0,
+      "seconds": 0.98,
+      "assertions": 10,
+      "skip": false,
+      "not_ok": 0,
+      "status": "pass",
+      "plan": [
+        "1",
+        "10",
+        ""
+      ],
+      "skip_reason": ""
+    },
+    {
+      "file": "050-experimental-name.rakutest",
+      "exit_code": 0,
+      "seconds": 0.91,
+      "assertions": 4,
+      "skip": false,
+      "not_ok": 0,
+      "status": "pass",
+      "plan": [
+        "1",
+        "4",
+        ""
+      ],
+      "skip_reason": ""
+    },
+    {
+      "file": "051-pre-create-or-update.rakutest",
+      "exit_code": 0,
+      "seconds": 1.7,
+      "assertions": 20,
+      "skip": false,
+      "not_ok": 0,
+      "status": "pass",
+      "plan": [
+        "1",
+        "20",
+        ""
+      ],
+      "skip_reason": ""
+    },
+    {
+      "file": "052-schema.rakutest",
+      "exit_code": 2,
+      "seconds": 1.84,
+      "assertions": 14,
+      "skip": false,
+      "not_ok": 2,
+      "status": "fail",
+      "plan": null,
+      "skip_reason": "",
+      "diagnostic": "not ok 12 -"
+    },
+    {
+      "file": "053-unique.rakutest",
+      "exit_code": 0,
+      "seconds": 0.6,
+      "assertions": 3,
+      "skip": false,
+      "not_ok": 0,
+      "status": "pass",
+      "plan": [
+        "1",
+        "3",
+        ""
+      ],
+      "skip_reason": ""
+    },
+    {
+      "file": "054-hand-made-many-to-many.rakutest",
+      "exit_code": 1,
+      "seconds": 1.05,
+      "assertions": 0,
+      "skip": false,
+      "not_ok": 0,
+      "status": "fail",
+      "plan": null,
+      "skip_reason": "",
+      "diagnostic": "DuckDB error (1): Binder Error: Failed to create foreign key: incompatible types between column \"aa_id\" (\"INTEGER\") and column \"aa_id\" (\"BIGINT\")"
+    },
+    {
+      "file": "055-no-optimization.rakutest",
+      "exit_code": 0,
+      "seconds": 0.27,
+      "assertions": 0,
+      "skip": true,
+      "not_ok": 0,
+      "status": "skip",
+      "plan": [
+        "1",
+        "0",
+        ""
+      ],
+      "skip_reason": "1..0"
+    },
+    {
+      "file": "056-refreshable.rakutest",
+      "exit_code": 0,
+      "seconds": 1.47,
+      "assertions": 24,
+      "skip": false,
+      "not_ok": 0,
+      "status": "pass",
+      "plan": [
+        "1",
+        "24",
+        ""
+      ],
+      "skip_reason": ""
+    },
+    {
+      "file": "057-experimental.rakutest",
+      "exit_code": 0,
+      "seconds": 0.49,
+      "assertions": 1,
+      "skip": false,
+      "not_ok": 0,
+      "status": "pass",
+      "plan": [
+        "1",
+        "1",
+        ""
+      ],
+      "skip_reason": ""
+    },
+    {
+      "file": "058-nm-relationship.rakutest",
+      "exit_code": 0,
+      "seconds": 1.49,
+      "assertions": 3,
+      "skip": false,
+      "not_ok": 0,
+      "status": "pass",
+      "plan": [
+        "1",
+        "3",
+        ""
+      ],
+      "skip_reason": ""
+    },
+    {
+      "file": "059-tomgraceys-schema.rakutest",
+      "exit_code": 0,
+      "seconds": 1.92,
+      "assertions": 2,
+      "skip": false,
+      "not_ok": 0,
+      "status": "pass",
+      "plan": [
+        "1",
+        "2",
+        ""
+      ],
+      "skip_reason": ""
+    },
+    {
+      "file": "060-runtime-role.rakutest",
+      "exit_code": 0,
+      "seconds": 0.95,
+      "assertions": 2,
+      "skip": false,
+      "not_ok": 0,
+      "status": "pass",
+      "plan": [
+        "1",
+        "2",
+        ""
+      ],
+      "skip_reason": ""
+    },
+    {
+      "file": "061-model-as-type.rakutest",
+      "exit_code": 0,
+      "seconds": 1.53,
+      "assertions": 10,
+      "skip": false,
+      "not_ok": 0,
+      "status": "pass",
+      "plan": [
+        "1",
+        "10",
+        ""
+      ],
+      "skip_reason": ""
+    },
+    {
+      "file": "062-date-coercion.rakutest",
+      "exit_code": 0,
+      "seconds": 1.31,
+      "assertions": 3,
+      "skip": false,
+      "not_ok": 0,
+      "status": "pass",
+      "plan": [
+        "1",
+        "3",
+        ""
+      ],
+      "skip_reason": ""
+    },
+    {
+      "file": "063-inflate-deflate.rakutest",
+      "exit_code": 0,
+      "seconds": 1.28,
+      "assertions": 5,
+      "skip": false,
+      "not_ok": 0,
+      "status": "pass",
+      "plan": [
+        "1",
+        "5",
+        ""
+      ],
+      "skip_reason": ""
+    },
+    {
+      "file": "064-create-on-defined-obj.rakutest",
+      "exit_code": 0,
+      "seconds": 1.09,
+      "assertions": 2,
+      "skip": false,
+      "not_ok": 0,
+      "status": "pass",
+      "plan": [
+        "1",
+        "2",
+        ""
+      ],
+      "skip_reason": ""
+    },
+    {
+      "file": "065-patrickb.rakutest",
+      "exit_code": 0,
+      "seconds": 1.5,
+      "assertions": 3,
+      "skip": false,
+      "not_ok": 0,
+      "status": "pass",
+      "plan": [
+        "1",
+        "3",
+        ""
+      ],
+      "skip_reason": ""
+    },
+    {
+      "file": "066-join-model.rakutest",
+      "exit_code": 0,
+      "seconds": 2.24,
+      "assertions": 3,
+      "skip": false,
+      "not_ok": 0,
+      "status": "pass",
+      "plan": [
+        "1",
+        "3",
+        ""
+      ],
+      "skip_reason": ""
+    },
+    {
+      "file": "067-enums.rakutest",
+      "exit_code": 0,
+      "seconds": 0.7,
+      "assertions": 0,
+      "skip": true,
+      "not_ok": 0,
+      "status": "skip",
+      "plan": [
+        "1",
+        "0",
+        " # Skipped: Different driver setted (DuckDB)"
+      ],
+      "skip_reason": "1..0 # Skipped: Different driver setted (DuckDB)"
+    },
+    {
+      "file": "068-red-config.rakutest",
+      "exit_code": 0,
+      "seconds": 1.47,
+      "assertions": 1,
+      "skip": false,
+      "not_ok": 0,
+      "status": "pass",
+      "plan": [
+        "1",
+        "1",
+        ""
+      ],
+      "skip_reason": ""
+    },
+    {
+      "file": "069-array-columns.rakutest",
+      "exit_code": 1,
+      "seconds": 1.25,
+      "assertions": 0,
+      "skip": false,
+      "not_ok": 0,
+      "status": "fail",
+      "plan": null,
+      "skip_reason": "",
+      "diagnostic": "Type check failed for an element of @!no-type; expected Positional but got Str (\"a b c\")"
+    },
+    {
+      "file": "070-submodel.rakutest",
+      "exit_code": 0,
+      "seconds": 1.42,
+      "assertions": 12,
+      "skip": false,
+      "not_ok": 0,
+      "status": "pass",
+      "plan": [
+        "1",
+        "12",
+        ""
+      ],
+      "skip_reason": ""
+    },
+    {
+      "file": "071-conflicting-column-attribute.rakutest",
+      "exit_code": 0,
+      "seconds": 1.33,
+      "assertions": 3,
+      "skip": false,
+      "not_ok": 0,
+      "status": "pass",
+      "plan": [
+        "1",
+        "3",
+        ""
+      ],
+      "skip_reason": ""
+    },
+    {
+      "file": "072-agg-methods.rakutest",
+      "exit_code": 0,
+      "seconds": 1.74,
+      "assertions": 32,
+      "skip": false,
+      "not_ok": 0,
+      "status": "pass",
+      "plan": [
+        "1",
+        "32",
+        ""
+      ],
+      "skip_reason": ""
+    },
+    {
+      "file": "073-red-defaults-from-module.rakutest",
+      "exit_code": 0,
+      "seconds": 2.14,
+      "assertions": 16,
+      "skip": false,
+      "not_ok": 0,
+      "status": "pass",
+      "plan": [
+        "1",
+        "16",
+        ""
+      ],
+      "skip_reason": ""
+    },
+    {
+      "file": "074-enum-reassign.rakutest",
+      "exit_code": 0,
+      "seconds": 0.62,
+      "assertions": 2,
+      "skip": false,
+      "not_ok": 0,
+      "status": "pass",
+      "plan": [
+        "1",
+        "2",
+        ""
+      ],
+      "skip_reason": ""
+    },
+    {
+      "file": "075-patrick-operators.rakutest",
+      "exit_code": 0,
+      "seconds": 1.49,
+      "assertions": 3,
+      "skip": false,
+      "not_ok": 0,
+      "status": "pass",
+      "plan": [
+        "1",
+        "3",
+        ""
+      ],
+      "skip_reason": ""
+    },
+    {
+      "file": "076-view.rakutest",
+      "exit_code": 0,
+      "seconds": 1.37,
+      "assertions": 4,
+      "skip": false,
+      "not_ok": 0,
+      "status": "pass",
+      "plan": [
+        "1",
+        "4",
+        ""
+      ],
+      "skip_reason": ""
+    },
+    {
+      "file": "077-red-type.rakutest",
+      "exit_code": 1,
+      "seconds": 1.1,
+      "assertions": 0,
+      "skip": false,
+      "not_ok": 0,
+      "status": "fail",
+      "plan": null,
+      "skip_reason": "",
+      "diagnostic": "DuckDB error (1): Catalog Error: Type with name jsonb does not exist!"
+    },
+    {
+      "file": "078-datetime-function.rakutest",
+      "exit_code": 2,
+      "seconds": 2.12,
+      "assertions": 2,
+      "skip": false,
+      "not_ok": 2,
+      "status": "fail",
+      "plan": null,
+      "skip_reason": "",
+      "diagnostic": "DuckDB error (1): Binder Error: No function matches the given name and argument types '*(INTEGER_LITERAL, VARCHAR)'. You might need to add explicit type casts."
+    },
+    {
+      "file": "079-group-sort.rakutest",
+      "exit_code": 0,
+      "seconds": 1.31,
+      "assertions": 2,
+      "skip": false,
+      "not_ok": 0,
+      "status": "pass",
+      "plan": [
+        "1",
+        "2",
+        ""
+      ],
+      "skip_reason": ""
+    },
+    {
+      "file": "080-date-operator.rakutest",
+      "exit_code": 0,
+      "seconds": 1.74,
+      "assertions": 56,
+      "skip": false,
+      "not_ok": 0,
+      "status": "pass",
+      "plan": [
+        "1",
+        "56",
+        ""
+      ],
+      "skip_reason": ""
+    },
+    {
+      "file": "081-resultset-skip-locked.rakutest",
+      "exit_code": 2,
+      "seconds": 1.2,
+      "assertions": 2,
+      "skip": false,
+      "not_ok": 2,
+      "status": "fail",
+      "plan": [
+        "1",
+        "2",
+        ""
+      ],
+      "skip_reason": "",
+      "diagnostic": "not ok 1 - with skip-locked"
+    },
+    {
+      "file": "082-emakei.rakutest",
+      "exit_code": 0,
+      "seconds": 1.65,
+      "assertions": 3,
+      "skip": false,
+      "not_ok": 0,
+      "status": "pass",
+      "plan": [
+        "1",
+        "3",
+        ""
+      ],
+      "skip_reason": ""
+    },
+    {
+      "file": "083-polymorphic.rakutest",
+      "exit_code": 0,
+      "seconds": 2.68,
+      "assertions": 6,
+      "skip": false,
+      "not_ok": 0,
+      "status": "pass",
+      "plan": [
+        "1",
+        "6",
+        ""
+      ],
+      "skip_reason": ""
+    },
+    {
+      "file": "084-polymorphic2.rakutest",
+      "exit_code": 1,
+      "seconds": 2.4,
+      "assertions": 0,
+      "skip": false,
+      "not_ok": 0,
+      "status": "fail",
+      "plan": null,
+      "skip_reason": "",
+      "diagnostic": "DuckDB error (1): Conversion Error: Could not convert string 'Instant:1794345686.557493269' to FLOAT"
+    },
+    {
+      "file": "085-string-funcs.rakutest",
+      "exit_code": 0,
+      "seconds": 1.67,
+      "assertions": 11,
+      "skip": false,
+      "not_ok": 0,
+      "status": "pass",
+      "plan": [
+        "1",
+        "11",
+        ""
+      ],
+      "skip_reason": ""
+    },
+    {
+      "file": "086-prefetch.rakutest",
+      "exit_code": 1,
+      "seconds": 2.41,
+      "assertions": 0,
+      "skip": false,
+      "not_ok": 0,
+      "status": "fail",
+      "plan": null,
+      "skip_reason": "",
+      "diagnostic": "DuckDB error (1): Conversion Error: Could not convert string 'Instant:1794345687.823297046' to FLOAT"
+    },
+    {
+      "file": "087-json-operations.rakutest",
+      "exit_code": 1,
+      "seconds": 1.92,
+      "assertions": 0,
+      "skip": false,
+      "not_ok": 0,
+      "status": "fail",
+      "plan": null,
+      "skip_reason": "",
+      "diagnostic": "Cannot resolve caller translate(Red::Driver::DuckDB....: Red::AST::JsonOperat..., where); none of these signatures matches:"
+    },
+    {
+      "file": "088-projection-chains.rakutest",
+      "exit_code": 1,
+      "seconds": 4.69,
+      "assertions": 12,
+      "skip": false,
+      "not_ok": 1,
+      "status": "fail",
+      "plan": null,
+      "skip_reason": "",
+      "diagnostic": "DuckDB error (1): Catalog Error: Could not drop the table because this table is main key table of the table \"projection_row\""
+    },
+    {
+      "file": "089-sql-tail.rakutest",
+      "exit_code": 1,
+      "seconds": 3.03,
+      "assertions": 4,
+      "skip": false,
+      "not_ok": 1,
+      "status": "fail",
+      "plan": [
+        "1",
+        "4",
+        ""
+      ],
+      "skip_reason": "",
+      "diagnostic": "not ok 19 - Tail preserves the driver NULL ordering"
+    },
+    {
+      "file": "090-cross-product.rakutest",
+      "exit_code": 1,
+      "seconds": 2.46,
+      "assertions": 1,
+      "skip": false,
+      "not_ok": 0,
+      "status": "fail",
+      "plan": null,
+      "skip_reason": "",
+      "diagnostic": "DuckDB error (1): Binder Error: DECIMAL type width must be between 1 and 38"
+    },
+    {
+      "file": "091-rakuast-compiler.rakutest",
+      "exit_code": 0,
+      "seconds": 1.19,
+      "assertions": 0,
+      "skip": true,
+      "not_ok": 0,
+      "status": "skip",
+      "plan": [
+        "1",
+        "0",
+        " # Skipped: The optional compiler requires the RakuAST frontend"
+      ],
+      "skip_reason": "1..0 # Skipped: The optional compiler requires the RakuAST frontend"
+    },
+    {
+      "file": "092-rakuast-scope.rakutest",
+      "exit_code": 0,
+      "seconds": 0.83,
+      "assertions": 0,
+      "skip": true,
+      "not_ok": 0,
+      "status": "skip",
+      "plan": [
+        "1",
+        "0",
+        " # Skipped: The optional compiler requires the RakuAST frontend"
+      ],
+      "skip_reason": "1..0 # Skipped: The optional compiler requires the RakuAST frontend"
+    },
+    {
+      "file": "093-template-reuse.rakutest",
+      "exit_code": 0,
+      "seconds": 0.91,
+      "assertions": 3,
+      "skip": false,
+      "not_ok": 0,
+      "status": "pass",
+      "plan": [
+        "1",
+        "3",
+        ""
+      ],
+      "skip_reason": ""
+    },
+    {
+      "file": "094-direct-ast-factories.rakutest",
+      "exit_code": 0,
+      "seconds": 1.22,
+      "assertions": 3,
+      "skip": false,
+      "not_ok": 0,
+      "status": "pass",
+      "plan": [
+        "1",
+        "3",
+        ""
+      ],
+      "skip_reason": ""
+    },
+    {
+      "file": "095-indexes.rakutest",
+      "exit_code": 0,
+      "seconds": 3.12,
+      "assertions": 12,
+      "skip": false,
+      "not_ok": 0,
+      "status": "pass",
+      "plan": [
+        "1",
+        "12",
+        ""
+      ],
+      "skip_reason": ""
+    },
+    {
+      "file": "096-savepoints.rakutest",
+      "exit_code": 1,
+      "seconds": 1.51,
+      "assertions": 1,
+      "skip": false,
+      "not_ok": 0,
+      "status": "fail",
+      "plan": null,
+      "skip_reason": "",
+      "diagnostic": "DuckDB does not support savepoints"
+    },
+    {
+      "file": "097-transaction-guard.rakutest",
+      "exit_code": 1,
+      "seconds": 2.46,
+      "assertions": 9,
+      "skip": false,
+      "not_ok": 0,
+      "status": "fail",
+      "plan": null,
+      "skip_reason": "",
+      "diagnostic": "DuckDB does not support savepoints"
+    },
+    {
+      "file": "098-concurrent-query-projections.rakutest",
+      "exit_code": 1,
+      "seconds": 3.35,
+      "assertions": 4,
+      "skip": false,
+      "not_ok": 1,
+      "status": "fail",
+      "plan": [
+        "1",
+        "4",
+        ""
+      ],
+      "skip_reason": "",
+      "diagnostic": "not ok 4 - concurrent Bool and elems return the expected database results"
+    },
+    {
+      "file": "099-single-relationship-create.rakutest",
+      "exit_code": 1,
+      "seconds": 3.19,
+      "assertions": 6,
+      "skip": false,
+      "not_ok": 0,
+      "status": "fail",
+      "plan": null,
+      "skip_reason": "",
+      "diagnostic": "DuckDB error (1): Catalog Error: Could not drop the table because this table is main key table of the table \"key_child\""
+    },
+    {
+      "file": "100-schema-constraints.rakutest",
+      "exit_code": 1,
+      "seconds": 1.61,
+      "assertions": 1,
+      "skip": false,
+      "not_ok": 0,
+      "status": "fail",
+      "plan": null,
+      "skip_reason": "",
+      "diagnostic": "Invalid index: Unsupported index method 'btree' on Red::Driver::DuckDB"
+    },
+    {
+      "file": "101-query-plans.rakutest",
+      "exit_code": 1,
+      "seconds": 2.07,
+      "assertions": 2,
+      "skip": false,
+      "not_ok": 0,
+      "status": "fail",
+      "plan": null,
+      "skip_reason": "",
+      "diagnostic": "DuckDB error (1): Catalog Error: Table with name query_plan_row does not exist!"
+    },
+    {
+      "file": "102-model-access.rakutest",
+      "exit_code": 0,
+      "seconds": 1.64,
+      "assertions": 6,
+      "skip": false,
+      "not_ok": 0,
+      "status": "pass",
+      "plan": [
+        "1",
+        "6",
+        ""
+      ],
+      "skip_reason": ""
+    },
+    {
+      "file": "103-name-formatters.rakutest",
+      "exit_code": 0,
+      "seconds": 0.32,
+      "assertions": 16,
+      "skip": false,
+      "not_ok": 0,
+      "status": "pass",
+      "plan": [
+        "1",
+        "16",
+        ""
+      ],
+      "skip_reason": ""
+    },
+    {
+      "file": "104-lazy-projection-resultseq.rakutest",
+      "exit_code": 0,
+      "seconds": 1.94,
+      "assertions": 6,
+      "skip": false,
+      "not_ok": 0,
+      "status": "pass",
+      "plan": [
+        "1",
+        "6",
+        ""
+      ],
+      "skip_reason": ""
+    },
+    {
+      "file": "105-compiler-warnings.rakutest",
+      "exit_code": 0,
+      "seconds": 1.41,
+      "assertions": 4,
+      "skip": false,
+      "not_ok": 0,
+      "status": "pass",
+      "plan": [
+        "1",
+        "4",
+        ""
+      ],
+      "skip_reason": ""
+    },
+    {
+      "file": "106-compiled-regex.rakutest",
+      "exit_code": 0,
+      "seconds": 1.96,
+      "assertions": 33,
+      "skip": false,
+      "not_ok": 0,
+      "status": "pass",
+      "plan": [
+        "1",
+        "33",
+        ""
+      ],
+      "skip_reason": ""
+    },
+    {
+      "file": "107-dirty-collections.rakutest",
+      "exit_code": 0,
+      "seconds": 2.1,
+      "assertions": 25,
+      "skip": false,
+      "not_ok": 0,
+      "status": "pass",
+      "plan": [
+        "1",
+        "25",
+        ""
+      ],
+      "skip_reason": ""
+    },
+    {
+      "file": "108-generated-projection-getters.rakutest",
+      "exit_code": 0,
+      "seconds": 0.92,
+      "assertions": 1,
+      "skip": false,
+      "not_ok": 0,
+      "status": "pass",
+      "plan": [
+        "1",
+        "1",
+        ""
+      ],
+      "skip_reason": ""
+    },
+    {
+      "file": "109-regex-dialects.rakutest",
+      "exit_code": 1,
+      "seconds": 1.97,
+      "assertions": 0,
+      "skip": false,
+      "not_ok": 0,
+      "status": "fail",
+      "plan": null,
+      "skip_reason": "",
+      "diagnostic": "# Subtest: Native SQL regex predicates on DuckDB"
+    },
+    {
+      "file": "110-regex-no-fallback.rakutest",
+      "exit_code": 0,
+      "seconds": 1.28,
+      "assertions": 11,
+      "skip": false,
+      "not_ok": 0,
+      "status": "pass",
+      "plan": [
+        "1",
+        "11",
+        ""
+      ],
+      "skip_reason": ""
+    },
+    {
+      "file": "111-regex-repetitions.rakutest",
+      "exit_code": 1,
+      "seconds": 1.37,
+      "assertions": 0,
+      "skip": false,
+      "not_ok": 0,
+      "status": "fail",
+      "plan": null,
+      "skip_reason": "",
+      "diagnostic": "# Subtest: /^ a ** 256 $/"
+    },
+    {
+      "file": "112-regex-positions.rakutest",
+      "exit_code": 1,
+      "seconds": 1.55,
+      "assertions": 0,
+      "skip": false,
+      "not_ok": 0,
+      "status": "fail",
+      "plan": null,
+      "skip_reason": "",
+      "diagnostic": "No such method 'drop' for invocant of type 'Any'. Did you mean any of"
+    },
+    {
+      "file": "113-regex-named-assertions.rakutest",
+      "exit_code": 1,
+      "seconds": 1.53,
+      "assertions": 0,
+      "skip": false,
+      "not_ok": 0,
+      "status": "fail",
+      "plan": null,
+      "skip_reason": "",
+      "diagnostic": "No such method 'drop' for invocant of type 'Any'. Did you mean any of"
+    },
+    {
+      "file": "114-regex-assertion-captures.rakutest",
+      "exit_code": 0,
+      "seconds": 1.98,
+      "assertions": 17,
+      "skip": false,
+      "not_ok": 0,
+      "status": "pass",
+      "plan": [
+        "1",
+        "17",
+        ""
+      ],
+      "skip_reason": ""
+    },
+    {
+      "file": "115-regex-repeated-scopes.rakutest",
+      "exit_code": 1,
+      "seconds": 1.57,
+      "assertions": 0,
+      "skip": false,
+      "not_ok": 0,
+      "status": "fail",
+      "plan": null,
+      "skip_reason": "",
+      "diagnostic": "No such method 'drop' for invocant of type 'Any'. Did you mean any of"
+    },
+    {
+      "file": "116-regex-capture-reads.rakutest",
+      "exit_code": 0,
+      "seconds": 2.37,
+      "assertions": 13,
+      "skip": false,
+      "not_ok": 0,
+      "status": "pass",
+      "plan": [
+        "1",
+        "13",
+        ""
+      ],
+      "skip_reason": ""
+    },
+    {
+      "file": "117-regex-capture-presence.rakutest",
+      "exit_code": 1,
+      "seconds": 1.73,
+      "assertions": 0,
+      "skip": false,
+      "not_ok": 0,
+      "status": "fail",
+      "plan": null,
+      "skip_reason": "",
+      "diagnostic": "===SORRY!==="
+    },
+    {
+      "file": "118-regex-whole-text.rakutest",
+      "exit_code": 1,
+      "seconds": 1.82,
+      "assertions": 0,
+      "skip": false,
+      "not_ok": 0,
+      "status": "fail",
+      "plan": null,
+      "skip_reason": "",
+      "diagnostic": "===SORRY!==="
+    },
+    {
+      "file": "119-regex-logical-captures.rakutest",
+      "exit_code": 13,
+      "seconds": 2.1,
+      "assertions": 13,
+      "skip": false,
+      "not_ok": 13,
+      "status": "fail",
+      "plan": null,
+      "skip_reason": "",
+      "diagnostic": "not ok 4 - .reason matches *.contains('only implemented for PostgreSQL')"
+    },
+    {
+      "file": "120-regex-cache-driver.rakutest",
+      "exit_code": 0,
+      "seconds": 1.18,
+      "assertions": 10,
+      "skip": false,
+      "not_ok": 0,
+      "status": "pass",
+      "plan": [
+        "1",
+        "10",
+        ""
+      ],
+      "skip_reason": ""
+    },
+    {
+      "file": "121-regex-property-literals.rakutest",
+      "exit_code": 1,
+      "seconds": 2.27,
+      "assertions": 0,
+      "skip": false,
+      "not_ok": 0,
+      "status": "fail",
+      "plan": null,
+      "skip_reason": "",
+      "diagnostic": "===SORRY!==="
+    },
+    {
+      "file": "122-regex-text-methods.rakutest",
+      "exit_code": 3,
+      "seconds": 1.83,
+      "assertions": 8,
+      "skip": false,
+      "not_ok": 3,
+      "status": "fail",
+      "plan": [
+        "1",
+        "8",
+        ""
+      ],
+      "skip_reason": "",
+      "diagnostic": "not ok 4 - .reason matches *.contains('only implemented for PostgreSQL')"
+    },
+    {
+      "file": "123-regex-capture-chars.rakutest",
+      "exit_code": 9,
+      "seconds": 1.97,
+      "assertions": 10,
+      "skip": false,
+      "not_ok": 9,
+      "status": "fail",
+      "plan": [
+        "1",
+        "10",
+        ""
+      ],
+      "skip_reason": "",
+      "diagnostic": "not ok 3 - .reason matches *.contains('whole regex text')"
+    },
+    {
+      "file": "124-compiler-callables.rakutest",
+      "exit_code": 0,
+      "seconds": 4.7,
+      "assertions": 76,
+      "skip": false,
+      "not_ok": 0,
+      "status": "pass",
+      "plan": [
+        "1",
+        "76",
+        ""
+      ],
+      "skip_reason": ""
+    },
+    {
+      "file": "125-pg-driver-not-installed.rakutest",
+      "exit_code": 0,
+      "seconds": 1.43,
+      "assertions": 6,
+      "skip": false,
+      "not_ok": 0,
+      "status": "pass",
+      "plan": [
+        "1",
+        "6",
+        ""
+      ],
+      "skip_reason": ""
+    },
+    {
+      "file": "126-migration-snapshot.rakutest",
+      "exit_code": 0,
+      "seconds": 1.13,
+      "assertions": 10,
+      "skip": false,
+      "not_ok": 0,
+      "status": "pass",
+      "plan": [
+        "1",
+        "10",
+        ""
+      ],
+      "skip_reason": ""
+    },
+    {
+      "file": "127-versioned-migrations.rakutest",
+      "exit_code": 0,
+      "seconds": 2.09,
+      "assertions": 17,
+      "skip": false,
+      "not_ok": 0,
+      "status": "pass",
+      "plan": [
+        "1",
+        "17",
+        ""
+      ],
+      "skip_reason": ""
+    },
+    {
+      "file": "128-migration-incremental.rakutest",
+      "exit_code": 1,
+      "seconds": 1.74,
+      "assertions": 0,
+      "skip": false,
+      "not_ok": 0,
+      "status": "fail",
+      "plan": null,
+      "skip_reason": "",
+      "diagnostic": "Unsupported migration driver: DuckDB"
+    },
+    {
+      "file": "129-migration-cli.rakutest",
+      "exit_code": 0,
+      "seconds": 30.09,
+      "assertions": 31,
+      "skip": false,
+      "not_ok": 0,
+      "status": "pass",
+      "plan": [
+        "1",
+        "31",
+        ""
+      ],
+      "skip_reason": ""
+    },
+    {
+      "file": "130-migration-failures.rakutest",
+      "exit_code": 1,
+      "seconds": 1.61,
+      "assertions": 0,
+      "skip": false,
+      "not_ok": 0,
+      "status": "fail",
+      "plan": null,
+      "skip_reason": "",
+      "diagnostic": "Unsupported migration driver: DuckDB"
+    },
+    {
+      "file": "131-migration-planner.rakutest",
+      "exit_code": 1,
+      "seconds": 1.67,
+      "assertions": 0,
+      "skip": false,
+      "not_ok": 0,
+      "status": "fail",
+      "plan": null,
+      "skip_reason": "",
+      "diagnostic": "Unsupported migration driver: DuckDB"
+    },
+    {
+      "file": "132-migration-locks.rakutest",
+      "exit_code": 1,
+      "seconds": 1.09,
+      "assertions": 0,
+      "skip": false,
+      "not_ok": 0,
+      "status": "fail",
+      "plan": null,
+      "skip_reason": "",
+      "diagnostic": "Unsupported migration driver: DuckDB"
+    },
+    {
+      "file": "133-migration-alter.rakutest",
+      "exit_code": 1,
+      "seconds": 1.17,
+      "assertions": 0,
+      "skip": false,
+      "not_ok": 0,
+      "status": "fail",
+      "plan": null,
+      "skip_reason": "",
+      "diagnostic": "Unsupported migration driver: DuckDB"
+    },
+    {
+      "file": "134-migration-preparation.rakutest",
+      "exit_code": 0,
+      "seconds": 1.77,
+      "assertions": 13,
+      "skip": false,
+      "not_ok": 0,
+      "status": "pass",
+      "plan": [
+        "1",
+        "13",
+        ""
+      ],
+      "skip_reason": ""
+    },
+    {
+      "file": "135-migration-directories.rakutest",
+      "exit_code": 0,
+      "seconds": 2.04,
+      "assertions": 13,
+      "skip": false,
+      "not_ok": 0,
+      "status": "pass",
+      "plan": [
+        "1",
+        "13",
+        ""
+      ],
+      "skip_reason": ""
+    },
+    {
+      "file": "136-migration-test-environment.rakutest",
+      "exit_code": 1,
+      "seconds": 0.81,
+      "assertions": 0,
+      "skip": false,
+      "not_ok": 0,
+      "status": "fail",
+      "plan": null,
+      "skip_reason": "",
+      "diagnostic": "Unsupported migration driver: DuckDB"
+    },
+    {
+      "file": "137-migration-serialize.rakutest",
+      "exit_code": 0,
+      "seconds": 12.3,
+      "assertions": 6,
+      "skip": false,
+      "not_ok": 0,
+      "status": "pass",
+      "plan": [
+        "1",
+        "6",
+        ""
+      ],
+      "skip_reason": ""
+    },
+    {
+      "file": "138-migration-backfill.rakutest",
+      "exit_code": 1,
+      "seconds": 1.85,
+      "assertions": 2,
+      "skip": false,
+      "not_ok": 0,
+      "status": "fail",
+      "plan": null,
+      "skip_reason": "",
+      "diagnostic": "Unsupported migration driver: DuckDB"
+    },
+    {
+      "file": "139-migration-serialization-conflicts.rakutest",
+      "exit_code": 0,
+      "seconds": 2.12,
+      "assertions": 3,
+      "skip": false,
+      "not_ok": 0,
+      "status": "pass",
+      "plan": [
+        "1",
+        "3",
+        ""
+      ],
+      "skip_reason": ""
+    },
+    {
+      "file": "140-migration-workflow.rakutest",
+      "exit_code": 0,
+      "seconds": 11.05,
+      "assertions": 7,
+      "skip": false,
+      "not_ok": 0,
+      "status": "pass",
+      "plan": [
+        "1",
+        "7",
+        ""
+      ],
+      "skip_reason": ""
+    },
+    {
+      "file": "141-migration-ancestry.rakutest",
+      "exit_code": 0,
+      "seconds": 17.32,
+      "assertions": 5,
+      "skip": false,
+      "not_ok": 0,
+      "status": "pass",
+      "plan": [
+        "1",
+        "5",
+        ""
+      ],
+      "skip_reason": ""
+    },
+    {
+      "file": "142-migration-config-builder.rakutest",
+      "exit_code": 0,
+      "seconds": 1.84,
+      "assertions": 16,
+      "skip": false,
+      "not_ok": 0,
+      "status": "pass",
+      "plan": [
+        "1",
+        "16",
+        ""
+      ],
+      "skip_reason": ""
+    },
+    {
+      "file": "143-database-client.rakutest",
+      "exit_code": 0,
+      "seconds": 3.76,
+      "assertions": 13,
+      "skip": false,
+      "not_ok": 0,
+      "status": "pass",
+      "plan": [
+        "1",
+        "13",
+        ""
+      ],
+      "skip_reason": ""
+    },
+    {
+      "file": "144-migration-artifacts.rakutest",
+      "exit_code": 0,
+      "seconds": 1.2,
+      "assertions": 11,
+      "skip": false,
+      "not_ok": 0,
+      "status": "pass",
+      "plan": [
+        "1",
+        "11",
+        ""
+      ],
+      "skip_reason": ""
+    },
+    {
+      "file": "145-migration-expression-registration.rakutest",
+      "exit_code": 0,
+      "seconds": 0.66,
+      "assertions": 3,
+      "skip": false,
+      "not_ok": 0,
+      "status": "pass",
+      "plan": [
+        "1",
+        "3",
+        ""
+      ],
+      "skip_reason": ""
+    },
+    {
+      "file": "146-synchronous-migration-compiler.rakutest",
+      "exit_code": 0,
+      "seconds": 2.05,
+      "assertions": 22,
+      "skip": false,
+      "not_ok": 0,
+      "status": "pass",
+      "plan": [
+        "1",
+        "22",
+        ""
+      ],
+      "skip_reason": ""
+    },
+    {
+      "file": "147-synchronous-migrations.rakutest",
+      "exit_code": 1,
+      "seconds": 0.9,
+      "assertions": 0,
+      "skip": false,
+      "not_ok": 0,
+      "status": "fail",
+      "plan": null,
+      "skip_reason": "",
+      "diagnostic": "Unsupported temporary driver: DuckDB"
+    },
+    {
+      "file": "148-migration-bundle.rakutest",
+      "exit_code": 0,
+      "seconds": 0.4,
+      "assertions": 6,
+      "skip": false,
+      "not_ok": 0,
+      "status": "pass",
+      "plan": [
+        "1",
+        "6",
+        ""
+      ],
+      "skip_reason": ""
+    },
+    {
+      "file": "148-synchronous-history.rakutest",
+      "exit_code": 1,
+      "seconds": 13.37,
+      "assertions": 6,
+      "skip": false,
+      "not_ok": 0,
+      "status": "fail",
+      "plan": null,
+      "skip_reason": "",
+      "diagnostic": "Unsupported migration driver: DuckDB"
+    },
+    {
+      "file": "149-migration-import.rakutest",
+      "exit_code": 0,
+      "seconds": 2.63,
+      "assertions": 17,
+      "skip": false,
+      "not_ok": 0,
+      "status": "pass",
+      "plan": [
+        "1",
+        "17",
+        ""
+      ],
+      "skip_reason": ""
+    },
+    {
+      "file": "149-synchronous-explicit-sql.rakutest",
+      "exit_code": 1,
+      "seconds": 0.8,
+      "assertions": 0,
+      "skip": false,
+      "not_ok": 0,
+      "status": "fail",
+      "plan": null,
+      "skip_reason": "",
+      "diagnostic": "Unsupported temporary driver: DuckDB"
+    },
+    {
+      "file": "150-migration-discovery.rakutest",
+      "exit_code": 0,
+      "seconds": 1.78,
+      "assertions": 8,
+      "skip": false,
+      "not_ok": 0,
+      "status": "pass",
+      "plan": [
+        "1",
+        "8",
+        ""
+      ],
+      "skip_reason": ""
+    },
+    {
+      "file": "150-synchronous-cli.rakutest",
+      "exit_code": 0,
+      "seconds": 16.01,
+      "assertions": 17,
+      "skip": false,
+      "not_ok": 0,
+      "status": "pass",
+      "plan": [
+        "1",
+        "17",
+        ""
+      ],
+      "skip_reason": ""
+    },
+    {
+      "file": "151-migration-import-history.rakutest",
+      "exit_code": 0,
+      "seconds": 5.11,
+      "assertions": 18,
+      "skip": false,
+      "not_ok": 0,
+      "status": "pass",
+      "plan": [
+        "1",
+        "18",
+        ""
+      ],
+      "skip_reason": ""
+    },
+    {
+      "file": "151-runtime-configuration.rakutest",
+      "exit_code": 0,
+      "seconds": 9.16,
+      "assertions": 27,
+      "skip": false,
+      "not_ok": 0,
+      "status": "pass",
+      "plan": [
+        "1",
+        "27",
+        ""
+      ],
+      "skip_reason": ""
+    },
+    {
+      "file": "152-migration-complete-bundle.rakutest",
+      "exit_code": 0,
+      "seconds": 22.27,
+      "assertions": 54,
+      "skip": false,
+      "not_ok": 0,
+      "status": "pass",
+      "plan": [
+        "1",
+        "54",
+        ""
+      ],
+      "skip_reason": ""
+    },
+    {
+      "file": "153-migration-bundle-safety.rakutest",
+      "exit_code": 0,
+      "seconds": 2.78,
+      "assertions": 12,
+      "skip": false,
+      "not_ok": 0,
+      "status": "pass",
+      "plan": [
+        "1",
+        "12",
+        ""
+      ],
+      "skip_reason": ""
+    },
+    {
+      "file": "154-migration-five-levels.rakutest",
+      "exit_code": 255,
+      "seconds": 5.44,
+      "assertions": 2,
+      "skip": false,
+      "not_ok": 1,
+      "status": "fail",
+      "plan": null,
+      "skip_reason": "",
+      "diagnostic": "not ok 2 - prepare succeeds (DuckDB, level-1)"
+    },
+    {
+      "file": "155-migration-publication-recovery.rakutest",
+      "exit_code": 0,
+      "seconds": 2.79,
+      "assertions": 11,
+      "skip": false,
+      "not_ok": 0,
+      "status": "pass",
+      "plan": [
+        "1",
+        "11",
+        ""
+      ],
+      "skip_reason": ""
+    },
+    {
+      "file": "156-migration-resolve.rakutest",
+      "exit_code": 1,
+      "seconds": 1.11,
+      "assertions": 2,
+      "skip": false,
+      "not_ok": 0,
+      "status": "fail",
+      "plan": null,
+      "skip_reason": "",
+      "diagnostic": "Unsupported temporary driver: DuckDB"
+    },
+    {
+      "file": "157-migration-diamond.rakutest",
+      "exit_code": 1,
+      "seconds": 1.08,
+      "assertions": 0,
+      "skip": false,
+      "not_ok": 0,
+      "status": "fail",
+      "plan": null,
+      "skip_reason": "",
+      "diagnostic": "Unsupported migration driver: DuckDB"
+    },
+    {
+      "file": "158-migration-adoption-serialize.rakutest",
+      "exit_code": 1,
+      "seconds": 0.93,
+      "assertions": 0,
+      "skip": false,
+      "not_ok": 0,
+      "status": "fail",
+      "plan": null,
+      "skip_reason": "",
+      "diagnostic": "Unsupported migration driver: DuckDB"
+    },
+    {
+      "file": "159-fixtures.rakutest",
+      "exit_code": 0,
+      "seconds": 10.93,
+      "assertions": 18,
+      "skip": false,
+      "not_ok": 0,
+      "status": "pass",
+      "plan": [
+        "1",
+        "18",
+        ""
+      ],
+      "skip_reason": ""
+    },
+    {
+      "file": "160-fixture-data.rakutest",
+      "exit_code": 0,
+      "seconds": 3.19,
+      "assertions": 19,
+      "skip": false,
+      "not_ok": 0,
+      "status": "pass",
+      "plan": [
+        "1",
+        "19",
+        ""
+      ],
+      "skip_reason": ""
+    },
+    {
+      "file": "161-migration-reset.rakutest",
+      "exit_code": 1,
+      "seconds": 0.9,
+      "assertions": 0,
+      "skip": false,
+      "not_ok": 0,
+      "status": "fail",
+      "plan": null,
+      "skip_reason": "",
+      "diagnostic": "Unsupported temporary driver: DuckDB"
+    },
+    {
+      "file": "162-migration-reset-cli.rakutest",
+      "exit_code": 0,
+      "seconds": 14.42,
+      "assertions": 18,
+      "skip": false,
+      "not_ok": 0,
+      "status": "pass",
+      "plan": [
+        "1",
+        "18",
+        ""
+      ],
+      "skip_reason": ""
+    }
+  ]
+}

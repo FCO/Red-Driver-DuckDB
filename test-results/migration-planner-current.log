@@ -1,0 +1,9 @@
+ok 1 - sequence and table are generated
+ok 2 - generated SQL executes
+ok 3 - automatic ID starts at one
+ok 4 - automatic ID advances
+ok 5 - rollback removes table and owned sequence
+ok 6 - rollback SQL executes
+ok 7 - schema can be recreated after rollback
+ok 8 - recreated sequence starts fresh
+1..8

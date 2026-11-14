@@ -1,0 +1,68 @@
+use Test;
+use Red;
+use Red::Driver::DuckDB;
+use DB::DuckDB::Error;
+my $*RED-DB = database 'DuckDB';
+my $db = $*RED-DB;
+ok $db.is-valid-table-name('factory space.dot'), 'quoted identifier syntax is accepted';
+ok !$db.is-valid-table-name(''), 'empty identifiers are rejected';
+ok !$db.is-valid-table-name("bad\0name"), 'NUL in identifiers is rejected';
+model NamedSequence is table('factory space.dot') { has Int $.id is serial }
+lives-ok { NamedSequence.^create-table }, 'quoted sequence name survives nextval lookup';
+is NamedSequence.^create.id, 1, 'custom table name gets an automatic ID';
+$db.execute('-- leading comment' ~ "\nSET threads=2");
+is $db.execute("SELECT current_setting('threads') AS value").row<value>, 2, 'SET changes the actual session';
+$db.execute('PRAGMA threads=3');
+is $db.execute("SELECT current_setting('threads') AS value").row<value>, 3, 'PRAGMA settings use direct execution';
+ok $db.execute(q[PRAGMA table_info('factory space.dot')]).row<name>.defined, 'PRAGMA queries retain result rows';
+$db.execute("/* outer /* nested */ comment */ BEGIN TRANSACTION");
+throws-like { $db.begin }, X::Red::Compiler::Unsupported, 'commented BEGIN is tracked';
+$db.execute('COMMIT; -- trailing comment');
+lives-ok { $db.begin; $db.rollback }, 'commented COMMIT leaves transaction API usable';
+$db.execute('BEGIN');
+$db.execute("-- done\nROLLBACK");
+lives-ok { $db.reopen }, 'commented ROLLBACK permits reopening';
+throws-like { $db.execute("SELECT 1\0not_sql") }, X::Red::Compiler::Unsupported,
+    'NUL in SQL commands is rejected rather than truncating the command';
+my $nul = "before\0after😀";
+is $db.execute('SELECT ?::VARCHAR AS value', $nul).row<value>, $nul, 'bound UTF8 text preserves embedded NUL';
+is $db.execute('SELECT CAST(? AS HUGEINT) AS value', 2**80).row<value>.Int, 2**80, 'large integer binding does not wrap at int64';
+$db.execute("SET TimeZone='Asia/Kathmandu'");
+my $stamp = $db.execute(q[SELECT TIMESTAMPTZ '2026-11-10 12:34:56+00' AS value]).row<value>;
+isa-ok $stamp, DateTime, 'raw TIMESTAMPTZ inflates to DateTime';
+is $stamp.posix, DateTime.new('2026-11-10T12:34:56Z').posix, 'session offset preserves the instant';
+$db.execute("SET TimeZone='UTC'");
+$db.execute(q[CREATE TABLE review_collation (id BIGINT PRIMARY KEY, name VARCHAR COLLATE NOCASE UNIQUE, note VARCHAR DEFAULT 'generated always')]);
+$db.execute(q[INSERT INTO review_collation (id, name) VALUES (1, 'First')]);
+$db.execute('BEGIN');
+$db.execute("UPDATE review_collation SET note='filled'");
+lives-ok { $db.migration-set-not-null('review_collation', 'note') }, 'default text is not mistaken for a generated column';
+$db.execute('COMMIT');
+is $db.execute("SELECT count(*) AS n FROM review_collation WHERE name='FIRST'").row<n>, 1, 'reconstruction preserves collation';
+dies-ok { $db.execute(q[INSERT INTO review_collation(id,name,note) VALUES(2,'FIRST','x')]) }, 'collated uniqueness remains enforced';
+$db.execute('CREATE TABLE review_generated (value BIGINT, computed BIGINT GENERATED ALWAYS AS(value + 1))');
+$db.execute('BEGIN');
+throws-like { $db.migration-set-not-null('review_generated', 'value') }, X::Red::Compiler::Unsupported,
+    'generated-column reconstruction remains an explicit limitation';
+$db.execute('ROLLBACK');
+sub contains(Str $actual, Str $wanted) {
+    my $sql = $db.duck-json-contains('CAST(? AS JSON)', 'CAST(? AS JSON)');
+    so $db.execute("SELECT $sql AS matched", $actual, $wanted).row<matched>
+}
+ok contains('1e30', '1e30'), 'JSON containment accepts numbers beyond DECIMAL(38,18) range';
+ok !contains('1e-19', '2e-19'), 'JSON containment does not round small fractions equal';
+ok !contains('1e-19', '0'), 'a tiny JSON fraction is not zero';
+ok contains('1', '1e0'), 'numeric JSON tags compare by value';
+ok !contains('9007199254740993', '9007199254740992e0'), 'cross-tag comparison preserves integer precision';
+ok !contains('18446744073709551615', '18446744073709551616e0'), 'unsigned integer is not rounded to the next double';
+my $stale = $db.prepare('SELECT 1 AS value');
+$stale.execute;
+$db.close;
+throws-like { $db.execute('SELECT 1') }, DB::DuckDB::Error, 'closed connection rejects raw execution';
+throws-like { $stale.execute }, DB::DuckDB::Error, 'old statement rejects execution after close';
+lives-ok { $db.close; $db.reopen }, 'close is idempotent and reopening creates a fresh session';
+throws-like { $stale.row }, DB::DuckDB::Error, 'reopening does not revive an old result';
+is $db.execute('SELECT 42 AS value').row<value>, 42, 'new session is usable';
+$db.close;
+$db.dbh.close;
+done-testing;

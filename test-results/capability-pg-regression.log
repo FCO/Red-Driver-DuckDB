@@ -1,0 +1,22 @@
+NOTICE:  table "foo" does not exist, skipping
+NOTICE:  table "savepoint_parent" does not exist, skipping
+NOTICE:  table "savepoint_child" does not exist, skipping
+NOTICE:  drop cascades to constraint savepoint_child_parent_id_savepoint_parent_id_fkey on table savepoint_child
+t/081-resultset-skip-locked.rakutest ....... ok
+NOTICE:  table "zub" does not exist, skipping
+NOTICE:  table "foo" does not exist, skipping
+NOTICE:  table "guard_record" does not exist, skipping
+NOTICE:  table "key_child" does not exist, skipping
+NOTICE:  table "key_parent" does not exist, skipping
+NOTICE:  table "named_child" does not exist, skipping
+NOTICE:  table "named_parent" does not exist, skipping
+NOTICE:  table "typed_child" does not exist, skipping
+NOTICE:  table "column_child" does not exist, skipping
+NOTICE:  table "typed_parent" does not exist, skipping
+t/096-savepoints.rakutest .................. ok
+t/017-pp.rakutest .......................... ok
+t/097-transaction-guard.rakutest ........... ok
+t/099-single-relationship-create.rakutest .. ok
+All tests successful.
+Files=5, Tests=61,  84 wallclock secs
+Result: PASS

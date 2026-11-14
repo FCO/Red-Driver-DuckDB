@@ -1,0 +1,388 @@
+t/000-meta.rakutest ............................... ok
+NOTICE:  table "post" does not exist, skipping
+NOTICE:  table "person" does not exist, skipping
+NOTICE:  table "post" does not exist, skipping
+NOTICE:  table "person" does not exist, skipping
+NOTICE:  table "ticket_status" does not exist, skipping
+NOTICE:  table "person" does not exist, skipping
+NOTICE:  table "ticket" does not exist, skipping
+NOTICE:  table "tree" does not exist, skipping
+NOTICE:  table "test_duration" does not exist, skipping
+NOTICE:  table "unknown_type" does not exist, skipping
+NOTICE:  table "ble" does not exist, skipping
+NOTICE:  table "bla" does not exist, skipping
+NOTICE:  table "mmm" does not exist, skipping
+NOTICE:  table "mmm" does not exist, skipping
+NOTICE:  table "person" does not exist, skipping
+NOTICE:  table "post" does not exist, skipping
+NOTICE:  table "foo" does not exist, skipping
+NOTICE:  table "transition" does not exist, skipping
+NOTICE:  table "foo" does not exist, skipping
+NOTICE:  table "test_phasers" does not exist, skipping
+NOTICE:  table "zub" does not exist, skipping
+NOTICE:  table "foo" does not exist, skipping
+NOTICE:  table "foo" does not exist, skipping
+NOTICE:  table "multi_bar" does not exist, skipping
+NOTICE:  table "multi_foo" does not exist, skipping
+NOTICE:  table "bbb" does not exist, skipping
+NOTICE:  table "aaa" does not exist, skipping
+NOTICE:  table "c" does not exist, skipping
+NOTICE:  table "my_model" does not exist, skipping
+NOTICE:  table "writable" does not exist, skipping
+NOTICE:  table "bla" does not exist, skipping
+NOTICE:  table "bla" does not exist, skipping
+NOTICE:  table "numeric_group" does not exist, skipping
+NOTICE:  table "post" does not exist, skipping
+NOTICE:  table "person" does not exist, skipping
+NOTICE:  table "foo" does not exist, skipping
+NOTICE:  table "bla" does not exist, skipping
+NOTICE:  table "ble" does not exist, skipping
+NOTICE:  table "bla" does not exist, skipping
+NOTICE:  table "bli" does not exist, skipping
+NOTICE:  table "ble" does not exist, skipping
+NOTICE:  table "bla" does not exist, skipping
+NOTICE:  table "ble" does not exist, skipping
+NOTICE:  table "bla" does not exist, skipping
+NOTICE:  table "ble" does not exist, skipping
+NOTICE:  table "bla" does not exist, skipping
+NOTICE:  table "ble" does not exist, skipping
+NOTICE:  table "bla" does not exist, skipping
+NOTICE:  table "transactions" does not exist, skipping
+NOTICE:  table "ble" does not exist, skipping
+NOTICE:  table "bla" does not exist, skipping
+NOTICE:  table "bla" does not exist, skipping
+NOTICE:  table "mmm" does not exist, skipping
+NOTICE:  table "bla" does not exist, skipping
+NOTICE:  table "bla" does not exist, skipping
+NOTICE:  table "ble" does not exist, skipping
+NOTICE:  table "bli" does not exist, skipping
+NOTICE:  table "blo" does not exist, skipping
+NOTICE:  table "child_asked_on_year" does not exist, skipping
+NOTICE:  table "gift" does not exist, skipping
+NOTICE:  table "child" does not exist, skipping
+NOTICE:  table "bla" does not exist, skipping
+NOTICE:  table "logged_user" does not exist, skipping
+NOTICE:  table "seller" does not exist, skipping
+NOTICE:  table "buyer" does not exist, skipping
+NOTICE:  table "e_f_g" does not exist, skipping
+NOTICE:  table "reputation" does not exist, skipping
+NOTICE:  table "sentence" does not exist, skipping
+NOTICE:  table "link" does not exist, skipping
+NOTICE:  table "aabb" does not exist, skipping
+NOTICE:  table "aa" does not exist, skipping
+NOTICE:  table "bb" does not exist, skipping
+NOTICE:  table "person" does not exist, skipping
+NOTICE:  table "post" does not exist, skipping
+NOTICE:  drop cascades to constraint post_author_id_person_id_fkey on table post
+NOTICE:  table "test_model" does not exist, skipping
+NOTICE:  table "post_tag" does not exist, skipping
+NOTICE:  table "tag" does not exist, skipping
+NOTICE:  table "post" does not exist, skipping
+NOTICE:  table "foo" does not exist, skipping
+NOTICE:  table "bla" does not exist, skipping
+NOTICE:  table "bla_ble" does not exist, skipping
+NOTICE:  table "test_model" does not exist, skipping
+NOTICE:  table "test_model" does not exist, skipping
+NOTICE:  table "citest_set" does not exist, skipping
+NOTICE:  table "foo" does not exist, skipping
+NOTICE:  table "bla" does not exist, skipping
+NOTICE:  table "user" does not exist, skipping
+NOTICE:  table "b" does not exist, skipping
+NOTICE:  table "a" does not exist, skipping
+NOTICE:  table "c" does not exist, skipping
+NOTICE:  table "temp_sensor" does not exist, skipping
+NOTICE:  table "location" does not exist, skipping
+NOTICE:  table "place" does not exist, skipping
+NOTICE:  table "citest_set" does not exist, skipping
+NOTICE:  table "blx" does not exist, skipping
+NOTICE:  table "bla" does not exist, skipping
+NOTICE:  table "foo" does not exist, skipping
+NOTICE:  table "company" does not exist, skipping
+NOTICE:  table "user" does not exist, skipping
+falling back (to mute this message, please define the $*RED-FALLBACK variable): This type cannot unbox to a native string: P6opaque, Red::Column
+NOTICE:  table "comment" does not exist, skipping
+NOTICE:  table "photo" does not exist, skipping
+NOTICE:  table "post" does not exist, skipping
+NOTICE:  table "c" does not exist, skipping
+NOTICE:  table "logged_user" does not exist, skipping
+NOTICE:  table "seller" does not exist, skipping
+NOTICE:  table "buyer" does not exist, skipping
+NOTICE:  table "tail_composite" does not exist, skipping
+NOTICE:  table "tail_without_key" does not exist, skipping
+NOTICE:  table "tail_row" does not exist, skipping
+NOTICE:  table "projection_row" does not exist, skipping
+NOTICE:  table "projection_owner" does not exist, skipping
+NOTICE:  table "numeric_reduction_row" does not exist, skipping
+NOTICE:  table "typed_projection_row" does not exist, skipping
+NOTICE:  drop cascades to constraint projection_row_owner_id_projection_owner_id_fkey on table projection_row
+NOTICE:  table "json_document" does not exist, skipping
+NOTICE:  table "savepoint_parent" does not exist, skipping
+NOTICE:  table "savepoint_child" does not exist, skipping
+NOTICE:  table "guard_record" does not exist, skipping
+NOTICE:  table "indexed_groups" does not exist, skipping
+NOTICE:  table "indexed_contact" does not exist, skipping
+NOTICE:  table "index_existing" does not exist, skipping
+NOTICE:  table "index_conflict" does not exist, skipping
+NOTICE:  table "index_options" does not exist, skipping
+NOTICE:  table "indexed_fixture" does not exist, skipping
+NOTICE:  table "index_role" does not exist, skipping
+NOTICE:  table "index_child" does not exist, skipping
+NOTICE:  table "index_plain_uniques" does not exist, skipping
+NOTICE:  table "index_add_unique" does not exist, skipping
+NOTICE:  table "index_preflight_bad" does not exist, skipping
+NOTICE:  table "index_preflight_good" does not exist, skipping
+NOTICE:  table "named_parent" does not exist, skipping
+NOTICE:  table "key_child" does not exist, skipping
+NOTICE:  table "named_child" does not exist, skipping
+NOTICE:  table "key_parent" does not exist, skipping
+NOTICE:  table "column_child" does not exist, skipping
+NOTICE:  table "typed_parent" does not exist, skipping
+NOTICE:  table "typed_child" does not exist, skipping
+NOTICE:  drop cascades to constraint named_child_parent_id_named_parent_id_fkey on table named_child
+NOTICE:  drop cascades to constraint typed_child_parent_id_typed_parent_id_fkey on table typed_child
+NOTICE:  table "schema_rules" does not exist, skipping
+NOTICE:  table "null_and_rule" does not exist, skipping
+NOTICE:  table "null_not_or_rule" does not exist, skipping
+NOTICE:  table "partial_rule" does not exist, skipping
+NOTICE:  table "range_track" does not exist, skipping
+NOTICE:  table "pg_operator_classes" does not exist, skipping
+NOTICE:  table "query_plan_row" does not exist, skipping
+NOTICE:  table "model_access_row" does not exist, skipping
+NOTICE:  table "lazy_projection_row" does not exist, skipping
+NOTICE:  table "dirty_col" does not exist, skipping
+NOTICE:  table "compiled_regex_row" does not exist, skipping
+NOTICE:  table "regex_position_row" does not exist, skipping
+NOTICE:  table "assertion_capture_row" does not exist, skipping
+Potential difficulties:
+    Space is not significant here; please use quotes or :s (:sigspace)
+    modifier (or, to suppress this warning, omit the space, or otherwise
+    change the spacing).
+    at /run/check/red/EVAL_21:1
+    ------> my regex pair { a<HERE> a }; /<?pair> a/
+Potential difficulties:
+    Space is not significant here; please use quotes or :s (:sigspace)
+    modifier (or, to suppress this warning, omit the space, or otherwise
+    change the spacing).
+    at /run/check/red/EVAL_22:1
+    ------> my regex pair { a<HERE> a }; /<!pair> a/
+NOTICE:  table "named_assertion_row" does not exist, skipping
+NOTICE:  table "repeated_scope_row" does not exist, skipping
+NOTICE:  table "capture_presence_row" does not exist, skipping
+NOTICE:  table "capture_read_row" does not exist, skipping
+NOTICE:  table "whole_text_row" does not exist, skipping
+NOTICE:  table "logical_capture_row" does not exist, skipping
+NOTICE:  table "property_literal_row" does not exist, skipping
+NOTICE:  table "regex_text_method_row" does not exist, skipping
+NOTICE:  table "capture_chars_row" does not exist, skipping
+Potential difficulties:
+    Space is not significant here; please use quotes or :s (:sigspace)
+    modifier (or, to suppress this warning, omit the space, or otherwise
+    change the spacing).
+    at /run/check/red/EVAL_83:1
+    ------> /:s a :!s b<HERE> c/
+NOTICE:  table "portable_regex_row" does not exist, skipping
+NOTICE:  table "migration_incremental" does not exist, skipping
+NOTICE:  table "red_migrations" does not exist, skipping
+NOTICE:  table "migration_failure" does not exist, skipping
+NOTICE:  table "red_migrations" does not exist, skipping
+NOTICE:  table "migration_child" does not exist, skipping
+NOTICE:  table "migration_parent" does not exist, skipping
+NOTICE:  table "red_migrations" does not exist, skipping
+NOTICE:  table "migration_checked" does not exist, skipping
+NOTICE:  table "migration_locked" does not exist, skipping
+NOTICE:  table "red_migrations" does not exist, skipping
+NOTICE:  table "migration_alter" does not exist, skipping
+NOTICE:  table "red_migrations" does not exist, skipping
+Temporary migration database retained: /tmp/red_migration_test_4e278b2a81b44558abcc6ff33137175b/connection.json
+t/002-sqlite.rakutest ............................. skipped
+t/001-tdd.rakutest ................................ skipped
+t/005-better-map.rakutest ......................... skipped
+t/006-optimizer.rakutest .......................... ok
+t/008-alternate-relation.rakutest ................. ok
+t/003-blog.rakutest ............................... ok
+t/004-ticket.rakutest ............................. ok
+t/007-best-tree.rakutest .......................... ok
+t/011-types.rakutest .............................. ok
+t/010-join.rakutest ............................... ok
+t/013-result-seq-update.rakutest .................. ok
+t/014-union.rakutest .............................. ok
+t/009-alternate-relation-modules.rakutest ......... ok
+t/015-result-seq-bool.rakutest .................... ok
+t/016-create-related-pars.rakutest ................ ok
+t/012-roles.rakutest .............................. ok
+t/018-phasers.rakutest ............................ ok
+t/017-pp.rakutest ................................. ok
+t/020-new-with-id.rakutest ........................ ok
+t/019-in-sql.rakutest ............................. ok
+t/022-edit-id.rakutest ............................ ok
+t/023-metamodel-model.rakutest .................... ok
+t/025-is-rw.rakutest .............................. ok
+t/024-grep-no-AND-OR.rakutest ..................... ok
+t/021-red-do.rakutest ............................. ok
+t/026-classify.rakutest ........................... ok
+t/027-LPW-2019.rakutest ........................... ok
+t/029-result-seq-pick.rakutest .................... ok
+t/028-events.rakutest ............................. ok
+t/031-join.rakutest ............................... ok
+t/032-join.rakutest ............................... ok
+t/030-update.rakutest ............................. ok
+t/033-join.rakutest ............................... ok
+t/034-ast-generic.rakutest ........................ ok
+t/036-default-deflate.rakutest .................... ok
+t/035-create.rakutest ............................. ok
+t/040-relationship-multiple-columns.rakutest ...... skipped
+t/037-json.rakutest ............................... ok
+t/038-equal.rakutest .............................. skipped
+t/042-create-table.rakutest ....................... ok
+t/041-fallback.rakutest ........................... ok
+t/044-error-without-id.rakutest ................... ok
+t/045-is-handling.rakutest ........................ ok
+t/043-prefetch.rakutest ........................... ok
+t/039-xmas.rakutest ............................... ok
+t/046-rw.rakutest ................................. ok
+t/048-source-source-id.rakutest ................... ok
+t/049-experimental-formater.rakutest .............. ok
+t/050-experimental-name.rakutest .................. ok
+t/051-pre-create-or-update.rakutest ............... ok
+t/053-unique.rakutest ............................. ok
+t/055-no-optimization.rakutest .................... ok
+t/047-rypervenche.rakutest ........................ ok
+t/057-experimental.rakutest ....................... ok
+t/052-schema.rakutest ............................. ok
+t/054-hand-made-many-to-many.rakutest ............. ok
+t/056-refreshable.rakutest ........................ ok
+t/060-runtime-role.rakutest ....................... ok
+t/058-nm-relationship.rakutest .................... ok
+t/062-date-coercion.rakutest ...................... ok
+t/061-model-as-type.rakutest ...................... ok
+t/059-tomgraceys-schema.rakutest .................. ok
+t/063-inflate-deflate.rakutest .................... ok
+t/064-create-on-defined-obj.rakutest .............. ok
+t/065-patrickb.rakutest ........................... ok
+t/067-enums.rakutest .............................. skipped
+t/066-join-model.rakutest ......................... ok
+t/069-array-columns.rakutest ...................... ok
+t/070-submodel.rakutest ........................... ok
+t/071-conflicting-column-attribute.rakutest ....... ok
+t/068-red-config.rakutest ......................... ok
+t/072-agg-methods.rakutest ........................ ok
+t/074-enum-reassign.rakutest ...................... ok
+t/076-view.rakutest ............................... ok
+t/077-red-type.rakutest ........................... ok
+t/075-patrick-operators.rakutest .................. ok
+t/078-datetime-function.rakutest .................. ok
+t/079-group-sort.rakutest ......................... skipped
+t/073-red-defaults-from-module.rakutest ........... ok
+t/080-date-operator.rakutest ...................... ok
+t/081-resultset-skip-locked.rakutest .............. ok
+t/082-emakei.rakutest ............................. ok
+t/083-polymorphic.rakutest ........................ ok
+t/085-string-funcs.rakutest ....................... ok
+t/086-prefetch.rakutest ........................... ok
+t/084-polymorphic2.rakutest ....................... ok
+t/089-sql-tail.rakutest ........................... ok
+t/087-json-operations.rakutest .................... ok
+t/088-projection-chains.rakutest .................. ok
+t/091-rakuast-compiler.rakutest ................... skipped
+t/090-cross-product.rakutest ...................... ok
+t/092-rakuast-scope.rakutest ...................... skipped
+t/093-template-reuse.rakutest ..................... ok
+t/094-direct-ast-factories.rakutest ............... ok
+t/096-savepoints.rakutest ......................... ok
+t/095-indexes.rakutest ............................ ok
+t/097-transaction-guard.rakutest .................. ok
+t/099-single-relationship-create.rakutest ......... ok
+t/098-concurrent-query-projections.rakutest ....... ok
+t/100-schema-constraints.rakutest ................. ok
+t/101-query-plans.rakutest ........................ ok
+t/103-name-formatters.rakutest .................... ok
+t/102-model-access.rakutest ....................... ok
+t/105-compiler-warnings.rakutest .................. ok
+t/104-lazy-projection-resultseq.rakutest .......... ok
+t/107-dirty-collections.rakutest .................. ok
+t/108-generated-projection-getters.rakutest ....... ok
+t/106-compiled-regex.rakutest ..................... ok
+t/110-regex-no-fallback.rakutest .................. ok
+t/111-regex-repetitions.rakutest .................. ok
+t/112-regex-positions.rakutest .................... ok
+t/114-regex-assertion-captures.rakutest ........... ok
+t/113-regex-named-assertions.rakutest ............. ok
+t/115-regex-repeated-scopes.rakutest .............. ok
+t/117-regex-capture-presence.rakutest ............. ok
+t/118-regex-whole-text.rakutest ................... ok
+t/116-regex-capture-reads.rakutest ................ ok
+t/119-regex-logical-captures.rakutest ............. ok
+t/120-regex-cache-driver.rakutest ................. ok
+t/121-regex-property-literals.rakutest ............ ok
+t/122-regex-text-methods.rakutest ................. ok
+t/123-regex-capture-chars.rakutest ................ ok
+t/126-migration-snapshot.rakutest ................. ok
+t/109-regex-dialects.rakutest ..................... ok
+t/127-versioned-migrations.rakutest ............... ok
+t/128-migration-incremental.rakutest .............. ok
+t/130-migration-failures.rakutest ................. ok
+t/131-migration-planner.rakutest .................. ok
+t/132-migration-locks.rakutest .................... ok
+t/133-migration-alter.rakutest .................... ok
+t/134-migration-preparation.rakutest .............. ok
+t/135-migration-directories.rakutest .............. ok
+t/136-migration-test-environment.rakutest ......... ok
+t/137-migration-serialize.rakutest ................ ok
+t/125-pg-driver-not-installed.rakutest ............ ok
+t/139-migration-serialization-conflicts.rakutest .. ok
+t/138-migration-backfill.rakutest ................. ok
+t/124-compiler-callables.rakutest ................. ok
+t/142-migration-config-builder.rakutest ........... ok
+t/143-database-client.rakutest .................... ok
+t/140-migration-workflow.rakutest ................. ok
+t/144-migration-artifacts.rakutest ................ ok
+t/145-migration-expression-registration.rakutest .. ok
+t/146-synchronous-migration-compiler.rakutest ..... ok
+t/148-migration-bundle.rakutest ................... ok
+t/147-synchronous-migrations.rakutest ............. ok
+t/149-migration-import.rakutest ................... ok
+t/141-migration-ancestry.rakutest ................. ok
+# t/migrations.rakutest already exists
+#   in sub MAIN at /run/check/red/bin/red line 239
+#   in sub MAIN at /run/check/red/bin/red line 17
+#   in block <unit> at /run/check/red/bin/red line 275
+# 
+# 
+    # Unknown migration target: unknown-migration
+    #   in method error at /run/check/red/lib/Red/Migration/Manager.rakumod (Red::Migration::Manager) line 453
+    #   in method run at /run/check/red/lib/Red/Migration/Manager.rakumod (Red::Migration::Manager) line 991
+    #   in method apply at /run/check/red/lib/Red/Migration/Manager.rakumod (Red::Migration::Manager) line 1204
+    #   in sub MAIN at /run/check/red/bin/red line 151
+    #   in sub MAIN at /run/check/red/bin/red line 17
+    #   in block <unit> at /run/check/red/bin/red line 275
+    # 
+    # 
+# Five installed distribution levels: Pg; RakuAST=0
+t/150-migration-discovery.rakutest ................ ok
+t/149-synchronous-explicit-sql.rakutest ........... ok
+t/151-migration-import-history.rakutest ........... ok
+t/129-migration-cli.rakutest ...................... ok
+t/148-synchronous-history.rakutest ................ ok
+t/151-runtime-configuration.rakutest .............. ok
+t/153-migration-bundle-safety.rakutest ............ ok
+t/150-synchronous-cli.rakutest .................... ok
+t/156-migration-resolve.rakutest .................. ok
+t/155-migration-publication-recovery.rakutest ..... ok
+t/157-migration-diamond.rakutest .................. ok
+t/152-migration-complete-bundle.rakutest .......... ok
+t/160-fixture-data.rakutest ....................... ok
+t/158-migration-adoption-serialize.rakutest ....... ok
+t/159-fixtures.rakutest ........................... ok
+t/161-migration-reset.rakutest .................... ok
+t/162-migration-reset-cli.rakutest ................ ok
+t/154-migration-five-levels.rakutest .............. Dubious, test returned 124
+All 64 subtests passed 
+All tests successful.
+
+Test Summary Report
+-------------------
+t/154-migration-five-levels.rakutest  (Wstat: 31744 Tests: 64 Failed: 0)
+Non-zero exit status: 124
+  Parse errors: No plan found in TAP output
+Files=167, Tests=2130,  900 wallclock secs
+Result: FAILED

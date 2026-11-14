@@ -1,0 +1,2228 @@
+{
+  "red_files": 167,
+  "red_top_level_tests": 2161,
+  "red_skipped_or_empty": 10,
+  "driver_files": 3,
+  "driver_top_level_tests": 26,
+  "result": "PASS",
+  "files_detail": [
+    {
+      "file": "/run/check/pg/t/00-pg-test-runner.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "timeout_seconds": 600,
+      "seconds": 2.19,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/pg/t/00-pg-test-runner.rakutest"
+      ],
+      "top_level_tests": 2,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/000-meta.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 3.87,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/000-meta.rakutest"
+      ],
+      "top_level_tests": 1,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/001-tdd.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 76.83,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/001-tdd.rakutest"
+      ],
+      "top_level_tests": 0,
+      "skip_or_empty": true
+    },
+    {
+      "file": "/run/check/red/t/002-sqlite.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 75.77,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/002-sqlite.rakutest"
+      ],
+      "top_level_tests": 0,
+      "skip_or_empty": true
+    },
+    {
+      "file": "/run/check/red/t/003-blog.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 88.73,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/003-blog.rakutest"
+      ],
+      "top_level_tests": 28,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/004-ticket.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 84.67,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/004-ticket.rakutest"
+      ],
+      "top_level_tests": 19,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/005-better-map.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 3.1,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/005-better-map.rakutest"
+      ],
+      "top_level_tests": 0,
+      "skip_or_empty": true
+    },
+    {
+      "file": "/run/check/red/t/006-optimizer.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 3.94,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/006-optimizer.rakutest"
+      ],
+      "top_level_tests": 66,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/007-best-tree.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 9.7,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/007-best-tree.rakutest"
+      ],
+      "top_level_tests": 17,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/008-alternate-relation.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 7.76,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/008-alternate-relation.rakutest"
+      ],
+      "top_level_tests": 15,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/009-alternate-relation-modules.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 15.06,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/009-alternate-relation-modules.rakutest"
+      ],
+      "top_level_tests": 9,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/pg/t/01-pg.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "timeout_seconds": 600,
+      "seconds": 2.22,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/pg/t/01-pg.rakutest"
+      ],
+      "top_level_tests": 13,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/010-join.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 5.63,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/010-join.rakutest"
+      ],
+      "top_level_tests": 1,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/011-types.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 5.56,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/011-types.rakutest"
+      ],
+      "top_level_tests": 2,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/012-roles.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 20.04,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/012-roles.rakutest"
+      ],
+      "top_level_tests": 8,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/013-result-seq-update.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 6.15,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/013-result-seq-update.rakutest"
+      ],
+      "top_level_tests": 1,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/014-union.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 6.81,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/014-union.rakutest"
+      ],
+      "top_level_tests": 18,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/015-result-seq-bool.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 5.23,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/015-result-seq-bool.rakutest"
+      ],
+      "top_level_tests": 2,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/016-create-related-pars.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 5.79,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/016-create-related-pars.rakutest"
+      ],
+      "top_level_tests": 14,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/017-pp.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 7.94,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/017-pp.rakutest"
+      ],
+      "top_level_tests": 1,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/018-phasers.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 5.46,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/018-phasers.rakutest"
+      ],
+      "top_level_tests": 34,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/019-in-sql.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 9.02,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/019-in-sql.rakutest"
+      ],
+      "top_level_tests": 26,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/pg/t/02-schema-reader.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "timeout_seconds": 600,
+      "seconds": 2.2,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/pg/t/02-schema-reader.rakutest"
+      ],
+      "top_level_tests": 11,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/020-new-with-id.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 2.94,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/020-new-with-id.rakutest"
+      ],
+      "top_level_tests": 2,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/021-red-do.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 9.41,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/021-red-do.rakutest"
+      ],
+      "top_level_tests": 18,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/022-edit-id.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 4.44,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/022-edit-id.rakutest"
+      ],
+      "top_level_tests": 7,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/023-metamodel-model.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 4.38,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/023-metamodel-model.rakutest"
+      ],
+      "top_level_tests": 66,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/024-grep-no-AND-OR.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 4.39,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/024-grep-no-AND-OR.rakutest"
+      ],
+      "top_level_tests": 3,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/025-is-rw.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 4.28,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/025-is-rw.rakutest"
+      ],
+      "top_level_tests": 4,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/026-classify.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 7.99,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/026-classify.rakutest"
+      ],
+      "top_level_tests": 25,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/027-LPW-2019.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 3.6,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/027-LPW-2019.rakutest"
+      ],
+      "top_level_tests": 6,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/028-events.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 7.19,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/028-events.rakutest"
+      ],
+      "top_level_tests": 29,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/029-result-seq-pick.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 3.3,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/029-result-seq-pick.rakutest"
+      ],
+      "top_level_tests": 3,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/030-update.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 3.6,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/030-update.rakutest"
+      ],
+      "top_level_tests": 7,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/031-join.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 3.57,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/031-join.rakutest"
+      ],
+      "top_level_tests": 2,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/032-join.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 3.57,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/032-join.rakutest"
+      ],
+      "top_level_tests": 3,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/033-join.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 4.23,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/033-join.rakutest"
+      ],
+      "top_level_tests": 1,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/034-ast-generic.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 4.31,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/034-ast-generic.rakutest"
+      ],
+      "top_level_tests": 16,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/035-create.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 4.29,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/035-create.rakutest"
+      ],
+      "top_level_tests": 7,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/036-default-deflate.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 4.29,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/036-default-deflate.rakutest"
+      ],
+      "top_level_tests": 5,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/037-json.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 4.74,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/037-json.rakutest"
+      ],
+      "top_level_tests": 6,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/038-equal.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 4.64,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/038-equal.rakutest"
+      ],
+      "top_level_tests": 0,
+      "skip_or_empty": true
+    },
+    {
+      "file": "/run/check/red/t/039-xmas.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 14.13,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/039-xmas.rakutest"
+      ],
+      "top_level_tests": 13,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/040-relationship-multiple-columns.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 4.59,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/040-relationship-multiple-columns.rakutest"
+      ],
+      "top_level_tests": 0,
+      "skip_or_empty": true
+    },
+    {
+      "file": "/run/check/red/t/041-fallback.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 3.18,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/041-fallback.rakutest"
+      ],
+      "top_level_tests": 2,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/042-create-table.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 3.14,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/042-create-table.rakutest"
+      ],
+      "top_level_tests": 4,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/043-prefetch.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 6.29,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/043-prefetch.rakutest"
+      ],
+      "top_level_tests": 101,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/044-error-without-id.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 3.02,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/044-error-without-id.rakutest"
+      ],
+      "top_level_tests": 1,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/045-is-handling.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 3.06,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/045-is-handling.rakutest"
+      ],
+      "top_level_tests": 14,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/046-rw.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 3.19,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/046-rw.rakutest"
+      ],
+      "top_level_tests": 20,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/047-rypervenche.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 8.59,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/047-rypervenche.rakutest"
+      ],
+      "top_level_tests": 5,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/048-source-source-id.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 3.03,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/048-source-source-id.rakutest"
+      ],
+      "top_level_tests": 4,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/049-experimental-formater.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 2.6,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/049-experimental-formater.rakutest"
+      ],
+      "top_level_tests": 10,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/050-experimental-name.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 2.61,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/050-experimental-name.rakutest"
+      ],
+      "top_level_tests": 4,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/051-pre-create-or-update.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 4.34,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/051-pre-create-or-update.rakutest"
+      ],
+      "top_level_tests": 20,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/052-schema.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 4.49,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/052-schema.rakutest"
+      ],
+      "top_level_tests": 20,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/053-unique.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 1.75,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/053-unique.rakutest"
+      ],
+      "top_level_tests": 3,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/054-hand-made-many-to-many.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 2.79,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/054-hand-made-many-to-many.rakutest"
+      ],
+      "top_level_tests": 4,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/055-no-optimization.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 1.04,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/055-no-optimization.rakutest"
+      ],
+      "top_level_tests": 0,
+      "skip_or_empty": true
+    },
+    {
+      "file": "/run/check/red/t/056-refreshable.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 3.93,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/056-refreshable.rakutest"
+      ],
+      "top_level_tests": 24,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/057-experimental.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 1.57,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/057-experimental.rakutest"
+      ],
+      "top_level_tests": 1,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/058-nm-relationship.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 4.47,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/058-nm-relationship.rakutest"
+      ],
+      "top_level_tests": 3,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/059-tomgraceys-schema.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 6.13,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/059-tomgraceys-schema.rakutest"
+      ],
+      "top_level_tests": 2,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/060-runtime-role.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 2.42,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/060-runtime-role.rakutest"
+      ],
+      "top_level_tests": 2,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/061-model-as-type.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 3.07,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/061-model-as-type.rakutest"
+      ],
+      "top_level_tests": 10,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/062-date-coercion.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 2.22,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/062-date-coercion.rakutest"
+      ],
+      "top_level_tests": 3,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/063-inflate-deflate.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 2.77,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/063-inflate-deflate.rakutest"
+      ],
+      "top_level_tests": 5,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/064-create-on-defined-obj.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 2.47,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/064-create-on-defined-obj.rakutest"
+      ],
+      "top_level_tests": 2,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/065-patrickb.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 3.58,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/065-patrickb.rakutest"
+      ],
+      "top_level_tests": 3,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/066-join-model.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 5.34,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/066-join-model.rakutest"
+      ],
+      "top_level_tests": 3,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/067-enums.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 1.78,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/067-enums.rakutest"
+      ],
+      "top_level_tests": 0,
+      "skip_or_empty": true
+    },
+    {
+      "file": "/run/check/red/t/068-red-config.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 8.01,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/068-red-config.rakutest"
+      ],
+      "top_level_tests": 1,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/069-array-columns.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 2.48,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/069-array-columns.rakutest"
+      ],
+      "top_level_tests": 6,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/070-submodel.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 3.83,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/070-submodel.rakutest"
+      ],
+      "top_level_tests": 12,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/071-conflicting-column-attribute.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 2.94,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/071-conflicting-column-attribute.rakutest"
+      ],
+      "top_level_tests": 3,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/072-agg-methods.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 3.76,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/072-agg-methods.rakutest"
+      ],
+      "top_level_tests": 32,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/073-red-defaults-from-module.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 9.45,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/073-red-defaults-from-module.rakutest"
+      ],
+      "top_level_tests": 16,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/074-enum-reassign.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 3.01,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/074-enum-reassign.rakutest"
+      ],
+      "top_level_tests": 2,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/075-patrick-operators.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 5.37,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/075-patrick-operators.rakutest"
+      ],
+      "top_level_tests": 3,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/076-view.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 2.14,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/076-view.rakutest"
+      ],
+      "top_level_tests": 4,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/077-red-type.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 3.09,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/077-red-type.rakutest"
+      ],
+      "top_level_tests": 5,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/078-datetime-function.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 4.85,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/078-datetime-function.rakutest"
+      ],
+      "top_level_tests": 10,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/079-group-sort.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 1.73,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/079-group-sort.rakutest"
+      ],
+      "top_level_tests": 0,
+      "skip_or_empty": true
+    },
+    {
+      "file": "/run/check/red/t/080-date-operator.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 4.42,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/080-date-operator.rakutest"
+      ],
+      "top_level_tests": 56,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/081-resultset-skip-locked.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 2.75,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/081-resultset-skip-locked.rakutest"
+      ],
+      "top_level_tests": 2,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/082-emakei.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 2.73,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/082-emakei.rakutest"
+      ],
+      "top_level_tests": 3,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/083-polymorphic.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 7.19,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/083-polymorphic.rakutest"
+      ],
+      "top_level_tests": 6,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/084-polymorphic2.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 6.19,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/084-polymorphic2.rakutest"
+      ],
+      "top_level_tests": 3,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/085-string-funcs.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 4.64,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/085-string-funcs.rakutest"
+      ],
+      "top_level_tests": 11,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/086-prefetch.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 6.16,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/086-prefetch.rakutest"
+      ],
+      "top_level_tests": 6,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/087-json-operations.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 9.91,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/087-json-operations.rakutest"
+      ],
+      "top_level_tests": 10,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/088-projection-chains.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 9.67,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/088-projection-chains.rakutest"
+      ],
+      "top_level_tests": 14,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/089-sql-tail.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 6.31,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/089-sql-tail.rakutest"
+      ],
+      "top_level_tests": 4,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/090-cross-product.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 9.99,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/090-cross-product.rakutest"
+      ],
+      "top_level_tests": 6,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/091-rakuast-compiler.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 3.58,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/091-rakuast-compiler.rakutest"
+      ],
+      "top_level_tests": 0,
+      "skip_or_empty": true
+    },
+    {
+      "file": "/run/check/red/t/092-rakuast-scope.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 1.67,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/092-rakuast-scope.rakutest"
+      ],
+      "top_level_tests": 0,
+      "skip_or_empty": true
+    },
+    {
+      "file": "/run/check/red/t/093-template-reuse.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 3.73,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/093-template-reuse.rakutest"
+      ],
+      "top_level_tests": 3,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/094-direct-ast-factories.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 3.54,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/094-direct-ast-factories.rakutest"
+      ],
+      "top_level_tests": 3,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/095-indexes.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 9.02,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/095-indexes.rakutest"
+      ],
+      "top_level_tests": 12,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/096-savepoints.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 3.5,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/096-savepoints.rakutest"
+      ],
+      "top_level_tests": 8,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/097-transaction-guard.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 6.93,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/097-transaction-guard.rakutest"
+      ],
+      "top_level_tests": 39,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/098-concurrent-query-projections.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 11.38,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/098-concurrent-query-projections.rakutest"
+      ],
+      "top_level_tests": 4,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/099-single-relationship-create.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 8.69,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/099-single-relationship-create.rakutest"
+      ],
+      "top_level_tests": 11,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/100-schema-constraints.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 5.8,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/100-schema-constraints.rakutest"
+      ],
+      "top_level_tests": 9,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/101-query-plans.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 5.62,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/101-query-plans.rakutest"
+      ],
+      "top_level_tests": 22,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/102-model-access.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 5.12,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/102-model-access.rakutest"
+      ],
+      "top_level_tests": 6,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/103-name-formatters.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 2.35,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/103-name-formatters.rakutest"
+      ],
+      "top_level_tests": 16,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/104-lazy-projection-resultseq.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 4.01,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/104-lazy-projection-resultseq.rakutest"
+      ],
+      "top_level_tests": 6,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/105-compiler-warnings.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 3.96,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/105-compiler-warnings.rakutest"
+      ],
+      "top_level_tests": 4,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/106-compiled-regex.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 4.17,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/106-compiled-regex.rakutest"
+      ],
+      "top_level_tests": 33,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/107-dirty-collections.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 3.97,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/107-dirty-collections.rakutest"
+      ],
+      "top_level_tests": 25,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/108-generated-projection-getters.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 2.46,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/108-generated-projection-getters.rakutest"
+      ],
+      "top_level_tests": 1,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/109-regex-dialects.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 48.59,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/109-regex-dialects.rakutest"
+      ],
+      "top_level_tests": 22,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/110-regex-no-fallback.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 4.01,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/110-regex-no-fallback.rakutest"
+      ],
+      "top_level_tests": 11,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/111-regex-repetitions.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 4.14,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/111-regex-repetitions.rakutest"
+      ],
+      "top_level_tests": 12,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/112-regex-positions.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 4.86,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/112-regex-positions.rakutest"
+      ],
+      "top_level_tests": 21,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/113-regex-named-assertions.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 3.9,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/113-regex-named-assertions.rakutest"
+      ],
+      "top_level_tests": 31,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/114-regex-assertion-captures.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 3.75,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/114-regex-assertion-captures.rakutest"
+      ],
+      "top_level_tests": 17,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/115-regex-repeated-scopes.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 4.71,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/115-regex-repeated-scopes.rakutest"
+      ],
+      "top_level_tests": 11,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/116-regex-capture-reads.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 5.22,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/116-regex-capture-reads.rakutest"
+      ],
+      "top_level_tests": 28,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/117-regex-capture-presence.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 4.07,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/117-regex-capture-presence.rakutest"
+      ],
+      "top_level_tests": 17,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/118-regex-whole-text.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 3.52,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/118-regex-whole-text.rakutest"
+      ],
+      "top_level_tests": 15,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/119-regex-logical-captures.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 3.83,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/119-regex-logical-captures.rakutest"
+      ],
+      "top_level_tests": 17,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/120-regex-cache-driver.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 2.83,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/120-regex-cache-driver.rakutest"
+      ],
+      "top_level_tests": 10,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/121-regex-property-literals.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 5.86,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/121-regex-property-literals.rakutest"
+      ],
+      "top_level_tests": 8,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/122-regex-text-methods.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 3.04,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/122-regex-text-methods.rakutest"
+      ],
+      "top_level_tests": 8,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/123-regex-capture-chars.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 4.91,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/123-regex-capture-chars.rakutest"
+      ],
+      "top_level_tests": 11,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/124-compiler-callables.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 200.44,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/124-compiler-callables.rakutest"
+      ],
+      "top_level_tests": 76,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/125-pg-driver-not-installed.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 158.68,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/125-pg-driver-not-installed.rakutest"
+      ],
+      "top_level_tests": 6,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/126-migration-snapshot.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 6.91,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/126-migration-snapshot.rakutest"
+      ],
+      "top_level_tests": 10,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/127-versioned-migrations.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 49.32,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/127-versioned-migrations.rakutest"
+      ],
+      "top_level_tests": 17,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/128-migration-incremental.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 33.96,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/128-migration-incremental.rakutest"
+      ],
+      "top_level_tests": 12,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/129-migration-cli.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 264.84,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/129-migration-cli.rakutest"
+      ],
+      "top_level_tests": 31,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/130-migration-failures.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 7.56,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/130-migration-failures.rakutest"
+      ],
+      "top_level_tests": 10,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/131-migration-planner.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 8.61,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/131-migration-planner.rakutest"
+      ],
+      "top_level_tests": 12,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/132-migration-locks.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 5.76,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/132-migration-locks.rakutest"
+      ],
+      "top_level_tests": 3,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/133-migration-alter.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 11.62,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/133-migration-alter.rakutest"
+      ],
+      "top_level_tests": 8,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/134-migration-preparation.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 3.37,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/134-migration-preparation.rakutest"
+      ],
+      "top_level_tests": 13,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/135-migration-directories.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 4.58,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/135-migration-directories.rakutest"
+      ],
+      "top_level_tests": 13,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/136-migration-test-environment.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 13.01,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/136-migration-test-environment.rakutest"
+      ],
+      "top_level_tests": 9,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/137-migration-serialize.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 40.74,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/137-migration-serialize.rakutest"
+      ],
+      "top_level_tests": 6,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/138-migration-backfill.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 38.33,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/138-migration-backfill.rakutest"
+      ],
+      "top_level_tests": 13,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/139-migration-serialization-conflicts.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 5.55,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/139-migration-serialization-conflicts.rakutest"
+      ],
+      "top_level_tests": 3,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/140-migration-workflow.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 62.67,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/140-migration-workflow.rakutest"
+      ],
+      "top_level_tests": 7,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/141-migration-ancestry.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 65.68,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/141-migration-ancestry.rakutest"
+      ],
+      "top_level_tests": 5,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/142-migration-config-builder.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 7.68,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/142-migration-config-builder.rakutest"
+      ],
+      "top_level_tests": 16,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/143-database-client.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 17.29,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/143-database-client.rakutest"
+      ],
+      "top_level_tests": 13,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/144-migration-artifacts.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 4.21,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/144-migration-artifacts.rakutest"
+      ],
+      "top_level_tests": 11,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/145-migration-expression-registration.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 2.76,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/145-migration-expression-registration.rakutest"
+      ],
+      "top_level_tests": 3,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/146-synchronous-migration-compiler.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 7.21,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/146-synchronous-migration-compiler.rakutest"
+      ],
+      "top_level_tests": 22,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/147-synchronous-migrations.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 17.88,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/147-synchronous-migrations.rakutest"
+      ],
+      "top_level_tests": 21,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/148-migration-bundle.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 2.47,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/148-migration-bundle.rakutest"
+      ],
+      "top_level_tests": 6,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/148-synchronous-history.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 110.19,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/148-synchronous-history.rakutest"
+      ],
+      "top_level_tests": 8,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/149-migration-import.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 6.85,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/149-migration-import.rakutest"
+      ],
+      "top_level_tests": 17,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/149-synchronous-explicit-sql.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 13.19,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/149-synchronous-explicit-sql.rakutest"
+      ],
+      "top_level_tests": 6,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/150-migration-discovery.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 5.8,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/150-migration-discovery.rakutest"
+      ],
+      "top_level_tests": 8,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/150-synchronous-cli.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 107.93,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/150-synchronous-cli.rakutest"
+      ],
+      "top_level_tests": 17,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/151-migration-import-history.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 37.32,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/151-migration-import-history.rakutest"
+      ],
+      "top_level_tests": 18,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/151-runtime-configuration.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 57.0,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/151-runtime-configuration.rakutest"
+      ],
+      "top_level_tests": 27,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/152-migration-complete-bundle.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 208.21,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/152-migration-complete-bundle.rakutest"
+      ],
+      "top_level_tests": 54,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/153-migration-bundle-safety.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 15.17,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/153-migration-bundle-safety.rakutest"
+      ],
+      "top_level_tests": 12,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/154-migration-five-levels.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "timeout_seconds": 600,
+      "seconds": 318.98,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/154-migration-five-levels.rakutest"
+      ],
+      "top_level_tests": 95,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/155-migration-publication-recovery.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 29.91,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/155-migration-publication-recovery.rakutest"
+      ],
+      "top_level_tests": 11,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/156-migration-resolve.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 14.24,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/156-migration-resolve.rakutest"
+      ],
+      "top_level_tests": 4,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/157-migration-diamond.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 89.98,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/157-migration-diamond.rakutest"
+      ],
+      "top_level_tests": 23,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/158-migration-adoption-serialize.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "seconds": 149.43,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/158-migration-adoption-serialize.rakutest"
+      ],
+      "top_level_tests": 16,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/159-fixtures.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "timeout_seconds": 600,
+      "seconds": 66.07,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/159-fixtures.rakutest"
+      ],
+      "top_level_tests": 18,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/160-fixture-data.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "timeout_seconds": 600,
+      "seconds": 12.18,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/160-fixture-data.rakutest"
+      ],
+      "top_level_tests": 19,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/161-migration-reset.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "timeout_seconds": 600,
+      "seconds": 16.38,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/161-migration-reset.rakutest"
+      ],
+      "top_level_tests": 33,
+      "skip_or_empty": false
+    },
+    {
+      "file": "/run/check/red/t/162-migration-reset-cli.rakutest",
+      "driver": "Pg",
+      "exit_code": 0,
+      "timeout_seconds": 600,
+      "seconds": 49.98,
+      "command": [
+        "bash",
+        "/run/check/pg/tools/pg-test-exec.sh",
+        "/run/check/red/t/162-migration-reset-cli.rakutest"
+      ],
+      "top_level_tests": 18,
+      "skip_or_empty": false
+    }
+  ]
+}

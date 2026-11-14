@@ -1,0 +1,28 @@
+use Test;
+use Red;
+use Red::Migration::Planner;
+use Red::Migration::Snapshot;
+
+my $*RED-DB = database 'DuckDB';
+my $db = $*RED-DB;
+model Entry is table<MigrationEntry> {
+    has Int $.id is serial;
+    has Str $.label is column;
+}
+my $planner = Red::Migration::Planner.new(:driver($db), :dialect<DuckDB>);
+my $empty = Red::Migration::Snapshot.new(:tables[]);
+my $schema = $planner.capture([Entry]);
+my @up = $planner.diff($empty, $schema);
+is @up.elems, 2, 'sequence and table are generated';
+lives-ok { $db.execute($_) for @up }, 'generated SQL executes';
+my $first = Entry.^create(:label<one>);
+my $second = Entry.^create(:label<two>);
+is $first.id, 1, 'automatic ID starts at one';
+is $second.id, 2, 'automatic ID advances';
+my @down = $planner.diff($schema, $empty, :allow-destructive);
+is @down.elems, 2, 'rollback removes table and owned sequence';
+lives-ok { $db.execute($_) for @down }, 'rollback SQL executes';
+lives-ok { $db.execute($_) for @up }, 'schema can be recreated after rollback';
+is Entry.^create(:label<again>).id, 1, 'recreated sequence starts fresh';
+$db.execute($_) for @down;
+done-testing;

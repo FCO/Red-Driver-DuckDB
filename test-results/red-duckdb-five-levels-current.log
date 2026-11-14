@@ -1,0 +1,97 @@
+ok 1 - import succeeds (DuckDB, level-1)
+ok 2 - prepare succeeds (DuckDB, level-1)
+ok 3 - prepare succeeds (DuckDB, level-1)
+ok 4 - bundle succeeds (DuckDB, level-1)
+ok 5 - bundle contains only the two owned migrations
+ok 6 - level 1 publishes both versions
+ok 7 - import succeeds (DuckDB, level-2)
+ok 8 - prepare succeeds (DuckDB, level-2)
+ok 9 - prepare succeeds (DuckDB, level-2)
+ok 10 - bundle succeeds (DuckDB, level-2)
+ok 11 - bundle contains only the two owned migrations
+ok 12 - level 2 publishes both versions
+ok 13 - import succeeds (DuckDB, level-3)
+ok 14 - prepare succeeds (DuckDB, level-3)
+ok 15 - prepare succeeds (DuckDB, level-3)
+ok 16 - bundle succeeds (DuckDB, level-3)
+ok 17 - bundle contains only the two owned migrations
+ok 18 - level 3 publishes both versions
+ok 19 - import succeeds (DuckDB, level-4)
+ok 20 - prepare succeeds (DuckDB, level-4)
+ok 21 - prepare succeeds (DuckDB, level-4)
+ok 22 - bundle succeeds (DuckDB, level-4)
+ok 23 - bundle contains only the two owned migrations
+ok 24 - level 4 publishes both versions
+ok 25 - import succeeds (DuckDB, level-5)
+ok 26 - prepare succeeds (DuckDB, level-5)
+ok 27 - prepare succeeds (DuckDB, level-5)
+ok 28 - bundle succeeds (DuckDB, level-5)
+ok 29 - bundle contains only the two owned migrations
+ok 30 - level 5 publishes both versions
+ok 31 - all ten published migration IDs are unique
+ok 32 - import succeeds (DuckDB, application)
+ok 33 - leaf dependency discovers all five levels
+ok 34 - original IDs and transitive predecessor order survive installation and import
+ok 35 - import succeeds (DuckDB, application)
+ok 36 - transitive reimport is idempotent
+ok 37 - discovery/import never initializes fixture model modules
+ok 38 - apply succeeds (DuckDB, application)
+ok 39 - executes every dependency version
+ok 40 - apply succeeds (DuckDB, application)
+ok 41 - second application executes nothing
+ok 42 - imported schema is consistent
+ok 43 - level 1 accepts real data
+ok 44 - level 1 has its nullable second-migration column
+ok 45 - level 2 accepts real data
+ok 46 - level 2 has its nullable second-migration column
+ok 47 - level 3 accepts real data
+ok 48 - level 3 has its nullable second-migration column
+ok 49 - level 4 accepts real data
+ok 50 - level 4 has its nullable second-migration column
+ok 51 - level 5 accepts real data
+ok 52 - level 5 has its nullable second-migration column
+ok 53 - five-level foreign-key chain can be joined
+ok 54 - prepare succeeds (DuckDB, level-5)
+ok 55 - bundle succeeds (DuckDB, level-5)
+ok 56 - new leaf release adds one owned version
+ok 57 - adopt succeeds (DuckDB, application)
+ok 58 - transfers ownership of Red-Migration-Chain-5:auth<zef:red-chain-test>
+ok 59 - adopt succeeds (DuckDB, application)
+ok 60 - transfers ownership of Red-Migration-Chain-4:auth<zef:red-chain-test>
+ok 61 - adopt succeeds (DuckDB, application)
+ok 62 - transfers ownership of Red-Migration-Chain-3:auth<zef:red-chain-test>
+ok 63 - adopt succeeds (DuckDB, application)
+ok 64 - transfers ownership of Red-Migration-Chain-2:auth<zef:red-chain-test>
+ok 65 - adopt succeeds (DuckDB, application)
+ok 66 - transfers ownership of Red-Migration-Chain-1:auth<zef:red-chain-test>
+ok 67 - adoption appends only the new leaf migration
+ok 68 - adoption leaves new SQL pending
+ok 69 - apply succeeds (DuckDB, application)
+ok 70 - applies only the newly adopted migration
+ok 71 - adopting and upgrading retains existing leaf data
+ok 72 - all adoption operations remain metadata-only
+ok 73 - five separately adopted historical schemas compose correctly
+ok 74 - all prefixes, rollback and reapplication pass in disposable database
+ok 75 - bundle succeeds (DuckDB, application)
+ok 76 - republishes all adopted versions without original dependencies
+ok 77 - adopt succeeds (DuckDB, orphan)
+ok 78 - adopts republished package after all five original distributions were removed
+ok 79 - apply succeeds (DuckDB, orphan)
+ok 80 - fresh process installs entire history without any fixture distribution
+ok 81 - republishing preserves all original IDs
+ok 82 - republished baseline covers all five schemas
+ok 83 - level 1 accepts real data
+ok 84 - level 1 has its nullable second-migration column
+ok 85 - level 2 accepts real data
+ok 86 - level 2 has its nullable second-migration column
+ok 87 - level 3 accepts real data
+ok 88 - level 3 has its nullable second-migration column
+ok 89 - level 4 accepts real data
+ok 90 - level 4 has its nullable second-migration column
+ok 91 - level 5 accepts real data
+ok 92 - level 5 has its nullable second-migration column
+ok 93 - five-level foreign-key chain can be joined
+ok 94 - self-contained republished history also passes rollback/prefix tests
+ok 95 - consumer processes never loaded any original model module
+1..95
+# Five installed distribution levels: DuckDB; RakuAST=0

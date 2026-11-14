@@ -1,0 +1,18 @@
+use Test;
+use Red;
+use Red::Driver::DuckDB;
+my $*RED-DB = database 'DuckDB';
+model DropParentDuck { has Int $.id is serial }
+model DropChildDuck {
+    has Int $.id is serial;
+    has Int $.parent-id is referencing(*.id, :model<DropParentDuck>);
+}
+my $schema = schema(DropParentDuck, DropChildDuck);
+for ^3 {
+    lives-ok { $schema.drop.create }, 'schema recreation orders FK dependencies';
+    my $parent = DropParentDuck.^create;
+    DropChildDuck.^create(:parent-id($parent.id));
+}
+lives-ok { $schema.drop }, 'drop populated schema child-first';
+is-deeply $*RED-DB.schema-reader.tables-names.Array, [], 'all requested tables removed';
+done-testing;

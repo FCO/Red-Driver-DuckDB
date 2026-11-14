@@ -1,0 +1,41 @@
+{
+  "snapshot_sha256": "e8bc370ad3cc95a56e3d811a3e22a71b00a0f41699060f9674e80eee3d6ca00a",
+  "red_commit": "589fc491a8544b0d9c2f0a086431256a71322689",
+  "red_working_tree_modified": true,
+  "pg_commit": "0131fe7e0295a06303b78041387443159e368e25",
+  "mysql_commit": "abe3a0ee01f62dc7f4da371c74a4a3bdddf77ddb",
+  "server_versions": [
+    "PostgreSQL 15",
+    "MySQL 8.4"
+  ],
+  "image": "red-migrations-dev:local",
+  "container_rakudo": "2026.09",
+  "sqlite_mode": "default, RED_DATABASE unset",
+  "initial_image_attempts": "Invalid for migrations: missing Configuration; excluded from final regression evidence.",
+  "final_snapshot_sha256": "9cd49f22fb99b579498f765d8ff6bd5edfc58723c14f8590cd03a06753249d7a",
+  "mysql_working_tree_modified": true,
+  "validation_summary": {
+    "Pg": {
+      "red_files": 167,
+      "red_top_level_tests": 2161,
+      "red_skipped_or_empty": 10,
+      "driver_files": 3,
+      "driver_top_level_tests": 26,
+      "result": "PASS"
+    },
+    "MySQL": {
+      "red_files": 167,
+      "red_top_level_tests": 2190,
+      "red_skipped_or_empty": 10,
+      "driver_files": 11,
+      "driver_top_level_tests": 114,
+      "result": "PASS"
+    },
+    "SQLite": {
+      "red_files": 167,
+      "red_top_level_tests": 2313,
+      "result": "PASS",
+      "mode": "RED_DATABASE unset, native macOS"
+    }
+  }
+}

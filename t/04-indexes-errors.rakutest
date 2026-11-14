@@ -1,0 +1,19 @@
+use Test;
+use Red;
+use Red::Driver::DuckDB;
+my $*RED-DB = database 'DuckDB';
+model IndexedDuck { has Int $.id is serial; has Str $.name is column{ :unique } }
+IndexedDuck.^create-table;
+IndexedDuck.^create(:name<one>);
+throws-like { IndexedDuck.^create(:name<one>) }, X::Red::Driver::Mapped::Unique, 'unique exception';
+throws-like { IndexedDuck.^create-table }, X::Red::Driver::Mapped::TableExists, 'existing table exception';
+$*RED-DB.execute('CREATE INDEX idx_duck_name ON indexed_duck (name)');
+my @indexes = $*RED-DB.indexes-for-table('indexed_duck').grep(*.<name> eq 'idx_duck_name');
+is @indexes.elems, 1, 'index catalog';
+is @indexes[0]<name>, 'idx_duck_name', 'index name';
+ok @indexes[0]<keys>.elems == 1, 'index keys';
+my $row = IndexedDuck.^all.head;
+lives-ok { IndexedDuck.^all.map(*.name.uc).head }, 'SQL expression';
+is IndexedDuck.^all.grep(*.name eq 'one').elems, 1, 'filter';
+is IndexedDuck.^all.sort(*.name).head.name, 'one', 'ordering';
+done-testing;

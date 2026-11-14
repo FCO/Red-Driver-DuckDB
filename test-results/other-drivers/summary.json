@@ -1,0 +1,24 @@
+{
+  "Pg": {
+    "red_files": 167,
+    "red_top_level_tests": 2161,
+    "red_skipped_or_empty": 10,
+    "driver_files": 3,
+    "driver_top_level_tests": 26,
+    "result": "PASS"
+  },
+  "MySQL": {
+    "red_files": 167,
+    "red_top_level_tests": 2190,
+    "red_skipped_or_empty": 10,
+    "driver_files": 11,
+    "driver_top_level_tests": 114,
+    "result": "PASS"
+  },
+  "SQLite": {
+    "red_files": 167,
+    "red_top_level_tests": 2313,
+    "result": "PASS",
+    "mode": "RED_DATABASE unset, native macOS"
+  }
+}

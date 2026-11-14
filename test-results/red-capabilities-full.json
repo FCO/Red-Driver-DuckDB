@@ -1,0 +1,2684 @@
+{
+  "files": 167,
+  "pass_files": 158,
+  "failed_files": 0,
+  "skipped_or_empty_files": 9,
+  "top_level_tests": 2161,
+  "unsupported_savepoint_subtests": 15,
+  "wallclock_seconds": 242,
+  "result": "PASS",
+  "files_detail": [
+    {
+      "file": "t/000-meta.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 1.07,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/000-meta.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 1,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/001-tdd.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 2.24,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/001-tdd.rakutest"
+      ],
+      "skip_or_empty": true,
+      "top_level_tests": 0,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/002-sqlite.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 1.29,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/002-sqlite.rakutest"
+      ],
+      "skip_or_empty": true,
+      "top_level_tests": 0,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/003-blog.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 2.82,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/003-blog.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 28,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/004-ticket.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 2.88,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/004-ticket.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 19,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/005-better-map.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 1.24,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/005-better-map.rakutest"
+      ],
+      "skip_or_empty": true,
+      "top_level_tests": 0,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/006-optimizer.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 1.66,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/006-optimizer.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 66,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/007-best-tree.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 2.77,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/007-best-tree.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 17,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/008-alternate-relation.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 2.13,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/008-alternate-relation.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 15,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/009-alternate-relation-modules.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 3.0,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/009-alternate-relation-modules.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 9,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/010-join.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 1.97,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/010-join.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 1,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/011-types.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 2.13,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/011-types.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 2,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/012-roles.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 2.56,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/012-roles.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 8,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/013-result-seq-update.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 1.77,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/013-result-seq-update.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 1,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/014-union.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 1.89,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/014-union.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 18,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/015-result-seq-bool.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 1.8,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/015-result-seq-bool.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 2,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/016-create-related-pars.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 2.16,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/016-create-related-pars.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 14,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/017-pp.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 2.94,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/017-pp.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 4,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/018-phasers.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 2.12,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/018-phasers.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 34,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/019-in-sql.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 3.77,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/019-in-sql.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 26,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/020-new-with-id.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 0.94,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/020-new-with-id.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 2,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/021-red-do.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 4.06,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/021-red-do.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 26,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/022-edit-id.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 1.9,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/022-edit-id.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 7,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/023-metamodel-model.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 3.55,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/023-metamodel-model.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 66,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/024-grep-no-AND-OR.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 2.04,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/024-grep-no-AND-OR.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 3,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/025-is-rw.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 2.17,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/025-is-rw.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 4,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/026-classify.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 3.51,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/026-classify.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 25,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/027-LPW-2019.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 2.76,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/027-LPW-2019.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 6,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/028-events.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 3.38,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/028-events.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 29,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/029-result-seq-pick.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 2.09,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/029-result-seq-pick.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 3,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/030-update.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 2.32,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/030-update.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 7,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/031-join.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 1.85,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/031-join.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 2,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/032-join.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 1.96,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/032-join.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 3,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/033-join.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 1.89,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/033-join.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 1,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/034-ast-generic.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 2.93,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/034-ast-generic.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 16,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/035-create.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 3.47,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/035-create.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 7,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/036-default-deflate.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 2.8,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/036-default-deflate.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 5,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/037-json.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 2.77,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/037-json.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 6,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/038-equal.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 2.23,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/038-equal.rakutest"
+      ],
+      "skip_or_empty": true,
+      "top_level_tests": 0,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/039-xmas.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 4.46,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/039-xmas.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 13,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/040-relationship-multiple-columns.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 1.22,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/040-relationship-multiple-columns.rakutest"
+      ],
+      "skip_or_empty": true,
+      "top_level_tests": 0,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/041-fallback.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 2.81,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/041-fallback.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 2,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/042-create-table.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 2.01,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/042-create-table.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 4,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/043-prefetch.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 4.11,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/043-prefetch.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 101,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/044-error-without-id.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 1.55,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/044-error-without-id.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 1,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/045-is-handling.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 2.32,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/045-is-handling.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 14,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/046-rw.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 2.19,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/046-rw.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 20,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/047-rypervenche.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 3.47,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/047-rypervenche.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 5,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/048-source-source-id.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 2.53,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/048-source-source-id.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 4,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/049-experimental-formater.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 1.5,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/049-experimental-formater.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 10,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/050-experimental-name.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 1.77,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/050-experimental-name.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 4,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/051-pre-create-or-update.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 2.74,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/051-pre-create-or-update.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 20,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/052-schema.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 3.43,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/052-schema.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 20,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/053-unique.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 0.93,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/053-unique.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 3,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/054-hand-made-many-to-many.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 2.5,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/054-hand-made-many-to-many.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 4,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/055-no-optimization.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 0.43,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/055-no-optimization.rakutest"
+      ],
+      "skip_or_empty": true,
+      "top_level_tests": 0,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/056-refreshable.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 2.56,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/056-refreshable.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 24,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/057-experimental.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 0.85,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/057-experimental.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 1,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/058-nm-relationship.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 2.62,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/058-nm-relationship.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 3,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/059-tomgraceys-schema.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 3.32,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/059-tomgraceys-schema.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 2,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/060-runtime-role.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 1.64,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/060-runtime-role.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 2,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/061-model-as-type.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 3.04,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/061-model-as-type.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 10,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/062-date-coercion.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 3.33,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/062-date-coercion.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 3,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/063-inflate-deflate.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 4.26,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/063-inflate-deflate.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 5,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/064-create-on-defined-obj.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 3.75,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/064-create-on-defined-obj.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 2,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/065-patrickb.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 5.71,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/065-patrickb.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 3,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/066-join-model.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 7.81,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/066-join-model.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 3,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/067-enums.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 2.94,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/067-enums.rakutest"
+      ],
+      "skip_or_empty": true,
+      "top_level_tests": 0,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/068-red-config.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 5.75,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/068-red-config.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 1,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/069-array-columns.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 5.46,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/069-array-columns.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 6,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/070-submodel.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 5.42,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/070-submodel.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 12,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/071-conflicting-column-attribute.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 4.44,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/071-conflicting-column-attribute.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 3,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/072-agg-methods.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 5.34,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/072-agg-methods.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 32,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/073-red-defaults-from-module.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 6.24,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/073-red-defaults-from-module.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 16,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/074-enum-reassign.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 1.25,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/074-enum-reassign.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 2,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/075-patrick-operators.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 3.5,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/075-patrick-operators.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 3,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/076-view.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 3.43,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/076-view.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 4,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/077-red-type.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 3.13,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/077-red-type.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 5,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/078-datetime-function.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 4.42,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/078-datetime-function.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 10,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/079-group-sort.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 2.74,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/079-group-sort.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 2,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/080-date-operator.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 3.56,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/080-date-operator.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 56,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/081-resultset-skip-locked.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 2.51,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/081-resultset-skip-locked.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 2,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/082-emakei.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 2.74,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/082-emakei.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 3,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/083-polymorphic.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 4.52,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/083-polymorphic.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 6,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/084-polymorphic2.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 4.31,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/084-polymorphic2.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 3,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/085-string-funcs.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 3.0,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/085-string-funcs.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 11,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/086-prefetch.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 4.79,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/086-prefetch.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 6,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/087-json-operations.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 7.79,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/087-json-operations.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 10,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/088-projection-chains.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 8.21,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/088-projection-chains.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 14,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/089-sql-tail.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 4.91,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/089-sql-tail.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 4,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/090-cross-product.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 8.0,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/090-cross-product.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 6,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/091-rakuast-compiler.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 2.25,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/091-rakuast-compiler.rakutest"
+      ],
+      "skip_or_empty": true,
+      "top_level_tests": 0,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/092-rakuast-scope.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 1.79,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/092-rakuast-scope.rakutest"
+      ],
+      "skip_or_empty": true,
+      "top_level_tests": 0,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/093-template-reuse.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 1.68,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/093-template-reuse.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 3,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/094-direct-ast-factories.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 1.81,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/094-direct-ast-factories.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 3,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/095-indexes.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 5.53,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/095-indexes.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 12,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/096-savepoints.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 2.71,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/096-savepoints.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 9,
+      "unsupported_savepoint_subtests": 7
+    },
+    {
+      "file": "t/097-transaction-guard.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 5.08,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/097-transaction-guard.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 39,
+      "unsupported_savepoint_subtests": 6
+    },
+    {
+      "file": "t/098-concurrent-query-projections.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 7.34,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/098-concurrent-query-projections.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 4,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/099-single-relationship-create.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 5.81,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/099-single-relationship-create.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 12,
+      "unsupported_savepoint_subtests": 2
+    },
+    {
+      "file": "t/100-schema-constraints.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 5.9,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/100-schema-constraints.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 9,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/101-query-plans.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 5.12,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/101-query-plans.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 22,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/102-model-access.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 3.23,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/102-model-access.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 6,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/103-name-formatters.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 0.77,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/103-name-formatters.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 16,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/104-lazy-projection-resultseq.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 3.77,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/104-lazy-projection-resultseq.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 6,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/105-compiler-warnings.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 2.73,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/105-compiler-warnings.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 4,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/106-compiled-regex.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 3.62,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/106-compiled-regex.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 33,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/107-dirty-collections.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 3.75,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/107-dirty-collections.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 25,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/108-generated-projection-getters.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 1.78,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/108-generated-projection-getters.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 1,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/109-regex-dialects.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 37.1,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/109-regex-dialects.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 22,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/110-regex-no-fallback.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 2.17,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/110-regex-no-fallback.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 11,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/111-regex-repetitions.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 3.56,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/111-regex-repetitions.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 12,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/112-regex-positions.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 6.22,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/112-regex-positions.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 21,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/113-regex-named-assertions.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 12.35,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/113-regex-named-assertions.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 31,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/114-regex-assertion-captures.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 20.87,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/114-regex-assertion-captures.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 17,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/115-regex-repeated-scopes.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 4.28,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/115-regex-repeated-scopes.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 11,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/116-regex-capture-reads.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 4.33,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/116-regex-capture-reads.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 13,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/117-regex-capture-presence.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 3.48,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/117-regex-capture-presence.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 17,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/118-regex-whole-text.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 3.58,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/118-regex-whole-text.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 15,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/119-regex-logical-captures.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 3.72,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/119-regex-logical-captures.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 17,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/120-regex-cache-driver.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 2.22,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/120-regex-cache-driver.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 10,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/121-regex-property-literals.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 4.28,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/121-regex-property-literals.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 8,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/122-regex-text-methods.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 3.11,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/122-regex-text-methods.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 8,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/123-regex-capture-chars.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 3.67,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/123-regex-capture-chars.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 11,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/124-compiler-callables.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 8.88,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/124-compiler-callables.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 76,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/125-pg-driver-not-installed.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 2.26,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/125-pg-driver-not-installed.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 6,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/126-migration-snapshot.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 2.68,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/126-migration-snapshot.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 10,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/127-versioned-migrations.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 5.55,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/127-versioned-migrations.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 17,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/128-migration-incremental.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 7.95,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/128-migration-incremental.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 12,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/129-migration-cli.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 60.61,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/129-migration-cli.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 31,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/130-migration-failures.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 5.09,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/130-migration-failures.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 10,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/131-migration-planner.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 6.52,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/131-migration-planner.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 12,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/132-migration-locks.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 4.01,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/132-migration-locks.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 3,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/133-migration-alter.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 6.83,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/133-migration-alter.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 8,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/134-migration-preparation.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 3.4,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/134-migration-preparation.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 13,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/135-migration-directories.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 3.81,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/135-migration-directories.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 13,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/136-migration-test-environment.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 10.05,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/136-migration-test-environment.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 9,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/137-migration-serialize.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 26.81,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/137-migration-serialize.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 6,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/138-migration-backfill.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 24.29,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/138-migration-backfill.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 13,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/139-migration-serialization-conflicts.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 3.52,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/139-migration-serialization-conflicts.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 3,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/140-migration-workflow.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 23.45,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/140-migration-workflow.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 7,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/141-migration-ancestry.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 39.09,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/141-migration-ancestry.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 5,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/142-migration-config-builder.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 2.22,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/142-migration-config-builder.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 16,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/143-database-client.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 9.33,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/143-database-client.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 13,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/144-migration-artifacts.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 2.65,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/144-migration-artifacts.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 11,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/145-migration-expression-registration.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 1.25,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/145-migration-expression-registration.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 3,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/146-synchronous-migration-compiler.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 3.98,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/146-synchronous-migration-compiler.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 22,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/147-synchronous-migrations.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 13.83,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/147-synchronous-migrations.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 21,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/148-migration-bundle.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 0.6,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/148-migration-bundle.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 6,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/148-synchronous-history.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 46.12,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/148-synchronous-history.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 8,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/149-migration-import.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 6.56,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/149-migration-import.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 17,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/149-synchronous-explicit-sql.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 7.62,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/149-synchronous-explicit-sql.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 6,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/150-migration-discovery.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 2.66,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/150-migration-discovery.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 8,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/150-synchronous-cli.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 29.14,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/150-synchronous-cli.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 17,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/151-migration-import-history.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 12.73,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/151-migration-import-history.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 18,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/151-runtime-configuration.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 15.8,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/151-runtime-configuration.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 27,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/152-migration-complete-bundle.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 48.04,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/152-migration-complete-bundle.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 54,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/153-migration-bundle-safety.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 4.81,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/153-migration-bundle-safety.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 12,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/154-migration-five-levels.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 142.26,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/154-migration-five-levels.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 95,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/155-migration-publication-recovery.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 4.09,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/155-migration-publication-recovery.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 11,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/156-migration-resolve.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 3.84,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/156-migration-resolve.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 4,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/157-migration-diamond.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 26.92,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/157-migration-diamond.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 23,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/158-migration-adoption-serialize.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 35.9,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/158-migration-adoption-serialize.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 16,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/159-fixtures.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 20.45,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/159-fixtures.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 18,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/160-fixture-data.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 6.77,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/160-fixture-data.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 19,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/161-migration-reset.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 10.21,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/161-migration-reset.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 33,
+      "unsupported_savepoint_subtests": 0
+    },
+    {
+      "file": "t/162-migration-reset-cli.rakutest",
+      "driver": "DuckDB",
+      "exit_code": 0,
+      "seconds": 19.7,
+      "command": [
+        "/Users/fernando/.rakubrew/shims/raku",
+        "-I/Users/fernando/Projects/Red/lib",
+        "-I/Users/fernando/Projects/Red-Driver-DuckDB/lib",
+        "-MRed::Driver::DuckDB",
+        "/Users/fernando/Projects/Red/t/162-migration-reset-cli.rakutest"
+      ],
+      "skip_or_empty": false,
+      "top_level_tests": 18,
+      "unsupported_savepoint_subtests": 0
+    }
+  ]
+}

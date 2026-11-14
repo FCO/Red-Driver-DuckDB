@@ -1,0 +1,12 @@
+NOTICE:  table "pg_serial" does not exist, skipping
+NOTICE:  table "pg_json" does not exist, skipping
+NOTICE:  table "natural_key" does not exist, skipping
+NOTICE:  table "composite_key" does not exist, skipping
+NOTICE:  table "reader_parent" does not exist, skipping
+NOTICE:  table "reader_child" does not exist, skipping
+../pg/t/00-pg-test-runner.rakutest .......... ok
+../pg/t/01-pg.rakutest ...................... ok
+../pg/t/02-schema-reader.rakutest ........... ok
+All tests successful.
+Files=3, Tests=26,  2 wallclock secs
+Result: PASS

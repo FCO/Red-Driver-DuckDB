@@ -1,0 +1,8 @@
+t/081-resultset-skip-locked.rakutest ....... ok
+t/017-pp.rakutest .......................... ok
+t/096-savepoints.rakutest .................. ok
+t/097-transaction-guard.rakutest ........... ok
+t/099-single-relationship-create.rakutest .. ok
+All tests successful.
+Files=5, Tests=61,  6 wallclock secs
+Result: PASS

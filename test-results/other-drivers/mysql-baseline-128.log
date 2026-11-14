@@ -1,0 +1,18 @@
+ok 1 - initial migration applied
+ok 2 - incremental migration applied
+ok 3 - existing data preserved
+Constrained column alteration requires an explicit migration: migration_incremental.id
+  in method error at /run/baseline/lib/Red/Migration/Planner.rakumod (Red::Migration::Planner) line 13
+  in block  at /run/baseline/lib/Red/Migration/Planner.rakumod (Red::Migration::Planner) line 141
+  in method diff at /run/baseline/lib/Red/Migration/Planner.rakumod (Red::Migration::Planner) line 132
+  in method plan at /run/baseline/lib/Red/Migration/Manager.rakumod (Red::Migration::Manager) line 1354
+  in block <unit> at /run/baseline/t/128-migration-incremental.rakutest line 39
+
+Saw 1 occurrence of deprecated code.
+================================================================================
+Sub BPointer (from NativeHelpers::Blob) seen at:
+  /usr/share/perl6/site/sources/0E8AA45C3D8980AB4BE9503981789C18DD7CC0DA (DBDish::mysql::StatementHandle), lines 65,72,74,86,171
+Please use pointer-to instead.
+--------------------------------------------------------------------------------
+Please contact the author to have these occurrences of deprecated code
+adapted, so that this message will disappear!

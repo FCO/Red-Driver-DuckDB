@@ -1,0 +1,6 @@
+../Red/t/133-migration-alter.rakutest ......... ok
+../Red/t/147-synchronous-migrations.rakutest .. ok
+../Red/t/161-migration-reset.rakutest ......... ok
+All tests successful.
+Files=3, Tests=50,  19 wallclock secs
+Result: PASS

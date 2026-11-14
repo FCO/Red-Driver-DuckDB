@@ -1,0 +1,68 @@
+Saw 1 occurrence of deprecated code.
+================================================================================
+Method perl-type (from Red::Cli::Column) seen at:
+  /run/check/mysql/t/03-schema-reader.t, line 39
+Please use raku-type instead.
+--------------------------------------------------------------------------------
+Please contact the author to have these occurrences of deprecated code
+adapted, so that this message will disappear!
+../mysql/t/03-schema-reader.t .............. ok
+Saw 1 occurrence of deprecated code.
+================================================================================
+Sub BPointer (from NativeHelpers::Blob) seen at:
+  /usr/share/perl6/site/sources/0E8AA45C3D8980AB4BE9503981789C18DD7CC0DA (DBDish::mysql::StatementHandle), lines 65,72,74,86,171
+Please use pointer-to instead.
+--------------------------------------------------------------------------------
+Please contact the author to have these occurrences of deprecated code
+adapted, so that this message will disappear!
+Saw 1 occurrence of deprecated code.
+================================================================================
+Sub BPointer (from NativeHelpers::Blob) seen at:
+  /usr/share/perl6/site/sources/E6F840E3D8658279E66FC80F546822ACB85497A7 (NativeHelpers::Blob), line 60
+  /usr/share/perl6/site/sources/0E8AA45C3D8980AB4BE9503981789C18DD7CC0DA (DBDish::mysql::StatementHandle), lines 65,72,74,86,171
+Please use pointer-to instead.
+--------------------------------------------------------------------------------
+Please contact the author to have these occurrences of deprecated code
+adapted, so that this message will disappear!
+Saw 1 occurrence of deprecated code.
+================================================================================
+Sub BPointer (from NativeHelpers::Blob) seen at:
+  /usr/share/perl6/site/sources/0E8AA45C3D8980AB4BE9503981789C18DD7CC0DA (DBDish::mysql::StatementHandle), lines 65,72,74,86,171
+Please use pointer-to instead.
+--------------------------------------------------------------------------------
+Please contact the author to have these occurrences of deprecated code
+adapted, so that this message will disappear!
+Saw 1 occurrence of deprecated code.
+================================================================================
+Sub BPointer (from NativeHelpers::Blob) seen at:
+  /usr/share/perl6/site/sources/0E8AA45C3D8980AB4BE9503981789C18DD7CC0DA (DBDish::mysql::StatementHandle), lines 65,72,74,86,171
+Please use pointer-to instead.
+--------------------------------------------------------------------------------
+Please contact the author to have these occurrences of deprecated code
+adapted, so that this message will disappear!
+Saw 2 occurrences of deprecated code.
+================================================================================
+Submethod BUILD (from DBDish::mysql::StatementHandle) seen at:
+  SETTING::src/core.c/Mu.rakumod, line 174
+Please use pointer-to instead.
+--------------------------------------------------------------------------------
+Sub BPointer (from NativeHelpers::Blob) seen at:
+  /usr/share/perl6/site/sources/E6F840E3D8658279E66FC80F546822ACB85497A7 (NativeHelpers::Blob), line 60
+  /usr/share/perl6/site/sources/0E8AA45C3D8980AB4BE9503981789C18DD7CC0DA (DBDish::mysql::StatementHandle), lines 65,72,74,86,171
+Please use pointer-to instead.
+--------------------------------------------------------------------------------
+Please contact the author to have these occurrences of deprecated code
+adapted, so that this message will disappear!
+../mysql/t/01-basic.t ...................... ok
+../mysql/t/05-runner.t ..................... ok
+../mysql/t/02-blog.t ....................... ok
+../mysql/t/04-mysql.t ...................... ok
+../mysql/t/06-query-translation.t .......... ok
+../mysql/t/08-indexes.t .................... ok
+../mysql/t/10-savepoints.t ................. ok
+../mysql/t/07-query-mysql.t ................ ok
+../mysql/t/11-savepoints-mysql.t ........... ok
+../mysql/t/09-indexes-mysql.t .............. ok
+All tests successful.
+Files=11, Tests=114,  5 wallclock secs
+Result: PASS

@@ -1,0 +1,119 @@
+diff --git a/Changes b/Changes
+index 6bfb98f..aa6a031 100644
+--- a/Changes
++++ b/Changes
+@@ -1,6 +1,8 @@
+ Revision history for Red-Driver-MySQL
+ 
+ {{$NEXT}}
++    - Preserve AUTO_INCREMENT and ordered UNIQUE groups in catalog and CREATE TABLE introspection
++    - Keep migration plans consistent with existing MySQL schemas
+     - Execute savepoint operations through MySQL's text protocol, including dry runs
+     - Test quoted savepoints, repeated rollback, release and constraint-error recovery
+     - Support Red's declarative indexes through ordered MySQL STATISTICS catalog inspection
+diff --git a/lib/Red/Driver/MySQL/SchemaReader.pm6 b/lib/Red/Driver/MySQL/SchemaReader.pm6
+index 1fba876..15e93a1 100644
+--- a/lib/Red/Driver/MySQL/SchemaReader.pm6
++++ b/lib/Red/Driver/MySQL/SchemaReader.pm6
+@@ -91,7 +91,7 @@ method indexes-of(Str:D $table) {
+ 
+ method table-definition(Str:D $table) {
+     my @columns = self!rows(q:to/SQL/, $table);
+-        SELECT COLUMN_NAME AS name, COLUMN_TYPE AS column_type, IS_NULLABLE AS nullable
++        SELECT COLUMN_NAME AS name, COLUMN_TYPE AS column_type, IS_NULLABLE AS nullable, EXTRA AS extra
+         FROM information_schema.COLUMNS
+         WHERE TABLE_SCHEMA = DATABASE() AND TABLE_NAME = ?
+         ORDER BY ORDINAL_POSITION
+@@ -110,12 +110,15 @@ method table-definition(Str:D $table) {
+             table => %row<referenced_table>, column => %row<referenced_column>,
+         );
+     }
+-    Red::Cli::Table.new(:name($table), :columns(@columns.map(-> %row {
++    Red::Cli::Table.new(:name($table),
++        :constraints(@indexes.grep({ .<unique> && !.<primary> }).map({ .<columns>.Array }).Array),
++        :columns(@columns.map(-> %row {
+         my @keys = @indexes.grep({ .<columns>.first(* eq %row<name>).defined });
+         Red::Cli::Column.new:
+             :name(%row<name>), :type(%row<column_type>),
+             :perl-type($!driver.type-for-sql(%row<column_type>)),
+             :nullable(%row<nullable> eq 'YES'),
++            :auto-increment(so (%row<extra> // '').lc.contains('auto_increment')),
+             :pk(so @keys.first(*.<primary>)),
+             :unique(so @keys.first({ .<unique> && .<columns>.elems == 1 && !.<primary> })),
+             :references(%references{%row<name>} // Any);
+@@ -131,6 +134,7 @@ multi method table-definition-from-create-table(Str:D $sql) {
+         my @columns;
+         my %columns;
+         my @constraints;
++        my @unique-groups;
+         for $table<definition> -> $definition {
+             my $parsed-definition = Definition.parse($definition.Str.trim);
+             die "Unsupported MySQL table definition: $definition" unless $parsed-definition;
+@@ -143,9 +147,11 @@ multi method table-definition-from-create-table(Str:D $sql) {
+                     :type($column<type>.Str.trim.lc),
+                     :nullable(!so $tail ~~ /:i 'NOT' \s+ 'NULL' | 'PRIMARY' \s+ 'KEY'/),
+                     :pk(so $tail ~~ /:i 'PRIMARY' \s+ 'KEY'/),
++                    :auto-increment(so $tail ~~ /:i <|w> 'AUTO_INCREMENT' <|w>/),
+                     :unique(so $tail ~~ /:i 'UNIQUE'/),
+                     :references(%()),
+                 ;
++                @unique-groups.push: [$name] if %data<unique>;
+                 @columns.push: %data;
+                 %columns{$name} := @columns.tail;
+             } else {
+@@ -161,6 +167,7 @@ multi method table-definition-from-create-table(Str:D $sql) {
+             }
+             if $constraint<unique> -> $unique {
+                 my @names = key-columns($unique<key-list>);
++                @unique-groups.push: @names.Array;
+                 %columns{@names.head}<unique> = True if @names == 1;
+             }
+             if $constraint<foreign> -> $foreign {
+@@ -177,6 +184,7 @@ multi method table-definition-from-create-table(Str:D $sql) {
+         }
+         Red::Cli::Table.new:
+             :name(unquote $table<name><identifier>.tail.Str),
++            :constraints(@unique-groups.Array),
+             :columns(@columns.map({
+                 Red::Cli::Column.new: |$_,
+                     :references(.<references>.elems ?? .<references> !! Any),
+diff --git a/t/03-schema-reader.t b/t/03-schema-reader.t
+index 9ea0c0e..4bac687 100644
+--- a/t/03-schema-reader.t
++++ b/t/03-schema-reader.t
+@@ -25,6 +25,8 @@ my @tables = $reader.table-definition-from-create-table($sql);
+ is @tables.elems, 2, 'parse multiple CREATE TABLE statements';
+ is @tables[0].name, 'person', 'quoted table name';
+ ok @tables[0].columns[0].pk, 'table primary key applied to column';
++ok @tables[0].columns[0].auto-increment, 'automatic primary key is retained';
++nok @tables[1].columns[0].auto-increment, 'ordinary primary key is not automatic';
+ nok @tables[0].columns[0].nullable, 'primary key is not nullable';
+ ok @tables[0].columns[1].nullable, 'keywords in default strings are ignored';
+ ok @tables[0].columns[1].unique, 'single column unique index';
+@@ -37,4 +39,8 @@ is-deeply @tables[1].columns[1].references, %(table => 'person', column => 'id')
+ is @tables[1].columns[3].perl-type, 'Str', 'enum type';
+ nok $reader.table-definition-from-create-table(Any).exists, 'missing table';
+ dies-ok { $reader.table-definition-from-create-table('invalid SQL') }, 'invalid SQL rejected';
++is-deeply @tables[0].constraints, [['name'],], 'single-column unique group retained';
++is-deeply @tables[1].constraints, [['author_id', 'title'],], 'composite unique group retained';
++my $inline = $reader.table-definition-from-create-table('CREATE TABLE inline_unique (code VARCHAR(10) UNIQUE)').head;
++is-deeply $inline.constraints, [['code'],], 'inline unique group retained';
+ done-testing;
+diff --git a/t/04-mysql.t b/t/04-mysql.t
+index ec359ab..e04c0ab 100644
+--- a/t/04-mysql.t
++++ b/t/04-mysql.t
+@@ -40,6 +40,13 @@ is OnlySerial.^all.elems, 3, 'commit persists the transaction';
+ 
+ my $reader = $*RED-DB.schema-reader;
+ ok $reader.tables-names.first(* eq 'natural_key').defined, 'list tables in the current database';
++ok $reader.table-definition('only_serial').columns[0].auto-increment,
++    'catalog reports AUTO_INCREMENT';
++nok $reader.table-definition('natural_key').columns[0].auto-increment,
++    'catalog distinguishes supplied natural keys';
++$*RED-DB.execute('CREATE TABLE catalog_unique (left_value INTEGER, right_value INTEGER, UNIQUE(left_value, right_value))');
++is-deeply $reader.table-definition('catalog_unique').constraints,
++    [['left_value', 'right_value'],], 'catalog retains ordered composite unique group';
+ my $definition = $reader.table-definition('composite_key');
+ is $definition.name, 'composite_key', 'read information_schema table definition';
+ is $definition.columns.grep(*.pk).elems, 2, 'read composite primary key';

@@ -1,0 +1,286 @@
+../Red/t/000-meta.rakutest ............................... ok
+Cyclic foreign keys cannot be created by DuckDB
+  in method unsupported at /Users/fernando/Projects/Red-Driver-DuckDB/lib/Red/Driver/DuckDB.rakumod (Red::Driver::DuckDB) line 168
+  in method create-schema at /Users/fernando/Projects/Red-Driver-DuckDB/lib/Red/Driver/DuckDB.rakumod (Red::Driver::DuckDB) line 209
+  in method create at /Users/fernando/Projects/Red/lib/Red/Schema.rakumod (Red::Schema) line 78
+  in block <unit> at /Users/fernando/Projects/Red/t/017-pp.rakutest line 14
+
+# Failed test 'with skip-locked'
+# at /Users/fernando/Projects/Red/t/081-resultset-skip-locked.rakutest line 21
+# Parser Error: syntax error at or near "FOR"
+# 
+# LINE 5: FOR UPDATE SKIP LOCKED
+#         ^^^
+# Failed test 'got the right number of rows'
+# at /Users/fernando/Projects/Red/t/081-resultset-skip-locked.rakutest line 23
+# expected: '1'
+#      got: '0'
+# You failed 2 tests of 2
+falling back (to mute this message, please define the $*RED-FALLBACK variable): This type cannot unbox to a native string: P6opaque, Red::Column
+DuckDB does not support savepoints
+  in method unsupported at /Users/fernando/Projects/Red-Driver-DuckDB/lib/Red/Driver/DuckDB.rakumod (Red::Driver::DuckDB) line 168
+  in method savepoint at /Users/fernando/Projects/Red-Driver-DuckDB/lib/Red/Driver/DuckDB.rakumod (Red::Driver::DuckDB) line 170
+  in method child at /Users/fernando/Projects/Red/lib/Red/Transaction/Guard.rakumod (Red::Transaction::Guard) line 248
+  in sub red-do at /Users/fernando/Projects/Red/lib/Red/Do.rakumod (Red::Do) line 186
+  in sub red-do at /Users/fernando/Projects/Red/lib/Red/Do.rakumod (Red::Do) line 93
+  in block  at /Users/fernando/Projects/Red/t/096-savepoints.rakutest line 61
+  in sub subtest at /Users/fernando/.rakubrew/versions/moar-main/install/share/perl6/core/sources/8FA11B9775D60AC8B591FDB01599478652260B1A (Test) line 431
+  in sub subtest at /Users/fernando/.rakubrew/versions/moar-main/install/share/perl6/core/sources/8FA11B9775D60AC8B591FDB01599478652260B1A (Test) line 419
+  in block <unit> at /Users/fernando/Projects/Red/t/096-savepoints.rakutest line 53
+
+DuckDB does not support savepoints
+  in method unsupported at /Users/fernando/Projects/Red-Driver-DuckDB/lib/Red/Driver/DuckDB.rakumod (Red::Driver::DuckDB) line 168
+  in method savepoint at /Users/fernando/Projects/Red-Driver-DuckDB/lib/Red/Driver/DuckDB.rakumod (Red::Driver::DuckDB) line 170
+  in method child at /Users/fernando/Projects/Red/lib/Red/Transaction/Guard.rakumod (Red::Transaction::Guard) line 248
+  in sub red-do at /Users/fernando/Projects/Red/lib/Red/Do.rakumod (Red::Do) line 186
+  in sub red-do at /Users/fernando/Projects/Red/lib/Red/Do.rakumod (Red::Do) line 93
+  in block  at /Users/fernando/Projects/Red/t/097-transaction-guard.rakutest line 200
+  in sub subtest at /Users/fernando/.rakubrew/versions/moar-main/install/share/perl6/core/sources/8FA11B9775D60AC8B591FDB01599478652260B1A (Test) line 431
+  in sub subtest at /Users/fernando/.rakubrew/versions/moar-main/install/share/perl6/core/sources/8FA11B9775D60AC8B591FDB01599478652260B1A (Test) line 419
+  in block <unit> at /Users/fernando/Projects/Red/t/097-transaction-guard.rakutest line 195
+
+        # Failed test 'right exception type (UpdateFailed)'
+        # at /Users/fernando/.rakubrew/versions/moar-main/install/share/perl6/core/precomp/CE81BD5B0A7AF728E4C85B866C648702A327DB62/8F/8FA11B9775D60AC8B591FDB01599478652260B1A line 1
+        # Expected: UpdateFailed
+        # Got:      X::Red::Compiler::Unsupported
+        # Exception message: DuckDB does not support savepoints
+        # You failed 1 test of 2
+    # Failed test 'did we throws-like UpdateFailed?'
+    # at /Users/fernando/Projects/Red/t/099-single-relationship-create.rakutest line 181
+DuckDB does not support savepoints
+  in method unsupported at /Users/fernando/Projects/Red-Driver-DuckDB/lib/Red/Driver/DuckDB.rakumod (Red::Driver::DuckDB) line 168
+  in method savepoint at /Users/fernando/Projects/Red-Driver-DuckDB/lib/Red/Driver/DuckDB.rakumod (Red::Driver::DuckDB) line 170
+  in method savepoint at /Users/fernando/Projects/Red/lib/Red/Transaction/Guard.rakumod (Red::Transaction::Guard) line 37
+  in method create-related at /Users/fernando/Projects/Red/lib/Red/Attr/Relationship.rakumod (Red::Attr::Relationship) line 83
+  in method create at /Users/fernando/Projects/Red/lib/Red/Attr/Relationship.rakumod (Red::Attr::Relationship) line 43
+  in block  at /Users/fernando/Projects/Red/t/099-single-relationship-create.rakutest line 184
+  in sub subtest at /Users/fernando/.rakubrew/versions/moar-main/install/share/perl6/core/sources/8FA11B9775D60AC8B591FDB01599478652260B1A (Test) line 431
+  in sub subtest at /Users/fernando/.rakubrew/versions/moar-main/install/share/perl6/core/sources/8FA11B9775D60AC8B591FDB01599478652260B1A (Test) line 419
+  in block <unit> at /Users/fernando/Projects/Red/t/099-single-relationship-create.rakutest line 175
+
+Potential difficulties:
+    Space is not significant here; please use quotes or :s (:sigspace)
+    modifier (or, to suppress this warning, omit the space, or otherwise
+    change the spacing).
+    at /Users/fernando/Projects/Red/EVAL_21:1
+    ------> my regex pair { a<HERE> a }; /<?pair> a/
+Potential difficulties:
+    Space is not significant here; please use quotes or :s (:sigspace)
+    modifier (or, to suppress this warning, omit the space, or otherwise
+    change the spacing).
+    at /Users/fernando/Projects/Red/EVAL_22:1
+    ------> my regex pair { a<HERE> a }; /<!pair> a/
+../Red/t/002-sqlite.rakutest ............................. skipped
+../Red/t/005-better-map.rakutest ......................... skipped
+../Red/t/006-optimizer.rakutest .......................... ok
+../Red/t/001-tdd.rakutest ................................ skipped
+../Red/t/007-best-tree.rakutest .......................... ok
+../Red/t/004-ticket.rakutest ............................. ok
+../Red/t/003-blog.rakutest ............................... ok
+../Red/t/010-join.rakutest ............................... ok
+../Red/t/008-alternate-relation.rakutest ................. ok
+../Red/t/011-types.rakutest .............................. ok
+../Red/t/009-alternate-relation-modules.rakutest ......... ok
+../Red/t/013-result-seq-update.rakutest .................. ok
+../Red/t/015-result-seq-bool.rakutest .................... ok
+../Red/t/014-union.rakutest .............................. ok
+../Red/t/012-roles.rakutest .............................. ok
+../Red/t/020-new-with-id.rakutest ........................ ok
+../Red/t/016-create-related-pars.rakutest ................ ok
+../Red/t/017-pp.rakutest ................................. Dubious, test returned 1
+No subtests run
+../Red/t/018-phasers.rakutest ............................ ok
+../Red/t/022-edit-id.rakutest ............................ ok
+../Red/t/023-metamodel-model.rakutest .................... ok
+../Red/t/024-grep-no-AND-OR.rakutest ..................... ok
+../Red/t/025-is-rw.rakutest .............................. ok
+../Red/t/019-in-sql.rakutest ............................. ok
+../Red/t/021-red-do.rakutest ............................. ok
+../Red/t/027-LPW-2019.rakutest ........................... ok
+../Red/t/029-result-seq-pick.rakutest .................... ok
+../Red/t/026-classify.rakutest ........................... ok
+../Red/t/031-join.rakutest ............................... ok
+../Red/t/030-update.rakutest ............................. ok
+../Red/t/032-join.rakutest ............................... ok
+../Red/t/028-events.rakutest ............................. ok
+../Red/t/033-join.rakutest ............................... ok
+../Red/t/034-ast-generic.rakutest ........................ ok
+../Red/t/040-relationship-multiple-columns.rakutest ...... skipped
+../Red/t/038-equal.rakutest .............................. skipped
+../Red/t/036-default-deflate.rakutest .................... ok
+../Red/t/037-json.rakutest ............................... ok
+../Red/t/035-create.rakutest ............................. ok
+../Red/t/042-create-table.rakutest ....................... ok
+../Red/t/041-fallback.rakutest ........................... ok
+../Red/t/044-error-without-id.rakutest ................... ok
+../Red/t/039-xmas.rakutest ............................... ok
+../Red/t/045-is-handling.rakutest ........................ ok
+../Red/t/046-rw.rakutest ................................. ok
+../Red/t/049-experimental-formater.rakutest .............. ok
+../Red/t/053-unique.rakutest ............................. ok
+../Red/t/050-experimental-name.rakutest .................. ok
+../Red/t/043-prefetch.rakutest ........................... ok
+../Red/t/055-no-optimization.rakutest .................... ok
+../Red/t/048-source-source-id.rakutest ................... ok
+../Red/t/047-rypervenche.rakutest ........................ ok
+../Red/t/057-experimental.rakutest ....................... ok
+../Red/t/051-pre-create-or-update.rakutest ............... ok
+../Red/t/054-hand-made-many-to-many.rakutest ............. ok
+../Red/t/060-runtime-role.rakutest ....................... ok
+../Red/t/052-schema.rakutest ............................. ok
+../Red/t/056-refreshable.rakutest ........................ ok
+../Red/t/058-nm-relationship.rakutest .................... ok
+../Red/t/061-model-as-type.rakutest ...................... ok
+../Red/t/059-tomgraceys-schema.rakutest .................. ok
+../Red/t/062-date-coercion.rakutest ...................... ok
+../Red/t/064-create-on-defined-obj.rakutest .............. ok
+../Red/t/063-inflate-deflate.rakutest .................... ok
+../Red/t/067-enums.rakutest .............................. skipped
+../Red/t/065-patrickb.rakutest ........................... ok
+../Red/t/074-enum-reassign.rakutest ...................... ok
+../Red/t/068-red-config.rakutest ......................... ok
+../Red/t/069-array-columns.rakutest ...................... ok
+../Red/t/066-join-model.rakutest ......................... ok
+../Red/t/071-conflicting-column-attribute.rakutest ....... ok
+../Red/t/070-submodel.rakutest ........................... ok
+../Red/t/072-agg-methods.rakutest ........................ ok
+../Red/t/073-red-defaults-from-module.rakutest ........... ok
+../Red/t/076-view.rakutest ............................... ok
+../Red/t/075-patrick-operators.rakutest .................. ok
+../Red/t/079-group-sort.rakutest ......................... ok
+../Red/t/077-red-type.rakutest ........................... ok
+../Red/t/080-date-operator.rakutest ...................... ok
+../Red/t/081-resultset-skip-locked.rakutest .............. Dubious, test returned 2
+Failed 2/2 subtests 
+../Red/t/078-datetime-function.rakutest .................. ok
+../Red/t/082-emakei.rakutest ............................. ok
+../Red/t/085-string-funcs.rakutest ....................... ok
+../Red/t/083-polymorphic.rakutest ........................ ok
+../Red/t/084-polymorphic2.rakutest ....................... ok
+../Red/t/086-prefetch.rakutest ........................... ok
+../Red/t/091-rakuast-compiler.rakutest ................... skipped
+../Red/t/092-rakuast-scope.rakutest ...................... skipped
+../Red/t/093-template-reuse.rakutest ..................... ok
+../Red/t/094-direct-ast-factories.rakutest ............... ok
+../Red/t/089-sql-tail.rakutest ........................... ok
+../Red/t/096-savepoints.rakutest ......................... Dubious, test returned 1
+All 1 subtests passed 
+../Red/t/088-projection-chains.rakutest .................. ok
+../Red/t/087-json-operations.rakutest .................... ok
+../Red/t/097-transaction-guard.rakutest .................. Dubious, test returned 1
+All 9 subtests passed 
+../Red/t/090-cross-product.rakutest ...................... ok
+../Red/t/095-indexes.rakutest ............................ ok
+../Red/t/103-name-formatters.rakutest .................... ok
+../Red/t/099-single-relationship-create.rakutest ......... Dubious, test returned 1
+All 6 subtests passed 
+../Red/t/102-model-access.rakutest ....................... ok
+../Red/t/105-compiler-warnings.rakutest .................. ok
+../Red/t/100-schema-constraints.rakutest ................. ok
+../Red/t/098-concurrent-query-projections.rakutest ....... ok
+../Red/t/104-lazy-projection-resultseq.rakutest .......... ok
+../Red/t/108-generated-projection-getters.rakutest ....... ok
+../Red/t/101-query-plans.rakutest ........................ ok
+../Red/t/106-compiled-regex.rakutest ..................... ok
+../Red/t/107-dirty-collections.rakutest .................. ok
+../Red/t/110-regex-no-fallback.rakutest .................. ok
+../Red/t/111-regex-repetitions.rakutest .................. ok
+../Red/t/115-regex-repeated-scopes.rakutest .............. ok
+../Red/t/117-regex-capture-presence.rakutest ............. ok
+../Red/t/112-regex-positions.rakutest .................... ok
+../Red/t/116-regex-capture-reads.rakutest ................ ok
+../Red/t/118-regex-whole-text.rakutest ................... ok
+../Red/t/120-regex-cache-driver.rakutest ................. ok
+../Red/t/119-regex-logical-captures.rakutest ............. ok
+../Red/t/122-regex-text-methods.rakutest ................. ok
+../Red/t/123-regex-capture-chars.rakutest ................ ok
+../Red/t/121-regex-property-literals.rakutest ............ ok
+../Red/t/125-pg-driver-not-installed.rakutest ............ ok
+../Red/t/126-migration-snapshot.rakutest ................. ok
+../Red/t/113-regex-named-assertions.rakutest ............. ok
+../Red/t/127-versioned-migrations.rakutest ............... ok
+../Red/t/124-compiler-callables.rakutest ................. ok
+../Red/t/130-migration-failures.rakutest ................. ok
+../Red/t/128-migration-incremental.rakutest .............. ok
+../Red/t/132-migration-locks.rakutest .................... ok
+Temporary migration database retained: /var/folders/68/k_pbr61579q1s69n1dytt55r0000gn/T/red_migration_test_689a961a552a46dcaeaa29e0d07d60d7/connection.json
+Potential difficulties:
+    Space is not significant here; please use quotes or :s (:sigspace)
+    modifier (or, to suppress this warning, omit the space, or otherwise
+    change the spacing).
+    at /Users/fernando/Projects/Red/EVAL_83:1
+    ------> /:s a :!s b<HERE> c/
+# t/migrations.rakutest already exists
+#   in sub MAIN at /Users/fernando/Projects/Red/bin/red line 239
+#   in sub MAIN at /Users/fernando/Projects/Red/bin/red line 17
+#   in block <unit> at /Users/fernando/Projects/Red/bin/red line 275
+# 
+# 
+    # Unknown migration target: unknown-migration
+    #   in method error at /Users/fernando/Projects/Red/lib/Red/Migration/Manager.rakumod (Red::Migration::Manager) line 453
+    #   in method run at /Users/fernando/Projects/Red/lib/Red/Migration/Manager.rakumod (Red::Migration::Manager) line 991
+    #   in method apply at /Users/fernando/Projects/Red/lib/Red/Migration/Manager.rakumod (Red::Migration::Manager) line 1204
+    #   in sub MAIN at /Users/fernando/Projects/Red/bin/red line 151
+    #   in sub MAIN at /Users/fernando/Projects/Red/bin/red line 17
+    #   in block <unit> at /Users/fernando/Projects/Red/bin/red line 275
+    # 
+    # 
+# Five installed distribution levels: DuckDB; RakuAST=0
+../Red/t/131-migration-planner.rakutest .................. ok
+../Red/t/114-regex-assertion-captures.rakutest ........... ok
+../Red/t/134-migration-preparation.rakutest .............. ok
+../Red/t/133-migration-alter.rakutest .................... ok
+../Red/t/135-migration-directories.rakutest .............. ok
+../Red/t/139-migration-serialization-conflicts.rakutest .. ok
+../Red/t/136-migration-test-environment.rakutest ......... ok
+../Red/t/142-migration-config-builder.rakutest ........... ok
+../Red/t/144-migration-artifacts.rakutest ................ ok
+../Red/t/145-migration-expression-registration.rakutest .. ok
+../Red/t/146-synchronous-migration-compiler.rakutest ..... ok
+../Red/t/143-database-client.rakutest .................... ok
+../Red/t/148-migration-bundle.rakutest ................... ok
+../Red/t/109-regex-dialects.rakutest ..................... ok
+../Red/t/149-migration-import.rakutest ................... ok
+../Red/t/138-migration-backfill.rakutest ................. ok
+../Red/t/140-migration-workflow.rakutest ................. ok
+../Red/t/137-migration-serialize.rakutest ................ ok
+../Red/t/150-migration-discovery.rakutest ................ ok
+../Red/t/147-synchronous-migrations.rakutest ............. ok
+../Red/t/149-synchronous-explicit-sql.rakutest ........... ok
+../Red/t/153-migration-bundle-safety.rakutest ............ ok
+../Red/t/151-migration-import-history.rakutest ........... ok
+../Red/t/141-migration-ancestry.rakutest ................. ok
+../Red/t/151-runtime-configuration.rakutest .............. ok
+../Red/t/155-migration-publication-recovery.rakutest ..... ok
+../Red/t/156-migration-resolve.rakutest .................. ok
+../Red/t/129-migration-cli.rakutest ...................... ok
+../Red/t/150-synchronous-cli.rakutest .................... ok
+../Red/t/160-fixture-data.rakutest ....................... ok
+../Red/t/148-synchronous-history.rakutest ................ ok
+../Red/t/161-migration-reset.rakutest .................... ok
+../Red/t/159-fixtures.rakutest ........................... ok
+../Red/t/157-migration-diamond.rakutest .................. ok
+../Red/t/152-migration-complete-bundle.rakutest .......... ok
+../Red/t/162-migration-reset-cli.rakutest ................ ok
+../Red/t/158-migration-adoption-serialize.rakutest ....... ok
+../Red/t/154-migration-five-levels.rakutest .............. ok
+
+Test Summary Report
+-------------------
+../Red/t/017-pp.rakutest  (Wstat: 256 Tests: 0 Failed: 0)
+Non-zero exit status: 1
+  Parse errors: No plan found in TAP output
+../Red/t/081-resultset-skip-locked.rakutest  (Wstat: 512 Tests: 2 Failed: 2)
+  Failed tests:  1 2
+Non-zero exit status: 2
+../Red/t/096-savepoints.rakutest  (Wstat: 256 Tests: 1 Failed: 0)
+Non-zero exit status: 1
+  Parse errors: No plan found in TAP output
+../Red/t/097-transaction-guard.rakutest  (Wstat: 256 Tests: 9 Failed: 0)
+Non-zero exit status: 1
+  Parse errors: No plan found in TAP output
+../Red/t/099-single-relationship-create.rakutest  (Wstat: 256 Tests: 6 Failed: 0)
+Non-zero exit status: 1
+  Parse errors: No plan found in TAP output
+Files=167, Tests=2113,  238 wallclock secs
+Result: FAILED

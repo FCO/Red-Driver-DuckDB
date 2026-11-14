@@ -1,0 +1,28 @@
+use Test;
+use Red;
+use Red::Driver::DuckDB;
+my $path = $*TMPDIR.add("red-duckdb-{$*PID}-{now.Int}.duckdb");
+LEAVE { for $path, ($path.Str ~ '.wal').IO -> $file { $file.unlink if $file.e } }
+my $first = Red::Driver::DuckDB.new(:database($path.Str));
+$first.execute('CREATE TABLE persistent_duck (id BIGINT PRIMARY KEY, value VARCHAR)');
+$first.execute('INSERT INTO persistent_duck VALUES (?, ?)', 1, 'first');
+my $second = Red::Driver::DuckDB.new(:dbh($first.dbh));
+is $second.execute('SELECT value FROM persistent_duck').row<value>, 'first', 'shared handle';
+$second.execute('UPDATE persistent_duck SET value = ? WHERE id = ?', 'second', 1);
+is $first.execute('SELECT value FROM persistent_duck').row<value>, 'second', 'update visible';
+$second.execute('DELETE FROM persistent_duck WHERE id = ?', 1);
+is $first.execute('SELECT count(*) AS n FROM persistent_duck').row<n>, 0, 'delete';
+my $isolated = Red::Driver::DuckDB.new;
+is-deeply $isolated.schema-reader.tables-names.Array, [], 'memory database isolated';
+ok $path.e, 'database file exists';
+$second.close;
+$first.close;
+$first.dbh.close;
+my $reopened = Red::Driver::DuckDB.new(:database($path.Str));
+is $reopened.execute('SELECT count(*) AS n FROM persistent_duck').row<n>, 0,
+    'file database reopens with schema and committed changes';
+$reopened.close;
+$reopened.dbh.close;
+$isolated.close;
+$isolated.dbh.close;
+done-testing;

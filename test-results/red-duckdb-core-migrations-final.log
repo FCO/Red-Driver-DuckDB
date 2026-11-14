@@ -1,0 +1,9 @@
+../Red/t/132-migration-locks.rakutest ............. ok
+Temporary migration database retained: /var/folders/68/k_pbr61579q1s69n1dytt55r0000gn/T/red_migration_test_7a1d69a4470c4904a6d29fa060fc9b51/connection.json
+../Red/t/130-migration-failures.rakutest .......... ok
+../Red/t/131-migration-planner.rakutest ........... ok
+../Red/t/128-migration-incremental.rakutest ....... ok
+../Red/t/136-migration-test-environment.rakutest .. ok
+All tests successful.
+Files=5, Tests=46,  6 wallclock secs
+Result: PASS

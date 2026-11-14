@@ -1,0 +1,49 @@
+Saw 1 occurrence of deprecated code.
+================================================================================
+Sub BPointer (from NativeHelpers::Blob) seen at:
+  /usr/share/perl6/site/sources/0E8AA45C3D8980AB4BE9503981789C18DD7CC0DA (DBDish::mysql::StatementHandle), lines 65,72,74,86,171
+Please use pointer-to instead.
+--------------------------------------------------------------------------------
+Please contact the author to have these occurrences of deprecated code
+adapted, so that this message will disappear!
+t/081-resultset-skip-locked.rakutest ....... ok
+Saw 1 occurrence of deprecated code.
+================================================================================
+Sub BPointer (from NativeHelpers::Blob) seen at:
+  /usr/share/perl6/site/sources/0E8AA45C3D8980AB4BE9503981789C18DD7CC0DA (DBDish::mysql::StatementHandle), lines 65,72,74,86,171
+Please use pointer-to instead.
+--------------------------------------------------------------------------------
+Please contact the author to have these occurrences of deprecated code
+adapted, so that this message will disappear!
+Saw 1 occurrence of deprecated code.
+================================================================================
+Sub BPointer (from NativeHelpers::Blob) seen at:
+  /usr/share/perl6/site/sources/0E8AA45C3D8980AB4BE9503981789C18DD7CC0DA (DBDish::mysql::StatementHandle), lines 65,72,74,86,171
+Please use pointer-to instead.
+--------------------------------------------------------------------------------
+Please contact the author to have these occurrences of deprecated code
+adapted, so that this message will disappear!
+Saw 1 occurrence of deprecated code.
+================================================================================
+Sub BPointer (from NativeHelpers::Blob) seen at:
+  /usr/share/perl6/site/sources/0E8AA45C3D8980AB4BE9503981789C18DD7CC0DA (DBDish::mysql::StatementHandle), lines 65,72,74,86,171
+Please use pointer-to instead.
+--------------------------------------------------------------------------------
+Please contact the author to have these occurrences of deprecated code
+adapted, so that this message will disappear!
+Saw 1 occurrence of deprecated code.
+================================================================================
+Sub BPointer (from NativeHelpers::Blob) seen at:
+  /usr/share/perl6/site/sources/E6F840E3D8658279E66FC80F546822ACB85497A7 (NativeHelpers::Blob), line 60
+  /usr/share/perl6/site/sources/0E8AA45C3D8980AB4BE9503981789C18DD7CC0DA (DBDish::mysql::StatementHandle), lines 65,72,74,86,171
+Please use pointer-to instead.
+--------------------------------------------------------------------------------
+Please contact the author to have these occurrences of deprecated code
+adapted, so that this message will disappear!
+t/096-savepoints.rakutest .................. ok
+t/017-pp.rakutest .......................... ok
+t/097-transaction-guard.rakutest ........... ok
+t/099-single-relationship-create.rakutest .. ok
+All tests successful.
+Files=5, Tests=61,  86 wallclock secs
+Result: PASS

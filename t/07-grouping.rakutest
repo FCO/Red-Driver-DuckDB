@@ -1,0 +1,20 @@
+use Test;
+use Red;
+use Red::Driver::DuckDB;
+my $*RED-DB = database 'DuckDB';
+model GroupedDuck {
+    has Int $.id is serial;
+    has Str $.name is column;
+    has Int $.count is column;
+}
+schema(GroupedDuck).create;
+GroupedDuck.^create(:name<a>, :count(3));
+GroupedDuck.^create(:name<b>, :count(1));
+GroupedDuck.^create(:name<a>, :count(2));
+my $groups = GroupedDuck.^all.sort(*.count).classify(*.name);
+is-deeply $groups.Bag, bag(<a a b>), 'sort then classify Bag preserves group counts';
+is-deeply $groups<a>.map(*.count).Array, [2,3], 'group members preserve explicit order';
+is-deeply $groups.Set, set(<a b>), 'grouped Set';
+my $nested = GroupedDuck.^all.classify({ .name, .id });
+is-deeply $nested<a>.keys.Seq.sort.Array, ['1', '3'], 'nested keys compared without assuming SQL order';
+done-testing;

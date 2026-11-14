@@ -1,0 +1,44 @@
+use Test;
+use Red;
+use Red::Driver::DuckDB;
+use DB::DuckDB::Error;
+my $*RED-DB = database 'DuckDB';
+model ParentDuck { has Int $.id is serial; has Str $.name is column{ :unique } }
+model ChildDuck {
+    has Int $.id is serial;
+    has Int $.parent-id is referencing(*.id, :model<ParentDuck>);
+    has Str $.note is column{ :nullable };
+}
+lives-ok { schema(ChildDuck, ParentDuck).create }, 'dependency ordered schema';
+my $parent = ParentDuck.^create(:name<first>);
+ChildDuck.^create(:parent-id($parent.id));
+is ChildDuck.^all.elems, 1, 'child created';
+my $reader = $*RED-DB.schema-reader;
+is-deeply $reader.tables-names.sort.Array, <child_duck parent_duck>.Array, 'table names';
+my $table = $reader.table-definition('child_duck');
+is $table.columns.elems, 3, 'columns';
+ok $table.columns.first(*.name eq 'id').pk, 'primary key';
+is $table.columns.first(*.name eq 'parent_id').references<table>, 'parent_duck', 'foreign key';
+ok !$reader.table-definition('missing').exists, 'missing table';
+$*RED-DB.begin;
+throws-like { $*RED-DB.begin }, X::Red::Compiler::Unsupported, 'nested begin rejected safely';
+$*RED-DB.execute('INSERT INTO parent_duck (name) VALUES (?)', 'rollback');
+$*RED-DB.rollback;
+is ParentDuck.^all.elems, 1, 'rollback';
+$*RED-DB.begin;
+$*RED-DB.execute('INSERT INTO parent_duck (name) VALUES (?)', 'commit');
+$*RED-DB.commit;
+is ParentDuck.^all.elems, 2, 'commit';
+throws-like { $*RED-DB.savepoint('x') }, X::Red::Compiler::Unsupported, 'no savepoints';
+my $statement = $*RED-DB.prepare('SELECT ?::BIGINT AS value');
+is $statement.execute(0).row<value>, 0, 'zero bind';
+is $statement.execute(42).row<value>, 42, 'rebinding';
+$statement.execute(2);
+is $statement.row<value>, 2, 'first row';
+my $end := $statement.row;
+ok $end =:= IterationEnd, 'end sentinel';
+throws-like {
+    $*RED-DB.execute('INSERT INTO child_duck (parent_id) VALUES (?)', 9999)
+}, DB::DuckDB::Error, 'foreign key error remains typed';
+is ChildDuck.^all.elems, 1, 'failed foreign key insert leaves rows unchanged';
+done-testing;

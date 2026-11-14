@@ -1,0 +1,37 @@
+use Test;
+use Red;
+use Red::Driver::DuckDB;
+use Red::Type::Json;
+use UUID;
+my $*RED-DB = database 'DuckDB';
+model TypedDuck {
+    has Int $.id is serial;
+    has Rat $.amount is column;
+    has Date $.day is column;
+    has DateTime $.stamp is column;
+    has Blob $.bytes is column;
+    has Str $.optional is column{ :nullable };
+}
+TypedDuck.^create-table;
+my $amount = 123456789.123456789;
+my $day = Date.new('2026-11-10');
+my $stamp = DateTime.new('2026-11-10T12:34:56Z');
+my $row = TypedDuck.^create(:$amount, :$day, :$stamp, :bytes(Blob.new(0, 128, 255)));
+is $row.amount, $amount, 'decimal precision';
+is $row.day, $day, 'date';
+is $row.stamp, $stamp, 'timestamp';
+is-deeply $row.bytes, Blob.new(0,128,255), 'blob';
+ok !$row.optional.defined, 'NULL';
+model JsonDuck { has Int $.id is serial; has Json $.data is column{ :nullable } }
+JsonDuck.^create-table;
+my $json = JsonDuck.^create(:data{ dotted => [1, 2], text => '😀' });
+is $json.data<text>, '😀', 'JSON Unicode';
+is-deeply $json.data<dotted>, [1, 2], 'JSON array';
+model UUIDDuck { has UUID $.id is id }
+UUIDDuck.^create-table;
+my $uuid = UUID.new;
+is UUIDDuck.^create(:id($uuid)).id.Str, $uuid.Str, 'UUID';
+my $prepared = $*RED-DB.prepare('SELECT CAST(? AS DECIMAL(38,18)) AS amount');
+my $bound-row = $prepared.execute($amount).row;
+is $bound-row<amount>.Rat, $amount, 'raw prepared decimal bind';
+done-testing;

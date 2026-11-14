@@ -1,0 +1,20 @@
+use Test;
+use Red::Driver::DuckDB::SQL;
+is sql-head("/* outer /* nested */ comment */ -- next\n BEGIN TRANSACTION"), 'BEGIN',
+    'SQL head skips nested and line comments';
+is sql-head("COMMIT; -- done"), 'COMMIT', 'trailing comments do not obscure control SQL';
+is sql-head("SELECT '/* not a comment here */'"), 'SELECT', 'data strings do not become control commands';
+my @definitions = table-definitions(q[CREATE TABLE "x(y)" ("a,b" VARCHAR DEFAULT 'it''s,(fine)', value INTEGER COLLATE NOCASE, CHECK (value IN (1,2)))]);
+is @definitions.elems, 3, 'table splitting preserves nested parentheses and quoted commas';
+is definition-name(@definitions[0].key), 'a,b', 'quoted column name is decoded';
+is definition-name('"a""b" VARCHAR'), 'a"b', 'doubled identifier quotes are decoded';
+ok @definitions[1].key.contains('COLLATE NOCASE'), 'original column clauses are retained';
+my @plain = table-definitions(q[CREATE TABLE t (value VARCHAR DEFAULT 'generated always')]);
+ok !@plain[0].value.uc.contains('GENERATED ALWAYS'), 'generated words in a default string are masked';
+my @generated = table-definitions('CREATE TABLE t (value INTEGER GENERATED ALWAYS AS(1 + 2))');
+ok @generated[0].value.uc.contains('GENERATED ALWAYS'), 'actual generated syntax remains visible';
+my $utc = DateTime.new('2026-11-10T12:34:56Z');
+is timestamp-value('2026-11-10 18:19:56+05:45').posix, $utc.posix, 'fractional timezone offset preserves instant';
+is timestamp-value('2026-11-10 20:34:56+08').posix, $utc.posix, 'hour-only timezone offset is normalized';
+is timestamp-value('2026-11-10 12:34:56').posix, $utc.posix, 'naive database timestamp is UTC';
+done-testing;

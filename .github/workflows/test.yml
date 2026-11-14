@@ -1,0 +1,51 @@
+name: test
+
+on:
+  push:
+    branches:
+      - '*'
+    tags-ignore:
+      - '*'
+  pull_request:
+
+jobs:
+  raku:
+    strategy:
+      fail-fast: false
+      matrix:
+        os:
+          - ubuntu-latest
+          - macos-latest
+          - windows-latest
+        raku-version:
+          - 'latest'
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v7
+      - name: Check out matching Red source
+        uses: actions/checkout@v7
+        with:
+          repository: FCO/Red
+          ref: 589fc491a8544b0d9c2f0a086431256a71322689
+          path: .red
+      - name: Apply Red companion changes
+        run: git -C .red apply ../tools/red-companion.patch
+      - uses: Raku/setup-raku@v1
+        with:
+          raku-version: ${{ matrix.raku-version }}
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - name: Work around Alien macOS library detection
+        if: runner.os == 'macOS'
+        run: python3 tools/install-macos-alien.py
+      - name: Install matching Red
+        run: zef install --/test .red
+      - name: Install Dependencies
+        run: zef install --/test --test-depends --deps-only .
+      - name: Install App::Prove6
+        run: zef install --/test App::Prove6
+      - name: Test Python launcher
+        run: python -m unittest discover -s tools/tests -v
+      - name: Run Tests
+        run: prove6 -Ilib t

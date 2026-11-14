@@ -1,0 +1,27 @@
+Revision history for Red::Driver::DuckDB
+
+{{next}}
+    - Support quoted table and sequence names; reject empty or NUL-containing identifiers.
+    - Execute SET and PRAGMA on the active session and retain PRAGMA query results.
+    - Track transaction commands through SQL comments, including nested block comments.
+    - Reject NUL-containing SQL while preserving embedded NUL and Unicode in bound text.
+    - Preserve large integer parameters and timezone offsets when inflating timestamps.
+    - Preserve collations during migration reconstruction and distinguish generated columns from default text.
+    - Compare JSON numbers without decimal rounding or loss of integer precision.
+    - Reject execution on closed connections and invalidate old statements and results after reopening.
+    - Add regression coverage for connection lifecycle, SQL parsing, migrations and value precision.
+
+0.0.1
+    - Implement DuckDB ORM backend using DB::DuckDB 1.0.1.
+    - Add sequence IDs, CRUD, relationships, transactions and schema introspection.
+    - Preserve decimal, temporal, binary, UUID and JSON values.
+    - Add integration tests and a macOS Alien installation workaround.
+    - Verify sorted grouping and nested classify keys with real data.
+    - Add native JSON operations, ordered schema removal, BOOLEAN constants and typed query-plan parameters.
+    - Preserve reverse/tail NULL ordering and embedded-database test isolation.
+    - Add SQL regex predicates, Unicode classes, scoped backreferences and exact whole-match text extraction.
+    - Add a reproducible Red-suite launcher with separate TAP and diagnostic streams.
+    - Add transactional migration execution, sequence planning and database-scoped migration locking.
+    - Preserve atomic NULL filling and NOT NULL tightening with transactional reconstruction.
+    - Declare unsupported savepoints and row locks explicitly, with capability-aware Red tests.
+    - Package the matching Red companion patch and pin CI to reproducible Red sources.

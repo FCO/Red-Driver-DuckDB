@@ -1,0 +1,56 @@
+use Test;
+use Red;
+use Red::Regex;
+use Red::AST::Value;
+use Red::AST::RegexMatch;
+use Red::AST::RegexCapture;
+use Red::Driver::DuckDB;
+use Red::Driver::DuckDB::Regex;
+my $*RED-DB = database 'DuckDB';
+sub expression($tree, $text) {
+    Red::AST::RegexMatch.checked(ast-value($text), Red::Regex.new(:tree($tree.List)))
+}
+sub matches($tree, $text) {
+    my $sql = $*RED-DB.translate(expression($tree, $text));
+    $*RED-DB.execute("SELECT {$sql.key} AS matched", |$sql.value).row<matched>
+}
+my $repeat = ['sequence', ['anchor', 'begin'],
+    ['repeat', ['literal', 'a'], 1024, 1024, False], ['anchor', 'end']];
+ok matches($repeat, 'a' x 1024), 'long repetition stays in native SQL';
+ok !matches($repeat, 'a' x 1023), 'long repetition preserves its exact bound';
+my $references = ['sequence', ['anchor', 'begin'], ['capture', 0, ['literal', 'a']],
+    ['backreference', (0,).List], ['anchor', 'end']];
+ok matches($references, 'aa'), 'capture register matches its source span';
+ok !matches($references, 'ab'), 'backreferences are exact';
+my $scoped = ['sequence', ['anchor', 'begin'], ['repeat',
+    ['scope', ['sequence', ['capture', 0, ['literal', 'a']], ['backreference', (0,).List]]],
+    1, -1, False], ['anchor', 'end']];
+ok matches($scoped, 'aaaa'), 'local registers reset in repeated scopes';
+ok !matches($scoped, 'aaa'), 'repeated scopes preserve paired consumption';
+my $unicode = ['sequence', ['look', 'before', False, ['class', 'alpha', False]], ['any']];
+ok matches($unicode, 'é'), 'assertions use Rakudo Unicode classes';
+ok !matches($unicode, '1'), 'Unicode alpha does not become any character';
+my $word = ['sequence', ['anchor', 'word-left'], ['literal', 'é'], ['anchor', 'word-right']];
+ok matches($word, ' é '), 'Unicode word boundaries';
+ok !matches($word, 'xé'), 'Unicode word boundary rejects a preceding letter';
+my $text = Red::AST::RegexCapture.new(:match(expression(
+    ['sequence', ['look', 'after', False, ['literal', 'foo']], ['literal', 'bar']], 'foobar')),
+    :selection('$/'));
+my $sql = $*RED-DB.translate($text);
+is $*RED-DB.execute("SELECT {$sql.key} AS text", |$sql.value).row<text>, 'bar',
+    'fixed-width whole text is extracted by SQL';
+# Construct NUL inside SQL: the DB::DuckDB binding's NUL-terminated string
+# parameter path must not hide whether Unicode class lowering includes U+0000.
+for ['class', 'cntrl', False],
+    ['sequence', ['look', 'before', False, ['class', 'cntrl', False]], ['any']] -> $tree {
+    my $matcher = Red::Driver::DuckDB::Regex.new(:regex(Red::Regex.new(:tree($tree.List))));
+    my $nul = $matcher.translate('chr(0)' => []);
+    ok $*RED-DB.execute("SELECT {$nul.key} AS matched", |$nul.value).row<matched>,
+        "NUL belongs to the control class through {$tree[0]} lowering";
+}
+my $not-control = Red::Driver::DuckDB::Regex.new(
+    :regex(Red::Regex.new(:tree(['class', 'cntrl', True].List))));
+my $nul = $not-control.translate('chr(0)' => []);
+ok !$*RED-DB.execute("SELECT {$nul.key} AS matched", |$nul.value).row<matched>,
+    'NUL does not match the negated control class';
+done-testing;

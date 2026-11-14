@@ -1,0 +1,15 @@
+t/01-basic.rakutest ................ ok
+t/03-types.rakutest ................ ok
+t/02-schema-transactions.rakutest .. ok
+t/04-indexes-errors.rakutest ....... ok
+t/05-persistence.rakutest .......... ok
+t/08-compatibility-types.rakutest .. ok
+t/06-schema-limits.rakutest ........ ok
+t/07-grouping.rakutest ............. ok
+t/09-schema-drop.rakutest .......... ok
+t/10-json-operations.rakutest ...... ok
+t/12-migration-planner.rakutest .... ok
+t/11-regex.rakutest ................ ok
+All tests successful.
+Files=12, Tests=89,  6 wallclock secs
+Result: PASS

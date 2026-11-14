@@ -1,0 +1,21 @@
+use Test;
+use Red;
+use Red::Type::Json;
+use Red::Driver::DuckDB;
+my $*RED-DB = database 'DuckDB';
+model JsonOperationDuck { has Int $.id is serial; has Json $.data is rw is column }
+JsonOperationDuck.^create-table;
+JsonOperationDuck.^create(:data{ '' => [1,2], number => 1, flag => False });
+is JsonOperationDuck.^all.map({ .data<missing>:exists }).head, False,
+    'existence projects a native false boolean';
+is JsonOperationDuck.^all.map({ .data{''}.AT-POS(-1) }).head, 2,
+    'empty object key and negative array position compose';
+JsonOperationDuck.^all.map({ .data{''}[0] = 42 }).save;
+is JsonOperationDuck.^all.map({ .data{''}[0] }).head, 42, 'JSON mutation remains in SQL';
+JsonOperationDuck.^all.map({ .data{''}[1]:delete }).save;
+is-deeply JsonOperationDuck.^all.map({ .data{''} }).head, [42], 'array deletion shifts members';
+is JsonOperationDuck.^all.grep({ .data<number>.contains(1e0) }).elems, 1,
+    'containment compares integer and floating point numerically';
+is JsonOperationDuck.^all.grep({ .data<flag>.contains(0) }).elems, 0,
+    'containment does not equate booleans with numbers';
+done-testing;

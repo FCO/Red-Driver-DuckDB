@@ -1,0 +1,16 @@
+use Test;
+use Red;
+use Red::Driver::DuckDB;
+my $*RED-DB = database 'DuckDB';
+model UntypedSerialDuck { has $.id is serial; has Instant $.created is column }
+model RefUntypedDuck {
+    has Int $.id is serial;
+    has UInt $.parent-id is referencing(*.id, :model<UntypedSerialDuck>);
+}
+schema(RefUntypedDuck, UntypedSerialDuck).create;
+my $instant = now;
+my $parent = UntypedSerialDuck.^create(:created($instant));
+ok abs($parent.created - $instant) < 0.001, 'Instant round trips without stringification';
+lives-ok { RefUntypedDuck.^create(:parent-id($parent.id)) }, 'untyped serial and UInt foreign key use compatible SQL types';
+is $*RED-DB.execute('SELECT 1 AS value').row<value>, 1, 'database remains usable';
+done-testing;

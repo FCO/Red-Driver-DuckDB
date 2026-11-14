@@ -1,0 +1,17 @@
+use Test;
+use Red;
+use Red::Driver::DuckDB;
+my $*RED-DB = Red::Driver::DuckDB.new;
+model DuckRecord {
+    has Int $.id is serial;
+    has Str $.name is column;
+    has Bool $.active is column = False;
+}
+lives-ok { DuckRecord.^create-table }, 'create table';
+my $record;
+lives-ok { $record = DuckRecord.^create(:name("Olá ' pato")) }, 'insert';
+ok $record.id.defined, 'generated ID';
+is $record.name, "Olá ' pato", 'unicode and quote';
+is DuckRecord.^all.elems, 1, 'count';
+is DuckRecord.^all.head.active, False, 'false survives';
+done-testing;

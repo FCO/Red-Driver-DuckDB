@@ -1,0 +1,36 @@
+use Test;
+use Red;
+use Red::Driver::DuckDB;
+my $*RED-DB = database 'DuckDB';
+model CycleDuckA {
+    has Int $.id is serial;
+    has Int $.b is referencing(*.id, :model<CycleDuckB>);
+}
+model CycleDuckB {
+    has Int $.id is serial;
+    has Int $.a is referencing(*.id, :model<CycleDuckA>);
+}
+throws-like { schema(CycleDuckA, CycleDuckB).create },
+    X::Red::Compiler::Unsupported, 'cyclic schema rejected';
+is-deeply $*RED-DB.schema-reader.tables-names.Array, [], 'cycle rejection creates no tables';
+model PartialDuck {
+    has Int $.id is serial;
+    has Str $.name is column;
+    has $!partial is index({ .name }, :where{ .id > 0 });
+}
+throws-like { PartialDuck.^create-table }, X::Red::Index, 'partial index rejected';
+ok !$*RED-DB.schema-reader.table-definition('partial_duck').exists,
+    'unsupported index rejected before table creation';
+model CompositeDuck {
+    has Int $.a is id;
+    has Str $.b is id;
+    has $!pair-index is index({ .a, .b });
+}
+CompositeDuck.^create-table;
+CompositeDuck.^create(:a(1), :b<one>);
+is CompositeDuck.^all.elems, 1, 'composite primary key';
+is $*RED-DB.indexes-for-table('composite_duck').elems, 2, 'declarative index';
+throws-like { CompositeDuck.^rs.skip-locked.all }, X::Red::Compiler::Unsupported,
+    reason => /'row-level locking'/, 'row locks are rejected before SQL execution';
+is CompositeDuck.^all.elems, 1, 'rejecting row locks preserves data';
+done-testing;

@@ -1,0 +1,1031 @@
+diff --git a/lib/Red/Migration/Bundle.rakumod b/lib/Red/Migration/Bundle.rakumod
+index 65e5e07..fcfb345 100644
+--- a/lib/Red/Migration/Bundle.rakumod
++++ b/lib/Red/Migration/Bundle.rakumod
+@@ -69,7 +69,7 @@ method load(::?CLASS:U: Distribution:D $distribution --> ::?CLASS) {
+         my %sql;
+         my %sql-files;
+         for %migration<drivers>.kv -> $driver, $directions {
+-            reject("Unsupported migration driver: $driver") unless $driver eq any(<SQLite Pg MySQL>);
++            reject("Unsupported migration driver: $driver") unless $driver eq any(<SQLite Pg MySQL DuckDB>);
+             reject("Invalid SQL metadata: $id/$driver") unless $directions ~~ Associative;
+             for <up down> -> $direction {
+                 my $definition = $directions{$direction};
+diff --git a/lib/Red/Migration/Environment.rakumod b/lib/Red/Migration/Environment.rakumod
+index 36812af..7015410 100644
+--- a/lib/Red/Migration/Environment.rakumod
++++ b/lib/Red/Migration/Environment.rakumod
+@@ -31,12 +31,14 @@ sub provision-database(Str $driver, %server, &body, %environment, Bool :$keep) {
+     my $folder = $*TMPDIR.add($name);
+     $folder.mkdir;
+     my $admin;
++    my $temporary;
+     my $created = False;
+     my %parameters = %server;
+     my $result;
+     my Exception $body-error;
+     CATCH { default { $body-error = $_; .rethrow } }
+     LEAVE {
++        if $driver eq 'DuckDB' && $temporary.defined { $temporary.close; $temporary.dbh.close }
+         if !$keep && $folder.defined && $folder.d {
+             my Exception $cleanup-error;
+             if $created {
+@@ -57,8 +59,8 @@ sub provision-database(Str $driver, %server, &body, %environment, Bool :$keep) {
+             remove-tree($folder);
+         }
+     }
+-    if $driver eq 'SQLite' {
+-        %parameters = database => $folder.add('test.sqlite').Str;
++    if $driver eq any(<SQLite DuckDB>) {
++        %parameters = database => $folder.add($driver eq 'DuckDB' ?? 'test.duckdb' !! 'test.sqlite').Str;
+     } elsif $driver eq any(<Pg MySQL>) {
+         X::Red::Migration.new(:reason("Configure a test server for $driver")).throw unless %server;
+         my %admin = %server;
+@@ -75,6 +77,7 @@ sub provision-database(Str $driver, %server, &body, %environment, Bool :$keep) {
+     $context.spurt(to-json(%( :$driver, :%parameters )));
+     $context.chmod(0o600);
+     note "Temporary migration database retained: $context" if $keep;
+-    $result = body(database($driver, |%parameters), $context, %parameters);
++    $temporary = database($driver, |%parameters);
++    $result = body($temporary, $context, %parameters);
+     $result
+ }
+diff --git a/lib/Red/Migration/Manager.rakumod b/lib/Red/Migration/Manager.rakumod
+index 36ecf36..1c92400 100644
+--- a/lib/Red/Migration/Manager.rakumod
++++ b/lib/Red/Migration/Manager.rakumod
+@@ -479,7 +479,7 @@ method !load(IO() $path) {
+ }
+ #| Resolve a supported SQL backend for offline translation; no target connection is constructed.
+ method !driver(Str $name) {
+-    self!error("Unsupported migration driver: $name") unless $name eq any(<SQLite Pg MySQL>);
++    self!error("Unsupported migration driver: $name") unless $name eq any(<SQLite Pg MySQL DuckDB>);
+     require ::("Red::Driver::$name");
+     Translation.new(:backend(::("Red::Driver::$name")))
+ }
+@@ -496,7 +496,7 @@ method !connection(Str $name) {
+ #| backends.
+ method !dialect($db --> Str) {
+     my $name = $db.driver-name.split('::').tail;
+-    self!error("Unsupported migration connection: $name") unless $name eq any(<SQLite Pg MySQL>);
++    self!error("Unsupported migration connection: $name") unless $name eq any(<SQLite Pg MySQL DuckDB>);
+     $name
+ }
+ #| Generate a 26-character migration identifier from the current millisecond timestamp and random
+@@ -835,6 +835,15 @@ method !lock($db, Str $dialect, Bool :$read-only = False) {
+             LEAVE { try $statement.statement.finish }
+             $statement.execute;
+         }
++        when 'DuckDB' {
++            if $read-only { $db.execute('BEGIN') }
++            else {
++                try {
++                    $db.acquire-migration-lock;
++                    CATCH { default { self!error("Cannot acquire DuckDB migration lock: {.message}") } }
++                }
++            }
++        }
+         when 'Pg' {
+             my $row = self!row($db, 'SELECT pg_try_advisory_lock(1380271181) AS acquired');
+             self!error('Another migration executor holds the database lock') unless $row<acquired>.Str.lc eq any(<1 true t>);
+@@ -848,6 +857,7 @@ method !lock($db, Str $dialect, Bool :$read-only = False) {
+ #| Release native advisory or named migration locks. SQLite transaction completion is handled by the
+ #| executor.
+ method !unlock($db, Str $dialect) {
++    $db.release-migration-lock if $dialect eq 'DuckDB';
+     self!execute($db, 'SELECT pg_advisory_unlock(1380271181)') if $dialect eq 'Pg';
+     self!execute($db, "SELECT RELEASE_LOCK(CONCAT('red_migrations:', SHA1(DATABASE())))") if $dialect eq 'MySQL';
+ }
+@@ -929,7 +939,7 @@ method !run(Str $connection, Bool :$rollback = False, Bool :$inspect = False,
+         $locked = True;
+     }
+     LEAVE { self!unlock($db, $dialect) if $locked }
+-    my $sqlite-open = $dialect eq 'SQLite';
++    my $sqlite-open = $dialect eq 'SQLite' || ($dialect eq 'DuckDB' && $inspect);
+     CATCH {
+         default {
+             try $db.execute('ROLLBACK') if $sqlite-open || $pg-open;
+@@ -986,7 +996,7 @@ method !run(Str $connection, Bool :$rollback = False, Bool :$inspect = False,
+         self!error("Rollback is unavailable for {%m<id>}: {%m<drivers>{$dialect}<down-reason>}")
+             if $rollback && !%m<drivers>{$dialect}<reversible>;
+         self!preflight($db, $dialect, %m, @history, $rollback);
+-        my $transaction = $dialect eq 'Pg';
++        my $transaction = $dialect eq any(<Pg DuckDB>);
+         $db.execute('BEGIN') if $transaction;
+         $pg-open = $transaction;
+         my $row = @rows.first(*.id eq %m<id>);
+@@ -1042,7 +1052,21 @@ method !run(Str $connection, Bool :$rollback = False, Bool :$inspect = False,
+                     }).Array));
+                     self!validate-alterations($db, $dialect, $actual, $target, :statement($sql));
+                 }
+-                self!execute($db, $sql);
++                my $rebuilt = False;
++                if $dialect eq 'DuckDB' && !%m<imported> {
++                    my $target = Red::Migration::Snapshot.load(%m<path>.add("$dialect/schema.rakuconf"));
++                    for $target.tables -> $table {
++                        for $table.columns.grep({ !.nullable }) -> $column {
++                            my $tighten = 'ALTER TABLE ' ~ $db.table-name-wrapper($table.name)
++                                ~ ' ALTER COLUMN ' ~ $db.table-name-wrapper($column.name) ~ ' SET NOT NULL';
++                            if $sql eq $tighten {
++                                $db.migration-set-not-null($table.name, $column.name);
++                                $rebuilt = True;
++                            }
++                        }
++                    }
++                }
++                self!execute($db, $sql) unless $rebuilt;
+                 $completed++;
+                 $file-record.completed-statements = %instruction<statement>;
+                 $file-record.state = %instruction<statement> == %totals{$file-name} ?? 'applied' !! 'running';
+@@ -1273,11 +1297,20 @@ method !rebuild(Str $connection, Callable :$confirm, Bool :$reset = False) {
+         |@tables.grep({ %bookkeeping{$_}:exists }));
+     self!error('Cancelled; no tables were removed')
+         if $confirm.defined && !$confirm(@tables.Array);
+-    if $dialect eq 'Pg' {
++    if $dialect eq any(<Pg DuckDB>) {
+         self!execute($db, 'BEGIN');
+         $transaction-open = True;
+     }
++    my @sequences;
++    if $dialect eq 'DuckDB' {
++        for @tables -> $table {
++            for $db.schema-reader.table-definition($table).columns.grep(*.auto-increment) -> $column {
++                @sequences.push: 'red_seq_' ~ $table ~ '_' ~ $column.name;
++            }
++        }
++    }
+     self!execute($db, 'DROP TABLE ' ~ $db.table-name-wrapper($_)) for @tables;
++    self!execute($db, 'DROP SEQUENCE IF EXISTS ' ~ $db.table-name-wrapper($_)) for @sequences;
+     unless $reset && $dialect eq 'SQLite' {
+         self!execute($db, 'COMMIT') if $transaction-open;
+         $transaction-open = False;
+@@ -1378,7 +1411,7 @@ method sync(Str :$connection = 'default', Bool :$allow-destructive = False) {
+     $locked = True;
+     LEAVE { self!unlock($db, $dialect) if $locked }
+     my $transaction = $dialect ne 'MySQL';
+-    $db.execute('BEGIN') if $dialect eq 'Pg';
++    $db.execute('BEGIN') if $dialect eq any(<Pg DuckDB>);
+     CATCH {
+         default {
+             try $db.execute('ROLLBACK') if $transaction;
+@@ -1431,6 +1464,8 @@ method test(Str :$driver, :@command = [], Bool :$keep = False, Callable :$fixtur
+                     }
+                     self!error('Migrated database does not match configured models') if @remaining;
+                 }
++                my $reopened;
++                LEAVE { if $reopened.defined { $reopened.close; $reopened.dbh.close } }
+                 my %child-environment = %*ENV;
+                 if @command {
+                     my %*ENV = %child-environment;
+@@ -1442,7 +1477,15 @@ method test(Str :$driver, :@command = [], Bool :$keep = False, Callable :$fixtur
+                         .grep(*.chars).unique.join(',');
+                     %*ENV<RED_MIGRATION_TEST> = $context.Str;
+                     %*ENV<RED_DATABASE> = ($dialect, |%parameters.pairs.map({ .key ~ '=' ~ .value })).join(' ');
++                    # DuckDB permits one writer process per database. Release the
++                    # parent handle while the validation child owns the file.
++                    if $dialect eq 'DuckDB' { $db.close; $db.dbh.close }
+                     my $child = run |@command;
++                    if $dialect eq 'DuckDB' {
++                        $reopened = database($dialect, |%parameters);
++                        $manager = self.WHAT.new(:config(
++                            $!config.clone(:connections{ default => $reopened })));
++                    }
+                     self!error("Child command failed with exit code {$child.exitcode}") if $child.exitcode;
+                 }
+                 my @history = $manager.history;
+@@ -1672,7 +1715,7 @@ method !verify-prefix($db, Str $driver, @prefix) {
+         }
+     }
+     %external{.name}:delete for $snapshot.tables;
+-    my @actual = $db.schema-reader.tables-names.grep({ .defined && !($_ eq any(<red_migrations red_migration_files red_migration_resolutions sqlite_sequence>)) }).sort;
++    my @actual = $db.schema-reader.tables-names.grep({ .defined && !($_ eq any(<red_migrations red_migration_files red_migration_resolutions red_migration_lock sqlite_sequence>)) }).sort;
+     my @wanted = (|$snapshot.tables.map(*.name), |%external.keys).unique.sort;
+     self!error('Database table set differs from the migration snapshot') unless @actual eqv @wanted;
+     for $snapshot.tables -> $table {
+diff --git a/lib/Red/Migration/Planner.rakumod b/lib/Red/Migration/Planner.rakumod
+index 222958f..fc8dc2b 100644
+--- a/lib/Red/Migration/Planner.rakumod
++++ b/lib/Red/Migration/Planner.rakumod
+@@ -25,7 +25,7 @@ method capture(@models --> Red::Migration::Snapshot) {
+             if $model.^columns.grep({ .column.default.defined }).elems;
+         my $table = $model.^describe;
+         self!error("{$table.name} is reserved for migration history")
+-            if $table.name eq any(<red_migrations red_migration_files red_migration_resolutions>);
++            if $table.name eq any(<red_migrations red_migration_files red_migration_resolutions red_migration_lock>);
+         self!error("Duplicate column names in {$table.name}")
+             unless $table.columns.map(*.name).unique.elems == $table.columns.elems;
+         my @indexes = $model.^indexes.grep({ !.inline && $!driver.schema-definition-applies($_) }).map: -> $index {
+@@ -52,7 +52,7 @@ method capture(@models --> Red::Migration::Snapshot) {
+ 
+ #| Render a column definition with its nullability, uniqueness and supported automatic-primary-key
+ #| syntax for this dialect.
+-method !column($col, Bool :$single-pk = False --> Str) {
++method !column($col, Bool :$single-pk = False, Str :$table = '' --> Str) {
+     my $type = $col.type;
+     my $extra = '';
+     if $col.auto-increment {
+@@ -62,6 +62,12 @@ method !column($col, Bool :$single-pk = False --> Str) {
+             when 'SQLite' { $type = 'INTEGER'; $extra = ' PRIMARY KEY AUTOINCREMENT' }
+             when 'Pg' { $type = $type.lc.contains('big') ?? 'BIGSERIAL' !! 'SERIAL'; $extra = ' PRIMARY KEY' }
+             when 'MySQL' { $extra = ' PRIMARY KEY AUTO_INCREMENT' }
++            when 'DuckDB' {
++                self!error('Automatic DuckDB IDs require a table name') unless $table.chars;
++                $type = 'BIGINT';
++                my $sequence = self!q('red_seq_' ~ $table ~ '_' ~ $col.name).subst("'", "''", :g);
++                $extra = " PRIMARY KEY DEFAULT nextval('$sequence')";
++            }
+         }
+     } elsif $single-pk && $col.pk { $extra = ' PRIMARY KEY' }
+     self!q($col.name) ~ " $type" ~ ($col.nullable ?? '' !! ' NOT NULL') ~ $extra
+@@ -74,7 +80,7 @@ method !create($table --> Str) {
+     my @pk = $table.primary-key
+         ?? $table.primary-key.map(-> $name { $table.columns.first(*.name eq $name) })
+         !! $table.columns.grep(*.pk);
+-    my @defs = $table.columns.map({ self!column($_, :single-pk(@pk.elems == 1)) });
++    my @defs = $table.columns.map({ self!column($_, :table($table.name), :single-pk(@pk.elems == 1)) });
+     @defs.push('PRIMARY KEY (' ~ @pk.map({ self!q(.name) }).join(', ') ~ ')') if @pk > 1;
+     for $table.constraints.grep(*.elems > 1) -> @cols {
+         @defs.push('UNIQUE (' ~ @cols.map({ self!q($_) }).join(', ') ~ ')');
+@@ -118,6 +124,11 @@ method diff(Red::Migration::Snapshot $old, Red::Migration::Snapshot $new,
+         unless $table.defined {
+             self!error('New tables contain a dependency cycle or reference an absent table');
+         }
++        if $!dialect eq 'DuckDB' {
++            for %new{$table}.columns.grep(*.auto-increment) -> $column {
++                @sql.push: 'CREATE SEQUENCE ' ~ self!q('red_seq_' ~ $table ~ '_' ~ $column.name);
++            }
++        }
+         @sql.push: self!create(%new{$table});
+         @sql.append: %new{$table}.indexes.map(*.<sql>);
+         %done{$table} = %new{$table};
+@@ -194,6 +205,11 @@ method diff(Red::Migration::Snapshot $old, Red::Migration::Snapshot $new,
+         };
+         self!error('Table removal has dependent tables; use an explicit migration') unless $name.defined;
+         @sql.push: 'DROP TABLE ' ~ self!q($name);
++        if $!dialect eq 'DuckDB' {
++            for %old{$name}.columns.grep(*.auto-increment) -> $column {
++                @sql.push: 'DROP SEQUENCE ' ~ self!q('red_seq_' ~ $name ~ '_' ~ $column.name);
++            }
++        }
+         %done{$name}:delete;
+         @drop = @drop.grep(* ne $name);
+     }
+diff --git a/lib/Red/Schema.rakumod b/lib/Red/Schema.rakumod
+index 392ec1c..fc280bb 100644
+--- a/lib/Red/Schema.rakumod
++++ b/lib/Red/Schema.rakumod
+@@ -60,6 +60,11 @@ method model(Str $name) {
+ 
+ # TODO: For tests only, please make it right
+ method drop {
++    my $driver = get-RED-DB;
++    if $driver.^can('drop-schema') {
++        $driver.drop-schema(%!models);
++        return self;
++    }
+     for %!models.values {
+         my $drop = "DROP TABLE IF EXISTS { get-RED-DB.table-name-wrapper: .^table } { "CASCADE" if get-RED-DB.should-drop-cascade }";
+         get-RED-DB.execute($drop);
+diff --git a/t/017-pp.rakutest b/t/017-pp.rakutest
+index e405ffa..e20d87a 100644
+--- a/t/017-pp.rakutest
++++ b/t/017-pp.rakutest
+@@ -11,13 +11,40 @@ my @conf                = (%*ENV<RED_DATABASE> // "SQLite").split(" ");
+ my $driver              = @conf.shift;
+ my $*RED-DB             = database $driver, |%( @conf.map: { do given .split: "=" { .[0] => val .[1] } } );
+ 
+-schema(Zub, Foo).drop.create;
++if $driver eq 'DuckDB' {
++    throws-like { schema(Zub, Foo).create }, X::Red::Compiler::Unsupported,
++        reason => /'Cyclic foreign keys'/, 'unsupported cyclic DDL is rejected';
++    is-deeply $*RED-DB.schema-reader.tables-names.Array, [],
++        'cyclic schema rejection leaves no partially created tables';
+ 
+-my $zub = Zub.^create;
+-my $one = $zub.foos.create( bar => "one" );
+-my $two = $zub.foos.create( bar => "two" );
+-$zub.default-foo = $one;
+-$zub.^save;
++    # A parent/child relationship is enough to exercise pretty printing without
++    # requiring a second, reverse database FK. Both navigation directions remain.
++    model PrettyChild { ... }
++    model PrettyParent {
++        has Int $.id is serial;
++        has PrettyChild @.children is relationship({ .parent-id });
++    }
++    model PrettyChild {
++        has Int $.id is serial;
++        has Str $.bar is column;
++        has Int $.parent-id is referencing(*.id, :model<PrettyParent>);
++        has PrettyParent $.parent is relationship({ .parent-id });
++    }
++    schema(PrettyChild, PrettyParent).create;
++    my $parent = PrettyParent.^create;
++    my $one = $parent.children.create(:bar<one>);
++    my $two = $parent.children.create(:bar<two>);
++    is $one.parent.id, $parent.id, 'inverse relationship remains available';
++    lives-ok { [$one, $two].raku }, 'pretty prints persisted related objects';
++} else {
++    schema(Zub, Foo).drop.create;
+ 
+-lives-ok { [ $one, $two ].raku }
++    my $zub = Zub.^create;
++    my $one = $zub.foos.create( bar => "one" );
++    my $two = $zub.foos.create( bar => "two" );
++    $zub.default-foo = $one;
++    $zub.^save;
++
++    lives-ok { [ $one, $two ].raku }
++}
+ done-testing;
+diff --git a/t/026-classify.rakutest b/t/026-classify.rakutest
+index 9d50156..514ccad 100644
+--- a/t/026-classify.rakutest
++++ b/t/026-classify.rakutest
+@@ -52,7 +52,7 @@ my %d := Bla.^all.classify({ .bla, .id });
+ is %d.elems, 2;
+ isa-ok %d<test1>, Red::ResultAssociative;
+ is %d<test1>.elems, 2;
+-is %d<test1>.keys, <1 2>;
++is %d<test1>.keys.Seq.sort, <1 2>, 'nested group keys are independent of SQL row order';
+ 
+ isa-ok %d<test2>, Red::ResultAssociative;
+ is %d<test2>.elems, 1;
+diff --git a/t/039-xmas.rakutest b/t/039-xmas.rakutest
+index 65eb56b..e5b04d2 100644
+--- a/t/039-xmas.rakutest
++++ b/t/039-xmas.rakutest
+@@ -26,8 +26,8 @@ my $*RED-FALLBACK = False;
+ 
+ given Child.^find(:name<Fernanda>) {
+     isa-ok .asked.create(:gift{:name<ball>}), ChildAskedOnYear;
+-    is-deeply .asked.map(*.gift).Seq, (Gift.^load(:name<pokemon>), Gift.^load(:name<ball>)).Seq;
+-    is-deeply .asked.map(*.gift.name).Seq, <pokemon ball>.Seq;
++    is-deeply .asked.sort(*.id).map(*.gift).Seq, (Gift.^load(:name<pokemon>), Gift.^load(:name<ball>)).Seq;
++    is-deeply .asked.sort(*.id).map(*.gift.name).Seq, <pokemon ball>.Seq;
+ }
+ 
+ isa-ok Child.^find(:name<Sophia>).asked.create(:gift{:name<ball>}), ChildAskedOnYear;
+diff --git a/t/079-group-sort.rakutest b/t/079-group-sort.rakutest
+index 2b098bf..7092a49 100644
+--- a/t/079-group-sort.rakutest
++++ b/t/079-group-sort.rakutest
+@@ -1,7 +1,9 @@
+ use Test;
+ use Red;
+ 
+-plan :skip-all("Different driver setted ($_)") with %*ENV<RED_DATABASE>;
++my $configured-driver = (%*ENV<RED_DATABASE> // 'SQLite').split(' ').head;
++plan :skip-all("Group-sort is not validated for $configured-driver")
++    unless $configured-driver eq any('SQLite', 'DuckDB');
+ model TestModel {
+     has Str $.name is column;
+     has Int $.count is column;
+@@ -16,9 +18,15 @@ my $*RED-DB             = database $driver, |%( @conf.map: { do given .split: "=
+ schema(TestModel).drop;
+ TestModel.^create-table;
+ 
+-# TODO: fix: sort column should be on group by as well on Pg
++TestModel.^create(:name<one>, :count(3));
++TestModel.^create(:name<two>, :count(1));
++TestModel.^create(:name<one>, :count(2));
++
++# Bag aggregates group membership; ordering applies to rows within each group.
+ my $b = TestModel.^all.sort(*.count).classify(*.name).Bag;
+ 
+-pass('sort + classify should produce correct SQL');
++is-deeply $b, bag(<one one two>), 'sort + classify preserves group counts';
++is-deeply TestModel.^all.sort(*.count).classify(*.name)<one>.map(*.count).Array,
++    [2, 3], 'group members retain explicit ordering';
+ 
+ done-testing;
+diff --git a/t/081-resultset-skip-locked.rakutest b/t/081-resultset-skip-locked.rakutest
+index 4f2114e..7cc2425 100644
+--- a/t/081-resultset-skip-locked.rakutest
++++ b/t/081-resultset-skip-locked.rakutest
+@@ -17,9 +17,14 @@ Foo.^create-table;
+ 
+ Foo.^create: foo => "babaa";
+ 
+-my @rows;
+-lives-ok { @rows = Foo.^rs.skip-locked.all }, 'with skip-locked';
+-
+-is @rows.elems, 1, "got the right number of rows";
++if $driver eq 'DuckDB' {
++    throws-like { Foo.^rs.skip-locked.all }, X::Red::Compiler::Unsupported,
++        reason => /'row-level locking'/, 'unsupported locking is rejected explicitly';
++    is Foo.^all.elems, 1, 'rejected lock leaves ordinary queries and data usable';
++} else {
++    my @rows;
++    lives-ok { @rows = Foo.^rs.skip-locked.all }, 'with skip-locked';
++    is @rows.elems, 1, 'got the right number of rows';
++}
+ 
+-done-testing
++done-testing;
+diff --git a/t/084-polymorphic2.rakutest b/t/084-polymorphic2.rakutest
+index d9724f1..412bf84 100755
+--- a/t/084-polymorphic2.rakutest
++++ b/t/084-polymorphic2.rakutest
+@@ -47,7 +47,7 @@ is $comprador.logins.map(*.id), <1>;
+ is $vendedor.logins .map(*.id), <2>;
+ 
+ is
+-    Login.^all.Seq.map({
++    Login.^all.sort(*.id).Seq.map({
+         "Login: { .id }; Buyer: { .name with .buyer }; Seller: { .name with .seller }"
+     }).join("\n"),
+     chomp q:to/END/;
+diff --git a/t/096-savepoints.rakutest b/t/096-savepoints.rakutest
+index e9ab7da..97b134b 100644
+--- a/t/096-savepoints.rakutest
++++ b/t/096-savepoints.rakutest
+@@ -12,6 +12,15 @@ my $*RED-DB = database $driver, |%(@conf.map: {
+ });
+ my $*RED-DEBUG = $_ with %*ENV<RED_DEBUG>;
+ 
++my Bool $supports-savepoints = $*RED-DB.?supports-savepoints // True;
++sub savepoint-test(Str $name, &body) {
++    subtest $name, sub {
++        if $supports-savepoints { body() }
++        else { plan :skip-all('Driver explicitly does not support native savepoints') }
++    }
++}
++
++
+ model SavepointParent {
+     has UInt $.id is serial;
+     has Str $.name is column is unique;
+@@ -50,7 +59,7 @@ subtest 'Savepoint SQL quotes names as identifiers', {
+     }
+ };
+ 
+-subtest 'Nested transactions see outer writes and execute once', {
++savepoint-test 'Nested transactions see outer writes and execute once', {
+     reset;
+     my Int $outer-runs = 0;
+     my Int $inner-runs = 0;
+@@ -75,7 +84,7 @@ subtest 'Nested transactions see outer writes and execute once', {
+     is SavepointChild.^all.elems, 1, 'Foreign-key write commits with the parent';
+ };
+ 
+-subtest 'Outer rollback undoes released savepoints', {
++savepoint-test 'Outer rollback undoes released savepoints', {
+     reset;
+     throws-like {
+         red-do :transaction, {
+@@ -89,7 +98,7 @@ subtest 'Outer rollback undoes released savepoints', {
+     is SavepointParent.^all.elems, 0, 'Both outer and inner writes are rolled back';
+ };
+ 
+-subtest 'Caught inner failure rolls back only the inner work', {
++savepoint-test 'Caught inner failure rolls back only the inner work', {
+     reset;
+     my $error = TestRollback.new;
+     red-do :transaction, {
+@@ -109,7 +118,7 @@ subtest 'Caught inner failure rolls back only the inner work', {
+     is-deeply names(), <after before>.List, 'The outer transaction can continue and commit';
+ };
+ 
+-subtest 'Database errors are recoverable at an inner savepoint', {
++savepoint-test 'Database errors are recoverable at an inner savepoint', {
+     reset;
+     red-do :transaction, {
+         SavepointParent.^create: :name<unique>;
+@@ -125,7 +134,7 @@ subtest 'Database errors are recoverable at an inner savepoint', {
+         'Rollback to savepoint recovers the connection after a constraint violation';
+ };
+ 
+-subtest 'Uncaught nested failure rolls back the entire transaction', {
++savepoint-test 'Uncaught nested failure rolls back the entire transaction', {
+     reset;
+     throws-like {
+         red-do :transaction, {
+@@ -139,7 +148,7 @@ subtest 'Uncaught nested failure rolls back the entire transaction', {
+     is SavepointParent.^all.elems, 0, 'No writes survive the propagated failure';
+ };
+ 
+-subtest 'Multiple levels and consecutive savepoints remain independent', {
++savepoint-test 'Multiple levels and consecutive savepoints remain independent', {
+     reset;
+     red-do :transaction, {
+         SavepointParent.^create: :name<root>;
+@@ -163,7 +172,7 @@ subtest 'Multiple levels and consecutive savepoints remain independent', {
+         'Each savepoint ends without closing its parents or siblings';
+ };
+ 
+-subtest 'Driver savepoint operations preserve the named marker after rollback', {
++savepoint-test 'Driver savepoint operations preserve the named marker after rollback', {
+     reset;
+     red-do :transaction, {
+         my Str $name = 'manual"` savepoint';
+@@ -181,4 +190,28 @@ subtest 'Driver savepoint operations preserve the named marker after rollback',
+     is-deeply names(), ('kept',), 'Releasing a savepoint leaves its transaction usable';
+ };
+ 
++unless $supports-savepoints {
++    subtest 'Unsupported savepoints preserve root transaction guarantees', {
++        reset;
++        red-do :transaction, {
++            SavepointParent.^create: :name<outer>;
++            for <savepoint rollback-to-savepoint release-savepoint> -> $operation {
++                throws-like { $*RED-DB."$operation"('unsupported') },
++                    X::Red::Compiler::Unsupported, 'savepoint API rejects unsupported execution';
++            }
++            throws-like {
++                red-do :transaction, { flunk 'unsupported inner body must not run' }
++            }, X::Red::Compiler::Unsupported, 'nested transaction rejected before its body';
++            is-deeply names(), ('outer',), 'caught rejection preserves outer writes';
++        };
++        is-deeply names(), ('outer',), 'outer transaction can still commit';
++        throws-like {
++            red-do :transaction, {
++                SavepointParent.^create: :name<discarded>;
++                red-do :transaction, { flunk 'unsupported inner body must not run' }
++            }
++        }, X::Red::Compiler::Unsupported, 'escaping rejection rolls back the root';
++        is-deeply names(), ('outer',), 'failed root transaction leaves no new row';
++    };
++}
+ done-testing;
+diff --git a/t/097-transaction-guard.rakutest b/t/097-transaction-guard.rakutest
+index aa9f9a0..c29ce2c 100644
+--- a/t/097-transaction-guard.rakutest
++++ b/t/097-transaction-guard.rakutest
+@@ -10,6 +10,15 @@ my $*RED-DB = database $driver, |%(@conf.map: {
+ });
+ my $*RED-FALLBACK = False;
+ 
++my Bool $supports-savepoints = $*RED-DB.?supports-savepoints // True;
++sub savepoint-test(Str $name, &body) {
++    subtest $name, sub {
++        if $supports-savepoints { body() }
++        else { plan :skip-all('Driver explicitly does not support native savepoints') }
++    }
++}
++
++
+ model GuardRecord {
+     has UInt $.id is serial;
+     has Str $.label is column is unique;
+@@ -192,7 +201,7 @@ subtest 'Closed drivers, statements and result iterators reject use', {
+     is-deeply labels(), ('kept',), 'The original driver outside the scope remains usable';
+ };
+ 
+-subtest 'Open children prevent parent queries and commit', {
++savepoint-test 'Open children prevent parent queries and commit', {
+     reset;
+     red-do :transaction, -> $_, :$guard! {
+         GuardRecord.^create: :label<parent>;
+@@ -215,7 +224,7 @@ subtest 'Open children prevent parent queries and commit', {
+     is-deeply labels(), <after child parent>.List, 'The parent resumes after child commit';
+ };
+ 
+-subtest 'Parent rollback invalidates all descendants', {
++savepoint-test 'Parent rollback invalidates all descendants', {
+     reset;
+     my ($child, $grandchild, $child-db, $root-session);
+     red-do :transaction, -> $_, :$guard! {
+@@ -248,7 +257,7 @@ subtest 'Parent rollback invalidates all descendants', {
+     }
+ };
+ 
+-subtest 'Automatic parents cannot leave a manual child open', {
++savepoint-test 'Automatic parents cannot leave a manual child open', {
+     reset;
+     my $child;
+     throws-like {
+@@ -449,19 +458,21 @@ subtest 'An escaping exception closes retained participants immediately', {
+ };
+ 
+ subtest 'Savepoint participants are independent and parent release invalidates children', {
+-    reset;
+-    red-do :transaction, -> :$guard! {
+-        GuardRecord.^create: :label<parent>;
++    savepoint-test 'Native child scope', {
++        reset;
+         red-do :transaction, -> :$guard! {
+-            $guard.retain;
+-            GuardRecord.^create: :label<child>;
+-            $guard.release;
+-            is GuardRecord.^all.elems, 2, 'The child remains open with one participant';
++            GuardRecord.^create: :label<parent>;
++            red-do :transaction, -> :$guard! {
++                $guard.retain;
++                GuardRecord.^create: :label<child>;
++                $guard.release;
++                is GuardRecord.^all.elems, 2, 'The child remains open with one participant';
++            };
++            is GuardRecord.^all.elems, 1, 'Last child release rolls back only its savepoint';
++            $guard.commit;
+         };
+-        is GuardRecord.^all.elems, 1, 'Last child release rolls back only its savepoint';
+-        $guard.commit;
++        is-deeply labels(), ('parent',);
+     };
+-    is-deeply labels(), ('parent',);
+     my $root = Red::Transaction::Guard.new(:driver(GuardProbeDriver.new));
+     my $child = $root.child;
+     $child.retain;
+@@ -643,7 +654,7 @@ subtest 'do does not extend its participation for a returned Promise', {
+     $promise.keep(True);
+ };
+ 
+-subtest 'do and start outside red-do restore the context for nested savepoints', {
++savepoint-test 'do and start outside red-do restore the context for nested savepoints', {
+     reset;
+     my $guard = red-do :transaction, -> :$guard! { $guard.retain };
+     $guard.do: {
+@@ -719,24 +730,26 @@ subtest 'A scheduling failure returns the reserved participation', {
+ };
+ 
+ subtest 'A child start keeps its savepoint open until its task completes', {
+-    reset;
+-    red-do :transaction, -> :$guard! {
+-        GuardRecord.^create: :label<parent>;
+-        my $continue = Promise.new;
+-        my $task = red-do :transaction, -> :$guard! {
+-            $guard.start: -> :&commit! {
+-                await $continue;
+-                GuardRecord.^create: :label<async-child>;
+-                commit();
+-                66
+-            }
++    savepoint-test 'Native child scope', {
++        reset;
++        red-do :transaction, -> :$guard! {
++            GuardRecord.^create: :label<parent>;
++            my $continue = Promise.new;
++            my $task = red-do :transaction, -> :$guard! {
++                $guard.start: -> :&commit! {
++                    await $continue;
++                    GuardRecord.^create: :label<async-child>;
++                    commit();
++                    66
++                }
++            };
++            throws-like { $guard.commit }, X::Red::Transaction;
++            $continue.keep(True);
++            is await($task), 66;
++            $guard.commit;
+         };
+-        throws-like { $guard.commit }, X::Red::Transaction;
+-        $continue.keep(True);
+-        is await($task), 66;
+-        $guard.commit;
++        is-deeply labels(), <async-child parent>.List;
+     };
+-    is-deeply labels(), <async-child parent>.List;
+     my $saved;
+     my $manual = red-do :transaction, :async, -> :$guard! {
+         $saved = $guard;
+diff --git a/t/098-concurrent-query-projections.rakutest b/t/098-concurrent-query-projections.rakutest
+index c99e5fd..5d062b6 100644
+--- a/t/098-concurrent-query-projections.rakutest
++++ b/t/098-concurrent-query-projections.rakutest
+@@ -67,8 +67,10 @@ sub populate() {
+     ConcurrentUpload.^create(:filename<foo>, :uploaded(20));
+ }
+ 
+-# Server databases share read-only fixtures; SQLite connections own in-memory databases.
+-populate() unless $driver eq 'SQLite';
++# Embedded in-memory databases are isolated per driver object.
++my $isolated = $driver eq any('SQLite', 'DuckDB')
++    && (%connection<database> // ':memory:') eq ':memory:';
++populate() unless $isolated;
+ my @readers = (^8).map({
+     start {
+         CATCH {
+@@ -78,7 +80,7 @@ my @readers = (^8).map({
+             }
+         }
+         my $*RED-DB = database $driver, |%connection;
+-        populate() if $driver eq 'SQLite';
++        populate() if $isolated;
+         for ^10 {
+             die 'Existing upload was not found'
+                 unless ConcurrentUpload.^all.grep(*.filename eq 'foo').so;
+diff --git a/t/099-single-relationship-create.rakutest b/t/099-single-relationship-create.rakutest
+index 9178a43..a8d8200 100644
+--- a/t/099-single-relationship-create.rakutest
++++ b/t/099-single-relationship-create.rakutest
+@@ -64,6 +64,15 @@ my $*RED-DB = database $driver, |%(@conf.map: {
+     do given .split('=') { .[0] => val .[1] }
+ });
+ my $*RED-DEBUG = $_ with %*ENV<RED_DEBUG>;
++
++my Bool $supports-savepoints = $*RED-DB.?supports-savepoints // True;
++sub savepoint-test(Str $name, &body) {
++    subtest $name, sub {
++        if $supports-savepoints { body() }
++        else { plan :skip-all('Driver explicitly does not support native savepoints') }
++    }
++}
++
+ my $schema = schema(
+     NamedParent, NamedChild, TypedParent, TypedChild, ColumnChild, KeyParent, KeyChild
+ );
+@@ -172,7 +181,7 @@ subtest 'Failed FK updates roll back database and source state', {
+     is NamedChild.^load($child.id).label, 'child', 'Other updated columns were rolled back';
+ };
+ 
+-subtest 'Caught failures use savepoints and leave outer transactions usable', {
++savepoint-test 'Caught failures use savepoints and leave outer transactions usable', {
+     my $child = NamedChild.^create;
+     my $count = NamedParent.^all.elems;
+     red-do :transaction, {
+@@ -187,7 +196,7 @@ subtest 'Caught failures use savepoints and leave outer transactions usable', {
+     is NamedChild.^load($child.id).parent.name, 'after', 'Successful retry saved the FK';
+ };
+ 
+-subtest 'Outer rollback undoes successful relationship creation', {
++savepoint-test 'Outer rollback undoes successful relationship creation', {
+     my $count = NamedChild.^all.elems;
+     throws-like {
+         red-do :transaction, {
+@@ -199,7 +208,22 @@ subtest 'Outer rollback undoes successful relationship creation', {
+     is NamedChild.^all.elems, $count, 'Related row participates in the outer transaction';
+ };
+ 
+-subtest 'Creation requires a persisted source', {
++unless $supports-savepoints {
++    subtest 'Nested relationship creation rejects unsupported savepoints before writes', {
++        my $child = NamedChild.^create;
++        my $count = NamedParent.^all.elems;
++        red-do :transaction, {
++            NamedParent.^create: :name<outer-before>;
++            throws-like { $child.parent.^create }, X::Red::Compiler::Unsupported;
++            is NamedParent.^all.elems, $count + 1, 'rejected operation inserts no related row';
++            nok $child.parent-id.defined, 'rejected operation leaves source FK unchanged';
++            nok NamedChild.^load($child.id).parent-id.defined, 'persisted FK remains unchanged';
++        };
++        is NamedParent.^all.elems, $count + 1, 'outer transaction remains able to commit';
++    };
++}
++
++subtest 'Creation requires a persisted source' , {
+     throws-like { NamedChild.new.parent.^create }, X::Red::RelationshipCreate;
+     throws-like { NamedParent.new.child.^create }, X::Red::RelationshipCreate;
+ };
+diff --git a/t/100-schema-constraints.rakutest b/t/100-schema-constraints.rakutest
+index 843c7a0..ff2d347 100644
+--- a/t/100-schema-constraints.rakutest
++++ b/t/100-schema-constraints.rakutest
+@@ -170,11 +170,12 @@ subtest 'constraints are preflighted before schema creation', {
+ subtest 'partial unique indexes keep their predicate and identity', {
+     schema(PartialRule).drop.create;
+     lives-ok { PartialRule.^create-indexes }, 'Repeating creation preserves partial indexes';
+-    if $backend eq 'MySQL' {
+-        pass 'Both explicitly selected partial indexes are omitted on MySQL';
++    if !PartialRule.^indexes.grep({ $*RED-DB.schema-definition-applies($_) }) {
++        is $*RED-DB.indexes-for-table(PartialRule.^table).grep(*.<partial>).elems, 0,
++            "Driver-specific partial indexes are omitted on $backend";
+         my $index = PartialRule.^indexes.head.clone(:driver(''));
+         throws-like { $*RED-DB.translate($index) }, X::Red::Index,
+-            'MySQL rejects an unguarded partial index';
++            "$backend rejects an unguarded partial index";
+     } else {
+         PartialRule.^create: :label<same>, :active(0);
+         PartialRule.^create: :label<same>, :active(0);
+diff --git a/t/101-query-plans.rakutest b/t/101-query-plans.rakutest
+index c1ceac6..be03e01 100644
+--- a/t/101-query-plans.rakutest
++++ b/t/101-query-plans.rakutest
+@@ -80,14 +80,15 @@ subtest 'Changing the driver cannot reuse a connection or cursor' => {
+         my ($key, $value) = .split('=');
+         $key => val($value)
+     }));
+-    my $sqlite = $driver eq 'SQLite';
+-    if $sqlite {
++    my $isolated = $driver eq any('SQLite', 'DuckDB')
++        && ($other.?database // ':memory:') eq ':memory:';
++    if $isolated {
+         my $*RED-DB = $other;
+         QueryPlanRow.^create-table;
+         QueryPlanRow.^create(:number(99), :label<other>);
+     }
+     my $changed = $query.with($other);
+-    is-deeply numbers($changed), ($sqlite ?? [99] !! [1, 2, 3, 4]),
++    is-deeply numbers($changed), ($isolated ?? [99] !! [1, 2, 3, 4]),
+         'The explicit driver handles this execution';
+     is-deeply numbers($query), [1, 2, 3, 4], 'Original query retains its driver behavior';
+ };
+diff --git a/t/114-regex-assertion-captures.rakutest b/t/114-regex-assertion-captures.rakutest
+index 4f02aef..9590027 100644
+--- a/t/114-regex-assertion-captures.rakutest
++++ b/t/114-regex-assertion-captures.rakutest
+@@ -37,7 +37,7 @@ for @patterns -> $source {
+     subtest $source => {
+         my $quoted = $source.AST.statements[*-1].expression;
+         my $regex = Red::Compiler::Regex.new.compile($quoted);
+-        if $backend ne 'MySQL' {
++        if $backend ne 'MySQL' && $backend ne 'DuckDB' {
+             throws-like {
+                 my Int $*bind-counter = 0;
+                 $*RED-DB.translate(Red::AST::RegexMatch.checked(ast-value('aa'), $regex))
+@@ -79,7 +79,7 @@ my $schema = schema(AssertionCaptureRow);
+ $schema.drop.create;
+ LEAVE $schema.drop;
+ AssertionCaptureRow.^create(:name($_)) for <aa ab bb>;
+-if $backend eq 'MySQL' {
++if $backend eq any(<MySQL DuckDB>) {
+     is-deeply AssertionCaptureRow.^all.grep({ .name ~~ /^ <?before [(a) $0]> .. $/ })
+         .map(*.name).Array, ['aa'], 'Assertion-local references execute in compiled SQL';
+ } else {
+diff --git a/t/116-regex-capture-reads.rakutest b/t/116-regex-capture-reads.rakutest
+index a086a52..ffc7d13 100644
+--- a/t/116-regex-capture-reads.rakutest
++++ b/t/116-regex-capture-reads.rakutest
+@@ -49,7 +49,7 @@ my @queries =
+     -> { CaptureReadRow.^all.grep({ if .ble ~~ /^ ('bla ' \w+)/ { $0 eq 'bla ble' } }) },
+     -> { CaptureReadRow.^all.grep({ .ble ~~ /^ ('bla ' \w+)/ ?? $0 eq 'bla ble' !! False }) };
+ for @queries.kv -> $index, &query {
+-    if $backend eq 'Pg' || ($backend eq 'MySQL' && $index == any(1, 2, 3)) {
++    if $backend eq 'Pg' || ($backend eq any(<MySQL DuckDB>) && $index == any(1, 2, 3)) {
+         is-deeply query().map(*.ble).Array, ['bla ble'], "Guarded capture query $index executes in SQL";
+     } else {
+         my $*RED-FALLBACK = True;
+diff --git a/t/122-regex-text-methods.rakutest b/t/122-regex-text-methods.rakutest
+index b193d34..a1600b1 100644
+--- a/t/122-regex-text-methods.rakutest
++++ b/t/122-regex-text-methods.rakutest
+@@ -27,7 +27,7 @@ my @whole =
+     [-> { RegexTextMethodRow.^all.grep({ $/.Str.substr(1, 1) eq 'b' if .text ~~ /^ <[a..z A..Z]>+ $/ }) }, set('ab')],
+     [-> { RegexTextMethodRow.^all.grep({ (~$/).lc eq 'ab' if .text ~~ /^ <[a..z A..Z]>+ $/ }) }, set('ab', 'AB')];
+ for @whole.kv -> $index, $case {
+-    if $backend eq any(<Pg MySQL>) {
++    if $backend eq any(<Pg MySQL DuckDB>) {
+         is-deeply $case[0]().map(*.text).Array.Set, $case[1],
+             "Whole text operation $index executes in SQL";
+     } else {
+diff --git a/t/123-regex-capture-chars.rakutest b/t/123-regex-capture-chars.rakutest
+index e628ebd..3020bdf 100644
+--- a/t/123-regex-capture-chars.rakutest
++++ b/t/123-regex-capture-chars.rakutest
+@@ -31,7 +31,7 @@ my @whole =
+     [-> { CaptureCharsRow.^all.grep({ (~$/).chars == 2 if .text ~~ /^ .* $/ }) }, set('ab')],
+     [-> { CaptureCharsRow.^all.grep({ $/.chars == 0 unless .text ~~ /z/ }) }, set('', 'a', 'ab', 'é', '😀')];
+ for @whole.kv -> $index, $case {
+-    if $backend eq any(<Pg MySQL>) {
++    if $backend eq any(<Pg MySQL DuckDB>) {
+         is-deeply $case[0]().map(*.text).Array.Set, $case[1],
+             "Whole capture character count $index uses native SQL";
+     } else {
+@@ -56,7 +56,7 @@ for @scalar.kv -> $index, $case {
+             'Scalar character counts retain the backend extraction restriction';
+     }
+ }
+-if $backend eq any(<Pg MySQL>) {
++if $backend eq any(<Pg MySQL DuckDB>) {
+     my $pattern = Red::Compiler::Regex.new.compile(q[/^.*$/].AST.statements[0].expression);
+     my @plan = 'regex-chars', ['regex-value', ['regex', ['subject'], $pattern], '$/'];
+     my $template = Red::Compiler::Template.new(:@plan);
+diff --git a/t/130-migration-failures.rakutest b/t/130-migration-failures.rakutest
+index ba58f0c..b40fb21 100644
+--- a/t/130-migration-failures.rakutest
++++ b/t/130-migration-failures.rakutest
+@@ -24,8 +24,9 @@ my $path = $manager.prepare('initial');
+ my $file = $path.add($dialect).add('up/001-schema.sql');
+ my $original = $file.slurp;
+ $file.spurt($original ~ "\nINSERT INTO red_missing_table VALUES (1);\n");
++my $completed = $dialect eq 'DuckDB' ?? 2 !! 1;
+ throws-like { $manager.apply }, X::Red::Migration,
+-    reason => /'failed after 1 statements'/, 'reports failing SQL and completed statement count';
++    reason => /'failed after ' $completed ' statements'/, 'reports failing SQL and completed statement count';
+ if $dialect eq 'MySQL' {
+     is $manager.status[0]<state>, 'failed', 'partial execution is visible in status';
+     is Red::Migration::Applied.^all.head.completed-statements, 1, 'partial progress is durable';
+diff --git a/t/132-migration-locks.rakutest b/t/132-migration-locks.rakutest
+index 4cc4e27..3a234d2 100644
+--- a/t/132-migration-locks.rakutest
++++ b/t/132-migration-locks.rakutest
+@@ -7,9 +7,11 @@ my @connection = (%*ENV<RED_DATABASE> // 'SQLite').words;
+ my $dialect = @connection.shift;
+ my %parameters = @connection.map({ do given .split('=', 2) { .[0] => val .[1] } }).Hash;
+ my $root = $*TMPDIR.add("red-locks-{$*PID}-{100000.rand.Int}"); $root.mkdir;
+-%parameters<database> = $root.add('lock.sqlite').Str if $dialect eq 'SQLite';
++%parameters<database> = $root.add('lock.sqlite').Str if $dialect eq any(<SQLite DuckDB>);
+ my $db = database $dialect, |%parameters;
+-my $other = database $dialect, |%parameters;
++my $other = $dialect eq 'DuckDB'
++    ?? database($dialect, $db.dbh)
++    !! database($dialect, |%parameters);
+ my $session;
+ if $dialect eq 'Pg' {
+     $session = $other.dbh.db;
+@@ -25,12 +27,14 @@ $db.execute('DROP TABLE IF EXISTS migration_locked');
+ $db.execute('DROP TABLE IF EXISTS red_migrations');
+ $manager.prepare('initial');
+ given $dialect {
++    when 'DuckDB' { $other.acquire-migration-lock }
+     when 'SQLite' { $other.execute('BEGIN IMMEDIATE') }
+     when 'Pg' { $other.execute('SELECT pg_advisory_lock(1380271181)') }
+     when 'MySQL' { $other.execute("SELECT GET_LOCK(CONCAT('red_migrations:', SHA1(DATABASE())), 0)") }
+ }
+ dies-ok { $manager.apply }, 'another physical connection cannot migrate concurrently';
+ given $dialect {
++    when 'DuckDB' { $other.release-migration-lock }
+     when 'SQLite' { $other.execute('ROLLBACK') }
+     when 'Pg' { $other.execute('SELECT pg_advisory_unlock(1380271181)') }
+     when 'MySQL' { $other.execute("SELECT RELEASE_LOCK(CONCAT('red_migrations:', SHA1(DATABASE())))") }
+diff --git a/t/149-synchronous-explicit-sql.rakutest b/t/149-synchronous-explicit-sql.rakutest
+index 091e534..a90edd0 100644
+--- a/t/149-synchronous-explicit-sql.rakutest
++++ b/t/149-synchronous-explicit-sql.rakutest
+@@ -43,6 +43,7 @@ INSERT INTO explicit_copy (id, value) SELECT id, CAST(value AS INTEGER) + 1 FROM
+ DROP TABLE explicit_conversion;
+ ALTER TABLE explicit_copy RENAME TO explicit_conversion;
+ SQL
++        when 'DuckDB' { 'ALTER TABLE explicit_conversion ALTER COLUMN value TYPE BIGINT USING (CAST(value AS BIGINT) + 1);' }
+         when 'Pg' { 'ALTER TABLE explicit_conversion ALTER COLUMN value TYPE integer USING (value::integer + 1);' }
+         when 'MySQL' { 'UPDATE explicit_conversion SET value = CAST(value AS SIGNED) + 1; ALTER TABLE explicit_conversion MODIFY COLUMN value integer NULL;' }
+     };
+diff --git a/t/154-migration-five-levels.rakutest b/t/154-migration-five-levels.rakutest
+index 8cffc48..5faec78 100644
+--- a/t/154-migration-five-levels.rakutest
++++ b/t/154-migration-five-levels.rakutest
+@@ -19,6 +19,7 @@ my $repository-path = $root.add('repository');
+ my $repository = CompUnit::Repository::Installation.new(:prefix($repository-path));
+ my $marker = $root.add('unexpected-module-load');
+ my Bool $consumer-phase = False;
++my $*MIGRATION-PARENT-DB;
+ # zef tests through a staging repository, rather than a filesystem lib directory.
+ # Keep its full path-spec so children use the same distribution as this process.
+ my @libraries = $*REPO.repo-chain.grep({
+@@ -30,6 +31,11 @@ my @identities;
+ 
+ sub cli(IO::Path $project, Str $command, *@arguments, IO::Path :$model-lib,
+         IO::Path :$context, IO::Path :$installed = $repository-path) {
++    # DuckDB permits one writer process. Relinquish the parent file handle
++    # for each CLI process, then reopen the same driver for in-process checks.
++    my $parent = $*MIGRATION-PARENT-DB;
++    if $parent.defined { $parent.close; $parent.dbh.close }
++    LEAVE $parent.reopen if $parent.defined;
+     temp %*ENV<RED_MIGRATION_TEST> = $context.defined ?? $context.Str !! '';
+     temp %*ENV<RED_CHAIN_MODULE_MARKER> = $consumer-phase && !$model-lib.defined
+         ?? $marker.Str !! '';
+@@ -143,6 +149,7 @@ sub exercise-data($db) {
+ }
+ 
+ temporary-database($driver, %server, -> $db, $context, %parameters {
++    my $*MIGRATION-PARENT-DB = $driver eq 'DuckDB' ?? $db !! Nil;
+     is cli($application, 'import', "--project=$application", :$context),
+         '10 migrations imported; review before applying', 'leaf dependency discovers all five levels';
+     my $manager = Red::Migration::Manager.new(config => Red::Migration::Configuration.new(
+@@ -206,6 +213,7 @@ $orphan.add('META6.json').spurt(to-json(%(depends =>
+     ['Red-Migration-Chain-App:auth<zef:red-chain-test>:ver<1>'])));
+ configuration($orphan);
+ temporary-database($driver, %server, -> $db, $context, %parameters {
++    my $*MIGRATION-PARENT-DB = $driver eq 'DuckDB' ?? $db !! Nil;
+     is cli($orphan, 'adopt', '--dependency=Red-Migration-Chain-App:auth<zef:red-chain-test>',
+         "--project=$orphan", :$context, :installed($orphan-repository)),
+         '5 tables adopted', 'adopts republished package after all five original distributions were removed';
+diff --git a/t/161-migration-reset.rakutest b/t/161-migration-reset.rakutest
+index 39e9177..f9fefd5 100644
+--- a/t/161-migration-reset.rakutest
++++ b/t/161-migration-reset.rakutest
+@@ -54,7 +54,8 @@ DATA
+     ok @preview.first(* eq 'rebuild_child', :k) < @preview.first(* eq 'rebuild_parent', :k),
+         'preview orders child before parent';
+     is RebuildParent.^all.head.name, 'seed', 'cancellation preserves data';
+-    $db.execute('CREATE TABLE external_reset (id INTEGER PRIMARY KEY, parent_id INTEGER, '
++    my $parent-type = $dialect eq 'DuckDB' ?? 'BIGINT' !! 'INTEGER';
++    $db.execute('CREATE TABLE external_reset (id INTEGER PRIMARY KEY, parent_id ' ~ $parent-type ~ ', '
+         ~ 'FOREIGN KEY (parent_id) REFERENCES rebuild_parent(id))');
+     throws-like { $manager.drop-tables(:connection<selected>) }, X::Red::Migration,
+         reason => /'Unmanaged table external_reset'/, 'unmanaged dependent blocks removal';
+@@ -65,16 +66,24 @@ DATA
+         ~ ($dialect eq 'SQLite' ?? ", $cycle-reference" !! '') ~ ')');
+     $db.execute('CREATE TABLE rebuild_cycle_b (id INTEGER PRIMARY KEY, other_id INTEGER, '
+         ~ 'FOREIGN KEY (other_id) REFERENCES rebuild_cycle_a(id))');
+-    $db.execute("ALTER TABLE rebuild_cycle_a ADD CONSTRAINT reset_cycle_fk $cycle-reference")
+-        unless $dialect eq 'SQLite';
+-    my $cyclic = Red::Migration::Manager.new(:config($config.clone(
+-        :models[RebuildParent, RebuildChild, RebuildCycleA, RebuildCycleB])));
+-    throws-like { $cyclic.drop-tables(:connection<selected>) }, X::Red::Migration,
+-        reason => /'Cyclic table dependencies'/, 'cycles are rejected before removal';
+-    is RebuildParent.^all.elems, 1, 'cycle rejection preserves existing data';
+-    $db.execute('ALTER TABLE rebuild_cycle_a DROP '
+-        ~ ($dialect eq 'MySQL' ?? 'FOREIGN KEY' !! 'CONSTRAINT') ~ ' reset_cycle_fk')
+-        unless $dialect eq 'SQLite';
++    if $dialect eq 'DuckDB' {
++        throws-like {
++            $db.execute("ALTER TABLE rebuild_cycle_a ADD CONSTRAINT reset_cycle_fk $cycle-reference")
++        }, Exception, message => /'No support for adding FOREIGN_KEY'/,
++            'DuckDB rejects adding a cyclic foreign key';
++        is RebuildParent.^all.elems, 1, 'unsupported cycle creation preserves existing data';
++    } else {
++        $db.execute("ALTER TABLE rebuild_cycle_a ADD CONSTRAINT reset_cycle_fk $cycle-reference")
++            unless $dialect eq 'SQLite';
++        my $cyclic = Red::Migration::Manager.new(:config($config.clone(
++            :models[RebuildParent, RebuildChild, RebuildCycleA, RebuildCycleB])));
++        throws-like { $cyclic.drop-tables(:connection<selected>) }, X::Red::Migration,
++            reason => /'Cyclic table dependencies'/, 'cycles are rejected before removal';
++        is RebuildParent.^all.elems, 1, 'cycle rejection preserves existing data';
++        $db.execute('ALTER TABLE rebuild_cycle_a DROP '
++            ~ ($dialect eq 'MySQL' ?? 'FOREIGN KEY' !! 'CONSTRAINT') ~ ' reset_cycle_fk')
++            unless $dialect eq 'SQLite';
++    }
+     $db.execute('DROP TABLE rebuild_cycle_b');
+     $db.execute('DROP TABLE rebuild_cycle_a');
+     is $manager.drop-tables(:connection<selected>), 5, 'removes both models and all bookkeeping';
