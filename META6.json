@@ -3,7 +3,8 @@
   "authors": [
     "Fernando Correa de Oliveira"
   ],
-  "build-depends": [],
+  "build-depends": [
+  ],
   "depends": [
     "Red:ver<0.2.10+>:auth<zef:FCO>",
     "DB::DuckDB:ver<1.0.1>:auth<zef:skyter10086>",
@@ -16,15 +17,16 @@
   "perl": "6.d",
   "provides": {
     "Red::Driver::DuckDB": "lib/Red/Driver/DuckDB.rakumod",
-    "Red::Driver::DuckDB::SchemaReader": "lib/Red/Driver/DuckDB/SchemaReader.rakumod",
     "Red::Driver::DuckDB::JSON": "lib/Red/Driver/DuckDB/JSON.rakumod",
+    "Red::Driver::DuckDB::Migrations": "lib/Red/Driver/DuckDB/Migrations.rakumod",
     "Red::Driver::DuckDB::Regex": "lib/Red/Driver/DuckDB/Regex.rakumod",
     "Red::Driver::DuckDB::Regex::Automaton": "lib/Red/Driver/DuckDB/Regex/Automaton.rakumod",
     "Red::Driver::DuckDB::Regex::Unicode": "lib/Red/Driver/DuckDB/Regex/Unicode.rakumod",
     "Red::Driver::DuckDB::SQL": "lib/Red/Driver/DuckDB/SQL.rakumod",
-    "Red::Driver::DuckDB::Migrations": "lib/Red/Driver/DuckDB/Migrations.rakumod"
+    "Red::Driver::DuckDB::SchemaReader": "lib/Red/Driver/DuckDB/SchemaReader.rakumod"
   },
-  "resources": [],
+  "resources": [
+  ],
   "source-url": "https://github.com/FCO/Red-Driver-DuckDB.git",
   "tags": [
     "database",

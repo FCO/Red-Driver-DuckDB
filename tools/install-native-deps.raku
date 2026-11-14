@@ -1,8 +1,8 @@
 #!/usr/bin/env raku
 # Install pinned releases using the native curl/tar utilities provided by CI.
 
-sub checked(*@command) {
-    die "Command failed: {@command.join(' ')}" if run(|@command).exitcode;
+sub checked(*@command, IO::Path :$cwd = $*CWD) {
+    die "Command failed: {@command.join(' ')}" if run(|@command, :$cwd).exitcode;
 }
 
 sub remove-tree(IO::Path $path) {
@@ -20,26 +20,30 @@ sub MAIN(Str $platform = $*DISTRO.is-win ?? 'windows' !! 'macos',
     LEAVE remove-tree($root) if $root.e;
     my $source = $root.add('source');
     $source.mkdir;
-    my $package = $archive.defined ?? $archive.IO.absolute.IO !! $root.add('release.tar.gz');
-    unless $archive.defined {
+    # Keep the archive beside the extraction directory. Git's MSYS tar does not
+    # accept native Windows paths in -C; relative paths avoid drive/UNC parsing.
+    my $package = $root.add('release.tar.gz');
+    if $archive.defined {
+        $archive.IO.copy($package);
+    } else {
         my $url = $platform eq 'windows'
             ?? 'https://360.zef.pm/D/B_/DB_DUCKDB/68edb89be44b796392325687a17aa4545afa6d98.tar.gz'
             !! 'https://360.zef.pm/A/LI/ALIEN_LIBDUCKDB/616cec8e8469ca04c087236ec2cc9fc0ae42c825.tar.gz';
         checked('curl', '--fail', '--location', '--output', $package.Str, $url);
     }
+    # Select by host, including macOS archive fixtures exercised on Windows.
+    # Windows bsdtar cannot reliably read the release's Unicode filenames.
+    my $tar = $*DISTRO.is-win
+        ?? (%*ENV<ProgramFiles> // 'C:\Program Files').IO.add('Git/usr/bin/tar.exe').Str
+        !! 'tar';
+    die "GNU tar not found: $tar" if $*DISTRO.is-win && !$tar.IO.f;
     if $platform eq 'windows' {
-        # Windows bsdtar tries to decode even excluded documentation entries
-        # using the system code page. Use Git's GNU tar for this UTF-8 archive.
-        my $tar = $*DISTRO.is-win
-            ?? (%*ENV<ProgramFiles> // 'C:\Program Files').IO.add('Git/usr/bin/tar.exe').Str
-            !! 'tar';
-        die "GNU tar not found: $tar" if $*DISTRO.is-win && !$tar.IO.f;
         # Extract only installation inputs. The release's Unicode documentation
         # filenames fail with zef's Windows tar extraction on the hosted runner.
-        checked($tar, |($*DISTRO.is-win ?? ('--force-local',) !! ()),
-            '-xzf', $package.Str, '-C', $source.Str, 'META6.json', 'lib', 'resources');
+        checked($tar, '-xzf', '../release.tar.gz',
+            'META6.json', 'lib', 'resources', :cwd($source));
     } else {
-        checked('tar', '-xzf', $package.Str, '-C', $source.Str);
+        checked($tar, '-xzf', '../release.tar.gz', :cwd($source));
     }
     sub find-file(IO::Path $path, Str $name) {
         return $path if $path.f && $path.basename eq $name;

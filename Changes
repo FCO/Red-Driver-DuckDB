@@ -1,6 +1,6 @@
 Revision history for Red::Driver::DuckDB
 
-{{next}}
+{{$NEXT}}
     - Prioritize DuckDB identifier validation over CommonSQL and quote dotted names in PRAGMA tests.
     - Work around DB::DuckDB archive extraction failure on Windows CI with a Raku installer.
     - Replace the macOS installer, test launcher and tool tests with Raku; remove the Python CI dependency.
