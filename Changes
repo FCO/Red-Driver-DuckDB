@@ -1,6 +1,8 @@
 Revision history for Red::Driver::DuckDB
 
 {{$NEXT}}
+
+0.0.3  2026-11-15T05:20:29Z
     - Fix installation
 
 0.0.2  2026-11-14T18:15:01Z
