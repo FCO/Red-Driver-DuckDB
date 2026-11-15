@@ -1,6 +1,8 @@
 Revision history for Red::Driver::DuckDB
 
 {{$NEXT}}
+
+0.0.6  2026-11-15T20:42:15Z
     - Derive named source tables and views through Red's table formatter (PersonCopy becomes person_copy).
     - Reject duplicate source names without altering existing tables, views or their generated-ID sequences.
     - Support quoted source names and reject names containing NUL.
