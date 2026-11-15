@@ -122,6 +122,7 @@ class Statement does Red::Statement {
     has $!result;
     has $!rows;
     method stt-exec($connection, *@bind) {
+        $.driver.debug: (@bind.elems ?? @bind !! @!binds);
         $!result.free if $!result ~~ DB::DuckDB::Result;
         my @parameters = (@bind.elems ?? @bind !! @!binds).map({ $.driver.deflate($_) });
         $!result = $.driver.connection-lock.protect: {
@@ -208,6 +209,7 @@ multi method prepare(Str $query) {
     CATCH { when DB::DuckDB::Error { self.map-exception($_).throw } }
     DB::DuckDB::Error.new(:message('DuckDB connection is closed')).throw if $!session-state.closed;
     self.unsupported('SQL commands cannot contain NUL; bind text values instead') if $query.contains("\0");
+    self.debug: $query;
     Statement.new(:driver(self), :statement($!connection), :session-state($!session-state), :$query)
 }
 

@@ -5,10 +5,15 @@ class FakeDriver does Red::Driver::DuckDB::S3 {
     has @.queries;
     has Bool $.fail = False;
     method execute(Str $sql) {
+        die "Logging enabled during S3 configuration"
+            if $*RED-DEBUG || $*RED-DEBUG-AST || $*RED-DEBUG-RESPONSE;
         die "native error containing $sql" if $!fail;
         @!queries.push($sql);
     }
 }
+my $*RED-DEBUG = True;
+my $*RED-DEBUG-AST = True;
+my $*RED-DEBUG-RESPONSE = True;
 my $driver = FakeDriver.new;
 ok $driver.configure-s3(:region<eu-west-1>, :profile<test>) === $driver,
     'configuration returns driver';
@@ -38,4 +43,6 @@ try {
 }
 like $error, /'S3 configuration failed'/, 'configuration failure explained';
 unlike $error, /'private-value'|'CREATE'|'INSTALL'/, 'native SQL and credentials redacted';
+ok $*RED-DEBUG && $*RED-DEBUG-AST && $*RED-DEBUG-RESPONSE,
+    'logging switches restored after successful and failed S3 setup';
 done-testing;

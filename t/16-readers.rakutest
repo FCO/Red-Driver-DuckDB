@@ -52,17 +52,28 @@ is Parquet.^all.head.nome, 'Ana', 'Parquet reader';
 for 'read-csv' => $csv, 'read-json' => $json, 'read-parquet' => $parquet,
     'read-text' => $text, 'read-blob' => $text -> $reader {
     my $method = $reader.key;
-    my \Named = $db."$method"($reader.value.Str, :name<NamedSource>);
-    is Named.^name, 'NamedSource', "$method accepts a model name";
+    my $name = "NamedSource_" ~ $method.subst('-', '_', :g);
+    my \Named = $db."$method"($reader.value.Str, :$name);
+    is Named.^name, $name, "$method accepts a model name";
+    is Named.^table, "named_source_" ~ $method.subst('-', '_', :g), "$method uses the model name for its SQL view";
     ok Named.^all.head.defined, "$method named model queries rows";
 }
 my \NamedCopy = $db.read-csv($csv.Str, :name<NamedSource>, :materialize, :header, :delim<;>);
 is NamedCopy.^name, 'NamedSource', 'materialized model accepts a name';
 is NamedCopy.^all.elems, 3, 'named materialized model queries rows';
-my \NamedAgain = $db.read-source('read_csv', $csv.Str, :name<NamedSource>, :header, :delim<;>);
-is NamedAgain.^name, 'NamedSource', 'generic reader accepts a model name';
-isnt NamedAgain.^table, NamedCopy.^table, 'same model names retain distinct SQL sources';
-isnt NamedAgain.WHICH, NamedCopy.WHICH, 'same model names create distinct types';
+is NamedCopy.^table, 'named_source', 'materialized table uses the model name';
+my \NamedAgain = $db.read-source('read_csv', $csv.Str, :name<NamedAgain>, :header, :delim<;>);
+is NamedAgain.^name, 'NamedAgain', 'generic reader accepts a model name';
+is NamedAgain.^table, 'named_again', 'generic reader names its SQL view';
+dies-ok { $db.read-csv($csv.Str, :name<NamedAgain>, :header, :delim<;>) }, 'duplicate view name rejected';
+is NamedAgain.^all.elems, 3, 'failed duplicate leaves existing view intact';
+dies-ok { $db.read-csv($csv.Str, :name<NamedSource>, :materialize, :header, :delim<;>) }, 'duplicate materialized name rejected';
+is NamedCopy.^all.elems, 3, 'failed duplicate leaves existing table intact';
+lives-ok { NamedCopy.^create(:id(5), :nome<Extra>, :idade(20)) }, 'failed duplicate leaves existing sequence intact';
+my \Quoted = $db.read-csv($csv.Str, :name('Quoted " Source'), :header, :delim<;>, :materialize);
+is Quoted.^table, 'quoted " source', 'custom SQL name preserves quotes and spaces';
+is Quoted.^all.elems, 3, 'quoted custom table name queries rows';
+dies-ok { $db.read-csv($csv.Str, :name("Bad\0Name")) }, 'NUL model name rejected';
 like Pessoa.^name, /^ 'DuckDBSource_red_source_' /, 'omitted model name retains generated name';
 dies-ok { $db.read-csv($csv.Str, :name('')) }, 'empty model name rejected';
 my $odd = $root.add('odd.csv'); $odd.spurt("a.b,a b,a_b,1x\n1,2,3,4\n");

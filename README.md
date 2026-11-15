@@ -70,7 +70,7 @@ my \Pessoa = $db.read-csv('pessoa.csv', :name<Pessoa>, :header, :delim<;>);
 
 Available readers are `read-csv`, `read-json`, `read-parquet`, `read-text`, `read-blob`, and `read-xlsx`. Options retain DuckDB names such as `:union_by_name` and `:sheet<Vendas>`. Paths, supported lists and globs are passed to DuckDB. Text and blob readers return one row per file, with content and metadata. Excel installs and loads the `excel` extension on use.
 
-All readers accept an optional `:name<Pessoa> ` to set the generated model's name (`Pessoa.^name`). Without it, a unique name is generated. This does not register a package symbol or change the unique temporary SQL table/view name.
+All readers accept an optional `:name<Pessoa>` to set both the generated model's name (`Pessoa.^name`) and derive its temporary SQL table/view name using Red's normal name conversion (`PersonCopy` becomes `person_copy`). Reusing an existing SQL name on the same connection raises an error. Without `:name`, unique names are generated. This does not register a package symbol.
 
 The default is a temporary read-only view. Queries retain the originating driver even outside the original `$*RED-DB` scope. Closing that driver ends the source models' lifetime.
 

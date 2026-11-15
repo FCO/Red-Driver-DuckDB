@@ -92,3 +92,18 @@ MinIO image tags. Its first build downloads the MinIO source and Go dependencies
 Docker caches subsequent builds. Set `RED_MINIO_IMAGE` to use an
 existing MinIO image instead. This integration runs after the main suite in the
 Linux Actions job; the ordinary reader tests remain in the platform matrix.
+
+## Dynamic Red controls
+
+DuckDB logs SQL at prepare time and effective binds on every execution through
+Red's `debug` methods (`$*RED-DEBUG`). AST and response logging remain inherited
+from Red::Driver and Red::Statement. S3 setup locally disables all three logging
+switches while executing secret-bearing SQL.
+
+Source audit: dry-run, SQL comments (both scalar and callable), database selection,
+transaction scope, fallback, formatters, cache diagnostics, compiler diagnostics
+and query-plan controls are handled by Red's shared driver, ORM, compiler and
+wrapper layers. DuckDB does not replace those controls. Dry-run retains Red's
+existing ORM/AST semantics; direct SQL is not made into a dry-run operation.
+Internal dynamic variables for binds, references, computations and compiler locals
+remain owned by the shared translation/compiler paths.

@@ -30,13 +30,19 @@ method read-xlsx($source, |opts) { self.read-source('read_xlsx', $source, |opts)
 
 method read-source(Str $reader, $source, Str :$name, Bool :$materialize = False, *%options) {
     die 'Source model name must not be empty' if $name.defined && !$name.chars;
+    die 'NUL in source model name' if $name.defined && $name.contains("\0");
     die 'Unknown source reader' unless $reader eq any(<read_csv read_json read_parquet read_text read_blob read_xlsx>);
     die 'Expected a path or list of paths' unless $source ~~ Str || ($source ~~ Positional && $source.elems && $source.all ~~ Str);
     for %options.keys { die "Invalid reader option: $_" unless /^ <[a..zA..Z_]> <[a..zA..Z_0..9]>* $/ }
     my $call = $reader ~ '(' ~ (literal($source), |%options.keys.sort.map({ $_ ~ ' = ' ~ literal(%options{$_}) })).join(', ') ~ ')';
     if $reader eq 'read_xlsx' { self.execute('INSTALL excel'); self.execute('LOAD excel') }
     my @columns = self.schema-reader.rows('DESCRIBE SELECT * FROM ' ~ $call).Array;
-    my $table = 'red_source_' ~ UUID.new.Str.subst('-', '', :g);
+    my $generated-table = 'red_source_' ~ UUID.new.Str.subst('-', '', :g);
+    my $model := Red::Driver::DuckDB::SourceModel::SourceHOW.new_type(:name($name // 'DuckDBSource_' ~ $generated-table));
+    my $table = do {
+        my $*RED-DB = self;
+        $name.defined ?? $model.^table !! $generated-table
+    };
     my Str $sequence;
     my Bool $sequence-created = False;
     my Bool $object-created = False;
@@ -90,19 +96,18 @@ method read-source(Str $reader, $source, Str :$name, Bool :$materialize = False,
     if $materialize {
         my $suffix = 2;
         $key = 'red_row_id_' ~ $suffix++ while %used{$key}:exists;
-        $sequence = 'red_seq_' ~ $table ~ '_' ~ $key;
+        $sequence = 'red_seq_' ~ UUID.new.Str.subst('-', '', :g);
         self.execute('CREATE TEMP SEQUENCE ' ~ ident($sequence));
         $sequence-created = True;
-        @projection.unshift('nextval(' ~ literal('red_seq_' ~ $table ~ '_' ~ $key) ~ ') AS ' ~ ident($key));
+        @projection.unshift('nextval(' ~ literal($sequence) ~ ') AS ' ~ ident($key));
     }
     self.execute('CREATE TEMP ' ~ ($materialize ?? 'TABLE ' !! 'VIEW ') ~ ident($table) ~ ' AS SELECT ' ~ @projection.join(', ') ~ ' FROM ' ~ $call);
     $object-created = True;
     if $materialize {
-        self.execute('ALTER TABLE ' ~ ident($table) ~ ' ALTER COLUMN ' ~ ident($key) ~ ' SET DEFAULT nextval(' ~ literal('red_seq_' ~ $table ~ '_' ~ $key) ~ ')');
+        self.execute('ALTER TABLE ' ~ ident($table) ~ ' ALTER COLUMN ' ~ ident($key) ~ ' SET DEFAULT nextval(' ~ literal($sequence) ~ ')');
         self.execute('ALTER TABLE ' ~ ident($table) ~ ' ADD PRIMARY KEY (' ~ ident($key) ~ ')');
         @attributes.unshift({ :name($key), :type(Int), :sql-type<BIGINT>, :serial });
     }
-    my $model := Red::Driver::DuckDB::SourceModel::SourceHOW.new_type(:name($name // 'DuckDBSource_' ~ $table));
     $model.HOW.source-driver = self;
     $model.HOW.materialized = $materialize;
     $model.HOW.source-mapping = %mapping;

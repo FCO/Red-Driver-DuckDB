@@ -1,0 +1,44 @@
+use Test;
+use Red;
+use Red::Driver::DuckDB;
+class Capture {
+    has @.lines;
+    method print(*@text) { @!lines.push(@text.join); True }
+    method say(*@text) { self.print(|@text, "\n") }
+}
+my $*RED-DB = Red::Driver::DuckDB.new;
+my $capture = Capture.new;
+{
+    my $*ERR = $capture;
+    my $*RED-DEBUG = True;
+    my $statement = $*RED-DB.prepare('SELECT ? AS value');
+    $statement.execute(17);
+    is $statement.row<value>, 17, 'query still executes';
+    $statement.execute(23);
+    $statement.binds = [31];
+    $statement.execute;
+    $*RED-DB.execute('SELECT 1');
+}
+my $log = $capture.lines.join;
+like $log, /'SQL : SELECT ? AS value'/, 'SQL logged';
+like $log, /'BIND: [17]'/, 'explicit binds logged';
+like $log, /'BIND: [23]'/, 'new binds logged on reuse';
+like $log, /'BIND: [31]'/, 'predefined binds logged';
+like $log, /'BIND: []'/, 'empty binds logged';
+for False, Any -> $enabled {
+    my $quiet = Capture.new;
+    my $*ERR = $quiet;
+    my $*RED-DEBUG = $enabled;
+    $*RED-DB.execute('SELECT 1');
+    is $quiet.lines.elems, 0, 'disabled or undefined debug is quiet';
+}
+{
+    my $response = Capture.new;
+    my $*ERR = $response;
+    my $*RED-DEBUG = False;
+    my $*RED-DEBUG-RESPONSE = True;
+    $*RED-DB.execute('SELECT 42 AS value').row;
+    like $response.lines.join, /'42'/, 'response debug inherited';
+}
+$*RED-DB.close;
+done-testing;

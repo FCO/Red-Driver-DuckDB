@@ -1,10 +1,13 @@
 Revision history for Red::Driver::DuckDB
 
 {{$NEXT}}
+    - Derive named source tables and views through Red's table formatter (PersonCopy becomes person_copy).
+    - Reject duplicate source names without altering existing tables, views or their generated-ID sequences.
+    - Support quoted source names and reject names containing NUL.
 
 0.0.5  2026-11-15T15:37:58Z
     - Fix source model .^all iteration to yield individual rows without an explicit slip.
-    - Accept an optional :name on all source readers to name the generated Red model.
+    - Accept an optional :name on all source readers to name the generated Red model and derive its temporary SQL table/view name using Red's normal name conversion.
     - Document :name in source reader examples and add regression coverage for naming and iteration.
 
 0.0.4  2026-11-15T07:34:09Z
