@@ -64,7 +64,7 @@ class SourceHOW is MetamodelX::Red::Model {
         $rs.bound-driver = %source<driver>;
         $rs.source-writable = so %source<materialized>;
         $rs.source-complex = so %source<complex>;
-        $rs
+        $rs<>
     }
     method new-from-data($model, |c) {
         return callsame unless $!source-driver.defined;

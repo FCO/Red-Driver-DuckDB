@@ -64,16 +64,18 @@ Readers infer the columns with DuckDB and return a Red model type, without writi
 use Red;
 use Red::Driver::DuckDB;
 my $db = Red::Driver::DuckDB.new;
-my \Pessoa = $db.read-csv('pessoa.csv', :header, :delim<;>);
+my \Pessoa = $db.read-csv('pessoa.csv', :name<Pessoa>, :header, :delim<;>);
 .say for Pessoa.^all.grep(*.idade >= 18);
 ```
 
 Available readers are `read-csv`, `read-json`, `read-parquet`, `read-text`, `read-blob`, and `read-xlsx`. Options retain DuckDB names such as `:union_by_name` and `:sheet<Vendas>`. Paths, supported lists and globs are passed to DuckDB. Text and blob readers return one row per file, with content and metadata. Excel installs and loads the `excel` extension on use.
 
+All readers accept an optional `:name<Pessoa> ` to set the generated model's name (`Pessoa.^name`). Without it, a unique name is generated. This does not register a package symbol or change the unique temporary SQL table/view name.
+
 The default is a temporary read-only view. Queries retain the originating driver even outside the original `$*RED-DB` scope. Closing that driver ends the source models' lifetime.
 
 ```raku
-my \PersonCopy = $db.read-csv('pessoa.csv', :header, :materialize);
+my \PersonCopy = $db.read-csv('pessoa.csv', :name<PersonCopy>, :header, :materialize);
 my $person = PersonCopy.^create(:nome<Carla>, :idade(25));
 $person.idade = 26;
 $person.^save;
@@ -89,9 +91,9 @@ S3 and HTTPS
 
 ```raku
 $db.configure-s3(:region<eu-west-1>);
-my \Sale = $db.read-parquet('s3://my-bucket/sales/*.parquet');
+my \Sale = $db.read-parquet('s3://my-bucket/sales/*.parquet', :name<Sale>);
 .say for Sale.^all.grep(*.total > 100);
-my \RemotePerson = $db.read-csv('https://example.org/people.csv', :header);
+my \RemotePerson = $db.read-csv('https://example.org/people.csv', :name<RemotePerson>, :header);
 ```
 
 `configure-s3` returns the driver and uses AWS `credential_chain` by default. Select a profile with `:profile<work>`. Explicit credentials require `:provider<config>`, `:key-id`, `:secret`, and optional `:session-token`. Additional settings are `:region`, `:scope`, `:endpoint`, `:url-style<path>` or `:url-style<vhost>`, `:use-ssl`/`:!use-ssl`, and a secret `:name` (default `red_s3`). Endpoints are hosts with optional ports, without a URL scheme. S3-compatible services such as MinIO are supported.

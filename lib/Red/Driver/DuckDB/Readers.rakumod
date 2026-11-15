@@ -28,7 +28,8 @@ method read-blob($source, |opts) { self.read-source('read_blob', $source, |opts)
 method read-xlsx($source, |opts) { self.read-source('read_xlsx', $source, |opts) }
 
 
-method read-source(Str $reader, $source, Bool :$materialize = False, *%options) {
+method read-source(Str $reader, $source, Str :$name, Bool :$materialize = False, *%options) {
+    die 'Source model name must not be empty' if $name.defined && !$name.chars;
     die 'Unknown source reader' unless $reader eq any(<read_csv read_json read_parquet read_text read_blob read_xlsx>);
     die 'Expected a path or list of paths' unless $source ~~ Str || ($source ~~ Positional && $source.elems && $source.all ~~ Str);
     for %options.keys { die "Invalid reader option: $_" unless /^ <[a..zA..Z_]> <[a..zA..Z_0..9]>* $/ }
@@ -101,7 +102,7 @@ method read-source(Str $reader, $source, Bool :$materialize = False, *%options) 
         self.execute('ALTER TABLE ' ~ ident($table) ~ ' ADD PRIMARY KEY (' ~ ident($key) ~ ')');
         @attributes.unshift({ :name($key), :type(Int), :sql-type<BIGINT>, :serial });
     }
-    my $model := Red::Driver::DuckDB::SourceModel::SourceHOW.new_type(:name('DuckDBSource_' ~ $table));
+    my $model := Red::Driver::DuckDB::SourceModel::SourceHOW.new_type(:name($name // 'DuckDBSource_' ~ $table));
     $model.HOW.source-driver = self;
     $model.HOW.materialized = $materialize;
     $model.HOW.source-mapping = %mapping;

@@ -9,6 +9,9 @@ $csv.spurt("id;nome;idade\n1;Ana;30\n2;Bruno;17\n2;Bruno;17\n");
 my $db = Red::Driver::DuckDB.new;
 my \Pessoa = $db.read-csv($csv.Str, :header, :delim<;>);
 is Pessoa.^all.elems, 3, 'CSV row count without ambient driver';
+my @source-names;
+@source-names.push(.nome) for Pessoa.^all;
+is-deeply @source-names, ['Ana', 'Bruno', 'Bruno'], 'source all iterates rows without slipping';
 is Pessoa.^all.grep(*.idade >= 18).head.nome, 'Ana', 'filter and inflate';
 is Pessoa.^all.map(*.idade).sum, 64, 'SQL aggregation';
 is Pessoa.^all.sort(*.idade).head.nome, 'Bruno', 'SQL ordering';
@@ -46,6 +49,22 @@ my $parquet = $root.add('people.parquet');
 $db.execute("COPY (SELECT 1 AS id, 'Ana' AS nome) TO '{$parquet.Str}' (FORMAT PARQUET)");
 my \Parquet = $db.read-parquet($parquet.Str);
 is Parquet.^all.head.nome, 'Ana', 'Parquet reader';
+for 'read-csv' => $csv, 'read-json' => $json, 'read-parquet' => $parquet,
+    'read-text' => $text, 'read-blob' => $text -> $reader {
+    my $method = $reader.key;
+    my \Named = $db."$method"($reader.value.Str, :name<NamedSource>);
+    is Named.^name, 'NamedSource', "$method accepts a model name";
+    ok Named.^all.head.defined, "$method named model queries rows";
+}
+my \NamedCopy = $db.read-csv($csv.Str, :name<NamedSource>, :materialize, :header, :delim<;>);
+is NamedCopy.^name, 'NamedSource', 'materialized model accepts a name';
+is NamedCopy.^all.elems, 3, 'named materialized model queries rows';
+my \NamedAgain = $db.read-source('read_csv', $csv.Str, :name<NamedSource>, :header, :delim<;>);
+is NamedAgain.^name, 'NamedSource', 'generic reader accepts a model name';
+isnt NamedAgain.^table, NamedCopy.^table, 'same model names retain distinct SQL sources';
+isnt NamedAgain.WHICH, NamedCopy.WHICH, 'same model names create distinct types';
+like Pessoa.^name, /^ 'DuckDBSource_red_source_' /, 'omitted model name retains generated name';
+dies-ok { $db.read-csv($csv.Str, :name('')) }, 'empty model name rejected';
 my $odd = $root.add('odd.csv'); $odd.spurt("a.b,a b,a_b,1x\n1,2,3,4\n");
 my \Odd = $db.read-csv($odd.Str, :header);
 is Odd.^source-columns<a_b>, 'a.b', 'normalized dotted column';
