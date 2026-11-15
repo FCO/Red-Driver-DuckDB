@@ -1,0 +1,9 @@
+FROM rakudo-star:2026.09-bookworm
+
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends build-essential ca-certificates curl git \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /workspace
+COPY . .
+RUN sh tools/test-install-linux.sh

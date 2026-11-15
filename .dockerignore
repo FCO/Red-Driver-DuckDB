@@ -1,0 +1,6 @@
+.git
+.precomp
+**/.precomp
+.red
+test-results
+Red-Driver-DuckDB-*

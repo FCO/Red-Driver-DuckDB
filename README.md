@@ -10,6 +10,18 @@ Installation
 
 Requires Raku 6.d and DB::DuckDB 1.0.1, whose native binding targets DuckDB 2.x. Alien::Libduckdb installs the native library automatically. On macOS, first run `raku tools/install-native-deps.raku macos`: Alien 1.1.0 downloads the correct archive but omits `.dylib` from its library lookup. This helper installs that exact release with only the missing macOS filenames corrected. On Windows, run `raku tools/install-native-deps.raku windows` before installing the driver dependencies. It extracts the runtime files of DB::DuckDB 1.0.1 to bypass the zef tar extraction failure on Unicode documentation filenames, then installs that unchanged runtime. Both helpers use the native `curl` and `tar` utilities.
 
+On Linux, a C compiler is required to build DB::DuckDB's result bridge, even when Alien downloads a prebuilt DuckDB library. On Debian/Ubuntu, install it with `sudo apt-get install build-essential`.
+
+The published DB::DuckDB 1.0.1 tests spawn Raku processes that cannot see zef's staged dependencies. On Linux, install those dependencies first, then run the binding tests in UTC to avoid the reported TIMESTAMPTZ timezone mismatch:
+
+```sh
+zef install DB Alien::Libduckdb
+TZ=UTC zef install 'DB::DuckDB:ver<1.0.1>:auth<zef:skyter10086>'
+zef install Red::Driver::DuckDB
+```
+
+This makes staged dependencies visible to the subprocess tests without skipping tests. UTC also gives the temporal tests a consistent installation environment. The driver still requires the Red companion changes described below.
+
 ```sh
 git clone https://github.com/FCO/Red.git .red
 git -C .red checkout 589fc491a8544b0d9c2f0a086431256a71322689

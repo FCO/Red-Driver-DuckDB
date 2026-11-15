@@ -41,6 +41,14 @@ jobs:
       - name: Work around DB::DuckDB Windows archive extraction
         if: runner.os == 'Windows'
         run: raku tools/install-native-deps.raku windows
+      - name: Install and test DuckDB dependencies on Linux
+        if: runner.os == 'Linux'
+        env:
+          TZ: UTC
+        run: |
+          # DB::DuckDB subprocess tests cannot see zef's staging repository.
+          zef install DB Alien::Libduckdb
+          zef install 'DB::DuckDB:ver<1.0.1>:auth<zef:skyter10086>'
       - name: Install Dependencies
         run: zef install --/test --test-depends --deps-only .
       - name: Install App::Prove6

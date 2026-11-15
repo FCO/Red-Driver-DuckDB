@@ -1,0 +1,1129 @@
+===> Searching for: DB::DuckDB:ver<1.0.1>:auth<zef:skyter10086>
+===> Found: DB::DuckDB:ver<1.0.1>:auth<zef:skyter10086>:api<1> [via Zef::Repository::Ecosystems<fez>]
+===> Searching for missing dependencies: DB, Alien::Libduckdb:ver<1.1.0>
+===> Found dependencies: DB:ver<0.5>:auth<cpan:CTILMES>:api<1> [via Zef::Repository::Ecosystems<rea>]
+===> Found dependencies: Alien::Libduckdb:ver<1.1.0>:auth<zef:skyter10086>:api<1> [via Zef::Repository::Ecosystems<fez>]
+===> Searching for missing dependencies: Concurrent::Stack
+===> Found dependencies: Concurrent::Stack:ver<1.3>:auth<zef:raku-community-modules> [via Zef::Repository::Ecosystems<fez>]
+[Alien::Libduckdb] Command: curl --silent -L -o /tmp/.zef.1794718686.11/1794718693.11.2479.5761136190354/616cec8e8469ca04c087236ec2cc9fc0ae42c825.tar.gz https://360.zef.pm/A/LI/ALIEN_LIBDUCKDB/616cec8e8469ca04c087236ec2cc9fc0ae42c825.tar.gz
+[DB] Command: curl --silent -L -o /tmp/.zef.1794718686.11/1794718693.11.1309.2757734779725/DB%3Aver%3C0.5%3E%3Aauth%3Ccpan%3ACTILMES%3E%3Aapi%3C1%3E.tar.gz https://raw.githubusercontent.com/raku/REA/main/archive/D/DB/DB%3Aver%3C0.5%3E%3Aauth%3Ccpan%3ACTILMES%3E%3Aapi%3C1%3E.tar.gz
+[DB::DuckDB] Command: curl --silent -L -o /tmp/.zef.1794718686.11/1794718693.11.8097.176128169444/68edb89be44b796392325687a17aa4545afa6d98.tar.gz https://360.zef.pm/D/B_/DB_DUCKDB/68edb89be44b796392325687a17aa4545afa6d98.tar.gz
+[Concurrent::Stack] Command: curl --silent -L -o /tmp/.zef.1794718686.11/1794718693.11.176.13648612635367/3f104691ea959bbdf7e49e351e6042589e47b44f.tar.gz https://360.zef.pm/C/ON/CONCURRENT_STACK/3f104691ea959bbdf7e49e351e6042589e47b44f.tar.gz
+===> Fetching [OK]: DB:ver<0.5>:auth<cpan:CTILMES>:api<1> to /tmp/.zef.1794718686.11/1794718693.11.1309.2757734779725/DB%3Aver%3C0.5%3E%3Aauth%3Ccpan%3ACTILMES%3E%3Aapi%3C1%3E.tar.gz
+===> Fetching [OK]: Concurrent::Stack:ver<1.3>:auth<zef:raku-community-modules> to /tmp/.zef.1794718686.11/1794718693.11.176.13648612635367/3f104691ea959bbdf7e49e351e6042589e47b44f.tar.gz
+===> Fetching [OK]: Alien::Libduckdb:ver<1.1.0>:auth<zef:skyter10086>:api<1> to /tmp/.zef.1794718686.11/1794718693.11.2479.5761136190354/616cec8e8469ca04c087236ec2cc9fc0ae42c825.tar.gz
+===> Fetching [OK]: DB::DuckDB:ver<1.0.1>:auth<zef:skyter10086>:api<1> to /tmp/.zef.1794718686.11/1794718693.11.8097.176128169444/68edb89be44b796392325687a17aa4545afa6d98.tar.gz
+[DB::DuckDB] Command: tar -t -f ./68edb89be44b796392325687a17aa4545afa6d98.tar.gz
+[DB::DuckDB] Command: tar -xvf ./68edb89be44b796392325687a17aa4545afa6d98.tar.gz -C ../68edb89be44b796392325687a17aa4545afa6d98.tar.gz
+===> Extraction [OK]: DB::DuckDB:ver<1.0.1>:auth<zef:skyter10086> to /tmp/.zef.1794718686.11/68edb89be44b796392325687a17aa4545afa6d98.tar.gz
+[Alien::Libduckdb] Command: tar -t -f ./616cec8e8469ca04c087236ec2cc9fc0ae42c825.tar.gz
+[Alien::Libduckdb] Command: tar -xvf ./616cec8e8469ca04c087236ec2cc9fc0ae42c825.tar.gz -C ../616cec8e8469ca04c087236ec2cc9fc0ae42c825.tar.gz
+===> Extraction [OK]: Alien::Libduckdb:ver<1.1.0> to /tmp/.zef.1794718686.11/616cec8e8469ca04c087236ec2cc9fc0ae42c825.tar.gz
+[DB] Command: tar -t -f ./DB%3Aver%3C0.5%3E%3Aauth%3Ccpan%3ACTILMES%3E%3Aapi%3C1%3E.tar.gz
+[DB] Command: tar -xvf ./DB%3Aver%3C0.5%3E%3Aauth%3Ccpan%3ACTILMES%3E%3Aapi%3C1%3E.tar.gz -C ../DB%3Aver%3C0.5%3E%3Aauth%3Ccpan%3ACTILMES%3E%3Aapi%3C1%3E.tar.gz
+===> Extraction [OK]: DB to /tmp/.zef.1794718686.11/DB%3Aver%3C0.5%3E%3Aauth%3Ccpan%3ACTILMES%3E%3Aapi%3C1%3E.tar.gz
+[Concurrent::Stack] Command: tar -t -f ./3f104691ea959bbdf7e49e351e6042589e47b44f.tar.gz
+[Concurrent::Stack] Command: tar -xvf ./3f104691ea959bbdf7e49e351e6042589e47b44f.tar.gz -C ../3f104691ea959bbdf7e49e351e6042589e47b44f.tar.gz
+===> Extraction [OK]: Concurrent::Stack to /tmp/.zef.1794718686.11/3f104691ea959bbdf7e49e351e6042589e47b44f.tar.gz
+===> Building: Alien::Libduckdb:ver<1.1.0>:auth<zef:skyter10086>:api<1>
+[Alien::Libduckdb] Command: /usr/bin/rakudo -e require '/tmp/.zef.1794718686.11/616cec8e8469ca04c087236ec2cc9fc0ae42c825.tar.gz/Build.pm'; ::('Build').new.build('/tmp/.zef.1794718686.11/616cec8e8469ca04c087236ec2cc9fc0ae42c825.tar.gz') ?? exit(0) !! exit(1);
+[Alien::Libduckdb] Alien::Libduckdb: installing libduckdb 2.0.0 (prebuilt archive first, source build as fallback)
+[Alien::Libduckdb] Alien::Libduckdb: libduckdb 2.0.0 already installed in /root/.local/share/Alien-Libduckdb/2.0.0
+[Alien::Libduckdb] Alien::Libduckdb: libduckdb ready at /root/.local/share/Alien-Libduckdb/2.0.0/lib/libduckdb.so (source: prebuilt)
+===> Building [OK] for Alien::Libduckdb:ver<1.1.0>:auth<zef:skyter10086>:api<1>
+===> Staging Concurrent::Stack:ver<1.3>:auth<zef:raku-community-modules>
+===> Staging [OK] for Concurrent::Stack:ver<1.3>:auth<zef:raku-community-modules>
+===> Staging DB:ver<0.5>:auth<github:CurtTilmes>:api<1>
+===> Staging [OK] for DB:ver<0.5>:auth<github:CurtTilmes>:api<1>
+===> Staging Alien::Libduckdb:ver<1.1.0>:auth<zef:skyter10086>:api<1>
+===> Staging [OK] for Alien::Libduckdb:ver<1.1.0>:auth<zef:skyter10086>:api<1>
+===> Staging DB::DuckDB:ver<1.0.1>:auth<zef:skyter10086>:api<1>
+===> Staging [OK] for DB::DuckDB:ver<1.0.1>:auth<zef:skyter10086>:api<1>
+===> Testing: Concurrent::Stack:ver<1.3>:auth<zef:raku-community-modules>
+[Concurrent::Stack] Command: /usr/bin/rakudo -I CompUnit::Repository::Staging#name(site)#/tmp/.zef.1794718686.11/1794718694.11.3769.8623117997176 t/basic.rakutest
+[Concurrent::Stack] ok 1 - No elements at the start
+[Concurrent::Stack] ok 2 - Empty stack is falsey
+[Concurrent::Stack] ok 3 - Empty stack snapshots to empty Seq
+[Concurrent::Stack] ok 4 - Empty stack snapshots to empty list
+[Concurrent::Stack] ok 5 - Can push a value
+[Concurrent::Stack] ok 6 - 1 element after pushing
+[Concurrent::Stack] ok 7 - Stack with a value is truthy
+[Concurrent::Stack] ok 8 - Can peek when 1 value
+[Concurrent::Stack] ok 9 - Still 1 element after peeking
+[Concurrent::Stack] ok 10 - Correct Seq with one element on stack
+[Concurrent::Stack] ok 11 - Correct list with one element on stack
+[Concurrent::Stack] ok 12 - Can pop when 1 value
+[Concurrent::Stack] ok 13 - No elements after popping the only value
+[Concurrent::Stack] ok 14 - Now-empty stack is falsey
+[Concurrent::Stack] ok 15 - Now-empty stack snapshots to empty Seq
+[Concurrent::Stack] ok 16 - Now-empty stack snapshots to empty list
+[Concurrent::Stack] ok 17 - Trying to peek an empty stack fails
+[Concurrent::Stack] ok 18 - Correct exception type
+[Concurrent::Stack] ok 19 - Correct operation type in exception
+[Concurrent::Stack] ok 20 - Trying to pop an empty stack fails
+[Concurrent::Stack] ok 21 - Correct exception type
+[Concurrent::Stack] ok 22 - Correct operation type in exception
+[Concurrent::Stack] ok 23 - Elements if 6 after 6 push operations
+[Concurrent::Stack] ok 24 - Peeking gives stack top
+[Concurrent::Stack] ok 25 - Peeking again still gives stack top
+[Concurrent::Stack] ok 26 - Popping gives expected value
+[Concurrent::Stack] ok 27 - Popping again gives expected value
+[Concurrent::Stack] ok 28 - Elements is 4 after 6 pushes and 2 pops
+[Concurrent::Stack] ok 29 - Correct Seq after these operations
+[Concurrent::Stack] ok 30 - Correct list after these operations
+[Concurrent::Stack] 1..30
+[Concurrent::Stack] Command: /usr/bin/rakudo -I CompUnit::Repository::Staging#name(site)#/tmp/.zef.1794718686.11/1794718694.11.3769.8623117997176 t/stress.rakutest
+[Concurrent::Stack] ok 1 - Pushed/popped correct values
+[Concurrent::Stack] 1..1
+===> Testing [OK] for Concurrent::Stack:ver<1.3>:auth<zef:raku-community-modules>
+===> Testing: DB:ver<0.5>:auth<github:CurtTilmes>:api<1>
+[DB] Command: /usr/bin/rakudo -I CompUnit::Repository::Staging#name(site)#/tmp/.zef.1794718686.11/1794718694.11.3769.8623117997176 t/01-connection.t
+[DB] 1..17
+[DB] ok 1 - Create object
+[DB] ok 2 - No connections yet
+[DB] ok 3 - Create a connection
+[DB] ok 4 - 1 Connection created
+[DB] ok 5 - Finish the connection
+[DB] ok 6 - 1 Connection still cached
+[DB] ok 7 - Cache has 1 connection
+[DB] ok 8 - Get connection, should come from cache
+[DB] ok 9 - 1 Connection still cached
+[DB] ok 10 - Cache has no connections
+[DB] ok 11 - Finish dead connection
+[DB] ok 12 - Freed the bad connection
+[DB] ok 13 - Cache has no connections
+[DB] ok 14 - 3 connections still active
+[DB] ok 15 - All of them in the cache
+[DB] ok 16 - Finish the whole object
+[DB] ok 17 - All connections freed
+[DB] Command: /usr/bin/rakudo -I CompUnit::Repository::Staging#name(site)#/tmp/.zef.1794718686.11/1794718694.11.3769.8623117997176 t/02-db.t
+[DB] 1..26
+[DB] ok 1 - Create object
+[DB] ok 2 - Execute a command
+[DB] ok 3 - Connection got created
+[DB] ok 4 - execute does not use statement
+[DB] ok 5 - execute does not use results
+[DB] ok 6 - Connection got returned to the cache
+[DB] ok 7 - query
+[DB] ok 8 - Used same connection
+[DB] ok 9 - Created statement, still alive
+[DB] ok 10 - Result got freed
+[DB] ok 11 - Connection got returned to the cache
+[DB] ok 12 - Get a new connection
+[DB] ok 13 - Used same Connection
+[DB] ok 14 - Execute command, finish result
+[DB] ok 15 - Reused same Statement
+[DB] ok 16 - Execute command, finish result
+[DB] ok 17 - Reused same Statement
+[DB] ok 18 - Empty Connection cache
+[DB] ok 19 - Finish Connection
+[DB] ok 20 - Connection got returned to Connection cache
+[DB] ok 21 - Statement still in cache
+[DB] ok 22 - Top level query
+[DB] ok 23 - Finish Object
+[DB] ok 24 - All Connections freed
+[DB] ok 25 - All Statements freed
+[DB] ok 26 - All Results freed
+[DB] Command: /usr/bin/rakudo -I CompUnit::Repository::Staging#name(site)#/tmp/.zef.1794718686.11/1794718694.11.3769.8623117997176 t/03-statement.t
+[DB] 1..35
+[DB] ok 1 - Create object
+[DB] ok 2 - Prepare
+[DB] ok 3 - Prepared 1 statement
+[DB] ok 4 - Array
+[DB] ok 5 - Statement still around
+[DB] ok 6 - Result got freed
+[DB] ok 7 - Hash
+[DB] ok 8 - Arrays
+[DB] ok 9 - Hashes
+[DB] ok 10 - Executes did not return to cache yet
+[DB] ok 11 - Statement finish
+[DB] ok 12 - Connection returned to cache
+[DB] ok 13 - Get connection
+[DB] ok 14 - Statement 1
+[DB] ok 15 - Statement 2
+[DB] ok 16 - Statement 3
+[DB] ok 17 - Still just 1 connection in use
+[DB] ok 18 - 4 Statements should be live now
+[DB] ok 19 - value execute 1
+[DB] ok 20 - Keep the result 2
+[DB] ok 21 - Keep the result 3
+[DB] ok 22 - 2 Results still around
+[DB] ok 23 - Get result from 2
+[DB] ok 24 - 1 Result still around
+[DB] ok 25 - Finish result 3 without retrieving
+[DB] ok 26 - All results freed
+[DB] ok 27 - But connection not yet finished
+[DB] ok 28 - Finish statement same as finish connection
+[DB] ok 29 - Connection back in cache
+[DB] ok 30 - But all statements still prepared and cached
+[DB] ok 31 - No connections
+[DB] ok 32 - No statements
+[DB] ok 33 - No results
+[DB] ok 34 - And no connections cache
+[DB] ok 35 - Finish the object
+===> Testing [OK] for DB:ver<0.5>:auth<github:CurtTilmes>:api<1>
+===> Testing: Alien::Libduckdb:ver<1.1.0>:auth<zef:skyter10086>:api<1>
+[Alien::Libduckdb] Command: /usr/bin/rakudo -I CompUnit::Repository::Staging#name(site)#/tmp/.zef.1794718686.11/1794718694.11.3769.8623117997176 t/00-load.rakutest
+[Alien::Libduckdb] 1..14
+[Alien::Libduckdb] ok 1 - Alien::Libduckdb loads
+[Alien::Libduckdb] ok 2 - duckdb-version() looks like a version
+[Alien::Libduckdb] ok 3 - version() is the module version
+[Alien::Libduckdb] ok 4 - prefix() is an absolute path
+[Alien::Libduckdb] ok 5 - lib-dir() lives under prefix()
+[Alien::Libduckdb] ok 6 - include-dir() lives under prefix()
+[Alien::Libduckdb] ok 7 - config() carries version and platform
+[Alien::Libduckdb] ok 8 - cflags() points at the include dir
+[Alien::Libduckdb] ok 9 - ldflags() links duckdb
+[Alien::Libduckdb] ok 10 - prebuilt-asset() names an archive
+[Alien::Libduckdb] ok 11 - prebuilt-url() points at a release asset
+[Alien::Libduckdb] ok 12 - prebuilt-url() is versioned
+[Alien::Libduckdb] ok 13 - source-kind() is one of the known values
+[Alien::Libduckdb] ok 14 - config() carries source_kind
+===> Testing [OK] for Alien::Libduckdb:ver<1.1.0>:auth<zef:skyter10086>:api<1>
+===> Testing: DB::DuckDB:ver<1.0.1>:auth<zef:skyter10086>:api<1>
+[DB::DuckDB] Command: /usr/bin/rakudo -I CompUnit::Repository::Staging#name(site)#/tmp/.zef.1794718686.11/1794718694.11.3769.8623117997176 t/01-basic.rakutest
+[DB::DuckDB] ok 1 - driver instantiated
+[DB::DuckDB] ok 2 - libduckdb v2.0.0 linked
+[DB::DuckDB] ok 3 - scalar query
+[DB::DuckDB] ok 4 - create table reports 0 changed rows
+[DB::DuckDB] ok 5 - insert reports 1 changed row
+[DB::DuckDB] ok 6 - row values and NULL mapping
+[DB::DuckDB] ok 7 - integer/float mapping
+[DB::DuckDB] ok 8 - varchar/bool/null mapping
+[DB::DuckDB] ok 9 - date rendered as ISO text
+[DB::DuckDB] ok 10 - time rendered as text
+[DB::DuckDB] ok 11 - timestamp rendered as text
+[DB::DuckDB] ok 12 - decimal rendered losslessly as text
+[DB::DuckDB] ok 13 - hugeint rendered losslessly as text
+[DB::DuckDB] ok 14 - positional placeholders
+[DB::DuckDB] ok 15 - named placeholders
+[DB::DuckDB] ok 16 - type object binds as NULL
+[DB::DuckDB] ok 17 - string binding
+[DB::DuckDB] ok 18 - numeric binding keeps type
+[DB::DuckDB] ok 19 - reused prepared statement kept working
+[DB::DuckDB] ok 20 - reused statement sees all rows
+[DB::DuckDB] ok 21 - hash access
+[DB::DuckDB] ok 22 - column names
+[DB::DuckDB] ok 23 - rollback discards insert
+[DB::DuckDB] ok 24 - commit keeps insert
+[DB::DuckDB] # Subtest: unknown table raises DB::DuckDB::Error
+[DB::DuckDB]     1..2
+[DB::DuckDB]     ok 1 - code dies
+[DB::DuckDB]     ok 2 - right exception type (DB::DuckDB::Error)
+[DB::DuckDB] ok 25 - unknown table raises DB::DuckDB::Error
+[DB::DuckDB] # Subtest: syntax error raises DB::DuckDB::Error
+[DB::DuckDB]     1..2
+[DB::DuckDB]     ok 1 - code dies
+[DB::DuckDB]     ok 2 - right exception type (DB::DuckDB::Error)
+[DB::DuckDB] ok 26 - syntax error raises DB::DuckDB::Error
+[DB::DuckDB] ok 27 - finished without crashing
+[DB::DuckDB] 1..27
+[DB::DuckDB] Command: /usr/bin/rakudo -I CompUnit::Repository::Staging#name(site)#/tmp/.zef.1794718686.11/1794718694.11.3769.8623117997176 t/02-file.rakutest
+[DB::DuckDB] ok 1 - connection to a file database
+[DB::DuckDB] ok 2 - library version looks like a version string
+[DB::DuckDB] ok 3 - rows landed in the file
+[DB::DuckDB] ok 4 - first connection sees the rows
+[DB::DuckDB] ok 5 - second connection sees the same rows
+[DB::DuckDB] ok 6 - insert on one connection is visible on the other
+[DB::DuckDB] ok 7 - database file exists on disk
+[DB::DuckDB] ok 8 - reopened database keeps the rows
+[DB::DuckDB] # Subtest: bad path raises DB::DuckDB::Error
+[DB::DuckDB]     1..3
+[DB::DuckDB]     ok 1 - code dies
+[DB::DuckDB]     ok 2 - right exception type (DB::DuckDB::Error)
+[DB::DuckDB]     ok 3 - .message matches /'cannot open'|'cannot create'/
+[DB::DuckDB] ok 9 - bad path raises DB::DuckDB::Error
+[DB::DuckDB] 1..9
+[DB::DuckDB] Command: /usr/bin/rakudo -I CompUnit::Repository::Staging#name(site)#/tmp/.zef.1794718686.11/1794718694.11.3769.8623117997176 t/03-types.rakutest
+[DB::DuckDB] 1..6
+[DB::DuckDB] ok 1 - session time zone survives across statements
+[DB::DuckDB] # Subtest: decoded values match DuckDB text rendering
+[DB::DuckDB]     1..50
+[DB::DuckDB]     ok 1 - 1::tinyint
+[DB::DuckDB]     ok 2 - -1::smallint
+[DB::DuckDB]     ok 3 - 1::integer
+[DB::DuckDB]     ok 4 - (-9223372036854775807 - 1)::bigint
+[DB::DuckDB]     ok 5 - 255::utinyint
+[DB::DuckDB]     ok 6 - 65535::usmallint
+[DB::DuckDB]     ok 7 - 4294967295::uinteger
+[DB::DuckDB]     ok 8 - 18446744073709551615::ubigint
+[DB::DuckDB]     ok 9 - 1.5::float
+[DB::DuckDB]     ok 10 - -2.25::double
+[DB::DuckDB]     ok 11 - true
+[DB::DuckDB]     ok 12 - false
+[DB::DuckDB]     ok 13 - 0.5::decimal(4,1)
+[DB::DuckDB]     ok 14 - -1.234567890123456789::decimal(38,18)
+[DB::DuckDB]     ok 15 - 12345.6789::decimal(15,4)
+[DB::DuckDB]     ok 16 - 170141183460469231731687303715884105727::hugeint
+[DB::DuckDB]     ok 17 - (-170141183460469231731687303715884105727 - 1)::hugeint
+[DB::DuckDB]     ok 18 - 340282366920938463463374607431768211455::uhugeint
+[DB::DuckDB]     ok 19 - 12345678901234567890123456789::bignum
+[DB::DuckDB]     ok 20 - -12345678901234567890123456789::bignum
+[DB::DuckDB]     ok 21 - 0::bignum
+[DB::DuckDB]     ok 22 - DATE '2020-01-02'
+[DB::DuckDB]     ok 23 - DATE '1969-12-31'
+[DB::DuckDB]     ok 24 - TIME '12:34:56'
+[DB::DuckDB]     ok 25 - TIME '12:34:56.123456'
+[DB::DuckDB]     ok 26 - TIMESTAMP '2020-01-02 03:04:05'
+[DB::DuckDB]     ok 27 - TIMESTAMP '2020-01-02 03:04:05.123456'
+[DB::DuckDB]     ok 28 - TIMESTAMP '1960-05-06 07:08:09.5'
+[DB::DuckDB]     ok 29 - TIMESTAMP_S '2020-01-02 03:04:05'
+[DB::DuckDB]     ok 30 - TIMESTAMP_MS '2020-01-02 03:04:05.123'
+[DB::DuckDB]     ok 31 - TIMESTAMP_NS '2020-01-02 03:04:05.123456789'
+[DB::DuckDB]     ok 32 - TIMESTAMPTZ '2020-01-02 03:04:05+00'
+[DB::DuckDB]     ok 33 - TIMETZ '12:34:56+02'
+[DB::DuckDB]     ok 34 - TIMETZ '12:00:00-09'
+[DB::DuckDB]     ok 35 - TIMETZ '12:00:00+06:12'
+[DB::DuckDB]     ok 36 - '550e8400-e29b-41d4-a716-446655440000'::uuid
+[DB::DuckDB]     ok 37 - INTERVAL 3 DAY
+[DB::DuckDB]     ok 38 - INTERVAL '1 year 2 months 3 days'
+[DB::DuckDB]     ok 39 - INTERVAL '4 hours 5 minutes 6 seconds'
+[DB::DuckDB]     ok 40 - INTERVAL '-1 days'
+[DB::DuckDB]     ok 41 - 'abc'::blob
+[DB::DuckDB]     ok 42 - ''::blob
+[DB::DuckDB]     ok 43 - [1,2,3]
+[DB::DuckDB]     ok 44 - []::int[]
+[DB::DuckDB]     ok 45 - [1,NULL,3]
+[DB::DuckDB]     ok 46 - ['a','b']::varchar[]
+[DB::DuckDB]     ok 47 - [1,2,3]::int[3]
+[DB::DuckDB]     ok 48 - {'a':1,'b':'x'}
+[DB::DuckDB]     ok 49 - map([1,2],['a','b'])
+[DB::DuckDB]     ok 50 - ROW(1,'x',true)
+[DB::DuckDB] ok 2 - decoded values match DuckDB text rendering
+[DB::DuckDB] # Subtest: NULL round trip
+[DB::DuckDB]     1..4
+[DB::DuckDB]     ok 1 - NULL decodes as undefined
+[DB::DuckDB]     ok 2 - neighbour value still intact
+[DB::DuckDB]     ok 3 - list keeps NULL slot
+[DB::DuckDB]     ok 4 - rendered form is stable
+[DB::DuckDB] ok 3 - NULL round trip
+[DB::DuckDB] # Subtest: chunked result keeps its values
+[DB::DuckDB]     1..3
+[DB::DuckDB]     ok 1 - all rows decoded across chunks
+[DB::DuckDB]     ok 2 - first row
+[DB::DuckDB]     ok 3 - last row
+[DB::DuckDB] ok 4 - chunked result keeps its values
+[DB::DuckDB] # Subtest: time zone rendering follows SET TimeZone
+[DB::DuckDB]     1..3
+[DB::DuckDB]     ok 1 - UTC session
+[DB::DuckDB]     ok 2 - Asia/Shanghai session
+[DB::DuckDB]     ok 3 - matches DuckDB rendering
+[DB::DuckDB] ok 5 - time zone rendering follows SET TimeZone
+[DB::DuckDB] # Subtest: uuid text
+[DB::DuckDB]     1..3
+[DB::DuckDB]     ok 1 - canonical uuid
+[DB::DuckDB]     ok 2 - nil uuid
+[DB::DuckDB]     ok 3 - max uuid (sign bit)
+[DB::DuckDB] ok 6 - uuid text
+[DB::DuckDB] Command: /usr/bin/rakudo -I CompUnit::Repository::Staging#name(site)#/tmp/.zef.1794718686.11/1794718694.11.3769.8623117997176 t/04-varchar-shim.rakutest
+[DB::DuckDB] ok 1 - inserted 3000 rows
+[DB::DuckDB] ok 2 - column() returns every row
+[DB::DuckDB] ok 3 - total character count matches DuckDB
+[DB::DuckDB] ok 4 - NULL rows come back as Any
+[DB::DuckDB] ok 5 - empty strings stay empty strings
+[DB::DuckDB] ok 6 - empty string row
+[DB::DuckDB] ok 7 - inlined payload
+[DB::DuckDB] ok 8 - out-of-line payload
+[DB::DuckDB] ok 9 - multibyte payload
+[DB::DuckDB] ok 10 - mixed payload
+[DB::DuckDB] ok 11 - NULL row comes back as Any
+[DB::DuckDB] ok 12 - arrays() returns every row
+[DB::DuckDB] ok 13 - arrays() row content
+[DB::DuckDB] ok 14 - arrays() multibyte row
+[DB::DuckDB] ok 15 - arrays() NULL mapping
+[DB::DuckDB] ok 16 - arrays() empty string row
+[DB::DuckDB] ok 17 - hashes() returns every row
+[DB::DuckDB] ok 18 - hashes() multibyte value
+[DB::DuckDB] not ok 19 - digest script exits cleanly (shim=True)
+[DB::DuckDB] # Failed test 'digest script exits cleanly (shim=True)'
+[DB::DuckDB] # at t/04-varchar-shim.rakutest line 104
+[DB::DuckDB] # expected: '0'
+[DB::DuckDB] #      got: '1'
+[DB::DuckDB] # ===SORRY!=== Error while compiling /tmp/.zef.1794718686.11/68edb89be44b796392325687a17aa4545afa6d98.tar.gz/t/varchar-digest.raku
+[DB::DuckDB] # ===SORRY!=== Error while compiling /tmp/.zef.1794718686.11/68edb89be44b796392325687a17aa4545afa6d98.tar.gz/lib/DB/DuckDB.rakumod (DB::DuckDB)
+[DB::DuckDB] # Could not find DB in:
+[DB::DuckDB] #     /tmp/.zef.1794718686.11/68edb89be44b796392325687a17aa4545afa6d98.tar.gz/lib
+[DB::DuckDB] #     /root/.raku
+[DB::DuckDB] #     /usr/share/perl6/site
+[DB::DuckDB] #     /usr/share/perl6/vendor
+[DB::DuckDB] #     /usr/share/perl6/core
+[DB::DuckDB] #     CompUnit::Repository::AbsolutePath<4172488877296>
+[DB::DuckDB] #     CompUnit::Repository::NQP<4172451441056>
+[DB::DuckDB] #     CompUnit::Repository::Perl5<4172451441096>
+[DB::DuckDB] # at /tmp/.zef.1794718686.11/68edb89be44b796392325687a17aa4545afa6d98.tar.gz/lib/DB/DuckDB.rakumod (DB::DuckDB):1
+[DB::DuckDB] # ------> <BOL><HERE>use DB;
+[DB::DuckDB] # 
+[DB::DuckDB] # at /tmp/.zef.1794718686.11/68edb89be44b796392325687a17aa4545afa6d98.tar.gz/t/varchar-digest.raku:2
+[DB::DuckDB] # ------> <BOL><HERE>use DB::DuckDB;
+[DB::DuckDB] # 
+[DB::DuckDB] not ok 20 - digest script exits cleanly (shim=False)
+[DB::DuckDB] # Failed test 'digest script exits cleanly (shim=False)'
+[DB::DuckDB] # at t/04-varchar-shim.rakutest line 104
+[DB::DuckDB] # expected: '0'
+[DB::DuckDB] #      got: '1'
+[DB::DuckDB] # ===SORRY!=== Error while compiling /tmp/.zef.1794718686.11/68edb89be44b796392325687a17aa4545afa6d98.tar.gz/t/varchar-digest.raku
+[DB::DuckDB] # ===SORRY!=== Error while compiling /tmp/.zef.1794718686.11/68edb89be44b796392325687a17aa4545afa6d98.tar.gz/lib/DB/DuckDB.rakumod (DB::DuckDB)
+[DB::DuckDB] # Could not find DB in:
+[DB::DuckDB] #     /tmp/.zef.1794718686.11/68edb89be44b796392325687a17aa4545afa6d98.tar.gz/lib
+[DB::DuckDB] #     /root/.raku
+[DB::DuckDB] #     /usr/share/perl6/site
+[DB::DuckDB] #     /usr/share/perl6/vendor
+[DB::DuckDB] #     /usr/share/perl6/core
+[DB::DuckDB] #     CompUnit::Repository::AbsolutePath<3929006425768>
+[DB::DuckDB] #     CompUnit::Repository::NQP<3928980482944>
+[DB::DuckDB] #     CompUnit::Repository::Perl5<3928980482984>
+[DB::DuckDB] # at /tmp/.zef.1794718686.11/68edb89be44b796392325687a17aa4545afa6d98.tar.gz/lib/DB/DuckDB.rakumod (DB::DuckDB):1
+[DB::DuckDB] # ------> <BOL><HERE>use DB;
+[DB::DuckDB] # 
+[DB::DuckDB] # at /tmp/.zef.1794718686.11/68edb89be44b796392325687a17aa4545afa6d98.tar.gz/t/varchar-digest.raku:2
+[DB::DuckDB] # ------> <BOL><HERE>use DB::DuckDB;
+[DB::DuckDB] # 
+[DB::DuckDB] ok 21 - C shim and per-value decoder agree byte for byte
+[DB::DuckDB] not ok 22 - digest output is not empty
+[DB::DuckDB] # Failed test 'digest output is not empty'
+[DB::DuckDB] # at t/04-varchar-shim.rakutest line 112
+[DB::DuckDB] 1..22
+[DB::DuckDB] # You failed 3 tests of 22
+[DB::DuckDB] Command: /usr/bin/rakudo -I CompUnit::Repository::Staging#name(site)#/tmp/.zef.1794718686.11/1794718694.11.3769.8623117997176 t/05-appender.rakutest
+[DB::DuckDB] 1..51
+[DB::DuckDB] ok 1 - insert-rows reports the number of appended rows
+[DB::DuckDB] ok 2 - all rows landed
+[DB::DuckDB] ok 3 - integer column round-trips
+[DB::DuckDB] ok 4 - undef becomes NULL
+[DB::DuckDB] ok 5 - varchar round-trips
+[DB::DuckDB] ok 6 - empty row list is a no-op
+[DB::DuckDB] ok 7 - no-op leaves the table untouched
+[DB::DuckDB] # Subtest: type error surfaces
+[DB::DuckDB]     1..2
+[DB::DuckDB]     ok 1 - code dies
+[DB::DuckDB]     ok 2 - right exception type (DB::DuckDB::Error)
+[DB::DuckDB] ok 8 - type error surfaces
+[DB::DuckDB] ok 9 - the whole batch is rolled back, not just the bad row
+[DB::DuckDB] ok 10 - inner batch is visible in the open transaction
+[DB::DuckDB] ok 11 - caller rollback discards the inner batch too
+[DB::DuckDB] ok 12 - execute-many reports the row count
+[DB::DuckDB] ok 13 - NULL parameter binds as NULL
+[DB::DuckDB] # Subtest: a bad statement is reported
+[DB::DuckDB]     1..2
+[DB::DuckDB]     ok 1 - code dies
+[DB::DuckDB]     ok 2 - right exception type (DB::DuckDB::Error)
+[DB::DuckDB] ok 14 - a bad statement is reported
+[DB::DuckDB] ok 15 - and does not disturb existing rows
+[DB::DuckDB] ok 16 - explicit appender writes both rows
+[DB::DuckDB] ok 17 - single-Positional form works
+[DB::DuckDB] ok 18 - threads reaches the connection
+[DB::DuckDB] ok 19 - set-session-option applies to the live session
+[DB::DuckDB] ok 20 - preserve_insertion_order=False is pushed down
+[DB::DuckDB] ok 21 - DuckDB default is left alone
+[DB::DuckDB] ok 22 - first session writes
+[DB::DuckDB] ok 23 - and leaves no transaction open
+[DB::DuckDB] ok 24 - append-rows accepts rows shorter than the table
+[DB::DuckDB] ok 25 - a short row leaves the missing columns on their DEFAULT
+[DB::DuckDB] ok 26 - and every supplied value lands in its own column
+[DB::DuckDB] ok 27 - insert-rows takes the same short-row path
+[DB::DuckDB] ok 28 - a 2**80 value round-trips through the filler
+[DB::DuckDB] ok 29 - execute-many accepts a reordered column list
+[DB::DuckDB] ok 30 - reordered values land in the table columns, not on DEFAULT
+[DB::DuckDB] ok 31 - a staged ON CONFLICT DO NOTHING batch reports only the inserted rows
+[DB::DuckDB] ok 32 - the staged batch was applied
+[DB::DuckDB] ok 33 - columns left out of the statement keep their DEFAULT
+[DB::DuckDB] ok 34 - a repeat run inserts nothing
+[DB::DuckDB] ok 35 - the staging table is dropped again
+[DB::DuckDB] ok 36 - DO UPDATE is staged as well
+[DB::DuckDB] ok 37 - and every staged row was applied
+[DB::DuckDB] ok 38 - a batch with duplicate keys reports one change per key
+[DB::DuckDB] ok 39 - and the last row of a duplicate group wins
+[DB::DuckDB] ok 40 - the duplicates did not add rows
+[DB::DuckDB] ok 41 - the staging table is dropped again
+[DB::DuckDB] ok 42 - NULL keys are not de-duplicated
+[DB::DuckDB] ok 43 - so both NULL rows stay (plus one keyed row)
+[DB::DuckDB] ok 44 - while the keyed duplicate still collapses
+[DB::DuckDB] ok 45 - a batch past the 128Ki appender-flush boundary is applied
+[DB::DuckDB] ok 46 - every row of it landed
+[DB::DuckDB] # Subtest: a bad row fails the staged batch
+[DB::DuckDB]     1..2
+[DB::DuckDB]     ok 1 - code dies
+[DB::DuckDB]     ok 2 - right exception type (DB::DuckDB::Error)
+[DB::DuckDB] ok 47 - a bad row fails the staged batch
+[DB::DuckDB] ok 48 - and the rollback leaves no rows behind
+[DB::DuckDB] ok 49 - and the staging table is gone
+[DB::DuckDB] ok 50 - a staged batch honours a reordered column list
+[DB::DuckDB] ok 51 - and the values land in the right columns
+[DB::DuckDB] Command: /usr/bin/rakudo -I CompUnit::Repository::Staging#name(site)#/tmp/.zef.1794718686.11/1794718694.11.3769.8623117997176 t/06-column-view.rakutest
+[DB::DuckDB] ok 1 - same column count
+[DB::DuckDB] ok 2 - same row count (multi chunk)
+[DB::DuckDB] ok 3 - col 0 (b) matches array path
+[DB::DuckDB] ok 4 - col 1 (ti) matches array path
+[DB::DuckDB] ok 5 - col 2 (si) matches array path
+[DB::DuckDB] ok 6 - col 3 (ii) matches array path
+[DB::DuckDB] ok 7 - col 4 (bi) matches array path
+[DB::DuckDB] ok 8 - col 5 (hi) matches array path
+[DB::DuckDB] ok 9 - col 6 (uti) matches array path
+[DB::DuckDB] ok 10 - col 7 (usi) matches array path
+[DB::DuckDB] ok 11 - col 8 (ui) matches array path
+[DB::DuckDB] ok 12 - col 9 (ubi) matches array path
+[DB::DuckDB] ok 13 - col 10 (fl) matches array path
+[DB::DuckDB] ok 14 - col 11 (dbl) matches array path
+[DB::DuckDB] ok 15 - col 12 (dec3) matches array path
+[DB::DuckDB] ok 16 - col 13 (dec6) matches array path
+[DB::DuckDB] ok 17 - col 14 (vs) matches array path
+[DB::DuckDB] ok 18 - col 15 (cn) matches array path
+[DB::DuckDB] ok 19 - col 16 (d) matches array path
+[DB::DuckDB] ok 20 - col 17 (ts) matches array path
+[DB::DuckDB] ok 21 - col 18 (nul) matches array path
+[DB::DuckDB] ok 22 - col 19 (nulnum) matches array path
+[DB::DuckDB] ok 23 - NULL count in numeric column preserved
+[DB::DuckDB] ok 24 - single chunk bigint
+[DB::DuckDB] ok 25 - single chunk double
+[DB::DuckDB] ok 26 - zero-row result still yields columns
+[DB::DuckDB] ok 27 - zero-row column has no values
+[DB::DuckDB] ok 28 - zero-row to-list empty
+[DB::DuckDB] ok 29 - sum of bigint view
+[DB::DuckDB] ok 30 - sum of double view
+[DB::DuckDB] ok 31 - min of decimal view
+[DB::DuckDB] ok 32 - min skips NULLs
+[DB::DuckDB] ok 33 - max skips NULLs
+[DB::DuckDB] ok 34 - count skips NULLs
+[DB::DuckDB] # Subtest: second read refused
+[DB::DuckDB]     1..3
+[DB::DuckDB]     ok 1 - code dies
+[DB::DuckDB]     ok 2 - right exception type (X::AdHoc)
+[DB::DuckDB]     ok 3 - .message matches rx/first\s+reader/
+[DB::DuckDB] ok 35 - second read refused
+[DB::DuckDB] ok 36 - plain result is not streaming
+[DB::DuckDB] 1..36
+[DB::DuckDB] Command: /usr/bin/rakudo -I CompUnit::Repository::Staging#name(site)#/tmp/.zef.1794718686.11/1794718694.11.3769.8623117997176 t/07-streaming.rakutest
+[DB::DuckDB] ok 1 - result reports streaming mode
+[DB::DuckDB] ok 2 - chunk 1 has 5 columns
+[DB::DuckDB] ok 3 - chunk 1 col 0 elems match chunk size
+[DB::DuckDB] ok 4 - chunk 1 col 1 elems match chunk size
+[DB::DuckDB] ok 5 - chunk 1 col 2 elems match chunk size
+[DB::DuckDB] ok 6 - chunk 1 col 3 elems match chunk size
+[DB::DuckDB] ok 7 - chunk 1 col 4 elems match chunk size
+[DB::DuckDB] ok 8 - chunk 2 has 5 columns
+[DB::DuckDB] ok 9 - chunk 2 col 0 elems match chunk size
+[DB::DuckDB] ok 10 - chunk 2 col 1 elems match chunk size
+[DB::DuckDB] ok 11 - chunk 2 col 2 elems match chunk size
+[DB::DuckDB] ok 12 - chunk 2 col 3 elems match chunk size
+[DB::DuckDB] ok 13 - chunk 2 col 4 elems match chunk size
+[DB::DuckDB] ok 14 - chunk 3 has 5 columns
+[DB::DuckDB] ok 15 - chunk 3 col 0 elems match chunk size
+[DB::DuckDB] ok 16 - chunk 3 col 1 elems match chunk size
+[DB::DuckDB] ok 17 - chunk 3 col 2 elems match chunk size
+[DB::DuckDB] ok 18 - chunk 3 col 3 elems match chunk size
+[DB::DuckDB] ok 19 - chunk 3 col 4 elems match chunk size
+[DB::DuckDB] ok 20 - 5000 rows arrive in 3 vectors
+[DB::DuckDB] ok 21 - chunk sizes follow the 2048-row vector capacity
+[DB::DuckDB] ok 22 - chunk sizes add up to 5000
+[DB::DuckDB] ok 23 - streamed values match column-arrays
+[DB::DuckDB] ok 24 - empty streaming result yields no chunks
+[DB::DuckDB] ok 25 - single row chunk size
+[DB::DuckDB] ok 26 - freshly pulled chunk is valid
+[DB::DuckDB] ok 27 - chunk.row boxes values
+[DB::DuckDB] ok 28 - chunk.to-rows boxes every row
+[DB::DuckDB] ok 29 - chunk column view reads doubles as Num
+[DB::DuckDB] ok 30 - chunk column view keeps DECIMAL as text
+[DB::DuckDB] ok 31 - chunk is expired once its result is freed
+[DB::DuckDB] ok 32 - reading an expired chunk dies instead of returning stale memory
+[DB::DuckDB] ok 33 - first streamed chunk starts out valid
+[DB::DuckDB] ok 34 - previous chunk is expired as soon as the next one is pulled
+[DB::DuckDB] ok 35 - current chunk is valid
+[DB::DuckDB] ok 36 - view of an expired chunk dies
+[DB::DuckDB] ok 37 - connection reusable after finish
+[DB::DuckDB] ok 38 - stream opened for the reuse check
+[DB::DuckDB] ok 39 - chunks after finish dies
+[DB::DuckDB] ok 40 - prefetched and one-at-a-time streams agree
+[DB::DuckDB] ok 41 - prefetched stream matches the materialised column
+[DB::DuckDB] ok 42 - abandoned stream: first chunk is valid
+[DB::DuckDB] ok 43 - abandoned stream: first chunk is valid
+[DB::DuckDB] ok 44 - abandoned stream: first chunk is valid
+[DB::DuckDB] ok 45 - abandoned stream: first chunk is valid
+[DB::DuckDB] ok 46 - abandoned stream: first chunk is valid
+[DB::DuckDB] ok 47 - connection still usable after streams abandoned mid-way
+[DB::DuckDB] ok 48 - undrained stream leaves the connection usable
+[DB::DuckDB] ok 49 - plain result is not streaming
+[DB::DuckDB] ok 50 - plain result still reads normally
+[DB::DuckDB] 1..50
+[DB::DuckDB] Command: /usr/bin/rakudo -I CompUnit::Repository::Staging#name(site)#/tmp/.zef.1794718686.11/1794718694.11.3769.8623117997176 t/08-parallel.rakutest
+[DB::DuckDB] ok 1 - serial reference has 7 columns
+[DB::DuckDB] ok 2 - serial reference has every row
+[DB::DuckDB] ok 3 - wide result (default): column count matches
+[DB::DuckDB] ok 4 - wide result (default): identical to serial
+[DB::DuckDB] ok 5 - wide result (default): result fully consumed
+[DB::DuckDB] ok 6 - wide result (2 workers): column count matches
+[DB::DuckDB] ok 7 - wide result (2 workers): identical to serial
+[DB::DuckDB] ok 8 - wide result (2 workers): result fully consumed
+[DB::DuckDB] ok 9 - wide result (4 workers): column count matches
+[DB::DuckDB] ok 10 - wide result (4 workers): identical to serial
+[DB::DuckDB] ok 11 - wide result (4 workers): result fully consumed
+[DB::DuckDB] ok 12 - wide result (8 workers): column count matches
+[DB::DuckDB] ok 13 - wide result (8 workers): identical to serial
+[DB::DuckDB] ok 14 - wide result (8 workers): result fully consumed
+[DB::DuckDB] ok 15 - single column v: stitched parallel result matches serial
+[DB::DuckDB] ok 16 - single column b: stitched parallel result matches serial
+[DB::DuckDB] ok 17 - single column dec3: stitched parallel result matches serial
+[DB::DuckDB] ok 18 - lopsided BIGINT+VARCHAR (2 workers): identical to serial
+[DB::DuckDB] ok 19 - lopsided BIGINT+VARCHAR (3 workers): identical to serial
+[DB::DuckDB] ok 20 - lopsided BIGINT+VARCHAR (4 workers): identical to serial
+[DB::DuckDB] ok 21 - lopsided BIGINT+VARCHAR (8 workers): identical to serial
+[DB::DuckDB] ok 22 - tiny result: parallel flag falls back to serial
+[DB::DuckDB] ok 23 - streaming result: parallel flag falls back to serial
+[DB::DuckDB] ok 24 - partial read: both paths hand out the same first row
+[DB::DuckDB] ok 25 - partial read: parallel flag falls back to the remaining rows
+[DB::DuckDB] ok 26 - repeated parallel runs agree
+[DB::DuckDB] ok 27 - column-arrays() defaults to the parallel path
+[DB::DuckDB] ok 28 - :!parallel still selects the serial path
+[DB::DuckDB] ok 29 - DB_DUCKDB_NO_COLUMN_PARALLEL=1 keeps the serial path
+[DB::DuckDB] ok 30 - but an explicit :parallel still wins
+[DB::DuckDB] ok 31 - a 25k-row result still lands on the serial answer
+[DB::DuckDB] 1..31
+[DB::DuckDB] Command: /usr/bin/rakudo -I CompUnit::Repository::Staging#name(site)#/tmp/.zef.1794718686.11/1794718694.11.3769.8623117997176 t/09-lazy-view.rakutest
+[DB::DuckDB] ok 1 - VARCHAR column is not raw (lazy/decoded path)
+[DB::DuckDB] ok 2 - BIGINT column is still raw
+[DB::DuckDB] ok 3 - lazy column knows its row count
+[DB::DuckDB] ok 4 - lazy column keeps its type name
+[DB::DuckDB] ok 5 - at(0) before any bulk read
+[DB::DuckDB] ok 6 - at(last) reaches the final segment
+[DB::DuckDB] ok 7 - at(2048) crosses into the second chunk
+[DB::DuckDB] ok 8 - at(2047) is the last row of chunk 0
+[DB::DuckDB] ok 9 - NULL detected in a lazy column
+[DB::DuckDB] ok 10 - non-NULL detected in a lazy column
+[DB::DuckDB] ok 11 - NULL row reads as an undefined value
+[DB::DuckDB] ok 12 - count of a lazy column skips NULLs
+[DB::DuckDB] ok 13 - to-list of a partially read column matches
+[DB::DuckDB] ok 14 - to-list keeps NULLs as undefined values
+[DB::DuckDB] ok 15 - NULL positions survive to-list
+[DB::DuckDB] ok 16 - DATE column round trips through lazy decode
+[DB::DuckDB] ok 17 - slice of a lazy column
+[DB::DuckDB] ok 18 - slice across a NULL
+[DB::DuckDB] ok 19 - column-view(0) is lazy and correct
+[DB::DuckDB] ok 20 - column-view(0) to-list matches
+[DB::DuckDB] ok 21 - sum of a non-numeric (lazy) column is undefined
+[DB::DuckDB] ok 22 - column-arrays path unchanged
+[DB::DuckDB] 1..22
+[DB::DuckDB] Command: /usr/bin/rakudo -I CompUnit::Repository::Staging#name(site)#/tmp/.zef.1794718686.11/1794718694.11.3769.8623117997176 t/10-varchar-join.rakutest
+[DB::DuckDB] ok 1 - shim module loads
+[DB::DuckDB] ok 2 - join-varchar entry point is present
+[DB::DuckDB] ok 3 - library ABI matches what the driver expects
+[DB::DuckDB] ok 4 - ABI is at least 2, so the join path is trusted
+[DB::DuckDB] ok 5 - cache stamp records the ABI the library was built for
+[DB::DuckDB] ok 6 - every row came back
+[DB::DuckDB] ok 7 - hostile payload  \#1 round-trips exactly
+[DB::DuckDB] ok 8 - hostile payload  \#2 round-trips exactly
+[DB::DuckDB] ok 9 - hostile payload  \#3 round-trips exactly
+[DB::DuckDB] ok 10 - hostile payload  \#4 round-trips exactly
+[DB::DuckDB] ok 11 - hostile payload  \#5 round-trips exactly
+[DB::DuckDB] ok 12 - hostile payload  \#6 round-trips exactly
+[DB::DuckDB] ok 13 - hostile payload  \#7 round-trips exactly
+[DB::DuckDB] ok 14 - hostile payload  \#8 round-trips exactly
+[DB::DuckDB] ok 15 - hostile payload  \#9 round-trips exactly
+[DB::DuckDB] ok 16 - hostile payload  \#10 round-trips exactly
+[DB::DuckDB] ok 17 - hostile payload  \#11 round-trips exactly
+[DB::DuckDB] ok 18 - hostile payload  \#12 round-trips exactly
+[DB::DuckDB] ok 19 - hostile payload  \#13 round-trips exactly
+[DB::DuckDB] ok 20 - NUL inside a value survives decoding
+[DB::DuckDB] ok 21 - value that is only a NUL byte
+[DB::DuckDB] ok 22 - NULL row still maps to Any
+[DB::DuckDB] ok 23 - first empty string
+[DB::DuckDB] ok 24 - consecutive empty strings
+[DB::DuckDB] ok 25 - empty string right before a long value
+[DB::DuckDB] ok 26 - multibyte value containing 0x01
+[DB::DuckDB] not ok 27 - digest script exits cleanly ({})
+[DB::DuckDB] # Failed test 'digest script exits cleanly ({})'
+[DB::DuckDB] # at t/10-varchar-join.rakutest line 119
+[DB::DuckDB] # expected: '0'
+[DB::DuckDB] #      got: '1'
+[DB::DuckDB] # ===SORRY!=== Error while compiling /tmp/.zef.1794718686.11/68edb89be44b796392325687a17aa4545afa6d98.tar.gz/t/varchar-join-digest.raku
+[DB::DuckDB] # ===SORRY!=== Error while compiling /tmp/.zef.1794718686.11/68edb89be44b796392325687a17aa4545afa6d98.tar.gz/lib/DB/DuckDB.rakumod (DB::DuckDB)
+[DB::DuckDB] # Could not find DB in:
+[DB::DuckDB] #     /tmp/.zef.1794718686.11/68edb89be44b796392325687a17aa4545afa6d98.tar.gz/lib
+[DB::DuckDB] #     /root/.raku
+[DB::DuckDB] #     /usr/share/perl6/site
+[DB::DuckDB] #     /usr/share/perl6/vendor
+[DB::DuckDB] #     /usr/share/perl6/core
+[DB::DuckDB] #     CompUnit::Repository::AbsolutePath<4246025512176>
+[DB::DuckDB] #     CompUnit::Repository::NQP<4246002756000>
+[DB::DuckDB] #     CompUnit::Repository::Perl5<4246002756040>
+[DB::DuckDB] # at /tmp/.zef.1794718686.11/68edb89be44b796392325687a17aa4545afa6d98.tar.gz/lib/DB/DuckDB.rakumod (DB::DuckDB):1
+[DB::DuckDB] # ------> <BOL><HERE>use DB;
+[DB::DuckDB] # 
+[DB::DuckDB] # at /tmp/.zef.1794718686.11/68edb89be44b796392325687a17aa4545afa6d98.tar.gz/t/varchar-join-digest.raku:1
+[DB::DuckDB] # ------> <BOL><HERE>use DB::DuckDB;
+[DB::DuckDB] # 
+[DB::DuckDB] not ok 28 - digest script exits cleanly ({:DB_DUCKDB_NO_VARCHAR_JOIN("1")})
+[DB::DuckDB] # Failed test 'digest script exits cleanly ({:DB_DUCKDB_NO_VARCHAR_JOIN("1")})'
+[DB::DuckDB] # at t/10-varchar-join.rakutest line 119
+[DB::DuckDB] # expected: '0'
+[DB::DuckDB] #      got: '1'
+[DB::DuckDB] # ===SORRY!=== Error while compiling /tmp/.zef.1794718686.11/68edb89be44b796392325687a17aa4545afa6d98.tar.gz/t/varchar-join-digest.raku
+[DB::DuckDB] # ===SORRY!=== Error while compiling /tmp/.zef.1794718686.11/68edb89be44b796392325687a17aa4545afa6d98.tar.gz/lib/DB/DuckDB.rakumod (DB::DuckDB)
+[DB::DuckDB] # Could not find DB in:
+[DB::DuckDB] #     /tmp/.zef.1794718686.11/68edb89be44b796392325687a17aa4545afa6d98.tar.gz/lib
+[DB::DuckDB] #     /root/.raku
+[DB::DuckDB] #     /usr/share/perl6/site
+[DB::DuckDB] #     /usr/share/perl6/vendor
+[DB::DuckDB] #     /usr/share/perl6/core
+[DB::DuckDB] #     CompUnit::Repository::AbsolutePath<6204533786280>
+[DB::DuckDB] #     CompUnit::Repository::NQP<6204507843456>
+[DB::DuckDB] #     CompUnit::Repository::Perl5<6204507843496>
+[DB::DuckDB] # at /tmp/.zef.1794718686.11/68edb89be44b796392325687a17aa4545afa6d98.tar.gz/lib/DB/DuckDB.rakumod (DB::DuckDB):1
+[DB::DuckDB] # ------> <BOL><HERE>use DB;
+[DB::DuckDB] # 
+[DB::DuckDB] # at /tmp/.zef.1794718686.11/68edb89be44b796392325687a17aa4545afa6d98.tar.gz/t/varchar-join-digest.raku:1
+[DB::DuckDB] # ------> <BOL><HERE>use DB::DuckDB;
+[DB::DuckDB] # 
+[DB::DuckDB] not ok 29 - digest script exits cleanly ({:DB_DUCKDB_NO_VARCHAR_SHIM("1")})
+[DB::DuckDB] # Failed test 'digest script exits cleanly ({:DB_DUCKDB_NO_VARCHAR_SHIM("1")})'
+[DB::DuckDB] # at t/10-varchar-join.rakutest line 119
+[DB::DuckDB] # expected: '0'
+[DB::DuckDB] #      got: '1'
+[DB::DuckDB] # ===SORRY!=== Error while compiling /tmp/.zef.1794718686.11/68edb89be44b796392325687a17aa4545afa6d98.tar.gz/t/varchar-join-digest.raku
+[DB::DuckDB] # ===SORRY!=== Error while compiling /tmp/.zef.1794718686.11/68edb89be44b796392325687a17aa4545afa6d98.tar.gz/lib/DB/DuckDB.rakumod (DB::DuckDB)
+[DB::DuckDB] # Could not find DB in:
+[DB::DuckDB] #     /tmp/.zef.1794718686.11/68edb89be44b796392325687a17aa4545afa6d98.tar.gz/lib
+[DB::DuckDB] #     /root/.raku
+[DB::DuckDB] #     /usr/share/perl6/site
+[DB::DuckDB] #     /usr/share/perl6/vendor
+[DB::DuckDB] #     /usr/share/perl6/core
+[DB::DuckDB] #     CompUnit::Repository::AbsolutePath<5747388204712>
+[DB::DuckDB] #     CompUnit::Repository::NQP<5747362261888>
+[DB::DuckDB] #     CompUnit::Repository::Perl5<5747362261928>
+[DB::DuckDB] # at /tmp/.zef.1794718686.11/68edb89be44b796392325687a17aa4545afa6d98.tar.gz/lib/DB/DuckDB.rakumod (DB::DuckDB):1
+[DB::DuckDB] # ------> <BOL><HERE>use DB;
+[DB::DuckDB] # 
+[DB::DuckDB] # at /tmp/.zef.1794718686.11/68edb89be44b796392325687a17aa4545afa6d98.tar.gz/t/varchar-join-digest.raku:1
+[DB::DuckDB] # ------> <BOL><HERE>use DB::DuckDB;
+[DB::DuckDB] # 
+[DB::DuckDB] not ok 30 - join digest is not empty
+[DB::DuckDB] # Failed test 'join digest is not empty'
+[DB::DuckDB] # at t/10-varchar-join.rakutest line 127
+[DB::DuckDB] ok 31 - join path agrees with the offset table path
+[DB::DuckDB] ok 32 - join path agrees with the pure Raku decoder
+[DB::DuckDB] not ok 33 - lazy column view matches the eager decode
+[DB::DuckDB] # Failed test 'lazy column view matches the eager decode'
+[DB::DuckDB] # at t/10-varchar-join.rakutest line 134
+[DB::DuckDB] not ok 34 - digest reports NULL counts
+[DB::DuckDB] # Failed test 'digest reports NULL counts'
+[DB::DuckDB] # at t/10-varchar-join.rakutest line 135
+[DB::DuckDB] ok 35 - view width matches the eager column
+[DB::DuckDB] ok 36 - view non-NULL count matches
+[DB::DuckDB] ok 37 - view decodes to the same values
+[DB::DuckDB] ok 38 - view at() first row
+[DB::DuckDB] ok 39 - view at() last row
+[DB::DuckDB] ok 40 - view slice
+[DB::DuckDB] 1..40
+[DB::DuckDB] # You failed 6 tests of 40
+[DB::DuckDB] Command: /usr/bin/rakudo -I CompUnit::Repository::Staging#name(site)#/tmp/.zef.1794718686.11/1794718694.11.3769.8623117997176 t/11-arrow.rakutest
+[DB::DuckDB] 1..17
+[DB::DuckDB] ok 1 - chunk has one child per column
+[DB::DuckDB] ok 2 - standard vector size chunk
+[DB::DuckDB] ok 3 - BIGINT zero copy
+[DB::DuckDB] ok 4 - DOUBLE zero copy
+[DB::DuckDB] ok 5 - VARCHAR via offsets+data
+[DB::DuckDB] ok 6 - BOOLEAN bit packed
+[DB::DuckDB] ok 7 - value 1 is not null
+[DB::DuckDB] ok 8 - index 3 (i % 3 == 0) is null
+[DB::DuckDB] ok 9 - null count reported
+[DB::DuckDB] ok 10 - LIST values walkable
+[DB::DuckDB] ok 11 - STRUCT field walkable
+[DB::DuckDB] ok 12 - free is idempotent
+[DB::DuckDB] ok 13 - multi-byte UTF-8 decoded per value
+[DB::DuckDB] ok 14 - with-arrow-chunks callable by full name
+[DB::DuckDB] ok 15 - arrow-chunk callable by full name
+[DB::DuckDB] ok 16 - the no-shim release path covers every row
+[DB::DuckDB] ok 17 - and walks the chunks in order
+[DB::DuckDB] Command: /usr/bin/rakudo -I CompUnit::Repository::Staging#name(site)#/tmp/.zef.1794718686.11/1794718694.11.3769.8623117997176 t/12-temporal.rakutest
+[DB::DuckDB] ok 1 - join-temporal entry point is present
+[DB::DuckDB] ok 2 - ABI is at least 4, so the temporal kind codes are trusted
+[DB::DuckDB] ok 3 - DATE renders as YYYY-MM-DD, NULL as Any
+[DB::DuckDB] ok 4 - TIMESTAMP keeps at most 6 fractional digits and drops trailing zeros
+[DB::DuckDB] ok 5 - TIME keeps 24:00:00 and drops trailing zeros
+[DB::DuckDB] ok 6 - column 0 yields Str values
+[DB::DuckDB] ok 7 - column 0 keeps all non-NULL rows
+[DB::DuckDB] ok 8 - column 1 yields Str values
+[DB::DuckDB] ok 9 - column 1 keeps all non-NULL rows
+[DB::DuckDB] ok 10 - column 2 yields Str values
+[DB::DuckDB] ok 11 - column 2 keeps all non-NULL rows
+[DB::DuckDB] ok 12 - every bulk row came back
+[DB::DuckDB] ok 13 - all 14000 temporal values match DuckDB's own rendering
+[DB::DuckDB] ok 14 - NULL DATE maps to Any
+[DB::DuckDB] ok 15 - NULL TIMESTAMP maps to Any
+[DB::DuckDB] ok 16 - NULL TIME maps to Any
+[DB::DuckDB] ok 17 - all-NULL column keeps its width
+[DB::DuckDB] ok 18 - all-NULL column yields no values
+[DB::DuckDB] not ok 19 - digest script exits cleanly ({})
+[DB::DuckDB] # Failed test 'digest script exits cleanly ({})'
+[DB::DuckDB] # at t/12-temporal.rakutest line 138
+[DB::DuckDB] # expected: '0'
+[DB::DuckDB] #      got: '1'
+[DB::DuckDB] # ===SORRY!=== Error while compiling /tmp/.zef.1794718686.11/68edb89be44b796392325687a17aa4545afa6d98.tar.gz/t/temporal-digest.raku
+[DB::DuckDB] # ===SORRY!=== Error while compiling /tmp/.zef.1794718686.11/68edb89be44b796392325687a17aa4545afa6d98.tar.gz/lib/DB/DuckDB.rakumod (DB::DuckDB)
+[DB::DuckDB] # Could not find DB in:
+[DB::DuckDB] #     /tmp/.zef.1794718686.11/68edb89be44b796392325687a17aa4545afa6d98.tar.gz/lib
+[DB::DuckDB] #     /root/.raku
+[DB::DuckDB] #     /usr/share/perl6/site
+[DB::DuckDB] #     /usr/share/perl6/vendor
+[DB::DuckDB] #     /usr/share/perl6/core
+[DB::DuckDB] #     CompUnit::Repository::AbsolutePath<3185719092464>
+[DB::DuckDB] #     CompUnit::Repository::NQP<3185682704800>
+[DB::DuckDB] #     CompUnit::Repository::Perl5<3185682704840>
+[DB::DuckDB] # at /tmp/.zef.1794718686.11/68edb89be44b796392325687a17aa4545afa6d98.tar.gz/lib/DB/DuckDB.rakumod (DB::DuckDB):1
+[DB::DuckDB] # ------> <BOL><HERE>use DB;
+[DB::DuckDB] # 
+[DB::DuckDB] # at /tmp/.zef.1794718686.11/68edb89be44b796392325687a17aa4545afa6d98.tar.gz/t/temporal-digest.raku:1
+[DB::DuckDB] # ------> <BOL><HERE>use DB::DuckDB;
+[DB::DuckDB] # 
+[DB::DuckDB] not ok 20 - digest script exits cleanly ({:DB_DUCKDB_NO_TEMPORAL_SHIM("1")})
+[DB::DuckDB] # Failed test 'digest script exits cleanly ({:DB_DUCKDB_NO_TEMPORAL_SHIM("1")})'
+[DB::DuckDB] # at t/12-temporal.rakutest line 138
+[DB::DuckDB] # expected: '0'
+[DB::DuckDB] #      got: '1'
+[DB::DuckDB] # ===SORRY!=== Error while compiling /tmp/.zef.1794718686.11/68edb89be44b796392325687a17aa4545afa6d98.tar.gz/t/temporal-digest.raku
+[DB::DuckDB] # ===SORRY!=== Error while compiling /tmp/.zef.1794718686.11/68edb89be44b796392325687a17aa4545afa6d98.tar.gz/lib/DB/DuckDB.rakumod (DB::DuckDB)
+[DB::DuckDB] # Could not find DB in:
+[DB::DuckDB] #     /tmp/.zef.1794718686.11/68edb89be44b796392325687a17aa4545afa6d98.tar.gz/lib
+[DB::DuckDB] #     /root/.raku
+[DB::DuckDB] #     /usr/share/perl6/site
+[DB::DuckDB] #     /usr/share/perl6/vendor
+[DB::DuckDB] #     /usr/share/perl6/core
+[DB::DuckDB] #     CompUnit::Repository::AbsolutePath<2771244304040>
+[DB::DuckDB] #     CompUnit::Repository::NQP<2771218361216>
+[DB::DuckDB] #     CompUnit::Repository::Perl5<2771218361256>
+[DB::DuckDB] # at /tmp/.zef.1794718686.11/68edb89be44b796392325687a17aa4545afa6d98.tar.gz/lib/DB/DuckDB.rakumod (DB::DuckDB):1
+[DB::DuckDB] # ------> <BOL><HERE>use DB;
+[DB::DuckDB] # 
+[DB::DuckDB] # at /tmp/.zef.1794718686.11/68edb89be44b796392325687a17aa4545afa6d98.tar.gz/t/temporal-digest.raku:1
+[DB::DuckDB] # ------> <BOL><HERE>use DB::DuckDB;
+[DB::DuckDB] # 
+[DB::DuckDB] not ok 21 - digest script exits cleanly ({:DB_DUCKDB_NO_TEMPORAL_SHIM("1"), :DB_DUCKDB_NO_VARCHAR_SHIM("1")})
+[DB::DuckDB] # Failed test 'digest script exits cleanly ({:DB_DUCKDB_NO_TEMPORAL_SHIM("1"), :DB_DUCKDB_NO_VARCHAR_SHIM("1")})'
+[DB::DuckDB] # at t/12-temporal.rakutest line 138
+[DB::DuckDB] # expected: '0'
+[DB::DuckDB] #      got: '1'
+[DB::DuckDB] # ===SORRY!=== Error while compiling /tmp/.zef.1794718686.11/68edb89be44b796392325687a17aa4545afa6d98.tar.gz/t/temporal-digest.raku
+[DB::DuckDB] # ===SORRY!=== Error while compiling /tmp/.zef.1794718686.11/68edb89be44b796392325687a17aa4545afa6d98.tar.gz/lib/DB/DuckDB.rakumod (DB::DuckDB)
+[DB::DuckDB] # Could not find DB in:
+[DB::DuckDB] #     /tmp/.zef.1794718686.11/68edb89be44b796392325687a17aa4545afa6d98.tar.gz/lib
+[DB::DuckDB] #     /root/.raku
+[DB::DuckDB] #     /usr/share/perl6/site
+[DB::DuckDB] #     /usr/share/perl6/vendor
+[DB::DuckDB] #     /usr/share/perl6/core
+[DB::DuckDB] #     CompUnit::Repository::AbsolutePath<5987100018344>
+[DB::DuckDB] #     CompUnit::Repository::NQP<5987075124096>
+[DB::DuckDB] #     CompUnit::Repository::Perl5<5987075124136>
+[DB::DuckDB] # at /tmp/.zef.1794718686.11/68edb89be44b796392325687a17aa4545afa6d98.tar.gz/lib/DB/DuckDB.rakumod (DB::DuckDB):1
+[DB::DuckDB] # ------> <BOL><HERE>use DB;
+[DB::DuckDB] # 
+[DB::DuckDB] # at /tmp/.zef.1794718686.11/68edb89be44b796392325687a17aa4545afa6d98.tar.gz/t/temporal-digest.raku:1
+[DB::DuckDB] # ------> <BOL><HERE>use DB::DuckDB;
+[DB::DuckDB] # 
+[DB::DuckDB] # Failed test 'digest is not empty'
+[DB::DuckDB] # at t/12-temporal.rakutest line 146
+[DB::DuckDB] # Failed test 'digest reports no mismatch against DuckDB'
+[DB::DuckDB] # at t/12-temporal.rakutest line 149
+[DB::DuckDB] # Failed test 'lazy column view matches the eager decode'
+[DB::DuckDB] # at t/12-temporal.rakutest line 150
+[DB::DuckDB] not ok 22 - digest is not empty
+[DB::DuckDB] ok 23 - C shim agrees with the Raku renderers
+[DB::DuckDB] ok 24 - C shim agrees with a run that has no shim at all
+[DB::DuckDB] not ok 25 - digest reports no mismatch against DuckDB
+[DB::DuckDB] not ok 26 - lazy column view matches the eager decode
+[DB::DuckDB] ok 27 - view width matches the eager column
+[DB::DuckDB] ok 28 - view decodes to the same timestamps
+[DB::DuckDB] ok 29 - view at() agrees with the eager column
+[DB::DuckDB] ok 30 - view slice agrees
+[DB::DuckDB] ok 31 - TIMESTAMPTZ still comes back as DuckDB renders it
+[DB::DuckDB] ok 32 - TIMESTAMPTZ is a Str
+[DB::DuckDB] ok 33 - DATE typed read is a Date
+[DB::DuckDB] ok 34 - DATE value is the stored day
+[DB::DuckDB] ok 35 - pre-epoch DATE keeps its day
+[DB::DuckDB] ok 36 - NULL DATE stays undefined under :typed
+[DB::DuckDB] ok 37 - without :typed DATE is still the rendered text
+[DB::DuckDB] ok 38 - TIMESTAMP typed read is a DateTime
+[DB::DuckDB] ok 39 - TIMESTAMP keeps the microseconds and is labelled UTC
+[DB::DuckDB] ok 40 - a pre-epoch timestamp lands on the right second, not one off
+[DB::DuckDB] ok 41 - and its epoch seconds are floored
+[DB::DuckDB] ok 42 - TIMESTAMP_S maps to whole seconds
+[DB::DuckDB] ok 43 - TIMESTAMP_MS keeps milliseconds
+[DB::DuckDB] ok 44 - TIMESTAMP_NS lands on the same second as the other precisions
+[DB::DuckDB] ok 45 - a fractional pre-epoch timestamp is not shifted by a second
+[DB::DuckDB] ok 46 - TIME has no value type, so :typed leaves it as text
+[DB::DuckDB] ok 47 - TIMESTAMPTZ is session-zone text, so :typed leaves it alone
+[DB::DuckDB] ok 48 - a numeric column is unaffected by :typed
+[DB::DuckDB] ok 49 - to-list(:typed) is typed for every non-NULL row
+[DB::DuckDB] ok 50 - to-list(:typed) agrees with at(:typed)
+[DB::DuckDB] ok 51 - and still answers NULL as an undefined value
+[DB::DuckDB] ok 52 - a plain to-list is untouched by the new path
+[DB::DuckDB] ok 53 - a slice keeps the typed values
+[DB::DuckDB] 1..53
+[DB::DuckDB] # You failed 6 tests of 53
+[DB::DuckDB] Command: /usr/bin/rakudo -I CompUnit::Repository::Staging#name(site)#/tmp/.zef.1794718686.11/1794718694.11.3769.8623117997176 t/13-decimal-enum.rakutest
+[DB::DuckDB] ok 1 - join-decimal entry point is present
+[DB::DuckDB] ok 2 - ABI is at least 5, so the DECIMAL renderer is trusted
+[DB::DuckDB] ok 3 - all 9000 decimal values match DuckDB's rendering
+[DB::DuckDB] ok 4 - DECIMAL(38) keeps every digit, including the 128 bit range
+[DB::DuckDB] ok 5 - width == scale drops the integer part, width > scale keeps a leading zero
+[DB::DuckDB] ok 6 - all-NULL decimal column keeps its width
+[DB::DuckDB] ok 7 - all-NULL decimal column yields no values
+[DB::DuckDB] ok 8 - enum column matches DuckDB rendering
+[DB::DuckDB] ok 9 - enum column keeps every row
+[DB::DuckDB] ok 10 - enum NULLs map to Any and every other row has a value
+[DB::DuckDB] ok 11 - rows sharing a key decode to the same text
+[DB::DuckDB] ok 12 - a 400 entry dictionary (USMALLINT keys) still matches
+[DB::DuckDB] ok 13 - the last dictionary entry resolves
+[DB::DuckDB] ok 14 - hashes() carries enum text
+[DB::DuckDB] not ok 15 - digest script exits cleanly ({})
+[DB::DuckDB] # Failed test 'digest script exits cleanly ({})'
+[DB::DuckDB] # at t/13-decimal-enum.rakutest line 178
+[DB::DuckDB] # expected: '0'
+[DB::DuckDB] #      got: '1'
+[DB::DuckDB] # ===SORRY!=== Error while compiling /tmp/.zef.1794718686.11/68edb89be44b796392325687a17aa4545afa6d98.tar.gz/t/decimal-enum-digest.raku
+[DB::DuckDB] # ===SORRY!=== Error while compiling /tmp/.zef.1794718686.11/68edb89be44b796392325687a17aa4545afa6d98.tar.gz/lib/DB/DuckDB.rakumod (DB::DuckDB)
+[DB::DuckDB] # Could not find DB in:
+[DB::DuckDB] #     /tmp/.zef.1794718686.11/68edb89be44b796392325687a17aa4545afa6d98.tar.gz/lib
+[DB::DuckDB] #     /root/.raku
+[DB::DuckDB] #     /usr/share/perl6/site
+[DB::DuckDB] #     /usr/share/perl6/vendor
+[DB::DuckDB] #     /usr/share/perl6/core
+[DB::DuckDB] #     CompUnit::Repository::AbsolutePath<4120679785712>
+[DB::DuckDB] #     CompUnit::Repository::NQP<4120643398048>
+[DB::DuckDB] #     CompUnit::Repository::Perl5<4120643398088>
+[DB::DuckDB] # at /tmp/.zef.1794718686.11/68edb89be44b796392325687a17aa4545afa6d98.tar.gz/lib/DB/DuckDB.rakumod (DB::DuckDB):1
+[DB::DuckDB] # ------> <BOL><HERE>use DB;
+[DB::DuckDB] # 
+[DB::DuckDB] # at /tmp/.zef.1794718686.11/68edb89be44b796392325687a17aa4545afa6d98.tar.gz/t/decimal-enum-digest.raku:1
+[DB::DuckDB] # ------> <BOL><HERE>use DB::DuckDB;
+[DB::DuckDB] # 
+[DB::DuckDB] not ok 16 - digest script exits cleanly ({:DB_DUCKDB_NO_DECIMAL_SHIM("1")})
+[DB::DuckDB] # Failed test 'digest script exits cleanly ({:DB_DUCKDB_NO_DECIMAL_SHIM("1")})'
+[DB::DuckDB] # at t/13-decimal-enum.rakutest line 178
+[DB::DuckDB] # expected: '0'
+[DB::DuckDB] #      got: '1'
+[DB::DuckDB] # ===SORRY!=== Error while compiling /tmp/.zef.1794718686.11/68edb89be44b796392325687a17aa4545afa6d98.tar.gz/t/decimal-enum-digest.raku
+[DB::DuckDB] # ===SORRY!=== Error while compiling /tmp/.zef.1794718686.11/68edb89be44b796392325687a17aa4545afa6d98.tar.gz/lib/DB/DuckDB.rakumod (DB::DuckDB)
+[DB::DuckDB] # Could not find DB in:
+[DB::DuckDB] #     /tmp/.zef.1794718686.11/68edb89be44b796392325687a17aa4545afa6d98.tar.gz/lib
+[DB::DuckDB] #     /root/.raku
+[DB::DuckDB] #     /usr/share/perl6/site
+[DB::DuckDB] #     /usr/share/perl6/vendor
+[DB::DuckDB] #     /usr/share/perl6/core
+[DB::DuckDB] #     CompUnit::Repository::AbsolutePath<5784163862184>
+[DB::DuckDB] #     CompUnit::Repository::NQP<5784137919360>
+[DB::DuckDB] #     CompUnit::Repository::Perl5<5784137919400>
+[DB::DuckDB] # at /tmp/.zef.1794718686.11/68edb89be44b796392325687a17aa4545afa6d98.tar.gz/lib/DB/DuckDB.rakumod (DB::DuckDB):1
+[DB::DuckDB] # ------> <BOL><HERE>use DB;
+[DB::DuckDB] # 
+[DB::DuckDB] # at /tmp/.zef.1794718686.11/68edb89be44b796392325687a17aa4545afa6d98.tar.gz/t/decimal-enum-digest.raku:1
+[DB::DuckDB] # ------> <BOL><HERE>use DB::DuckDB;
+[DB::DuckDB] # 
+[DB::DuckDB] not ok 17 - digest script exits cleanly ({:DB_DUCKDB_NO_DECIMAL_SHIM("1"), :DB_DUCKDB_NO_VARCHAR_SHIM("1")})
+[DB::DuckDB] # Failed test 'digest script exits cleanly ({:DB_DUCKDB_NO_DECIMAL_SHIM("1"), :DB_DUCKDB_NO_VARCHAR_SHIM("1")})'
+[DB::DuckDB] # at t/13-decimal-enum.rakutest line 178
+[DB::DuckDB] # expected: '0'
+[DB::DuckDB] #      got: '1'
+[DB::DuckDB] # ===SORRY!=== Error while compiling /tmp/.zef.1794718686.11/68edb89be44b796392325687a17aa4545afa6d98.tar.gz/t/decimal-enum-digest.raku
+[DB::DuckDB] # ===SORRY!=== Error while compiling /tmp/.zef.1794718686.11/68edb89be44b796392325687a17aa4545afa6d98.tar.gz/lib/DB/DuckDB.rakumod (DB::DuckDB)
+[DB::DuckDB] # Could not find DB in:
+[DB::DuckDB] #     /tmp/.zef.1794718686.11/68edb89be44b796392325687a17aa4545afa6d98.tar.gz/lib
+[DB::DuckDB] #     /root/.raku
+[DB::DuckDB] #     /usr/share/perl6/site
+[DB::DuckDB] #     /usr/share/perl6/vendor
+[DB::DuckDB] #     /usr/share/perl6/core
+[DB::DuckDB] #     CompUnit::Repository::AbsolutePath<2806946219688>
+[DB::DuckDB] #     CompUnit::Repository::NQP<2806920276864>
+[DB::DuckDB] #     CompUnit::Repository::Perl5<2806920276904>
+[DB::DuckDB] # at /tmp/.zef.1794718686.11/68edb89be44b796392325687a17aa4545afa6d98.tar.gz/lib/DB/DuckDB.rakumod (DB::DuckDB):1
+[DB::DuckDB] # ------> <BOL><HERE>use DB;
+[DB::DuckDB] # 
+[DB::DuckDB] # at /tmp/.zef.1794718686.11/68edb89be44b796392325687a17aa4545afa6d98.tar.gz/t/decimal-enum-digest.raku:1
+[DB::DuckDB] # ------> <BOL><HERE>use DB::DuckDB;
+[DB::DuckDB] # 
+[DB::DuckDB] not ok 18 - digest is not empty
+[DB::DuckDB] ok 19 - C decimal renderer agrees with the Raku fixed point path
+[DB::DuckDB] ok 20 - C decimal renderer agrees with a run that has no shim at all
+[DB::DuckDB] not ok 21 - digest reports no mismatch against DuckDB
+[DB::DuckDB] # Failed test 'digest is not empty'
+[DB::DuckDB] # at t/13-decimal-enum.rakutest line 186
+[DB::DuckDB] # Failed test 'digest reports no mismatch against DuckDB'
+[DB::DuckDB] # at t/13-decimal-enum.rakutest line 189
+[DB::DuckDB] ok 22 - decimal column view matches the eager decode
+[DB::DuckDB] ok 23 - decimal view at() agrees
+[DB::DuckDB] ok 24 - enum column view matches the eager decode
+[DB::DuckDB] 1..24
+[DB::DuckDB] # You failed 5 tests of 24
+[DB::DuckDB] Command: /usr/bin/rakudo -I CompUnit::Repository::Staging#name(site)#/tmp/.zef.1794718686.11/1794718694.11.3769.8623117997176 t/14-parquet.rakutest
+[DB::DuckDB] ok 1 - literal doubles the quote
+[DB::DuckDB] ok 2 - identifier doubles the double quote
+[DB::DuckDB] ok 3 - table name is always quoted
+[DB::DuckDB] ok 4 - schema is quoted too
+[DB::DuckDB] ok 5 - copy statement for a table
+[DB::DuckDB] ok 6 - a query source is wrapped in parentheses
+[DB::DuckDB] ok 7 - plain read statement
+[DB::DuckDB] ok 8 - one placeholder per path
+[DB::DuckDB] ok 9 - column list and boolean options
+[DB::DuckDB] ok 10 - write-parquet returns the row count
+[DB::DuckDB] ok 11 - the file exists
+[DB::DuckDB] ok 12 - the file has content
+[DB::DuckDB] ok 13 - reading the file gives exactly the table, value for value
+[DB::DuckDB] ok 14 - hash rows match too
+[DB::DuckDB] ok 15 - column order survives
+[DB::DuckDB] ok 16 - date, decimal and NULL render as DuckDB renders them
+[DB::DuckDB] ok 17 - a negative decimal survives
+[DB::DuckDB] ok 18 - a pre-epoch date survives
+[DB::DuckDB] ok 19 - query mode writes the select result
+[DB::DuckDB] ok 20 - query mode keeps only the selected columns
+[DB::DuckDB] ok 21 - a schema-qualified table can be written
+[DB::DuckDB] ok 22 - and it holds the right row
+[DB::DuckDB] ok 23 - first write
+[DB::DuckDB] ok 24 - a second write replaces the file
+[DB::DuckDB] ok 25 - a target path with a quote and a space can be written
+[DB::DuckDB] ok 26 - and read back
+[DB::DuckDB] ok 27 - a unicode path round-trips
+[DB::DuckDB] ok 28 - a list of paths is read as one result set
+[DB::DuckDB] ok 29 - union_by_name accepts a bound list too
+[DB::DuckDB] ok 30 - both files contribute rows
+[DB::DuckDB] ok 31 - a glob is expanded by DuckDB
+[DB::DuckDB] ok 32 - filename adds the source column
+[DB::DuckDB] ok 33 - filename distinguishes the two files
+[DB::DuckDB] ok 34 - a single column name works without a list
+[DB::DuckDB] ok 35 - a column list is honoured
+[DB::DuckDB] ok 36 - footer reports the row count
+[DB::DuckDB] ok 37 - a tiny file is one row group
+[DB::DuckDB] ok 38 - format version is reported
+[DB::DuckDB] ok 39 - bigint is stored as INT64
+[DB::DuckDB] ok 40 - varchar is BYTE_ARRAY
+[DB::DuckDB] ok 41 - date keeps its converted type
+[DB::DuckDB] ok 42 - one column chunk per column
+[DB::DuckDB] ok 43 - row_group_size is accepted
+[DB::DuckDB] ok 44 - a small row_group_size produces more than one group
+[DB::DuckDB] ok 45 - row group metadata is groups x columns
+[DB::DuckDB] ok 46 - compression zstd reaches the file
+[DB::DuckDB] ok 47 - compression uncompressed reaches the file
+[DB::DuckDB] ok 48 - zstd really is smaller
+[DB::DuckDB] # Subtest: an unknown codec is rejected before it reaches SQL
+[DB::DuckDB]     1..3
+[DB::DuckDB]     ok 1 - code dies
+[DB::DuckDB]     ok 2 - right exception type (DB::DuckDB::Error)
+[DB::DuckDB]     ok 3 - .message matches /unsupported/
+[DB::DuckDB] ok 49 - an unknown codec is rejected before it reaches SQL
+[DB::DuckDB] # Subtest: a non-positive row_group_size is rejected
+[DB::DuckDB]     1..3
+[DB::DuckDB]     ok 1 - code dies
+[DB::DuckDB]     ok 2 - right exception type (DB::DuckDB::Error)
+[DB::DuckDB]     ok 3 - .message matches /positive/
+[DB::DuckDB] ok 50 - a non-positive row_group_size is rejected
+[DB::DuckDB] # Subtest: a missing file raises DuckDB IO error
+[DB::DuckDB]     1..3
+[DB::DuckDB]     ok 1 - code dies
+[DB::DuckDB]     ok 2 - right exception type (Exception)
+[DB::DuckDB]     ok 3 - .message matches /found/
+[DB::DuckDB] ok 51 - a missing file raises DuckDB IO error
+[DB::DuckDB] ok 52 - an empty result can be written
+[DB::DuckDB] ok 53 - and reads back as zero rows
+[DB::DuckDB] ok 54 - the schema survives zero rows
+[DB::DuckDB] ok 55 - partition_by with a single column name
+[DB::DuckDB] ok 56 - the write created a partitioned directory
+[DB::DuckDB] ok 57 - one subdirectory per partition value
+[DB::DuckDB] ok 58 - hive partitioning reads the directory back
+[DB::DuckDB] ok 59 - the partition column is appended by hive_partitioning
+[DB::DuckDB] ok 60 - and it carries the directory values
+[DB::DuckDB] ok 61 - the stream flag reaches the result
+[DB::DuckDB] ok 62 - streaming yields every row
+[DB::DuckDB] ok 63 - a lazy column view works on a Parquet scan
+[DB::DuckDB] ok 64 - and reports the right count
+[DB::DuckDB] 1..64
+[DB::DuckDB] Command: /usr/bin/rakudo -I CompUnit::Repository::Staging#name(site)#/tmp/.zef.1794718686.11/1794718694.11.3769.8623117997176 t/15-shim-cache.rakutest
+[DB::DuckDB] ok 1 - a .bak from an older release is removed
+[DB::DuckDB] ok 2 - a directory-wide stamp with no library behind it is removed
+[DB::DuckDB] ok 3 - a per-process build older than an hour is removed
+[DB::DuckDB] ok 4 - and its stamp goes with it
+[DB::DuckDB] ok 5 - a per-process build from this hour is kept
+[DB::DuckDB] ok 6 - so is its stamp
+[DB::DuckDB] ok 7 - the library in use is never touched
+[DB::DuckDB] ok 8 - nor its stamp
+[DB::DuckDB] ok 9 - a cache with no usable library is left alone
+[DB::DuckDB] ok 10 - nor is a stale build removed when it is the newest thing there
+[DB::DuckDB] ok 11 - DB_DUCKDB_NO_CACHE_SWEEP leaves everything alone
+[DB::DuckDB] 1..11
+[DB::DuckDB] Command: /usr/bin/rakudo -I CompUnit::Repository::Staging#name(site)#/tmp/.zef.1794718686.11/1794718694.11.3769.8623117997176 t/16-text-column.rakutest
+[DB::DuckDB] ok 1 - row count
+[DB::DuckDB] ok 2 - type name is carried over
+[DB::DuckDB] ok 3 - NULL is not counted
+[DB::DuckDB] ok 4 - payload buffer holds 5 + 0 + 0 + 40 + 21 bytes
+[DB::DuckDB] ok 5 - first row starts at byte 0
+[DB::DuckDB] ok 6 - row 0 length
+[DB::DuckDB] ok 7 - a NULL takes no bytes
+[DB::DuckDB] ok 8 - row 1 length is 0
+[DB::DuckDB] ok 9 - the empty string takes no bytes either
+[DB::DuckDB] ok 10 - row 2 length is 0
+[DB::DuckDB] ok 11 - row 3 offset
+[DB::DuckDB] ok 12 - row 3 length
+[DB::DuckDB] ok 13 - row 4 offset
+[DB::DuckDB] ok 14 - multibyte payload measures bytes, not characters
+[DB::DuckDB] ok 15 - row 1 is NULL
+[DB::DuckDB] ok 16 - an empty string is not NULL
+[DB::DuckDB] ok 17 - row 0 is not NULL
+[DB::DuckDB] ok 18 - row 0 text
+[DB::DuckDB] ok 19 - NULL comes back as an undefined value
+[DB::DuckDB] ok 20 - empty string comes back as an empty Str
+[DB::DuckDB] ok 21 - multibyte value round trips
+[DB::DuckDB] ok 22 - bytes-at returns raw UTF-8
+[DB::DuckDB] ok 23 - bytes-at on multibyte
+[DB::DuckDB] ok 24 - bytes-at of the empty string is empty
+[DB::DuckDB] ok 25 - bytes-at of NULL is empty
+[DB::DuckDB] ok 26 - the buffer is exactly the concatenated payloads
+[DB::DuckDB] ok 27 - to-list matches column()
+[DB::DuckDB] ok 28 - values on both sides of the inline/pointer boundary round trip
+[DB::DuckDB] ok 29 - chunked column keeps every row
+[DB::DuckDB] ok 30 - chunked column keeps every value in order
+[DB::DuckDB] ok 31 - ASCII payload size adds up
+[DB::DuckDB] ok 32 - offset[i] is the sum of length[0..i-1] across chunk seams
+[DB::DuckDB] ok 33 - two of four rows are non-NULL
+[DB::DuckDB] ok 34 - NULL flags mark exactly the NULL rows
+[DB::DuckDB] ok 35 - all-NULL column needs no payload bytes
+[DB::DuckDB] ok 36 - but still knows how many rows it has
+[DB::DuckDB] ok 37 - and reports zero non-NULL values
+[DB::DuckDB] ok 38 - and answers an undefined value for every row
+[DB::DuckDB] ok 39 - BLOB payloads are exported byte for byte
+[DB::DuckDB] ok 40 - first blob length
+[DB::DuckDB] ok 41 - second blob bytes
+[DB::DuckDB] # Subtest: a numeric column has no text view
+[DB::DuckDB]     1..3
+[DB::DuckDB]     ok 1 - code dies
+[DB::DuckDB]     ok 2 - right exception type (Exception)
+[DB::DuckDB]     ok 3 - .message matches rx/'only defined for VARCHAR'/
+[DB::DuckDB] ok 42 - a numeric column has no text view
+[DB::DuckDB] # Subtest: the refusal names the type
+[DB::DuckDB]     1..3
+[DB::DuckDB]     ok 1 - code dies
+[DB::DuckDB]     ok 2 - right exception type (Exception)
+[DB::DuckDB]     ok 3 - .message matches rx/'only defined for'/
+[DB::DuckDB] ok 43 - the refusal names the type
+[DB::DuckDB] # Subtest: a decoded-only view is refused with an explanation
+[DB::DuckDB]     1..3
+[DB::DuckDB]     ok 1 - code dies
+Aborting due to test failure: DB::DuckDB:ver<1.0.1>:auth<zef:skyter10086>:api<1> (use --force-test to override)
+[DB::DuckDB]     ok 2 - right exception type (Exception)
+[DB::DuckDB]     ok 3 - .message matches rx/'needs a result materialised by column'/
+[DB::DuckDB] ok 44 - a decoded-only view is refused with an explanation
+[DB::DuckDB] ok 45 - a column larger than one window reports every row
+[DB::DuckDB] ok 46 - payload size is the sum of the value lengths
+[DB::DuckDB] ok 47 - a row does straddle the window edge
+[DB::DuckDB] ok 48 - to-list answers one value per row
+[DB::DuckDB] ok 49 - the value crossing the window edge is not spliced together wrongly
+[DB::DuckDB] ok 50 - and it keeps its full length
+[DB::DuckDB] ok 51 - sampled rows agree with at()
+[DB::DuckDB] ok 52 - every value decoded back to its own width
+[DB::DuckDB] ok 53 - mixed window keeps every row
+[DB::DuckDB] ok 54 - NULLs stay undefined
+[DB::DuckDB] ok 55 - empty strings stay defined
+[DB::DuckDB] ok 56 - and the values keep their text
+[DB::DuckDB] ok 57 - non-ASCII payload keeps every row
+[DB::DuckDB] ok 58 - and answers the same value as at()
+[DB::DuckDB] ok 59 - the row by row fallback answers the same values
+[DB::DuckDB] ok 60 - empty strings cost no payload bytes
+[DB::DuckDB] ok 61 - and to-list still answers one value per row
+[DB::DuckDB] ok 62 - all of them defined
+[DB::DuckDB] ok 63 - the byte export is available in this test run (the shim built)
+[DB::DuckDB] 1..63
+===> Testing [FAIL]: DB::DuckDB:ver<1.0.1>:auth<zef:skyter10086>:api<1>

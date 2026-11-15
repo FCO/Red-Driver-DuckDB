@@ -1,0 +1,54 @@
+ok 1 - join-temporal entry point is present
+ok 2 - ABI is at least 4, so the temporal kind codes are trusted
+ok 3 - DATE renders as YYYY-MM-DD, NULL as Any
+ok 4 - TIMESTAMP keeps at most 6 fractional digits and drops trailing zeros
+ok 5 - TIME keeps 24:00:00 and drops trailing zeros
+ok 6 - column 0 yields Str values
+ok 7 - column 0 keeps all non-NULL rows
+ok 8 - column 1 yields Str values
+ok 9 - column 1 keeps all non-NULL rows
+ok 10 - column 2 yields Str values
+ok 11 - column 2 keeps all non-NULL rows
+ok 12 - every bulk row came back
+ok 13 - all 14000 temporal values match DuckDB's own rendering
+ok 14 - NULL DATE maps to Any
+ok 15 - NULL TIMESTAMP maps to Any
+ok 16 - NULL TIME maps to Any
+ok 17 - all-NULL column keeps its width
+ok 18 - all-NULL column yields no values
+ok 19 - digest script exits cleanly ({})
+ok 20 - digest script exits cleanly ({:DB_DUCKDB_NO_TEMPORAL_SHIM("1")})
+ok 21 - digest script exits cleanly ({:DB_DUCKDB_NO_TEMPORAL_SHIM("1"), :DB_DUCKDB_NO_VARCHAR_SHIM("1")})
+ok 22 - digest is not empty
+ok 23 - C shim agrees with the Raku renderers
+ok 24 - C shim agrees with a run that has no shim at all
+ok 25 - digest reports no mismatch against DuckDB
+ok 26 - lazy column view matches the eager decode
+ok 27 - view width matches the eager column
+ok 28 - view decodes to the same timestamps
+ok 29 - view at() agrees with the eager column
+ok 30 - view slice agrees
+ok 31 - TIMESTAMPTZ still comes back as DuckDB renders it
+ok 32 - TIMESTAMPTZ is a Str
+ok 33 - DATE typed read is a Date
+ok 34 - DATE value is the stored day
+ok 35 - pre-epoch DATE keeps its day
+ok 36 - NULL DATE stays undefined under :typed
+ok 37 - without :typed DATE is still the rendered text
+ok 38 - TIMESTAMP typed read is a DateTime
+ok 39 - TIMESTAMP keeps the microseconds and is labelled UTC
+ok 40 - a pre-epoch timestamp lands on the right second, not one off
+ok 41 - and its epoch seconds are floored
+ok 42 - TIMESTAMP_S maps to whole seconds
+ok 43 - TIMESTAMP_MS keeps milliseconds
+ok 44 - TIMESTAMP_NS lands on the same second as the other precisions
+ok 45 - a fractional pre-epoch timestamp is not shifted by a second
+ok 46 - TIME has no value type, so :typed leaves it as text
+ok 47 - TIMESTAMPTZ is session-zone text, so :typed leaves it alone
+ok 48 - a numeric column is unaffected by :typed
+ok 49 - to-list(:typed) is typed for every non-NULL row
+ok 50 - to-list(:typed) agrees with at(:typed)
+ok 51 - and still answers NULL as an undefined value
+ok 52 - a plain to-list is untouched by the new path
+ok 53 - a slice keeps the typed values
+1..53

@@ -1,6 +1,7 @@
 Revision history for Red::Driver::DuckDB
 
 {{$NEXT}}
+    - Fix installation
 
 0.0.2  2026-11-14T18:15:01Z
     - Prioritize DuckDB identifier validation over CommonSQL and quote dotted names in PRAGMA tests.

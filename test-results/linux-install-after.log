@@ -1,0 +1,71 @@
+===> Searching for: DB, Alien::Libduckdb
+===> Searching for missing dependencies: Concurrent::Stack
+===> Building: Alien::Libduckdb:ver<1.1.0>:auth<zef:skyter10086>:api<1>
+[Alien::Libduckdb] Alien::Libduckdb: installing libduckdb 2.0.0 (prebuilt archive first, source build as fallback)
+[Alien::Libduckdb] Alien::Libduckdb: libduckdb ready at /root/.local/share/Alien-Libduckdb/2.0.0/lib/libduckdb.so (source: prebuilt)
+===> Building [OK] for Alien::Libduckdb:ver<1.1.0>:auth<zef:skyter10086>:api<1>
+===> Staging Alien::Libduckdb:ver<1.1.0>:auth<zef:skyter10086>:api<1>
+===> Staging [OK] for Alien::Libduckdb:ver<1.1.0>:auth<zef:skyter10086>:api<1>
+===> Staging Concurrent::Stack:ver<1.3>:auth<zef:raku-community-modules>
+===> Staging [OK] for Concurrent::Stack:ver<1.3>:auth<zef:raku-community-modules>
+===> Staging DB:ver<0.5>:auth<github:CurtTilmes>:api<1>
+===> Staging [OK] for DB:ver<0.5>:auth<github:CurtTilmes>:api<1>
+===> Testing: Alien::Libduckdb:ver<1.1.0>:auth<zef:skyter10086>:api<1>
+===> Testing [OK] for Alien::Libduckdb:ver<1.1.0>:auth<zef:skyter10086>:api<1>
+===> Testing: Concurrent::Stack:ver<1.3>:auth<zef:raku-community-modules>
+===> Testing [OK] for Concurrent::Stack:ver<1.3>:auth<zef:raku-community-modules>
+===> Testing: DB:ver<0.5>:auth<github:CurtTilmes>:api<1>
+===> Testing [OK] for DB:ver<0.5>:auth<github:CurtTilmes>:api<1>
+===> Installing: Alien::Libduckdb:ver<1.1.0>:auth<zef:skyter10086>:api<1>
+===> Installing: Concurrent::Stack:ver<1.3>:auth<zef:raku-community-modules>
+===> Installing: DB:ver<0.5>:auth<github:CurtTilmes>:api<1>
+===> Searching for: DB::DuckDB:ver<1.0.1>:auth<zef:skyter10086>
+===> Staging DB::DuckDB:ver<1.0.1>:auth<zef:skyter10086>:api<1>
+===> Staging [OK] for DB::DuckDB:ver<1.0.1>:auth<zef:skyter10086>:api<1>
+===> Testing: DB::DuckDB:ver<1.0.1>:auth<zef:skyter10086>:api<1>
+===> Testing [OK] for DB::DuckDB:ver<1.0.1>:auth<zef:skyter10086>:api<1>
+===> Installing: DB::DuckDB:ver<1.0.1>:auth<zef:skyter10086>:api<1>
+Cloning into '.red'...
+Note: switching to '589fc491a8544b0d9c2f0a086431256a71322689'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+
+  git switch -c <new-branch-name>
+
+Or undo this operation with:
+
+  git switch -
+
+Turn off this advice by setting config variable advice.detachedHead to false
+
+HEAD is now at 589fc49 Preserve database client status and allow database CI to finish
+===> Searching for missing dependencies: Configuration, UUID
+===> Staging Configuration:ver<0.0.11>:auth<zef:FCO>
+===> Staging [OK] for Configuration:ver<0.0.11>:auth<zef:FCO>
+===> Staging UUID:ver<1.0.0>
+===> Staging [OK] for UUID:ver<1.0.0>
+===> Staging Red:ver<0.2.10>:auth<zef:FCO>:api<2>
+===> Staging [OK] for Red:ver<0.2.10>:auth<zef:FCO>:api<2>
+===> Installing: Configuration:ver<0.0.11>:auth<zef:FCO>
+===> Installing: UUID:ver<1.0.0>
+===> Installing: Red:ver<0.2.10>:auth<zef:FCO>:api<2>
+
+1 bin/ script [red] installed to:
+/usr/share/perl6/site/bin
+All candidates are currently installed
+===> Staging Red::Driver::DuckDB:ver<0.0.2>:auth<zef:FCO>
+===> Staging [OK] for Red::Driver::DuckDB:ver<0.0.2>:auth<zef:FCO>
+===> Testing: Red::Driver::DuckDB:ver<0.0.2>:auth<zef:FCO>
+===> Testing [OK] for Red::Driver::DuckDB:ver<0.0.2>:auth<zef:FCO>
+===> Installing: Red::Driver::DuckDB:ver<0.0.2>:auth<zef:FCO>
+tools/t/01-launcher.rakutest ... ok
+tools/t/02-installer.rakutest .. ok
+All tests successful.
+Files=2, Tests=38,  66 wallclock secs
+Result: PASS
+Installed driver CRUD OK

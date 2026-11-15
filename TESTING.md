@@ -48,3 +48,19 @@ The combined driver/tool suite passed locally on both Rakudo 2026.09 and
 2026.09-198: 17 files, 188 top-level tests, including the 256 KiB stderr case.
 See OTHER-DRIVERS-RESULTS.md for full cross-driver inventories;
 the latest five capability-test changes passed 61 tests on each other driver.
+
+## Linux installation check
+
+Run a clean installation and the driver/tool tests in Debian ARM64 or AMD64:
+
+```sh
+docker build --progress=plain -f tools/Dockerfile.install-check -t red-duckdb-install-check .
+```
+
+The image installs a C compiler for DB::DuckDB's result bridge, installs `DB`
+and `Alien::Libduckdb` before testing `DB::DuckDB`, and runs the binding tests
+with `TZ=UTC`. It then installs the pinned Red source with the companion patch,
+installs and tests this driver, runs the tool tests, and checks CRUD through the
+installed distribution from outside the checkout. As in CI, the companion Red
+installation uses `--/test`; dependency binding and driver tests remain enabled.
+The commands are in `tools/test-install-linux.sh`.
