@@ -19,13 +19,13 @@
     "Red::Driver::DuckDB": "lib/Red/Driver/DuckDB.rakumod",
     "Red::Driver::DuckDB::JSON": "lib/Red/Driver/DuckDB/JSON.rakumod",
     "Red::Driver::DuckDB::Migrations": "lib/Red/Driver/DuckDB/Migrations.rakumod",
+    "Red::Driver::DuckDB::Readers": "lib/Red/Driver/DuckDB/Readers.rakumod",
     "Red::Driver::DuckDB::Regex": "lib/Red/Driver/DuckDB/Regex.rakumod",
     "Red::Driver::DuckDB::Regex::Automaton": "lib/Red/Driver/DuckDB/Regex/Automaton.rakumod",
     "Red::Driver::DuckDB::Regex::Unicode": "lib/Red/Driver/DuckDB/Regex/Unicode.rakumod",
+    "Red::Driver::DuckDB::S3": "lib/Red/Driver/DuckDB/S3.rakumod",
     "Red::Driver::DuckDB::SQL": "lib/Red/Driver/DuckDB/SQL.rakumod",
     "Red::Driver::DuckDB::SchemaReader": "lib/Red/Driver/DuckDB/SchemaReader.rakumod",
-    "Red::Driver::DuckDB::Readers": "lib/Red/Driver/DuckDB/Readers.rakumod",
-    "Red::Driver::DuckDB::S3": "lib/Red/Driver/DuckDB/S3.rakumod",
     "Red::Driver::DuckDB::SourceModel": "lib/Red/Driver/DuckDB/SourceModel.rakumod"
   },
   "resources": [
@@ -40,5 +40,5 @@
   "test-depends": [
     "Test"
   ],
-  "version": "0.0.3"
+  "version": "0.0.4"
 }

@@ -1,6 +1,8 @@
 Revision history for Red::Driver::DuckDB
 
 {{$NEXT}}
+
+0.0.4  2026-11-15T07:34:09Z
     - Precompile the driver before timed launcher tests to avoid cold-compilation timeouts on Windows CI.
     - Add CSV, JSON, Parquet, text, blob and XLSX readers that return dynamically generated Red models.
     - Query sources through temporary read-only views by default; support writable snapshots with :materialize and generated primary keys.
