@@ -47,7 +47,8 @@ jobs:
           TZ: UTC
         run: |
           # DB::DuckDB subprocess tests cannot see zef's staging repository.
-          zef install DB Alien::Libduckdb
+          # DB::DuckDB 1.0.1 also uses File::Temp without declaring it.
+          zef install DB Alien::Libduckdb File::Temp
           zef install 'DB::DuckDB:ver<1.0.1>:auth<zef:skyter10086>'
       - name: Install Dependencies
         run: zef install --/test --test-depends --deps-only .

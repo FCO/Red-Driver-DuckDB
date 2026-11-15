@@ -3,7 +3,8 @@
 set -eu
 
 # Install before testing DB::DuckDB: its child processes do not inherit staging.
-zef install DB Alien::Libduckdb
+# DB::DuckDB 1.0.1 uses File::Temp without declaring it in its test dependencies.
+zef install DB Alien::Libduckdb File::Temp
 TZ=UTC zef install 'DB::DuckDB:ver<1.0.1>:auth<zef:skyter10086>'
 
 # The driver needs these companion changes for its schema/migration support.

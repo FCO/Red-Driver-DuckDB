@@ -58,7 +58,8 @@ docker build --progress=plain -f tools/Dockerfile.install-check -t red-duckdb-in
 ```
 
 The image installs a C compiler for DB::DuckDB's result bridge, installs `DB`
-and `Alien::Libduckdb` before testing `DB::DuckDB`, and runs the binding tests
+and `Alien::Libduckdb`, plus its undeclared test dependency `File::Temp`, before
+testing `DB::DuckDB`, and runs the binding tests
 with `TZ=UTC`. It then installs the pinned Red source with the companion patch,
 installs and tests this driver, runs the tool tests, and checks CRUD through the
 installed distribution from outside the checkout. As in CI, the companion Red
