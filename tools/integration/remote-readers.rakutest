@@ -1,0 +1,48 @@
+use Test;
+use Red;
+use Red::Driver::DuckDB;
+
+my $endpoint = %*ENV<RED_DUCKDB_S3_ENDPOINT>
+    // die 'Run raku tools/test-remote-readers.raku to start the integration fixtures';
+my $https = %*ENV<RED_DUCKDB_HTTPS_URL> // die 'HTTPS fixture URL required';
+my $certificate = %*ENV<RED_DUCKDB_HTTPS_CERT> // die 'HTTPS certificate required';
+my $fixtures = %*ENV<RED_DUCKDB_REMOTE_FIXTURES> // die 'Fixture directory required';
+my $db = Red::Driver::DuckDB.new;
+LEAVE $db.close if $db.defined;
+
+my \Workbook = $db.read-xlsx($fixtures.IO.add('people.xlsx').Str, :sheet<People>, :header);
+is Workbook.^all.elems, 2, 'XLSX sheet reader returns rows';
+is Workbook.^all.grep(*.age >= 18).head.name, 'Ana', 'XLSX inferred columns filter';
+
+lives-ok {
+    $db.configure-s3(:provider<config>, :key-id<red-integration>,
+        :secret<red-integration-password>, :region<us-east-1>,
+        :$endpoint, :url-style<path>, :!use-ssl);
+}, 'configure private S3-compatible storage';
+
+my \Sales = $db.read-parquet('s3://red-readers/*.parquet');
+is Sales.^all.elems, 2, 'private S3 glob reads Parquet rows';
+is Sales.^all.grep(*.age >= 18).head.name, 'Ana', 'filter S3 model';
+dies-ok { Sales.^create(:id(3), :name<Carla>, :age(21)) },
+    'remote view rejects writes';
+
+my \Copy = $db.read-parquet('s3://red-readers/*.parquet', :materialize);
+my $created = Copy.^create(:id(3), :name<Carla>, :age(21));
+is Copy.^all.elems, 3, 'materialized S3 copy permits insert';
+is Sales.^all.elems, 2, 'materialized insert leaves remote source intact';
+
+my $bad = Red::Driver::DuckDB.new;
+LEAVE $bad.close if $bad.defined;
+$bad.configure-s3(:provider<config>, :key-id<red-integration>,
+    :secret<incorrect-password>, :region<us-east-1>,
+    :$endpoint, :url-style<path>, :!use-ssl);
+dies-ok { $bad.read-parquet('s3://red-readers/sales.parquet') },
+    'invalid S3 credentials fail';
+
+# Trust only the fixture's certificate; keep TLS verification enabled.
+my $quoted = $certificate.subst("'", "''", :g);
+$db.execute("SET ca_cert_file = '$quoted'");
+my \People = $db.read-csv("$https/people.csv", :header, :delim<;>);
+is People.^all.elems, 2, 'read CSV over verified HTTPS';
+is People.^all.grep(*.age >= 18).head.name, 'Ana', 'filter HTTPS model';
+done-testing;

@@ -1,4 +1,6 @@
 use Red::Driver::DuckDB::Migrations;
+use Red::Driver::DuckDB::Readers;
+use Red::Driver::DuckDB::S3;
 use Red::Driver::CommonSQL;
 use Red::Statement;
 use X::Red::Exceptions;
@@ -17,7 +19,7 @@ use JSON::Fast;
 use Red::Driver::DuckDB::JSON;
 use Red::Driver::DuckDB::Regex;
 
-unit class Red::Driver::DuckDB does Red::Driver::DuckDB::Migrations does Red::Driver::DuckDB::JSON;
+unit class Red::Driver::DuckDB does Red::Driver::DuckDB::Migrations does Red::Driver::DuckDB::JSON does Red::Driver::DuckDB::Readers does Red::Driver::DuckDB::S3;
 
 has Str $.database = ':memory:';
 has $.dbh;
@@ -394,7 +396,7 @@ method close {
             self.release-migration-lock;
             $!session-state.closed = True;
             $!session-state.transaction = False;
-            $!connection.clear-cache;
+                $!connection.clear-cache;
             $!connection.free;
         }
     }

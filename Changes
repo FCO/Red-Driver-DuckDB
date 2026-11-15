@@ -1,6 +1,17 @@
 Revision history for Red::Driver::DuckDB
 
 {{$NEXT}}
+    - Precompile the driver before timed launcher tests to avoid cold-compilation timeouts on Windows CI.
+    - Add CSV, JSON, Parquet, text, blob and XLSX readers that return dynamically generated Red models.
+    - Query sources through temporary read-only views by default; support writable snapshots with :materialize and generated primary keys.
+    - Retain the source connection across queries, hydration, projections, joins and CRUD outside the original dynamic scope.
+    - Infer column types, normalize attribute names and expose original names through .^source-columns.
+    - Inflate nested lists and structures as Raku arrays and hashes; reject unsupported types and compound writes explicitly.
+    - Add configure-s3 with temporary secrets, AWS credential-chain and explicit-key authentication, and compatible endpoints.
+    - Safely encode reader options and clean up temporary objects when source initialization fails.
+    - Install File::Temp before testing DB::DuckDB on Linux to satisfy its undeclared test dependency.
+    - Add reader, lifecycle and S3 configuration regressions, plus real MinIO, verified HTTPS and XLSX integration tests.
+    - Run remote integration fixtures entirely through Raku and native tools, including the Linux CI job.
 
 0.0.3  2026-11-15T05:20:29Z
     - Fix installation

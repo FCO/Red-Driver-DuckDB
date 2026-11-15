@@ -65,3 +65,30 @@ installs and tests this driver, runs the tool tests, and checks CRUD through the
 installed distribution from outside the checkout. As in CI, the companion Red
 installation uses `--/test`; dependency binding and driver tests remain enabled.
 The commands are in `tools/test-install-linux.sh`.
+
+## File readers and remote integration
+
+The default driver suite covers generated models, local readers, read-only
+views, writable snapshots, column-name mappings, compound values and driver
+retention. The remote integration is separate because it needs Docker, OpenSSL,
+curl with AWS Signature V4 support, and access to the DuckDB extension repository:
+
+```sh
+raku tools/test-remote-readers.raku
+```
+
+The runner creates an isolated private MinIO bucket, uploads a real Parquet
+fixture, checks authenticated globs and rejected credentials, and verifies that
+inserts into a materialized copy leave the S3 source untouched. It also starts a
+local HTTPS server with a temporary certificate, trusts that certificate via
+`ca_cert_file` while keeping certificate verification enabled, and tests the
+XLSX reader against a generated workbook. It removes the container, server and
+temporary files on completion or failure. No AWS account or production
+credentials are used.
+
+The MinIO image builds from the official source at the pinned revision in
+`tools/integration/Dockerfile.minio`, avoiding dependence on unavailable public
+MinIO image tags. Its first build downloads the MinIO source and Go dependencies;
+Docker caches subsequent builds. Set `RED_MINIO_IMAGE` to use an
+existing MinIO image instead. This integration runs after the main suite in the
+Linux Actions job; the ordinary reader tests remain in the platform matrix.

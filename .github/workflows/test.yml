@@ -54,9 +54,15 @@ jobs:
         run: zef install --/test --test-depends --deps-only .
       - name: Install App::Prove6
         run: zef install --/test App::Prove6
+      - name: Precompile the driver before timed launcher tests
+        # A cold Windows compile can exceed the launcher's per-test timeout.
+        run: raku -Ilib -MRed::Driver::DuckDB -e "say 'Driver precompiled'"
       - name: Test Raku tools
         env:
           RED_CHECKOUT: .red
         run: prove6 -Ilib tools/t
       - name: Run Tests
         run: prove6 -Ilib t
+      - name: Test private S3 and verified HTTPS readers
+        if: runner.os == 'Linux'
+        run: raku tools/test-remote-readers.raku

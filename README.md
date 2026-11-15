@@ -15,7 +15,7 @@ On Linux, a C compiler is required to build DB::DuckDB's result bridge, even whe
 The published DB::DuckDB 1.0.1 tests spawn Raku processes that cannot see zef's staged dependencies. On Linux, install those dependencies first, then run the binding tests in UTC to avoid the reported TIMESTAMPTZ timezone mismatch:
 
 ```sh
-zef install DB Alien::Libduckdb
+zef install DB Alien::Libduckdb File::Temp
 TZ=UTC zef install 'DB::DuckDB:ver<1.0.1>:auth<zef:skyter10086>'
 zef install Red::Driver::DuckDB
 ```
@@ -54,6 +54,86 @@ say Reading.^all.grep(*.value > 20).map(*.sensor);
 Omit `:database` for an isolated in-memory database. An existing `DB::DuckDB` object can be supplied as `:dbh`; the driver retains it and opens a connection on that database. Statements and transaction wrappers retain that connection. `.close` closes the driver connection; it leaves the shared `dbh` owned by the caller. For Red's environment-based test configuration use `RED_DATABASE='DuckDB'` or `RED_DATABASE='DuckDB database=/path/to/data.duckdb'`.
 
 Supported: model CRUD with `RETURNING`, sequence-backed serial IDs, relationships, foreign keys, joins, grouping, ordering, pagination, primary and unique constraints, ordinary ART indexes, schema catalog inspection, and begin/commit/rollback. Types include integers, booleans, strings, floating point, `DECIMAL(38,18)` for `Rat`, dates, UTC timestamps, blobs, UUID and JSON values. Decimals bind as text to avoid DB::DuckDB's conversion of rational parameters to double precision. Values outside the declared decimal range/scale remain subject to DuckDB's rules.
+
+Reading files as models
+----------------------
+
+The readers infer the columns with DuckDB and return a Red model type, without
+writing a model declaration or calling `.^create-table`:
+
+```raku
+use Red;
+use Red::Driver::DuckDB;
+
+my $db = Red::Driver::DuckDB.new;
+my \Pessoa = $db.read-csv('pessoa.csv', :header, :delim<;>);
+.say for Pessoa.^all.grep(*.idade >= 18);
+```
+
+Available readers are `read-csv`, `read-json`, `read-parquet`, `read-text`,
+`read-blob`, and `read-xlsx`. Options retain DuckDB's names, for example
+`:union_by_name`, `:all_varchar`, or `:sheet<Vendas>`. Paths, supported file lists,
+and glob patterns are passed to DuckDB. Text and blob readers produce one row
+per file, including its content and metadata. Excel requires the `excel`
+extension, installed and loaded on use.
+
+By default, each call creates a separate temporary **read-only view**. Filters,
+ordering and aggregates run in DuckDB against the source. The model retains its
+driver, so queries work outside the original `$*RED-DB` scope. Call `$db.close`
+when finished; subsequent queries fail because the connection is closed.
+
+Use `:materialize` to import a snapshot into a temporary writable table:
+
+```raku
+my \PersonCopy = $db.read-csv('pessoa.csv', :header, :materialize);
+my $person = PersonCopy.^create(:nome<Carla>, :idade(25));
+$person.idade = 26;
+$person.^save;
+$person.^delete;
+```
+
+The copy receives its own serial primary key named `red_row_id` (with a suffix
+if that name already occurs). Its CRUD operations never modify the original
+file. Both views and copies last for the connection's lifetime; importing into
+a file-backed DuckDB does not make these temporary objects persistent.
+
+Column names are normalized to Raku attribute names, with numeric suffixes for
+collisions. `Pessoa.^source-columns` returns the attribute-to-original-column
+mapping. Schemas are inferred when the model is created; call the reader again
+after changing a source's schema. Supported scalar types use the driver's Raku
+types. Lists and arrays become arrays, while structs and maps with text keys
+become hashes, through JSON conversion. SQL NULL becomes an undefined value.
+Composite columns are readable but their modification and batch updates of
+models containing them are rejected; unsupported
+types report the offending column and type rather than silently becoming text.
+
+S3 and HTTPS
+------------
+
+Configure a temporary S3 secret on the same driver before reading private data:
+
+```raku
+$db.configure-s3(:region<eu-west-1>); # AWS credential chain
+my \Sale = $db.read-parquet('s3://my-bucket/sales/*.parquet');
+.say for Sale.^all.grep(*.total > 100);
+
+my \RemotePerson = $db.read-csv('https://example.org/people.csv', :header);
+```
+
+`configure-s3` returns the driver. The default `credential_chain` provider uses
+AWS profiles, environment credentials or IAM roles; select a profile with
+`:profile<work>`. To supply keys explicitly, use `:provider<config>`, `:key-id`,
+`:secret`, and optional `:session-token`. Other options are `:region`, `:scope`,
+`:endpoint`, `:url-style<path>` or `:url-style<vhost>`, `:use-ssl`/`:!use-ssl`,
+and a secret `:name` (default `red_s3`). An endpoint is a host with optional port,
+without the URL scheme. This also supports compatible services such as MinIO.
+The helper loads `httpfs` and, for credential-chain authentication, `aws`.
+Secrets are temporary and the helper suppresses credential-bearing SQL logs.
+
+The available formats and transports depend on DuckDB's installed extensions.
+Their first installation requires access to the DuckDB extension repository.
+Remote views query the source on demand; `:materialize` makes a local snapshot.
+There is no upload/write-back API in these readers.
 
 Limits
 ------

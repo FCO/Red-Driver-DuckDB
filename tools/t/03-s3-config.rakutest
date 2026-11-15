@@ -1,0 +1,41 @@
+use Test;
+use Red::Driver::DuckDB::S3;
+
+class FakeDriver does Red::Driver::DuckDB::S3 {
+    has @.queries;
+    has Bool $.fail = False;
+    method execute(Str $sql) {
+        die "native error containing $sql" if $!fail;
+        @!queries.push($sql);
+    }
+}
+my $driver = FakeDriver.new;
+ok $driver.configure-s3(:region<eu-west-1>, :profile<test>) === $driver,
+    'configuration returns driver';
+is-deeply $driver.queries.head(4).Array,
+    ['INSTALL httpfs', 'LOAD httpfs', 'INSTALL aws', 'LOAD aws'],
+    'credential chain loads filesystem and AWS extensions';
+like $driver.queries.tail, /'PROVIDER credential_chain'/, 'default provider';
+ok $driver.queries.tail.contains("PROFILE 'test'"), 'profile forwarded';
+unlike $driver.queries.tail, /'PERSISTENT'/, 'temporary secret';
+my $config = FakeDriver.new;
+$config.configure-s3(:provider<config>, :key-id<test>, :secret("a'b"),
+    :endpoint<localhost:9000>, :url-style<path>, :!use-ssl,
+    :scope<s3://bucket/>, :session-token<token>);
+is $config.queries.elems, 3, 'config provider does not load AWS';
+ok $config.queries.tail.contains("SECRET 'a''b'"), 'secret safely quoted';
+like $config.queries.tail, /'USE_SSL false'/, 'false option retained';
+ok $config.queries.tail.contains("SCOPE 's3://bucket/'"), 'scope forwarded';
+dies-ok { $driver.configure-s3(:provider<unknown>) }, 'unknown provider rejected';
+dies-ok { $driver.configure-s3(:name('x; DROP TABLE y')) }, 'unsafe name rejected';
+dies-ok { $driver.configure-s3(:provider<config>) }, 'missing credentials rejected';
+dies-ok { $driver.configure-s3(:secret<test>) }, 'mixed credentials rejected';
+dies-ok { $driver.configure-s3(:region("bad\0value")) }, 'NUL rejected';
+my $error;
+try {
+    CATCH { default { $error = .message } }
+    FakeDriver.new(:fail).configure-s3(:provider<config>, :key-id<test>, :secret<private-value>);
+}
+like $error, /'S3 configuration failed'/, 'configuration failure explained';
+unlike $error, /'private-value'|'CREATE'|'INSTALL'/, 'native SQL and credentials redacted';
+done-testing;

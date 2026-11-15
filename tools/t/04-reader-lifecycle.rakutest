@@ -1,0 +1,27 @@
+use Test;
+use Red::Driver::DuckDB::Readers;
+use Red::Driver::DuckDB::SourceModel;
+
+class FixtureSchema {
+    method rows(|) { ({ column_name => 'value', column_type => 'VARCHAR' },) }
+}
+class FailingSourceDriver does Red::Driver::DuckDB::Readers {
+    has @.queries;
+    has Bool $.after-create = False;
+    method schema-reader { FixtureSchema.new }
+    method execute(Str $sql) {
+        @!queries.push($sql);
+        die 'injected source failure' if $!after-create
+            ?? $sql.starts-with('ALTER TABLE')
+            !! $sql.starts-with('CREATE TEMP TABLE');
+    }
+}
+my $before = FailingSourceDriver.new;
+dies-ok { $before.read-csv('unused.csv', :materialize) }, 'source creation failure propagates';
+ok $before.queries.tail.starts-with('DROP SEQUENCE'), 'failed table creation releases sequence';
+my $after = FailingSourceDriver.new(:after-create);
+dies-ok { $after.read-csv('unused.csv', :materialize) }, 'failure after table creation propagates';
+ok $after.queries[*-2].starts-with('DROP TABLE'), 'failure after creation releases table';
+ok $after.queries.tail.starts-with('DROP SEQUENCE'), 'failure releases dependent sequence last';
+
+done-testing;
