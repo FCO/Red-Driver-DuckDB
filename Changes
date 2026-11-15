@@ -1,6 +1,8 @@
 Revision history for Red::Driver::DuckDB
 
 {{$NEXT}}
+
+0.0.5  2026-11-15T15:37:58Z
     - Fix source model .^all iteration to yield individual rows without an explicit slip.
     - Accept an optional :name on all source readers to name the generated Red model.
     - Document :name in source reader examples and add regression coverage for naming and iteration.
